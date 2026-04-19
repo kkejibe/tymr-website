@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Tymr vs Tempo — R&D credit substantiation vs. Jira time tracking</title>
+<meta name="description" content="Tempo Timesheets tracks hours for client billing inside Jira. Tymr turns your Jira + GitHub + calendar data into IRS § 174 and ASC 350-40 audit evidence. Honest comparison."/>
+
+<meta property="og:title" content="Tymr vs Tempo"/>
+<meta property="og:description" content="Both track work time. Tempo bills clients; Tymr substantiates R&D tax credit."/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://tymrlogic.com/vs/tempo"/>
+<meta property="og:image" content="https://tymrlogic.com/og.png"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="Tymr vs Tempo"/>
+<meta name="twitter:description" content="Both track work time. Tempo bills clients; Tymr substantiates R&D tax credit."/>
+<meta name="twitter:image" content="https://tymrlogic.com/og.png"/>
+
+<link rel="icon" type="image/png" href="/favicon.png"/>
+<link rel="apple-touch-icon" href="/apple-touch-icon.png"/>
+<link rel="manifest" href="/site.webmanifest"/>
+<meta name="theme-color" content="#F5C842"/>
+<script defer data-domain="tymrlogic.com" src="https://plausible.io/js/script.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Sora:wght@500;600;700&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="/_shared.css"/>
+</head>
+<body>
+<div class="glow g1"></div>
+<div class="glow g2"></div>
+
+<nav>
+  <div class="container">
+    <div class="nav-i">
+      <a href="/" class="logo">
+        <div class="logo-mark">T</div>
+        <span class="logo-name">Ty<span class="gr">mr</span></span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="/rd-credit-calculator.html">Calculator</a></li>
+        <li><a href="/utev1.html">UTEv1</a></li>
+        <li><a href="/pricing.html">Pricing</a></li>
+        <li><a href="/security.html">Security</a></li>
+        <li><a href="/changelog.html">Changelog</a></li>
+      </ul>
+      <a class="nav-cta" href="https://calendly.com/tymrlogic/demo">Request Pilot</a>
+    </div>
+  </div>
+</nav>
+
+<div class="container">
+  <div class="page-head">
+    <div class="eyebrow">TYMR VS TEMPO</div>
+    <h1>Tempo bills hours. <em>Tymr</em> substantiates R&amp;D credit.</h1>
+    <p class="lede">Tempo Timesheets is the mature Jira-native time-tracking app for client billing and project hours. Tymr is a labor-cost evidence layer for tax and audit. Both read from Jira; they're built for different buyers.</p>
+  </div>
+
+  <div class="content">
+
+    <section>
+      <h2>The honest summary</h2>
+      <p>If your team already bills clients by the hour from Jira, <strong>Tempo works well</strong>. It's what it was built for. Engineers submit timesheets, managers approve, finance exports.</p>
+      <p>If your company claims the US R&amp;D tax credit or capitalizes software costs under ASC 350-40, <strong>timesheets are the wrong artifact</strong>. The IRS and your auditors want contemporaneous source-event evidence — a hash-chained trail of Jira transitions, GitHub PRs, and calendar blocks tied to specific engineers and projects. Tymr produces that without timesheets.</p>
+    </section>
+
+    <section>
+      <h2>Side by side</h2>
+      <div class="compare-table">
+        <div class="compare-row header">
+          <div class="compare-cell label">Capability</div>
+          <div class="compare-cell">Tempo Timesheets</div>
+          <div class="compare-cell tymr">Tymr</div>
+        </div>
+        <div class="compare-row">
+          <div class="compare-cell label">Primary buyer</div>
+          <div class="compare-cell">PM &amp; Finance at agencies / services orgs</div>
+          <div class="compare-cell tymr"><strong>CFO, Tax Director, VP Controller</strong></div>
+        </div>
+        <div class="compare-row">
+          <div class="compare-cell label">Input model</div>
+          <div class="compare-cell">Manual timesheets + AI suggestions</div>
+          <div class="compare-cell tymr"><strong>Source events only — zero timesheets</strong></div>
+        </div>
+        <div class="compare-row">
+          <div class="compare-cell label">AI agent tracking</div>
+          <div class="compare-cell"><span class="n">Not supported</span></div>
+          <div class="compare-cell tymr"><span class="y">Yes</span> — agent runs as first-class workers (UTEv1)</div>
+        </div>
+        <div class="compare-row">
+          <div class="compare-cell label">IRS § 174 substantiation</div>
+          <div class="compare-cell"><span class="minus">Not a feature</span></div>
+          <div class="compare-cell tymr"><span class="y">Core output</span> — per-engineer, source-cited</div>
+        </div>
+        <div class="compare-row">
+          <div class="compare-cell label">ASC 350-40 CapEx / OpEx split</div>
+          <div class="compare-cell"><span class="minus">Not a feature</span></div>
+          <div class="compare-cell tymr"><span class="y">Journal-entry export</span> — NetSuite / Sage / QB</div>
+        </div>
+        <div class="compare-row">
+          <div class="compare-cell label">Source-event audit trail</div>
+          <div class="compare-cell">Worklog → Jira issue</div>
+          <div class="compare-cell tymr"><strong>Hash-chained, immutable</strong> — Jira + GitHub SHA + calendar</div>
+        </div>
+        <div class="compare-row">
+          <div class="compare-cell label">Jira fit</div>
+          <div class="compare-cell"><strong>Native plugin, very deep</strong></div>
+          <div class="compare-cell tymr">Deep API integration (no plugin install)</div>
+        </div>
+        <div class="compare-row">
+          <div class="compare-cell label">GitHub fit</div>
+          <div class="compare-cell">Limited</div>
+          <div class="compare-cell tymr"><strong>Deep</strong> — org-level webhook, commit + PR events</div>
+        </div>
+        <div class="compare-row">
+          <div class="compare-cell label">Priced on</div>
+          <div class="compare-cell">Per user / month</div>
+          <div class="compare-cell tymr"><strong>Recovered credit value</strong>, not seat count</div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>When to pick which</h2>
+      <div class="choose-block">
+        <div class="choose-card them">
+          <div class="who">Pick Tempo if</div>
+          <h3>You bill clients by the hour from Jira</h3>
+          <ul>
+            <li>Services / agency model — contractor hours rolled to invoices</li>
+            <li>You need PM-approved timesheets for project management</li>
+            <li>You live in Jira and want the time tracker inside it</li>
+            <li>Tax credit &amp; software capitalization aren't part of your CFO's workflow</li>
+          </ul>
+        </div>
+        <div class="choose-card us">
+          <div class="who">Pick Tymr if</div>
+          <h3>You need audit-ready R&amp;D credit &amp; CapEx evidence</h3>
+          <ul>
+            <li>You claim the US R&amp;D tax credit (§ 41) or want to</li>
+            <li>You capitalize software costs under ASC 350-40 for SOX</li>
+            <li>Your engineers won't fill out timesheets — and you don't want them to</li>
+            <li>AI agents do meaningful engineering work in your org</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>They can run side by side</h2>
+      <p>Tempo and Tymr solve different problems. If you're already on Tempo for billing, Tymr doesn't replace it — we add the tax and audit evidence layer on top of the same Jira data. Most R&amp;D-credit customers keep their existing PM stack.</p>
+    </section>
+
+    <div class="cta-inline">
+      <a href="https://calendly.com/tymrlogic/demo" class="btn-primary">Request a Pilot</a>
+      <a href="/rd-credit-calculator.html" class="btn-ghost">Estimate your credit →</a>
+    </div>
+  </div>
+</div>
+
+<div class="footer-wrap">
+  <footer class="page-footer">
+    <div class="container">
+      <div class="footer-i">
+        <a href="/" class="logo">
+          <div class="logo-mark" style="width:32px;height:32px;border-radius:8px;font-size:18px">T</div>
+          <span class="logo-name" style="font-size:18px">Ty<span class="gr">mr</span></span>
+        </a>
+        <div class="footer-links">
+          <a href="/rd-credit-calculator.html">Calculator</a>
+          <a href="/utev1.html">UTEv1</a>
+          <a href="/pricing.html">Pricing</a>
+          <a href="/security.html">Security</a>
+          <a href="/privacy.html">Privacy</a>
+          <a href="/terms.html">Terms</a>
+          <a href="/changelog.html">Changelog</a>
+        </div>
+        <span class="footer-copy">tymrlogic.com · © 2026 Tymr</span>
+      </div>
+    </div>
+  </footer>
+</div>
+</body>
+</html>

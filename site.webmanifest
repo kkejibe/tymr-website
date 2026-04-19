@@ -1,0 +1,22 @@
+{
+  "name": "Tymr",
+  "short_name": "Tymr",
+  "description": "Audit-ready labor-cost layer for R&D credits & software CapEx",
+  "icons": [
+    {
+      "src": "/favicon.png",
+      "sizes": "192x192 512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#F5C842",
+  "background_color": "#FFFFFF",
+  "display": "standalone",
+  "start_url": "/"
+}

@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Changelog — Tymr</title>
+<meta name="description" content="What Tymr has shipped recently — R&D credit substantiation, ASC 350-40 classification, UTEv1 open event schema, integrations, and more."/>
+
+<meta property="og:title" content="Changelog — Tymr"/>
+<meta property="og:description" content="What Tymr has shipped recently."/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://tymrlogic.com/changelog"/>
+<meta property="og:image" content="https://tymrlogic.com/og.png"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="Changelog — Tymr"/>
+<meta name="twitter:description" content="What Tymr has shipped recently."/>
+<meta name="twitter:image" content="https://tymrlogic.com/og.png"/>
+
+<link rel="icon" type="image/png" href="/favicon.png"/>
+<link rel="apple-touch-icon" href="/apple-touch-icon.png"/>
+<link rel="manifest" href="/site.webmanifest"/>
+<meta name="theme-color" content="#F5C842"/>
+<script defer data-domain="tymrlogic.com" src="https://plausible.io/js/script.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Sora:wght@500;600;700&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="/_shared.css"/>
+</head>
+<body>
+<div class="glow g1"></div>
+<div class="glow g2"></div>
+
+<nav>
+  <div class="container">
+    <div class="nav-i">
+      <a href="/" class="logo">
+        <div class="logo-mark">T</div>
+        <span class="logo-name">Ty<span class="gr">mr</span></span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="/rd-credit-calculator.html">Calculator</a></li>
+        <li><a href="/utev1.html">UTEv1</a></li>
+        <li><a href="/pricing.html">Pricing</a></li>
+        <li><a href="/security.html">Security</a></li>
+        <li><a href="/changelog.html" class="active">Changelog</a></li>
+      </ul>
+      <a class="nav-cta" href="https://calendly.com/tymrlogic/demo">Request Pilot</a>
+    </div>
+  </div>
+</nav>
+
+<div class="container">
+  <div class="page-head">
+    <div class="eyebrow">CHANGELOG</div>
+    <h1>What we've <em>shipped</em> recently.</h1>
+    <p class="lede">Tymr is in active development with a design-partner cohort open for Q2 2026. Here's what's landed in the last few weeks — in reverse chronological order.</p>
+  </div>
+
+  <div class="content">
+    <div class="timeline">
+
+      <div class="tl-item">
+        <div class="tl-date">2026-04-19 · WEBSITE</div>
+        <div class="tl-title">Compliance repositioning — homepage, ROI calculator, UTEv1 page, changelog</div>
+        <div class="tl-body">
+          Homepage rewritten around the R&amp;D Credit + ASC 350-40 beachhead. Floor visual redesigned as a live audit ledger with classification chips and a § 174 credit estimate. New <a href="/rd-credit-calculator.html">ROI calculator</a>, <a href="/utev1.html">UTEv1 spec page</a>, and this changelog. OG/Twitter meta added everywhere.
+        </div>
+        <div class="tl-tags">
+          <span class="tag tag-amber">positioning</span>
+          <span class="tag tag-green">website</span>
+        </div>
+      </div>
+
+      <div class="tl-item cyan">
+        <div class="tl-date">2026-04-17 · OPEN SOURCE</div>
+        <div class="tl-title">UTEv1 v0.1 + TypeScript &amp; Python SDKs</div>
+        <div class="tl-body">
+          First public draft of the Universal Time Event spec — JSON Schema 2020-12 — plus reference client SDKs in TypeScript and Python. Includes <code>wrapClaudeAgent</code> (Anthropic) and <code>TymrCallbackHandler</code> (LangChain). Generated types, buffer/flush semantics, session/task context managers.
+        </div>
+        <div class="tl-tags">
+          <span class="tag tag-green">UTEv1</span>
+          <span class="tag tag-green">SDK</span>
+        </div>
+      </div>
+
+      <div class="tl-item cyan">
+        <div class="tl-date">2026-04-17 · INTEGRATION</div>
+        <div class="tl-title">GitHub org-level webhook</div>
+        <div class="tl-body">
+          Push, pull-request, and review events now flow straight into the audit ledger via a single org-level webhook. Adds the third deep-integration source system (after Jira and calendars). HMAC signature verification on the roadmap.
+        </div>
+        <div class="tl-tags">
+          <span class="tag tag-green">integration</span>
+          <span class="tag tag-amber">github</span>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-date">2026-04-16 · STRATEGY</div>
+        <div class="tl-title">Beachhead confirmed — R&amp;D Credit + SOX CapEx</div>
+        <div class="tl-body">
+          Repositioning from horizontal workforce intelligence to the audit-ready labor-cost layer for IRS § 174 and ASC 350-40. Tax-firm channel outreach begins; direct CFO outbound on deck. Professional-services vertical parked indefinitely.
+        </div>
+        <div class="tl-tags">
+          <span class="tag tag-amber">positioning</span>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-date">2026-04-16 · PRODUCT</div>
+        <div class="tl-title">Org-level visibility flags &amp; tier repack</div>
+        <div class="tl-body">
+          Floor, cost-ticker, and agent features are now optional per org. Privacy-sensitive deployments can run Tymr as a pure evidence ledger without the live-floor UX. Three new tiers mapped to visibility levels.
+        </div>
+        <div class="tl-tags">
+          <span class="tag tag-green">privacy</span>
+          <span class="tag tag-amber">packaging</span>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-date">2026-04-14 · PRODUCT</div>
+        <div class="tl-title">Per-org integration activity config</div>
+        <div class="tl-body">
+          Per-org taxonomy, canonical override rules, and preview-before-enable flow. Admins can customize which source events map to which classification, with a diff view before committing changes.
+        </div>
+        <div class="tl-tags">
+          <span class="tag tag-green">admin</span>
+        </div>
+      </div>
+
+      <div class="tl-item slate">
+        <div class="tl-date">ROADMAP · Q2–Q3 2026</div>
+        <div class="tl-title">What's coming next</div>
+        <div class="tl-body">
+          NetSuite &amp; Sage Intacct journal-entry exports · Slack event integration · CrewAI / OpenAI Assistants / Vercel AI SDK wrappers · SOC 2 Type I (Drata) · HMAC webhook signatures · Benchmark dataset (activates at 25+ customers).
+        </div>
+        <div class="tl-tags">
+          <span class="tag tag-amber">roadmap</span>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="cta-inline">
+      <a href="https://calendly.com/tymrlogic/demo" class="btn-primary">Request a Pilot</a>
+      <a href="/utev1.html" class="btn-ghost">Read the UTEv1 spec →</a>
+    </div>
+  </div>
+</div>
+
+<div class="footer-wrap">
+  <footer class="page-footer">
+    <div class="container">
+      <div class="footer-i">
+        <a href="/" class="logo">
+          <div class="logo-mark" style="width:32px;height:32px;border-radius:8px;font-size:18px">T</div>
+          <span class="logo-name" style="font-size:18px">Ty<span class="gr">mr</span></span>
+        </a>
+        <div class="footer-links">
+          <a href="/rd-credit-calculator.html">Calculator</a>
+          <a href="/utev1.html">UTEv1</a>
+          <a href="/pricing.html">Pricing</a>
+          <a href="/security.html">Security</a>
+          <a href="/privacy.html">Privacy</a>
+          <a href="/terms.html">Terms</a>
+          <a href="/changelog.html">Changelog</a>
+          <a href="/vs/tempo.html">vs Tempo</a>
+          <a href="/vs/timely.html">vs Timely</a>
+          <a href="/vs/memory.html">vs Memory</a>
+        </div>
+        <span class="footer-copy">tymrlogic.com · © 2026 Tymr</span>
+      </div>
+    </div>
+  </footer>
+</div>
+</body>
+</html>

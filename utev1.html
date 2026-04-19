@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>UTEv1 — Universal Time Event spec — Tymr</title>
+<meta name="description" content="UTEv1 is an open schema for capturing human and AI-agent work events with enough structure to substantiate R&D tax credits and software CapEx classification."/>
+
+<meta property="og:title" content="UTEv1 — Universal Time Event spec"/>
+<meta property="og:description" content="Open event schema for human + AI-agent R&D substantiation. Drafted by Tymr, open for contribution."/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://tymrlogic.com/utev1"/>
+<meta property="og:image" content="https://tymrlogic.com/og.png"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="UTEv1 — Universal Time Event spec"/>
+<meta name="twitter:description" content="Open event schema for human + AI-agent R&D substantiation."/>
+<meta name="twitter:image" content="https://tymrlogic.com/og.png"/>
+
+<link rel="icon" type="image/png" href="/favicon.png"/>
+<link rel="apple-touch-icon" href="/apple-touch-icon.png"/>
+<link rel="manifest" href="/site.webmanifest"/>
+<meta name="theme-color" content="#F5C842"/>
+<script defer data-domain="tymrlogic.com" src="https://plausible.io/js/script.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Sora:wght@500;600;700&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="/_shared.css"/>
+</head>
+<body>
+<div class="glow g1"></div>
+<div class="glow g2"></div>
+
+<nav>
+  <div class="container">
+    <div class="nav-i">
+      <a href="/" class="logo">
+        <div class="logo-mark">T</div>
+        <span class="logo-name">Ty<span class="gr">mr</span></span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="/rd-credit-calculator.html">Calculator</a></li>
+        <li><a href="/utev1.html" class="active">UTEv1</a></li>
+        <li><a href="/pricing.html">Pricing</a></li>
+        <li><a href="/security.html">Security</a></li>
+        <li><a href="/changelog.html">Changelog</a></li>
+      </ul>
+      <a class="nav-cta" href="https://calendly.com/tymrlogic/demo">Request Pilot</a>
+    </div>
+  </div>
+</nav>
+
+<div class="container">
+  <div class="page-head">
+    <div class="eyebrow">UTEv1 · OPEN SPEC · DRAFT</div>
+    <h1>An open event schema for <em>human + agent</em> R&amp;D work.</h1>
+    <p class="lede">UTEv1 — the Universal Time Event spec — is a small, JSON-Schema-driven format for recording any unit of engineering work with enough structure to substantiate R&amp;D tax credits, software capitalization, and audit trails. Drafted by Tymr, intended as a community standard.</p>
+  </div>
+
+  <div class="content">
+    <section>
+      <h2>Why a new spec?</h2>
+      <p>Existing observability schemas (OpenTelemetry, CloudEvents) weren't built for labor substantiation. They capture <em>what happened</em> technically — not <em>who did the work</em>, <em>for which project</em>, or <em>how the activity should be classified for tax or accounting</em>.</p>
+      <p>Existing time-tracking schemas (Tempo, Toggl, Harvest) weren't built for AI agents. They assume a human-entered timesheet, not a continuous event stream from Jira, GitHub, calendars, and LLM runs.</p>
+      <p>UTEv1 sits in the gap: one format, human or agent, with the fields an auditor or tax firm actually needs.</p>
+    </section>
+
+    <section>
+      <h2>Core event shape</h2>
+      <div class="spec-block"><span class="c">// Minimum viable UTEv1 event</span>
+{
+  <span class="k">"spec"</span>: <span class="s">"utev1"</span>,
+  <span class="k">"event_id"</span>: <span class="s">"01HQ..."</span>,
+  <span class="k">"occurred_at"</span>: <span class="s">"2026-04-19T14:22:15Z"</span>,
+  <span class="k">"duration_ms"</span>: 312000,
+  <span class="k">"worker"</span>: {
+    <span class="k">"kind"</span>: <span class="s">"human" | "agent"</span>,
+    <span class="k">"id"</span>: <span class="s">"u_8f3c..."</span>,
+    <span class="k">"display_name"</span>: <span class="s">"K. Ejibe"</span>
+  },
+  <span class="k">"source"</span>: {
+    <span class="k">"system"</span>: <span class="s">"jira" | "github" | "gcal" | "agent_sdk"</span>,
+    <span class="k">"ref"</span>: <span class="s">"ENG-1421"</span>,
+    <span class="k">"url"</span>: <span class="s">"https://acme.atlassian.net/browse/ENG-1421"</span>
+  },
+  <span class="k">"project"</span>: <span class="s">"PROJ-142"</span>,
+  <span class="k">"activity"</span>: <span class="s">"design" | "develop" | "test" | "maintain" | "meeting"</span>,
+  <span class="k">"classification"</span>: {
+    <span class="k">"irs_174"</span>: <span class="s">true</span>,
+    <span class="k">"asc_350_40"</span>: <span class="s">"capex" | "opex" | null</span>,
+    <span class="k">"confidence"</span>: 0.92
+  },
+  <span class="k">"cost"</span>: {
+    <span class="k">"currency"</span>: <span class="s">"USD"</span>,
+    <span class="k">"labor_usd"</span>: 15.42,
+    <span class="k">"compute_usd"</span>: 0
+  }
+}</div>
+      <p>Every field is optional except <code>spec</code>, <code>event_id</code>, <code>occurred_at</code>, and <code>worker.kind</code>. A minimal event can be as small as four fields; a rich one carries full classification and cost.</p>
+    </section>
+
+    <section>
+      <h2>Design principles</h2>
+      <div class="grid-2">
+        <div class="card">
+          <h3>Human and agent are peers</h3>
+          <p><code>worker.kind</code> is the only field that distinguishes an engineer from an LLM agent. Same schema, same classification logic, same audit trail. This is foundational — AI agents are real workers producing real § 174-eligible output.</p>
+        </div>
+        <div class="card">
+          <h3>Source truth is immutable</h3>
+          <p>Every event carries a <code>source.ref</code> — a Jira issue key, a GitHub commit SHA, a calendar invite ID, an agent run ID. The event is reproducible from its source; nothing is invented.</p>
+        </div>
+        <div class="card">
+          <h3>Classification is a field, not a layer</h3>
+          <p>§ 174 eligibility and ASC 350-40 CapEx/OpEx status live on the event itself with a <code>confidence</code> score. Tax firms and auditors see <em>why</em> an event was classified a certain way, not just the total.</p>
+        </div>
+        <div class="card">
+          <h3>Append-only, hash-chainable</h3>
+          <p>Events are immutable once written. Corrections are expressed as new <code>correction</code>-kind events that reference the original <code>event_id</code>. The audit trail is reproducible after the fact.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Reference SDKs</h2>
+      <div class="grid-2">
+        <div class="card">
+          <h3>TypeScript <span class="tag tag-green">v0.1 draft</span></h3>
+          <p>Core client + UTEv1-aligned types + buffer/flush + session/task context managers. Includes <code>wrapClaudeAgent</code> for Anthropic's SDK. Generated types mirror the JSON Schema 1:1.</p>
+          <p><code>npm i @tymr/agent</code> <span class="tag tag-amber">pre-publish</span></p>
+        </div>
+        <div class="card">
+          <h3>Python <span class="tag tag-green">v0.1 draft</span></h3>
+          <p>Core client + <code>TymrCallbackHandler</code> for LangChain. Works with async and sync agents. Same generated types, same buffer/flush semantics as the TypeScript SDK.</p>
+          <p><code>pip install tymr-agent-events</code> <span class="tag tag-amber">pre-publish</span></p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Status &amp; roadmap</h2>
+      <ul>
+        <li><strong>v0.1 draft (now)</strong> — JSON Schema (Draft 2020-12) + TypeScript + Python codegen shipped. Pre-publish on npm/PyPI.</li>
+        <li><strong>Community RFC</strong> — outreach to OpenTelemetry SIG, FinOps Foundation, and adjacent vendors (Tempo, Memory, Reclaim, Worklytics) for feedback.</li>
+        <li><strong>Agent framework wrappers</strong> — CrewAI, OpenAI Assistants, Vercel AI SDK, AutoGen.</li>
+        <li><strong>v0.2 — correction &amp; redaction events</strong>, expanded <code>classification</code> (non-US tax frameworks).</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Why we're publishing this</h2>
+      <p>If only Tymr speaks UTEv1, it's a vendor format. If Anthropic, OpenAI, LangChain, Tempo, and your internal agent framework all speak UTEv1, it's a standard — and tax firms, auditors, and CFOs get one schema to reason about instead of thirty.</p>
+      <p>That's the bet. Free for anyone to implement; no license fee, no runtime dependency on Tymr. We'll support the schema whether you use us or not.</p>
+    </section>
+
+    <div class="cta-inline">
+      <a href="https://calendly.com/tymrlogic/demo" class="btn-primary">Become a design partner</a>
+      <a href="/rd-credit-calculator.html" class="btn-ghost">Estimate your R&amp;D credit →</a>
+    </div>
+  </div>
+</div>
+
+<div class="footer-wrap">
+  <footer class="page-footer">
+    <div class="container">
+      <div class="footer-i">
+        <a href="/" class="logo">
+          <div class="logo-mark" style="width:32px;height:32px;border-radius:8px;font-size:18px">T</div>
+          <span class="logo-name" style="font-size:18px">Ty<span class="gr">mr</span></span>
+        </a>
+        <div class="footer-links">
+          <a href="/rd-credit-calculator.html">Calculator</a>
+          <a href="/utev1.html">UTEv1</a>
+          <a href="/pricing.html">Pricing</a>
+          <a href="/security.html">Security</a>
+          <a href="/privacy.html">Privacy</a>
+          <a href="/terms.html">Terms</a>
+          <a href="/changelog.html">Changelog</a>
+          <a href="/vs/tempo.html">vs Tempo</a>
+          <a href="/vs/timely.html">vs Timely</a>
+          <a href="/vs/memory.html">vs Memory</a>
+        </div>
+        <span class="footer-copy">tymrlogic.com · © 2026 Tymr</span>
+      </div>
+    </div>
+  </footer>
+</div>
+</body>
+</html>

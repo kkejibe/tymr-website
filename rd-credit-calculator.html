@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>R&D Credit Calculator — Tymr</title>
+<meta name="description" content="Estimate the IRS § 41 R&D tax credit your engineering org could claim with substantiated § 174 evidence. Live calculator — engineers, loaded cost, R&D time, state."/>
+
+<meta property="og:title" content="R&D Credit Calculator — Tymr"/>
+<meta property="og:description" content="How much R&D tax credit is your engineering org leaving on the table? Estimate in 10 seconds."/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://tymrlogic.com/rd-credit-calculator"/>
+<meta property="og:image" content="https://tymrlogic.com/og.png"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="R&D Credit Calculator — Tymr"/>
+<meta name="twitter:description" content="How much R&D tax credit is your engineering org leaving on the table?"/>
+<meta name="twitter:image" content="https://tymrlogic.com/og.png"/>
+
+<link rel="icon" type="image/png" href="/favicon.png"/>
+<link rel="apple-touch-icon" href="/apple-touch-icon.png"/>
+<link rel="manifest" href="/site.webmanifest"/>
+<meta name="theme-color" content="#F5C842"/>
+<script defer data-domain="tymrlogic.com" src="https://plausible.io/js/script.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Sora:wght@500;600;700&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="/_shared.css"/>
+</head>
+<body>
+<div class="glow g1"></div>
+<div class="glow g2"></div>
+
+<nav>
+  <div class="container">
+    <div class="nav-i">
+      <a href="/" class="logo">
+        <div class="logo-mark">T</div>
+        <span class="logo-name">Ty<span class="gr">mr</span></span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="/rd-credit-calculator.html" class="active">Calculator</a></li>
+        <li><a href="/utev1.html">UTEv1</a></li>
+        <li><a href="/pricing.html">Pricing</a></li>
+        <li><a href="/security.html">Security</a></li>
+        <li><a href="/changelog.html">Changelog</a></li>
+      </ul>
+      <a class="nav-cta" href="https://calendly.com/tymrlogic/demo">Request Pilot</a>
+    </div>
+  </div>
+</nav>
+
+<div class="container">
+  <div class="page-head">
+    <div class="eyebrow">R&amp;D CREDIT CALCULATOR</div>
+    <h1>How much credit is your <em>engineering org</em> leaving on the table?</h1>
+    <p class="lede">A rough estimate based on IRS § 41 Alternative Simplified Credit method + common state add-ons. Tymr produces the substantiation evidence your tax firm needs to claim it.</p>
+  </div>
+
+  <div class="content">
+    <div class="calc-wrap">
+      <div class="calc-panel">
+        <div class="calc-group">
+          <div class="calc-label">Engineers in R&amp;D roles <span class="calc-value" id="engineers-v">80</span></div>
+          <input type="range" id="engineers" min="10" max="500" step="5" value="80"/>
+        </div>
+        <div class="calc-group">
+          <div class="calc-label">Avg fully-loaded cost / engineer <span class="calc-value" id="salary-v">$210K</span></div>
+          <input type="range" id="salary" min="120" max="320" step="5" value="210"/>
+        </div>
+        <div class="calc-group">
+          <div class="calc-label">% time on qualifying R&amp;D <span class="calc-value" id="rdPct-v">70%</span></div>
+          <input type="range" id="rdPct" min="20" max="100" step="5" value="70"/>
+        </div>
+        <div class="calc-group">
+          <div class="calc-label">Primary state for R&amp;D work</div>
+          <select class="calc-select" id="state">
+            <option value="ca">California (state credit ~7.5%)</option>
+            <option value="ny">New York (state credit ~4.5%)</option>
+            <option value="tx">Texas (franchise credit ~5%)</option>
+            <option value="ma">Massachusetts (state credit ~6.5%)</option>
+            <option value="wa">Washington (no state R&amp;D credit)</option>
+            <option value="other">Other (assume ~3%)</option>
+            <option value="none">Federal only</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="calc-panel result">
+        <div class="calc-label">ESTIMATED RECOVERABLE CREDIT · YEAR 1</div>
+        <div class="calc-big" id="total">—</div>
+        <div class="calc-sub-num" id="totalRange">—</div>
+
+        <div class="calc-divider"></div>
+
+        <div class="calc-row">
+          <span class="k">Qualified Research Expenses (QRE)</span>
+          <span class="v" id="qre">—</span>
+        </div>
+        <div class="calc-row">
+          <span class="k">Federal credit (ASC method, ~8%)</span>
+          <span class="v gold" id="fed">—</span>
+        </div>
+        <div class="calc-row">
+          <span class="k">State credit <span id="stateName">(CA)</span></span>
+          <span class="v cyan" id="stateAmt">—</span>
+        </div>
+        <div class="calc-row">
+          <span class="k">Per engineer / year</span>
+          <span class="v" id="perEng">—</span>
+        </div>
+
+        <div class="calc-disclaimer">
+          <strong>Estimate only.</strong> Actual credit depends on § 41 base-period QREs, activity qualification review, and four-part-test substantiation. This is not tax advice. Tymr produces the per-engineer source-event evidence your tax firm or preparer needs to claim the credit on Form 6765.
+        </div>
+      </div>
+    </div>
+
+    <section>
+      <h2>Where the numbers come from</h2>
+      <p>We use the <strong>Alternative Simplified Credit (ASC) method</strong> — 14% of current-year Qualified Research Expenses above 50% of the average prior 3-year QREs. For a typical software org without a declining R&amp;D trend, that comes out to roughly <strong>7–10% of current QRE</strong> as a federal credit. We default to 8% to stay conservative.</p>
+      <p>State credits vary widely. California adds ~7.5% effective for qualifying wages; Texas offers a 5% franchise-tax credit; Washington has no state R&amp;D credit. The dropdown above uses rough effective rates — your preparer will apply the actual state formula.</p>
+      <p><strong>What counts as QRE?</strong> Wages for employees performing qualified research, supplies consumed in R&amp;D, and 65% of contract research. Management and back-office time generally doesn't qualify.</p>
+    </section>
+
+    <section>
+      <h2>Why the substantiation matters more than the math</h2>
+      <p>The math above is the easy part. The hard part — and the reason most companies under-claim — is <strong>substantiation</strong>: proving to the IRS that the work actually qualified, with contemporaneous evidence tied to specific projects and engineers.</p>
+      <p>That's what Tymr produces. Every hour in your R&amp;D credit worksheet traces back to a Jira ticket transition, a GitHub pull request SHA, or a calendar block — time-stamped and immutable. When your tax firm prepares Form 6765 or your company faces a § 41 exam, the evidence is already on file.</p>
+    </section>
+
+    <div class="cta-inline">
+      <a href="https://calendly.com/tymrlogic/demo" class="btn-primary">Request a Pilot</a>
+      <a href="/utev1.html" class="btn-ghost">See how evidence is captured →</a>
+    </div>
+  </div>
+</div>
+
+<div class="footer-wrap">
+  <footer class="page-footer">
+    <div class="container">
+      <div class="footer-i">
+        <a href="/" class="logo">
+          <div class="logo-mark" style="width:32px;height:32px;border-radius:8px;font-size:18px">T</div>
+          <span class="logo-name" style="font-size:18px">Ty<span class="gr">mr</span></span>
+        </a>
+        <div class="footer-links">
+          <a href="/rd-credit-calculator.html">Calculator</a>
+          <a href="/utev1.html">UTEv1</a>
+          <a href="/pricing.html">Pricing</a>
+          <a href="/security.html">Security</a>
+          <a href="/privacy.html">Privacy</a>
+          <a href="/terms.html">Terms</a>
+          <a href="/changelog.html">Changelog</a>
+          <a href="/vs/tempo.html">vs Tempo</a>
+          <a href="/vs/timely.html">vs Timely</a>
+          <a href="/vs/memory.html">vs Memory</a>
+        </div>
+        <span class="footer-copy">tymrlogic.com · © 2026 Tymr</span>
+      </div>
+    </div>
+  </footer>
+</div>
+
+<script>
+const stateRates = {
+  ca: 0.075,
+  ny: 0.045,
+  tx: 0.05,
+  ma: 0.065,
+  wa: 0,
+  other: 0.03,
+  none: 0
+};
+const stateLabels = {
+  ca: '(California)',
+  ny: '(New York)',
+  tx: '(Texas)',
+  ma: '(Massachusetts)',
+  wa: '(Washington — none)',
+  other: '(other)',
+  none: '(federal only)'
+};
+
+const fmt = n => {
+  if (n >= 1_000_000) return '$' + (n / 1_000_000).toFixed(2) + 'M';
+  if (n >= 1_000) return '$' + Math.round(n / 1_000).toLocaleString() + 'K';
+  return '$' + Math.round(n).toLocaleString();
+};
+
+function recalc() {
+  const engineers = +document.getElementById('engineers').value;
+  const salary = +document.getElementById('salary').value * 1000;
+  const rdPct = +document.getElementById('rdPct').value / 100;
+  const state = document.getElementById('state').value;
+
+  document.getElementById('engineers-v').textContent = engineers;
+  document.getElementById('salary-v').textContent = '$' + (salary / 1000).toFixed(0) + 'K';
+  document.getElementById('rdPct-v').textContent = (rdPct * 100).toFixed(0) + '%';
+  document.getElementById('stateName').textContent = stateLabels[state];
+
+  const qre = engineers * salary * rdPct;
+  const fedLow = qre * 0.065;
+  const fedMid = qre * 0.08;
+  const fedHigh = qre * 0.10;
+  const stateAmt = qre * stateRates[state];
+  const totalMid = fedMid + stateAmt;
+  const totalLow = fedLow + stateAmt;
+  const totalHigh = fedHigh + stateAmt;
+  const perEng = totalMid / engineers;
+
+  document.getElementById('qre').textContent = fmt(qre);
+  document.getElementById('fed').textContent = fmt(fedMid);
+  document.getElementById('stateAmt').textContent = fmt(stateAmt);
+  document.getElementById('perEng').textContent = fmt(perEng);
+  document.getElementById('total').textContent = fmt(totalMid);
+  document.getElementById('totalRange').textContent = `Range: ${fmt(totalLow)} – ${fmt(totalHigh)} depending on § 41 base calculation`;
+}
+
+['engineers', 'salary', 'rdPct', 'state'].forEach(id => {
+  document.getElementById(id).addEventListener('input', recalc);
+});
+recalc();
+</script>
+</body>
+</html>
