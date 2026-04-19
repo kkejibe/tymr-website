@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Security — Tymr</title>
+<meta name="description" content="How Tymr protects your data. SOC 2 status, encryption, hosting, SSO, DPA, subprocessor list."/>
+<link rel="icon" type="image/png" href="/favicon.png"/>
+<link rel="apple-touch-icon" href="/apple-touch-icon.png"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Sora:wght@500;600;700&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="/_shared.css"/>
+</head>
+<body>
+<div class="glow g1"></div>
+<div class="glow g2"></div>
+
+<nav>
+  <div class="container">
+    <div class="nav-i">
+      <a href="/" class="logo">
+        <div class="logo-mark">T</div>
+        <span class="logo-name">Ty<span class="gr">mr</span></span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="/#floor">Floor</a></li>
+        <li><a href="/#agents">AI Agents</a></li>
+        <li><a href="/pricing.html">Pricing</a></li>
+        <li><a href="/security.html" class="active">Security</a></li>
+      </ul>
+      <a href="mailto:hello@tymrlogic.com?subject=Security%20question" class="nav-cta">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<div class="container">
+  <div class="page-head">
+    <div class="eyebrow">SECURITY &amp; TRUST</div>
+    <h1>How we handle <em>your data.</em></h1>
+    <p class="lede">Tymr reads your team's activity from Jira, GitHub, calendars, and chat. We treat that data with the seriousness CFOs and security teams expect. Here's exactly what we do and don't do.</p>
+  </div>
+
+  <div class="content">
+
+    <section>
+      <h2>Compliance &amp; certifications</h2>
+      <div class="grid-2">
+        <div class="card">
+          <h3>SOC 2 Type II <span class="tag tag-amber">IN PROGRESS</span></h3>
+          <p>We're in active audit with a Big-4-adjacent firm. Target report: Q4 2026. Design partners receive interim security questionnaires and vendor risk packets on request.</p>
+        </div>
+        <div class="card">
+          <h3>GDPR &amp; CCPA <span class="tag tag-green">READY</span></h3>
+          <p>We honor data subject access, deletion, and portability requests. EU customers can sign a Standard Contractual Clauses (SCC) addendum to our DPA.</p>
+        </div>
+        <div class="card">
+          <h3>HIPAA <span class="tag tag-amber">NOT YET</span></h3>
+          <p>Tymr is not HIPAA-compliant today. We don't process PHI by design — we track software development activity, not clinical workflows. BAA available on Enterprise roadmap.</p>
+        </div>
+        <div class="card">
+          <h3>DPA on request <span class="tag tag-green">READY</span></h3>
+          <p>Our Data Processing Addendum is ready to sign. Email <a href="mailto:security@tymrlogic.com">security@tymrlogic.com</a> and we'll send it within one business day.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Infrastructure</h2>
+      <div class="grid-2">
+        <div class="card">
+          <h3>Hosting</h3>
+          <p>Supabase (Postgres + Auth + Storage) running on AWS <code>us-east-1</code> by default. Enterprise customers can request EU (Supabase's <code>eu-central-1</code>) data residency.</p>
+        </div>
+        <div class="card">
+          <h3>Encryption</h3>
+          <p>TLS 1.2+ in transit. AES-256 at rest (managed by AWS KMS via Supabase). OAuth tokens for integrations are encrypted with a separate, rotating key.</p>
+        </div>
+        <div class="card">
+          <h3>Tenant isolation</h3>
+          <p>Every table is partitioned by <code>org_id</code> with Postgres row-level security (RLS) policies. One org cannot read another org's data even if application-level checks failed.</p>
+        </div>
+        <div class="card">
+          <h3>Backups &amp; recovery</h3>
+          <p>Continuous WAL-based backups with 7-day point-in-time recovery on Growth, 30 days on Enterprise. Backups encrypted and stored in a separate AWS account.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Access &amp; authentication</h2>
+      <ul>
+        <li><strong>Your users</strong> — Email + password today. SAML SSO (Okta, Azure AD, Google Workspace) and SCIM user provisioning on the Enterprise tier and coming to Growth in 2026 Q3.</li>
+        <li><strong>Our team</strong> — All Tymr employees use SSO with hardware MFA. Production access is audit-logged, least-privilege, and scoped per-engineer.</li>
+        <li><strong>Integration tokens</strong> — OAuth refresh tokens are stored encrypted, scoped to the minimum permissions required (we request read-only where possible). Jira, GitHub, Google, and Microsoft integrations never request write access to your data.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>What we track — and what we don't</h2>
+      <p>Tymr ingests metadata about your team's work activity. We deliberately avoid content wherever possible:</p>
+      <div class="grid-2">
+        <div class="card">
+          <h3 style="color:#0f7a30">We read</h3>
+          <ul style="margin-top:8px;padding-left:18px">
+            <li>Calendar event titles, durations, attendee counts</li>
+            <li>Jira issue keys, types, status transitions</li>
+            <li>GitHub commit/PR metadata (SHA, author, files changed — not diffs by default)</li>
+            <li>ServiceNow / PagerDuty incident metadata</li>
+            <li>Slack channel membership + message counts (not content)</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3 style="color:#c43320">We don't read</h3>
+          <ul style="margin-top:8px;padding-left:18px">
+            <li>Email content or attachments</li>
+            <li>Slack DMs or message bodies</li>
+            <li>GitHub code diffs (unless explicitly enabled for capitalization auditing)</li>
+            <li>Jira comment bodies (unless explicitly enabled)</li>
+            <li>Video call recordings or transcripts</li>
+          </ul>
+        </div>
+      </div>
+      <p style="margin-top:20px">Admins can further restrict integrations via the <strong>Integration Activity Config</strong> UI — turn off any source or specific activity type per org.</p>
+    </section>
+
+    <section>
+      <h2>Subprocessors</h2>
+      <p>We use a small number of vetted vendors to run Tymr. Each has their own SOC 2 or equivalent certification:</p>
+      <ul>
+        <li><strong>Supabase</strong> — managed Postgres, auth, storage (AWS us-east-1)</li>
+        <li><strong>AWS</strong> — underlying cloud for Supabase + edge functions</li>
+        <li><strong>Cloudflare</strong> — DNS, DDoS mitigation, static asset CDN</li>
+        <li><strong>Vercel</strong> — marketing site hosting (this page)</li>
+        <li><strong>Resend</strong> — transactional email</li>
+        <li><strong>Anthropic / OpenAI</strong> — LLM features (optional, disabled by default; org admins opt in)</li>
+      </ul>
+      <p>We notify customers of any material subprocessor change with 30 days' notice via email and in-app banner.</p>
+    </section>
+
+    <section>
+      <h2>Vulnerability disclosure</h2>
+      <p>Found something? We want to hear about it. Email <a href="mailto:security@tymrlogic.com">security@tymrlogic.com</a> with details and reproduction steps. We respond within one business day and credit all valid reporters (with permission) on this page once the SOC 2 audit is complete.</p>
+      <p>We don't yet run a paid bounty program, but design-partner reporters will receive equivalent recognition.</p>
+    </section>
+
+    <section>
+      <h2>Data deletion</h2>
+      <p>Customers can export and delete their data at any time from <strong>Settings → Org → Delete organization</strong>. We remove all org-scoped records from primary storage within 7 days and from backups within 30 days. Email <a href="mailto:security@tymrlogic.com">security@tymrlogic.com</a> for a written confirmation of deletion.</p>
+    </section>
+
+    <div class="cta-inline">
+      <a href="mailto:security@tymrlogic.com" class="btn-primary">Email security@tymrlogic.com</a>
+      <a href="/privacy.html" class="btn-ghost">Read privacy policy →</a>
+    </div>
+  </div>
+</div>
+
+<div class="footer-wrap">
+  <footer class="page-footer">
+    <div class="container">
+      <div class="footer-i">
+        <a href="/" class="logo">
+          <div class="logo-mark" style="width:32px;height:32px;border-radius:8px;font-size:18px">T</div>
+          <span class="logo-name" style="font-size:18px">Ty<span class="gr">mr</span></span>
+        </a>
+        <div class="footer-links">
+          <a href="/pricing.html">Pricing</a>
+          <a href="/security.html">Security</a>
+          <a href="/privacy.html">Privacy</a>
+          <a href="/terms.html">Terms</a>
+        </div>
+        <span class="footer-copy">tymrlogic.com · © 2026 Tymr</span>
+      </div>
+    </div>
+  </footer>
+</div>
+</body>
+</html>
