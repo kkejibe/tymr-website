@@ -3,11 +3,11 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Tymr — Audit-ready R&D credits and software CapEx. No engineer surveys.</title>
-<meta name="description" content="Tymr turns your existing Jira, GitHub, and calendar data into audit-ready R&D credit and software CapEx evidence. No engineer surveys. No year-end reconstruction. Built for US & Canadian software companies with 50–500 engineers."/>
+<title>Tymr — Time tracking for engineering teams. Without the timesheets.</title>
+<meta name="description" content="Tymr auto-aggregates Jira, GitHub, and calendar activity into clean per-engineer, per-project hours. Finance uses the same data for R&D credits, software CapEx, and audit trails — no timesheets, no surveys."/>
 
-<meta property="og:title" content="Tymr — Audit-ready R&D credits and software CapEx. No engineer surveys."/>
-<meta property="og:description" content="Jira, GitHub, and calendar data → audit-ready R&D credit and CapEx evidence. Zero engineer surveys."/>
+<meta property="og:title" content="Tymr — Time tracking for engineering teams. Without the timesheets."/>
+<meta property="og:description" content="Jira + GitHub + calendars → clean per-engineer, per-project hours. Finance uses the same data for R&D credits, CapEx, and audit trails."/>
 <meta property="og:type" content="website"/>
 <meta property="og:url" content="https://tymrlogic.com/"/>
 <meta property="og:image" content="https://tymrlogic.com/og.png"/>
@@ -44,13 +44,30 @@ h1{
 }
 h1 em{font-style:normal;color:var(--ink-2)}
 .hero-sub{
-  margin-top:26px;max-width:620px;font-size:18px;
+  margin-top:26px;max-width:640px;font-size:18px;
   color:var(--slate);line-height:1.55;font-weight:400;
 }
+
+/* OUTCOME PILLS — what finance does with the data */
+.outcomes{
+  margin-top:26px;display:flex;flex-direction:column;gap:10px;max-width:680px;
+}
+.outcomes-label{
+  font-family:var(--font-m);font-size:11px;letter-spacing:.14em;
+  color:var(--slate);text-transform:uppercase;
+}
+.outcomes-row{display:flex;flex-wrap:wrap;gap:8px}
+.opill{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:8px 14px;border:1px solid var(--hairline);border-radius:100px;
+  background:var(--bg);font-size:13px;color:var(--ink);
+}
+.opill .odot{width:6px;height:6px;border-radius:50%;background:var(--accent);flex-shrink:0}
+
 .risk-reversal{
-  margin-top:22px;padding:14px 18px;display:inline-flex;align-items:center;gap:10px;
+  margin-top:20px;padding:14px 18px;display:inline-flex;align-items:center;gap:10px;
   background:var(--accent-soft);border:1px solid var(--accent-line);border-radius:10px;
-  font-size:14px;color:var(--ink);max-width:620px;line-height:1.5;
+  font-size:14px;color:var(--ink);max-width:640px;line-height:1.5;
 }
 .risk-reversal strong{font-weight:550}
 .risk-dot{width:6px;height:6px;border-radius:50%;background:var(--accent);flex-shrink:0}
@@ -116,6 +133,27 @@ section.tight{padding:72px 0}
 }
 .floor-caption .live{display:inline-flex;align-items:center;gap:8px;color:#8E9199}
 .floor-caption .live::before{content:'';width:6px;height:6px;border-radius:50%;background:#00C9B0;box-shadow:0 0 0 3px rgba(0,201,176,0.15)}
+
+/* HOW IT WORKS — 3 steps */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:48px}
+@media(max-width:860px){.steps{grid-template-columns:1fr}}
+.step{
+  background:var(--bg);border:1px solid var(--hairline);border-radius:14px;
+  padding:28px;display:flex;flex-direction:column;gap:12px;position:relative;
+}
+.step .step-num{
+  font-family:var(--font-m);font-size:10px;letter-spacing:.14em;
+  color:var(--accent);text-transform:uppercase;
+}
+.step h3{
+  font-family:var(--font-h);font-weight:600;font-size:20px;
+  color:var(--ink);letter-spacing:-0.02em;line-height:1.15;
+}
+.step p{font-size:14px;color:var(--slate);line-height:1.6;margin:0}
+.step .step-detail{
+  margin-top:auto;padding-top:14px;border-top:1px solid var(--hairline);
+  font-family:var(--font-m);font-size:11px;color:var(--slate-dim);letter-spacing:.04em;line-height:1.5;
+}
 
 /* FEATURE GRID (flat) */
 .feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;margin-top:56px;background:var(--hairline);border:1px solid var(--hairline);border-radius:14px;overflow:hidden}
@@ -287,13 +325,22 @@ footer.site-footer{padding:48px 0 56px;border-top:1px solid var(--hairline);marg
 <!-- HERO -->
 <div class="container">
   <div class="hero">
-    <div class="hero-eyebrow">Design partner cohort · Q2 2026</div>
-    <h1>Audit-ready R&amp;D credits and software CapEx. <em>No engineer surveys.</em></h1>
-    <p class="hero-sub">Tymr turns the Jira tickets, GitHub commits, and calendar blocks your team already produces into evidence your tax firm and auditors can defend. No quarterly spreadsheets. No April reconstruction.</p>
+    <div class="hero-eyebrow">Design-partner cohort · Q2 2026</div>
+    <h1>Time tracking for engineering teams. <em>Without the timesheets.</em></h1>
+    <p class="hero-sub">Tymr auto-aggregates Jira tickets, GitHub commits, and calendar blocks into clean per-engineer, per-project hours — in real time, with zero surveys. Finance uses the same data for R&amp;D credits, software CapEx, and audit trails.</p>
+
+    <div class="outcomes">
+      <span class="outcomes-label">What finance uses the data for</span>
+      <div class="outcomes-row">
+        <span class="opill"><span class="odot"></span>R&amp;D tax credit</span>
+        <span class="opill"><span class="odot"></span>Software CapEx (ASC 350-40)</span>
+        <span class="opill"><span class="odot"></span>Audit-ready trail</span>
+      </div>
+    </div>
 
     <div class="risk-reversal">
       <span class="risk-dot"></span>
-      <span><strong>Risk reversal:</strong> If your tax firm doesn't think the data is exam-ready, you don't pay.</span>
+      <span>Your tax firm signs off <strong>before you pay</strong>. If the data isn't exam-ready, you owe nothing.</span>
     </div>
 
     <div class="dual-cta">
@@ -318,12 +365,42 @@ footer.site-footer{padding:48px 0 56px;border-top:1px solid var(--hairline);marg
   </div>
 </div>
 
+<!-- HOW IT WORKS — 3 simple steps -->
+<div class="container" id="how">
+  <section>
+    <span class="sec-label">How it works</span>
+    <h2 class="sec-head">Three steps. <em>No timesheets at any of them.</em></h2>
+    <p class="sec-sub">You don't interrupt your engineers. You don't re-platform your team. Tymr reads the tools your team already uses — and does the rest continuously.</p>
+
+    <div class="steps">
+      <div class="step">
+        <span class="step-num">01 · Collect</span>
+        <h3>Connect Jira, GitHub, and your calendar.</h3>
+        <p>OAuth setup in under an hour. Tymr reads event streams — ticket transitions, commits, meeting blocks — in real time. No desktop agent, no browser plugin, no engineer survey.</p>
+        <span class="step-detail">Event-level ingest · not summaries</span>
+      </div>
+      <div class="step">
+        <span class="step-num">02 · Classify</span>
+        <h3>Every hour gets tagged automatically.</h3>
+        <p>Each Jira transition, commit, and calendar block is attributed to the engineer and project, then classified: R&amp;D-qualified, software CapEx, or OpEx. Low-confidence calls go to a human for a 30-minute weekly review.</p>
+        <span class="step-detail">Auto-tagged · reviewable · cited to source</span>
+      </div>
+      <div class="step">
+        <span class="step-num">03 · Deliver</span>
+        <h3>Four files, ready for your tax firm.</h3>
+        <p>At quarter-end, Tymr produces a credit estimate, a CapEx / OpEx pack, a workpaper-ready CSV, and a 2-page methodology PDF. Your tax firm drops them into the same workpapers they use today.</p>
+        <span class="step-detail">PDF + CSV · preparer-ready</span>
+      </div>
+    </div>
+  </section>
+</div>
+
 <!-- DELIVERABLES — concrete files, not "dashboards" -->
 <div class="container" id="deliverables">
   <section>
-    <span class="sec-label">What you actually receive</span>
-    <h2 class="sec-head">Four files. <em>Drop straight into your tax firm's workpapers.</em></h2>
-    <p class="sec-sub">No dashboard to learn. No platform to roll out. Every pilot ships the same four deliverables — signed off by your tax firm before you pay a dollar.</p>
+    <span class="sec-label">The four files</span>
+    <h2 class="sec-head">What the time data becomes.</h2>
+    <p class="sec-sub">The same event stream feeds all four deliverables. Every pilot ships the same set — designed to drop into the workpapers your tax firm already uses.</p>
 
     <div class="deliv-grid">
       <div class="deliv">
@@ -419,13 +496,13 @@ footer.site-footer{padding:48px 0 56px;border-top:1px solid var(--hairline);marg
   </section>
 </div>
 
-<!-- LIVE FLOOR — moved below the fold, kept for depth -->
+<!-- LIVE FLOOR — visual proof of "step 2: classify" -->
 <div class="sec-band">
   <div class="container" id="floor">
     <section>
-      <span class="sec-label">How the evidence is built</span>
-      <h2 class="sec-head">Continuous classification. <em>Not a year-end spreadsheet.</em></h2>
-      <p class="sec-sub">Every Jira transition, GitHub commit, and calendar block is tagged for R&amp;D credit eligibility (§ 41), capitalization (§ 174), and software CapEx vs OpEx (ASC 350-40) as it happens — with human review where it matters.</p>
+      <span class="sec-label">What it looks like</span>
+      <h2 class="sec-head">Continuous. <em>Not a year-end spreadsheet.</em></h2>
+      <p class="sec-sub">The stream of events from Jira, GitHub, and your calendar — classified hour by hour into R&amp;D credit, software CapEx, or OpEx. An anonymized snapshot of a 12-engineer team's quarter.</p>
 
       <div class="floor-wrap">
         <div class="floor-card">
@@ -673,81 +750,17 @@ footer.site-footer{padding:48px 0 56px;border-top:1px solid var(--hairline);marg
   </div>
 </div>
 
-<!-- CORE CAPABILITIES (outcome-framed) -->
+<!-- ROADMAP NOTE — one-liner, replacing the full agents band -->
 <div class="container">
-  <section>
-    <span class="sec-label">Under the hood</span>
-    <h2 class="sec-head">One layer. <em>The full audit trail.</em></h2>
-
-    <div class="feat-grid">
-      <div class="fcard">
-        <span class="fnum">01 / § 41</span>
-        <h3>R&amp;D credit eligibility</h3>
-        <p>Each engineer-hour tagged against the four-part test with a source event behind every minute — defensible in a § 41 exam.</p>
+  <section class="tight" style="padding:48px 0">
+    <div style="display:flex;justify-content:space-between;align-items:center;gap:18px;flex-wrap:wrap;padding:20px 24px;background:var(--bg-warm);border:1px solid var(--hairline);border-radius:12px">
+      <div style="font-size:14px;color:var(--slate);line-height:1.55;max-width:640px">
+        <strong style="color:var(--ink);font-weight:550">Also on the roadmap:</strong>
+        AI-agent compute substantiation (agent runs tagged side-by-side with engineer hours for future § 174 claims). Live but not in scope for the 2026 design-partner pilot.
       </div>
-      <div class="fcard">
-        <span class="fnum">02 / § 174</span>
-        <h3>Capitalization evidence</h3>
-        <p>Per-project capitalizable software development hours, ready for amortization schedules your preparer already runs.</p>
-      </div>
-      <div class="fcard">
-        <span class="fnum">03 / ASC 350-40</span>
-        <h3>CapEx vs OpEx split</h3>
-        <p>Application-development work separated from post-launch maintenance. Journal-entry ready for NetSuite / Sage Intacct / QuickBooks.</p>
-      </div>
-      <div class="fcard">
-        <span class="fnum">04 / Lineage</span>
-        <h3>Source-event citations</h3>
-        <p>Every hour cites the Jira transition, GitHub commit SHA, or calendar block it came from. Hash-chained and reproducible.</p>
-      </div>
-      <div class="fcard">
-        <span class="fnum">05 / Review</span>
-        <h3>Human-in-the-loop</h3>
-        <p>Auto-classification plus lightweight reviewer overrides. No quarterly engineer survey — ever.</p>
-      </div>
-      <div class="fcard">
-        <span class="fnum">06 / Export</span>
-        <h3>Workpaper-ready CSV</h3>
-        <p>Columns match your tax firm's existing Excel template. Paste, don't rename. Every row cites its source.</p>
-      </div>
+      <a href="/utev1.html" style="font-family:var(--font-m);font-size:12px;letter-spacing:.04em;color:var(--ink);text-decoration:none;padding:8px 14px;border:1px solid var(--hairline);border-radius:8px">See the UTEv1 spec →</a>
     </div>
   </section>
-</div>
-
-<!-- AI AGENTS — demoted to roadmap/future-state band -->
-<div class="sec-band">
-  <div class="container" id="agents">
-    <section>
-      <span class="sec-label">Roadmap · already in production</span>
-      <h2 class="sec-head">Every engineering hour — <em>human or agent</em> — covered.</h2>
-      <p class="sec-sub">AI agent compute is <strong>§ 174-eligible under current IRS guidance</strong>, and most tax firms haven't figured out how to claim it yet. Tymr logs agent runs side-by-side with engineer hours, so when the guidance matures your substantiation is already on file. This is upside, not the core pilot.</p>
-
-      <div class="worker-grid">
-        <div class="wcard human">
-          <div class="wcard-shape"></div>
-          <h3>Human engineers — today</h3>
-          <p>Hours derived from Jira transitions, GitHub commits, and calendar blocks — not timesheets. Every hour tied to a ticket, a PR, or a meeting invite.</p>
-          <ul>
-            <li>§ 41 / § 174 / ASC 350-40 auto-classified</li>
-            <li>Source event cited per hour</li>
-            <li>Per-engineer substantiation record</li>
-            <li>Private personal view by default</li>
-          </ul>
-        </div>
-        <div class="wcard agent">
-          <div class="wcard-shape"></div>
-          <h3>AI agents — already logged</h3>
-          <p>Agent runs logged via the open Tymr Agent SDK — model, token cost, Jira attribution. Works with Claude, LangChain, CrewAI.</p>
-          <ul>
-            <li>Token-level cost, tied to project</li>
-            <li>UTEv1 open event schema</li>
-            <li>Side-by-side with human substantiation</li>
-            <li>Not in scope for the design-partner pilot</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-  </div>
 </div>
 
 <!-- FINAL CTA — dual-path mirror -->
