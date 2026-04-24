@@ -4,16 +4,15 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Pricing — Tymr</title>
-<meta name="description" content="Tymr pricing — design-partner pilots, growth, and enterprise. R&D credit and SOX capitalization from your existing dev tools."/>
+<meta name="description" content="Design-partner pilots for US/Canadian software companies and R&D tax firms. One number, one year, one use case — priced on the audit-ready R&D + CapEx pack we deliver."/>
 <meta property="og:title" content="Pricing — Tymr"/>
-<meta property="og:description" content="Design-partner pilots, growth, and enterprise tiers. Priced on recovered R&D credit, not seat count."/>
+<meta property="og:description" content="Design-partner pilots. Flat, simple, risk-reversed. No seat math on early sales calls."/>
 <meta property="og:type" content="website"/>
 <meta property="og:url" content="https://tymrlogic.com/pricing"/>
 <meta property="og:image" content="https://tymrlogic.com/og.png"/>
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:title" content="Pricing — Tymr"/>
-<meta name="twitter:description" content="Design-partner pilots, growth, and enterprise tiers."/>
-<meta name="twitter:image" content="https://tymrlogic.com/og.png"/>
+<meta name="twitter:description" content="Design-partner pilots. Flat, simple, risk-reversed."/>
 <link rel="icon" type="image/png" href="/favicon.png"/>
 <link rel="apple-touch-icon" href="/apple-touch-icon.png"/>
 <link rel="manifest" href="/site.webmanifest"/>
@@ -23,6 +22,31 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
 <link rel="stylesheet" href="/_shared.css"/>
+<style>
+.risk-reversal{
+  margin-top:20px;padding:14px 18px;display:inline-flex;align-items:center;gap:10px;
+  background:var(--accent-soft);border:1px solid var(--accent-line);border-radius:10px;
+  font-size:14px;color:var(--ink);max-width:640px;line-height:1.5;
+}
+.risk-reversal strong{font-weight:550}
+.risk-dot{width:6px;height:6px;border-radius:50%;background:var(--accent);flex-shrink:0}
+
+.price-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:32px}
+@media(max-width:760px){.price-grid{grid-template-columns:1fr}}
+
+.future-card{
+  margin-top:36px;padding:24px 26px;border:1px dashed var(--hairline-strong);border-radius:14px;
+  background:var(--bg);
+}
+.future-card .fc-tag{font-family:var(--font-m);font-size:10px;letter-spacing:.14em;color:var(--slate);text-transform:uppercase;margin-bottom:10px}
+.future-card h3{font-family:var(--font-h);font-weight:600;font-size:17px;color:var(--ink);margin-bottom:8px;letter-spacing:-0.01em}
+.future-card p{font-size:14px;color:var(--slate);line-height:1.55;margin:0}
+
+.faq-block{margin-top:48px}
+.faq-block h2{margin-bottom:8px}
+.faq-q{font-family:var(--font-h);font-weight:600;color:var(--ink);font-size:15px;margin-top:20px;margin-bottom:4px;letter-spacing:-0.01em}
+.faq-a{color:var(--slate);font-size:14px;line-height:1.6}
+</style>
 </head>
 <body>
 <nav>
@@ -33,11 +57,11 @@
         <span class="logo-name">Ty<span class="gr">mr</span></span>
       </a>
       <ul class="nav-links">
+        <li><a href="/cfo.html">For CFOs</a></li>
+        <li><a href="/tax-firms.html">For tax firms</a></li>
+        <li><a href="/sample-pack.html">Sample pack</a></li>
         <li><a href="/rd-credit-calculator.html">Calculator</a></li>
-        <li><a href="/utev1.html">UTEv1</a></li>
         <li><a href="/pricing.html" class="active">Pricing</a></li>
-        <li><a href="/security.html">Security</a></li>
-        <li><a href="/changelog.html">Changelog</a></li>
       </ul>
       <a href="https://calendly.com/tymrlogic/demo" class="nav-cta">Request Pilot</a>
     </div>
@@ -46,103 +70,106 @@
 
 <div class="container">
   <div class="page-head">
-    <div class="eyebrow">PRICING</div>
-    <h1>Fair pricing. <em>Serious</em> numbers.</h1>
-    <p class="lede">We charge based on the value you recover — R&D credit and capitalized software cost — not on seat count. Design partners pay nothing during the pilot.</p>
+    <div class="eyebrow">PRICING · DESIGN PARTNER PHASE</div>
+    <h1>One number. One year. <em>One use case.</em></h1>
+    <p class="lede">We are in the design-partner phase for 2026. Pricing is flat, risk-reversed, and scoped to the audit-ready R&amp;D + CapEx pack we deliver. No seat math, no usage tiers, no lock-in.</p>
+    <div class="risk-reversal">
+      <span class="risk-dot"></span>
+      <span><strong>Risk reversal:</strong> If your tax firm doesn't think the pack is exam-ready, you don't pay.</span>
+    </div>
   </div>
 
   <div class="content">
+
     <div class="price-grid">
-      <div class="price-card">
-        <div class="price-name">Design Partner</div>
-        <div class="price-note">Free pilot for 2026 Q2 cohort. Limited to 10 orgs.</div>
-        <div class="price-amount">$0<small>/ first 90 days</small></div>
+      <div class="price-card featured">
+        <div class="price-name">CFO design partner <span class="tag tag-amber">2026 cohort</span></div>
+        <div class="price-note">Software companies, 50–500 engineers. Up to 10 partners total.</div>
+        <div class="price-amount">$10–20K<small>flat · year one</small></div>
         <div class="price-divider"></div>
         <ul class="price-list">
-          <li>Up to 50 engineers tracked</li>
-          <li>Jira, GitHub, Google/Outlook calendars</li>
-          <li>R&D Credit Worksheet + CapEx export</li>
-          <li>Weekly success check-in with founder</li>
-          <li>Lock in design-partner pricing after pilot</li>
+          <li>60-day pilot on one engineering group</li>
+          <li>Four deliverables — R&amp;D credit uplift PDF, CapEx vs OpEx audit pack, workpaper-ready CSV, 2-page methodology PDF</li>
+          <li>Jira + GitHub + Google/Microsoft Calendar event-level ingest</li>
+          <li>Continuous classification (§ 41 / § 174 / ASC 350-40)</li>
+          <li>Weekly check-in with founder</li>
+          <li><strong>Risk reversal:</strong> $0 if your tax firm doesn't sign off on the pack as exam-ready</li>
+          <li>First cohort: <strong>free in exchange for a joint case study &amp; reference rights</strong></li>
         </ul>
         <div class="price-cta">
-          <a href="mailto:hello@tymrlogic.com?subject=Design%20Partner%20pilot%20application" class="btn-primary" style="width:100%">Apply for pilot</a>
+          <a href="/cfo.html" class="btn-primary" style="width:100%">Start the CFO pilot</a>
         </div>
       </div>
 
       <div class="price-card featured">
-        <div class="price-name">Growth <span class="tag tag-amber">MOST POPULAR</span></div>
-        <div class="price-note">Mid-market software companies, 50–300 engineers.</div>
-        <div class="price-amount">$12<small>/ engineer / month</small></div>
+        <div class="price-name">R&amp;D tax firm pilot <span class="tag tag-amber">Channel</span></div>
+        <div class="price-note">R&amp;D boutiques and software practices at national firms.</div>
+        <div class="price-amount">$0<small>platform fee · pilot</small></div>
         <div class="price-divider"></div>
         <ul class="price-list">
-          <li>Unlimited integrations (Jira, GitHub, Slack, ServiceNow, PagerDuty, Workday, calendars)</li>
-          <li>R&D Credit + SOX CapEx exports (branded, preparer-ready PDFs)</li>
-          <li>Real-time floor + cost ticker</li>
-          <li>Role-based visibility (private / team / org-wide)</li>
-          <li>CSV + PDF export · 3-year retention</li>
-          <li>Email + Slack support</li>
+          <li>Pilot on 3–5 of your software clients, one study cycle</li>
+          <li>Your firm keeps 100% of the R&amp;D study fees</li>
+          <li>Per-engineer time + § 41/§ 174 tags + workpaper-ready CSV</li>
+          <li>Drops into your existing workpaper template — no rename</li>
+          <li>Asks from your firm: joint case study, 5–10 referrals, optional standardization next cycle</li>
+          <li>Post-pilot: <strong>$15–25K per client per year</strong>, embedded in your firm's study proposal</li>
         </ul>
         <div class="price-cta">
-          <a href="mailto:hello@tymrlogic.com?subject=Growth%20tier%20inquiry" class="btn-primary" style="width:100%">Talk to us</a>
-        </div>
-      </div>
-
-      <div class="price-card">
-        <div class="price-name">Enterprise</div>
-        <div class="price-note">300+ engineers, SOX-reporting companies, regulated industries.</div>
-        <div class="price-amount">Custom</div>
-        <div class="price-divider"></div>
-        <ul class="price-list">
-          <li>Everything in Growth, plus:</li>
-          <li>SAML SSO (Okta, Azure AD, Google)</li>
-          <li>SCIM user provisioning</li>
-          <li>Custom data residency (US, EU)</li>
-          <li>Quarterly business review with founder</li>
-          <li>SLA + dedicated success engineer</li>
-          <li>Custom tax-preparer integration</li>
-        </ul>
-        <div class="price-cta">
-          <a href="mailto:hello@tymrlogic.com?subject=Enterprise%20inquiry" class="btn-ghost" style="width:100%">Contact sales</a>
+          <a href="/tax-firms.html" class="btn-primary" style="width:100%">See the firm offer</a>
         </div>
       </div>
     </div>
 
-    <section>
-      <h2>How does the R&amp;D credit payback math work?</h2>
-      <p>A 100-engineer software company with a fully-loaded dev cost of $180K/engineer spends roughly <strong>$18M/year</strong> on engineering. If 55% of that work qualifies for the US R&amp;D credit (typical for product-shipping software companies), that's ~$9.9M in Qualified Research Expenses. At a conservative <strong>8% federal ASC rate</strong>, that's ~<strong>$790K</strong> in federal credit alone — before state add-ons (California adds another ~$740K, Massachusetts ~$640K).</p>
-      <p>Tymr's Growth tier for that org costs ~$14K/year. Even at the low end — federal only, no state — that's a ~55× return on the platform cost. And that's before counting auditor hours saved on SOX capitalization or under-claimed credits from prior years (open years can often be amended).</p>
-      <p><a href="/rd-credit-calculator.html">Run your own numbers in the calculator →</a></p>
-    </section>
+    <div class="future-card">
+      <div class="fc-tag">Future state · not for the design-partner phase</div>
+      <h3>Seat-based pricing lands after the 2026 cohort.</h3>
+      <p>Once the pilots wrap and we've standardized the pack across 5–10 customers, we'll publish seat-based tiers for self-serve adoption. Design-partner pricing is grandfathered for the 2026 cohort. If you're looking at us now, we'd rather do one flat-fee year than negotiate seat math.</p>
+    </div>
 
     <section>
-      <h2>What's included in every tier</h2>
+      <h2>What every design-partner pilot includes</h2>
       <div class="grid-3">
         <div class="card">
-          <h3>No seat tax for observers</h3>
-          <p>CFOs, finance, and auditors read reports for free. We only meter on active engineers whose time we track.</p>
+          <h3>One number, one year</h3>
+          <p>No seat counts, no usage tiers, no per-module add-ons during the pilot. If we can't deliver audit-ready files for a flat fee, we aren't ready for seat math.</p>
         </div>
         <div class="card">
           <h3>No setup fees</h3>
-          <p>OAuth into your tools, generate your first worksheet in under an hour. No professional services gate.</p>
+          <p>OAuth into your tools. No professional services gate. No implementation consultant. First pack ships inside 8 weeks from kickoff.</p>
         </div>
         <div class="card">
-          <h3>Your data, your export</h3>
-          <p>PDF and CSV exports are yours to keep. If you leave, you still have every past report.</p>
+          <h3>Your data, your files</h3>
+          <p>Every pack (PDF + CSV) is yours to keep. If the pilot doesn't renew, you still walk away with an exam-ready workpaper for the period you ran.</p>
         </div>
       </div>
     </section>
 
     <section>
+      <h2>The math behind the flat fee</h2>
+      <p>A 100-engineer US software company with a fully-loaded dev cost of $180K/engineer spends roughly <strong>$18M/year</strong> on engineering. If 55% of that qualifies for the US R&amp;D credit — typical for product-shipping software — that's ~$9.9M in QREs. At a conservative <strong>8% federal ASC rate</strong>, that's <strong>~$790K federal credit</strong>, plus state (California ~$740K, Massachusetts ~$640K).</p>
+      <p>$10–20K flat for a pilot that puts a source event behind every qualified hour is a rounding error against that credit — and most teams recover more than the flat fee in removed haircut alone.</p>
+      <p><a href="/rd-credit-calculator.html">Run your own numbers in the calculator →</a></p>
+    </section>
+
+    <section class="faq-block">
       <h2>Still have questions?</h2>
-      <p><strong>How do you handle auditor review?</strong> — Our exports include a methodology page and raw per-person, per-project ledger so your tax preparer or audit firm can trace every dollar back to a specific Jira issue or calendar event.</p>
-      <p><strong>Do you replace our accounting or tax software?</strong> — No. Tymr produces the source worksheets your preparer feeds into Form 6765 (R&D credit) or your journal entries (CapEx). We stay in our lane.</p>
-      <p><strong>Can I switch tiers later?</strong> — Yes, any time. Design Partner → Growth is automatic after the pilot ends.</p>
+
+      <p class="faq-q">How does the risk reversal actually work?</p>
+      <p class="faq-a">At the end of the 60-day pilot we hand the pack directly to your tax firm. They review the methodology PDF, the workpaper CSV, and a sample of source-event lineage. If they say "no, this wouldn't hold up in an exam," you walk away at $0 — no invoice, no future obligation. We lose the bet, not you.</p>
+
+      <p class="faq-q">Do you replace our tax firm or our accounting software?</p>
+      <p class="faq-a">No. We don't touch Form 6765, we don't share your tax firm's fees, and we don't replace NetSuite / Sage Intacct / QuickBooks. We produce the per-engineer time evidence your preparer already has to collect — so they're not running quarterly engineer surveys.</p>
+
+      <p class="faq-q">Why not seat-based pricing now?</p>
+      <p class="faq-a">Seat math puts the customer on defense during a design-partner pilot. "Is it 50 engineers or 75? Do observers count?" We'd rather spend that energy on making the pack defensible. Seat-based tiers come once the product is standardized.</p>
+
+      <p class="faq-q">What happens after the pilot?</p>
+      <p class="faq-a">Three paths. (1) Roll wider — flat annual engagement across your whole engineering org. (2) Embed into your tax firm's study proposal as a standardized line item. (3) Walk away with your files — no lock-in, no exit fees.</p>
     </section>
 
     <div class="cta-inline">
-      <a href="mailto:hello@tymrlogic.com?subject=Book%20a%20demo" class="btn-primary">Book a 30-min demo</a>
-      <a href="/security.html" class="btn-ghost">Read security posture →</a>
+      <a href="/cfo.html" class="btn-primary">Start the CFO pilot</a>
+      <a href="/tax-firms.html" class="btn-ghost">Firm pilot →</a>
     </div>
   </div>
 </div>
@@ -156,6 +183,9 @@
           <span class="logo-name" style="font-size:18px">Ty<span class="gr">mr</span></span>
         </a>
         <div class="footer-links">
+          <a href="/cfo.html">For CFOs</a>
+          <a href="/tax-firms.html">For tax firms</a>
+          <a href="/sample-pack.html">Sample pack</a>
           <a href="/rd-credit-calculator.html">Calculator</a>
           <a href="/utev1.html">UTEv1</a>
           <a href="/pricing.html">Pricing</a>
@@ -163,9 +193,6 @@
           <a href="/privacy.html">Privacy</a>
           <a href="/terms.html">Terms</a>
           <a href="/changelog.html">Changelog</a>
-          <a href="/vs/tempo.html">vs Tempo</a>
-          <a href="/vs/timely.html">vs Timely</a>
-          <a href="/vs/memory.html">vs Memory</a>
         </div>
         <span class="footer-copy">tymrlogic.com · © 2026 Tymr</span>
       </div>

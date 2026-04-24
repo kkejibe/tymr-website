@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Sample pack — anonymized R&D + CapEx audit pack | Tymr</title>
+<meta name="description" content="Anonymized 10-slide R&D + CapEx audit pack. Realistic numbers from a 120-engineer software company. Email + role to unlock."/>
+<meta property="og:title" content="Sample pack — Tymr R&D + CapEx pack"/>
+<meta property="og:description" content="10 slides. Anonymized numbers. What your tax firm receives from a Tymr pilot."/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://tymrlogic.com/sample-pack"/>
+<meta property="og:image" content="https://tymrlogic.com/og.png"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="Sample pack — Tymr"/>
+<meta name="twitter:description" content="10 slides. Anonymized numbers. Audit-ready."/>
+<link rel="icon" type="image/png" href="/favicon.png"/>
+<link rel="apple-touch-icon" href="/apple-touch-icon.png"/>
+<link rel="manifest" href="/site.webmanifest"/>
+<meta name="theme-color" content="#0B0B0F"/>
+<script defer data-domain="tymrlogic.com" src="https://plausible.io/js/script.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="/_shared.css"/>
+<style>
+.page-head{padding:112px 0 28px;max-width:880px}
+.page-head h1{font-size:clamp(40px,5.2vw,60px);letter-spacing:-0.035em;line-height:1.02;max-width:880px}
+
+.gate-wrap{display:grid;grid-template-columns:1.2fr 1fr;gap:24px;margin-top:32px}
+@media(max-width:860px){.gate-wrap{grid-template-columns:1fr}}
+
+.gate-form{background:var(--bg-warm);border:1px solid var(--hairline);border-radius:16px;padding:28px}
+.gate-form h2{margin-bottom:6px;font-size:20px}
+.gate-form .gf-sub{font-size:14px;color:var(--slate);margin-bottom:20px;line-height:1.55}
+.field{display:flex;flex-direction:column;gap:6px;margin-bottom:12px}
+.field label{font-family:var(--font-m);font-size:10px;letter-spacing:.12em;color:var(--slate);text-transform:uppercase}
+.field input,.field select{background:var(--bg);border:1px solid var(--hairline);border-radius:8px;padding:11px 12px;font-family:var(--font-b);font-size:14px;color:var(--ink);width:100%;outline:none;transition:border-color .2s}
+.field input:focus,.field select:focus{border-color:var(--ink)}
+.gf-note{font-size:12px;color:var(--slate);line-height:1.55;margin-top:10px}
+
+.gate-meta{background:var(--bg);border:1px solid var(--hairline);border-radius:16px;padding:28px}
+.gate-meta h3{font-family:var(--font-h);font-weight:600;font-size:15px;color:var(--ink);margin-bottom:14px;letter-spacing:-0.01em}
+.gate-meta ul{list-style:none;padding:0;display:flex;flex-direction:column;gap:10px}
+.gate-meta ul li{display:flex;gap:10px;align-items:flex-start;font-size:13px;color:var(--slate);line-height:1.5}
+.gate-meta ul li::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--accent);flex-shrink:0;margin-top:7px}
+
+/* SLIDE DECK (revealed after gate via JS) */
+.deck{display:none;margin-top:36px}
+.deck.visible{display:block}
+.deck-meta{
+  display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap;
+  padding:14px 18px;background:var(--bg-warm);border:1px solid var(--hairline);border-radius:10px;
+  margin-bottom:20px;
+}
+.deck-meta .dm-tag{font-family:var(--font-m);font-size:10px;letter-spacing:.14em;color:var(--accent);text-transform:uppercase}
+.deck-meta .dm-actions{display:flex;gap:8px;flex-wrap:wrap}
+.deck-meta .dm-actions a{
+  font-family:var(--font-m);font-size:11px;letter-spacing:.06em;color:var(--ink);
+  padding:6px 12px;background:var(--bg);border:1px solid var(--hairline);border-radius:6px;
+  text-decoration:none;transition:border-color .2s;
+}
+.deck-meta .dm-actions a:hover{border-color:var(--ink)}
+
+.slide{
+  background:var(--bg);border:1px solid var(--hairline);border-radius:14px;
+  padding:44px 48px;margin-bottom:14px;min-height:360px;position:relative;
+  display:flex;flex-direction:column;gap:18px;
+}
+.slide.dark{background:var(--ink);color:#E8E7E2;border-color:#1A1A1F}
+.slide-head{display:flex;justify-content:space-between;align-items:baseline;gap:14px;padding-bottom:14px;border-bottom:1px solid var(--hairline)}
+.slide.dark .slide-head{border-color:rgba(255,255,255,0.08)}
+.slide-no{font-family:var(--font-m);font-size:10px;letter-spacing:.14em;color:var(--slate);text-transform:uppercase}
+.slide.dark .slide-no{color:#6B6F78}
+.slide-hint{font-family:var(--font-m);font-size:10px;letter-spacing:.06em;color:var(--slate-dim)}
+.slide.dark .slide-hint{color:#6B6F78}
+.slide h2{font-family:var(--font-h);font-weight:600;font-size:clamp(26px,3.2vw,36px);letter-spacing:-0.03em;line-height:1.08;color:var(--ink)}
+.slide.dark h2{color:#fff}
+.slide h2 em{font-style:normal;color:var(--ink-2)}
+.slide.dark h2 em{color:#C8C9CC}
+.slide p{font-size:15px;color:var(--slate);line-height:1.6;max-width:720px}
+.slide.dark p{color:#9AA0A6}
+.slide strong{color:var(--ink);font-weight:550}
+.slide.dark strong{color:#F5C56A;font-weight:500}
+.slide ul{list-style:none;padding:0;display:flex;flex-direction:column;gap:10px}
+.slide ul li{display:flex;gap:12px;align-items:flex-start;font-size:14px;color:var(--slate);line-height:1.55}
+.slide.dark ul li{color:#9AA0A6}
+.slide ul li::before{content:'—';color:var(--slate-dim);font-family:var(--font-m);font-size:12px;flex-shrink:0;padding-top:2px}
+
+.slide-kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:8px}
+@media(max-width:760px){.slide-kpis{grid-template-columns:1fr 1fr}}
+.kpi{display:flex;flex-direction:column;gap:6px;padding:18px 20px;background:var(--bg-warm);border:1px solid var(--hairline);border-radius:10px}
+.slide.dark .kpi{background:rgba(255,255,255,0.03);border-color:rgba(255,255,255,0.08)}
+.kpi .kpi-k{font-family:var(--font-m);font-size:10px;letter-spacing:.12em;color:var(--slate);text-transform:uppercase}
+.slide.dark .kpi .kpi-k{color:#6B6F78}
+.kpi .kpi-v{font-family:var(--font-h);font-weight:600;font-size:24px;color:var(--ink);letter-spacing:-0.02em}
+.slide.dark .kpi .kpi-v{color:#F5C56A}
+.kpi.cap .kpi-v{color:var(--cyan-dark)}
+.slide.dark .kpi.cap .kpi-v{color:#00D9C0}
+
+.data-table{width:100%;border-collapse:collapse;margin-top:8px;font-size:13px}
+.data-table thead th{text-align:left;padding:10px 12px;background:var(--bg-warm);border-bottom:1px solid var(--hairline);font-family:var(--font-m);font-size:10px;letter-spacing:.1em;color:var(--slate);text-transform:uppercase;font-weight:500}
+.data-table tbody td{padding:10px 12px;border-bottom:1px solid var(--hairline);color:var(--slate);font-family:var(--font-m);font-size:12px}
+.data-table tbody tr:last-child td{border-bottom:none}
+.data-table .amt{text-align:right;color:var(--ink);font-weight:500}
+.data-table .tag-174{color:var(--accent);font-weight:500}
+.data-table .tag-350{color:var(--cyan-dark);font-weight:500}
+.data-table .tag-opx{color:var(--red);font-weight:500}
+
+.stacked-bar{display:flex;height:28px;border-radius:6px;overflow:hidden;margin-top:10px;border:1px solid var(--hairline)}
+.sb-174{background:var(--accent)}
+.sb-350{background:var(--cyan-mid)}
+.sb-opx{background:var(--slate-dim)}
+.sb-legend{display:flex;gap:18px;margin-top:12px;flex-wrap:wrap;font-size:12px;color:var(--slate);font-family:var(--font-m);letter-spacing:.04em}
+.sb-legend span{display:inline-flex;align-items:center;gap:6px}
+.sb-legend .dot{width:10px;height:10px;border-radius:3px}
+
+.methodology-callout{padding:16px 18px;background:var(--bg-warm);border:1px solid var(--hairline);border-radius:10px;font-size:13px;color:var(--slate);line-height:1.55}
+.methodology-callout strong{color:var(--ink);font-weight:550}
+
+.cta-inline{margin-top:32px;display:flex;gap:10px;flex-wrap:wrap}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="container">
+    <div class="nav-i">
+      <a href="/" class="logo">
+        <div class="logo-mark">T</div>
+        <span class="logo-name">Ty<span class="gr">mr</span></span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="/cfo.html">For CFOs</a></li>
+        <li><a href="/tax-firms.html">For tax firms</a></li>
+        <li><a href="/sample-pack.html" class="active">Sample pack</a></li>
+        <li><a href="/rd-credit-calculator.html">Calculator</a></li>
+        <li><a href="/pricing.html">Pricing</a></li>
+      </ul>
+      <a class="nav-cta" href="https://calendly.com/tymrlogic/demo">Request Pilot</a>
+    </div>
+  </div>
+</nav>
+
+<div class="container">
+  <div class="page-head">
+    <div class="eyebrow">SAMPLE PACK · ANONYMIZED</div>
+    <h1>Ten slides. Real numbers. <em>What your tax firm receives.</em></h1>
+    <p class="lede">A fully anonymized R&amp;D + CapEx pack from a 120-engineer, Series B software company. Same structure your firm will receive at the end of the 60-day pilot — engineer names scrubbed, project codes fabricated, dollars rounded. Everything else is real methodology.</p>
+  </div>
+
+  <div class="content" id="gate-wrap">
+
+    <div class="gate-wrap">
+      <section class="gate-form" id="gate-form-sec">
+        <h2>Unlock the pack</h2>
+        <p class="gf-sub">Two fields. No newsletter, no drip. We send you the deck link by email within a minute.</p>
+        <form id="gate-form" name="sample-pack" method="POST" data-netlify="true" action="/sample-pack.html?unlocked=1">
+          <input type="hidden" name="form-name" value="sample-pack"/>
+          <div class="field">
+            <label for="sp-email">Work email</label>
+            <input id="sp-email" name="email" type="email" required placeholder="you@company.com"/>
+          </div>
+          <div class="field">
+            <label for="sp-role">Your role</label>
+            <select id="sp-role" name="role" required>
+              <option value="">Select…</option>
+              <option>CFO / Controller</option>
+              <option>VP Finance / Head of Tax</option>
+              <option>R&amp;D tax partner / manager</option>
+              <option>R&amp;D tax analyst</option>
+              <option>VP Engineering</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <button type="submit" class="btn-primary" style="width:100%;border:none;cursor:pointer;margin-top:4px">View the sample pack</button>
+          <p class="gf-note">Unlocks inline on the next page load. We'll also email you a PDF copy — no follow-up sequence, one message only.</p>
+        </form>
+      </section>
+
+      <aside class="gate-meta">
+        <h3>What's inside</h3>
+        <ul>
+          <li>Executive summary — uplift vs. last year's claim</li>
+          <li>Per-engineer qualified R&amp;D hours (Top 20)</li>
+          <li>Project-level § 41 / § 174 / ASC 350-40 mix</li>
+          <li>CapEx vs OpEx monthly split, journal-ready</li>
+          <li>Workpaper CSV preview — exact column schema</li>
+          <li>Source-event lineage samples</li>
+          <li>Methodology walkthrough (2-page)</li>
+          <li>Exam-readiness checklist</li>
+          <li>Uplift vs. benchmark commentary</li>
+          <li>How the next 60 days run</li>
+        </ul>
+      </aside>
+    </div>
+
+  </div>
+</div>
+
+<!-- REVEALED DECK -->
+<div class="container">
+  <div id="deck" class="deck">
+    <div class="deck-meta">
+      <span class="dm-tag">Anonymized · 120-engineer Series B · Q1 2026</span>
+      <div class="dm-actions">
+        <a href="#" onclick="window.print();return false">Print / save as PDF</a>
+        <a href="/cfo.html">Start a CFO pilot</a>
+        <a href="/tax-firms.html">Firm pilot</a>
+      </div>
+    </div>
+
+    <!-- SLIDE 1 -->
+    <div class="slide dark">
+      <div class="slide-head"><span class="slide-no">Slide 01 · Cover</span><span class="slide-hint">Anonymized sample</span></div>
+      <h2>R&amp;D + Software CapEx Audit Pack <em>— Q1 2026</em></h2>
+      <p>Prepared for: <strong>[Client Software Co.]</strong> · 120 engineers · Series B</p>
+      <p>Prepared with: <strong>[R&amp;D Tax Firm]</strong> — your firm's methodology, Tymr's time evidence.</p>
+      <div class="slide-kpis" style="margin-top:auto">
+        <div class="kpi"><span class="kpi-k">Period</span><span class="kpi-v">Q1 2026</span></div>
+        <div class="kpi"><span class="kpi-k">Engineers</span><span class="kpi-v">120</span></div>
+        <div class="kpi"><span class="kpi-k">Data sources</span><span class="kpi-v">Jira · GH · GCal</span></div>
+        <div class="kpi"><span class="kpi-k">Surveys</span><span class="kpi-v">Zero</span></div>
+      </div>
+    </div>
+
+    <!-- SLIDE 2 -->
+    <div class="slide">
+      <div class="slide-head"><span class="slide-no">Slide 02 · Executive summary</span><span class="slide-hint">CFO-ready</span></div>
+      <h2>$1.84M federal R&amp;D credit uplift. <em>$4.9M capitalized under ASC 350-40.</em></h2>
+      <ul>
+        <li><strong>Qualified wages:</strong> $14.2M (of $18.4M total engineering compensation, 77% qualifying ratio)</li>
+        <li><strong>Federal R&amp;D credit (ASC method, 8% effective):</strong> <strong>$1.14M</strong> — up from $820K claimed in 2025 on comparable headcount.</li>
+        <li><strong>California state credit (7.5% effective):</strong> <strong>$702K</strong></li>
+        <li><strong>Uplift vs. 2025 claim:</strong> <strong>+$1.02M combined</strong>, driven by contemporaneous substantiation of work previously haircut at the prep stage.</li>
+        <li><strong>ASC 350-40 capitalized software dev:</strong> $4.9M across 11 major projects; OpEx maintenance $2.1M cleanly separated.</li>
+      </ul>
+      <div class="methodology-callout"><strong>Confidence:</strong> 94% of engineer-hours in Q1 had at least one source event (Jira, GitHub, or calendar). Remaining 6% reviewed manually and excluded from the claim.</div>
+    </div>
+
+    <!-- SLIDE 3 -->
+    <div class="slide">
+      <div class="slide-head"><span class="slide-no">Slide 03 · Per-engineer qualified hours</span><span class="slide-hint">Top 20 · anonymized</span></div>
+      <h2>Contemporaneous time. <em>Cited to source events.</em></h2>
+      <table class="data-table">
+        <thead><tr><th>Engineer</th><th>Role</th><th>§ 174 hrs</th><th>350-40 hrs</th><th>OpEx hrs</th><th>Evidence</th><th class="amt">QRE</th></tr></thead>
+        <tbody>
+          <tr><td>E-0142</td><td>Platform Lead</td><td>342.1</td><td>54.0</td><td>18.6</td><td>Jira+GH+GCal</td><td class="amt">$142,108</td></tr>
+          <tr><td>E-0217</td><td>Sr. Backend</td><td>318.8</td><td>62.4</td><td>22.1</td><td>Jira+GH</td><td class="amt">$128,442</td></tr>
+          <tr><td>E-0089</td><td>Staff Eng</td><td>304.6</td><td>88.2</td><td>12.7</td><td>Jira+GH+GCal</td><td class="amt">$148,876</td></tr>
+          <tr><td>E-0301</td><td>Sr. Frontend</td><td>298.4</td><td>34.9</td><td>28.8</td><td>Jira+GH</td><td class="amt">$112,204</td></tr>
+          <tr><td>E-0158</td><td>ML Eng</td><td>340.7</td><td>12.1</td><td>9.4</td><td>Jira+GH+GCal</td><td class="amt">$154,322</td></tr>
+          <tr><td>E-0044</td><td>Infra / DevOps</td><td>68.4</td><td>38.2</td><td>248.1</td><td>Jira+PagerDuty</td><td class="amt">$31,120</td></tr>
+          <tr><td>…</td><td>+ 14 more</td><td>—</td><td>—</td><td>—</td><td>—</td><td class="amt">—</td></tr>
+        </tbody>
+      </table>
+      <p style="font-size:13px;margin-top:6px">Every row in the full pack cites specific Jira tickets and GitHub PR SHAs — redacted in this sample.</p>
+    </div>
+
+    <!-- SLIDE 4 -->
+    <div class="slide">
+      <div class="slide-head"><span class="slide-no">Slide 04 · Classification mix</span><span class="slide-hint">Q1 2026 hours</span></div>
+      <h2>77% of engineering time qualifies for § 41. <em>23% capitalizes or runs as OpEx.</em></h2>
+      <div class="stacked-bar">
+        <div class="sb-174" style="width:77%"></div>
+        <div class="sb-350" style="width:14%"></div>
+        <div class="sb-opx" style="width:9%"></div>
+      </div>
+      <div class="sb-legend">
+        <span><span class="dot" style="background:var(--accent)"></span>§ 174 R&amp;D qualified · 77%</span>
+        <span><span class="dot" style="background:var(--cyan-mid)"></span>ASC 350-40 CapEx · 14%</span>
+        <span><span class="dot" style="background:var(--slate-dim)"></span>OpEx maintenance · 9%</span>
+      </div>
+      <p style="margin-top:14px"><strong>Why this matters:</strong> preparers typically haircut aggressive R&amp;D claims 20–40% when substantiation is thin. Tymr's classification is contemporaneous and cited, so the haircut disappears.</p>
+    </div>
+
+    <!-- SLIDE 5 -->
+    <div class="slide">
+      <div class="slide-head"><span class="slide-no">Slide 05 · Project-level breakdown</span><span class="slide-hint">11 active projects</span></div>
+      <h2>Project mix — <em>what qualified, what capitalized, what didn't.</em></h2>
+      <table class="data-table">
+        <thead><tr><th>Project</th><th>Hours</th><th>§ 174</th><th>350-40</th><th>OpEx</th><th class="amt">QRE</th></tr></thead>
+        <tbody>
+          <tr><td>PROJ-142 Auth-v2 rebuild</td><td>2,108</td><td class="tag-174">98%</td><td>2%</td><td>0%</td><td class="amt">$704K</td></tr>
+          <tr><td>PROJ-091 Billing migration</td><td>1,822</td><td class="tag-174">41%</td><td class="tag-350">54%</td><td>5%</td><td class="amt">$248K</td></tr>
+          <tr><td>PROJ-203 ML ranking engine</td><td>1,604</td><td class="tag-174">94%</td><td class="tag-350">4%</td><td>2%</td><td class="amt">$520K</td></tr>
+          <tr><td>PROJ-188 Data warehouse rework</td><td>1,218</td><td class="tag-174">62%</td><td class="tag-350">31%</td><td>7%</td><td class="amt">$258K</td></tr>
+          <tr><td>INFRA-014 Kubernetes upgrade</td><td>988</td><td class="tag-174">18%</td><td class="tag-350">12%</td><td class="tag-opx">70%</td><td class="amt">$61K</td></tr>
+          <tr><td>PROJ-221 Observability platform</td><td>742</td><td class="tag-174">88%</td><td class="tag-350">8%</td><td>4%</td><td class="amt">$218K</td></tr>
+          <tr><td>… + 5 more projects</td><td>4,101</td><td>—</td><td>—</td><td>—</td><td class="amt">$1.24M</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- SLIDE 6 -->
+    <div class="slide">
+      <div class="slide-head"><span class="slide-no">Slide 06 · CapEx vs OpEx</span><span class="slide-hint">Monthly, journal-ready</span></div>
+      <h2>Capitalizable software dev — <em>ready for amortization schedules.</em></h2>
+      <table class="data-table">
+        <thead><tr><th>Month</th><th>CapEx hours</th><th>OpEx hours</th><th>Capitalized $</th><th class="amt">Journal entry</th></tr></thead>
+        <tbody>
+          <tr><td>2026-01</td><td>1,428</td><td>312</td><td>$1.62M</td><td class="amt">DR Capitalized SW / CR Wages</td></tr>
+          <tr><td>2026-02</td><td>1,516</td><td>288</td><td>$1.71M</td><td class="amt">DR Capitalized SW / CR Wages</td></tr>
+          <tr><td>2026-03</td><td>1,412</td><td>334</td><td>$1.60M</td><td class="amt">DR Capitalized SW / CR Wages</td></tr>
+          <tr><td><strong>Q1 total</strong></td><td><strong>4,356</strong></td><td><strong>934</strong></td><td><strong>$4.93M</strong></td><td class="amt"><strong>$4,934,208</strong></td></tr>
+        </tbody>
+      </table>
+      <p style="margin-top:6px"><strong>Split logic:</strong> Pre-feasibility research and post-launch bug fixes → OpEx. Application development between feasibility and go-live → CapEx under ASC 350-40.</p>
+    </div>
+
+    <!-- SLIDE 7 -->
+    <div class="slide dark">
+      <div class="slide-head"><span class="slide-no">Slide 07 · Workpaper CSV preview</span><span class="slide-hint">Column schema</span></div>
+      <h2>The CSV your analysts paste straight into the workpaper.</h2>
+      <div style="background:rgba(255,255,255,0.04);border-radius:10px;padding:20px;font-family:var(--font-m);font-size:12px;color:#E8E7E2;overflow-x:auto;line-height:1.8">
+        <div style="color:#F5C56A;margin-bottom:8px">engineer_id, engineer_name, project, period, hours, classification, evidence_type, evidence_ref, confidence</div>
+        <div style="color:#9AA0A6">E0142, K. Ellison,  PROJ-142 Auth-v2,       2026-01, 118.4, § 174 R&amp;D,       jira+github,       JIRA:PROJ-142;GH:pr/482, 0.96</div>
+        <div style="color:#9AA0A6">E0142, K. Ellison,  PROJ-091 Billing,       2026-01, 22.1,  ASC 350-40 CapEx,  jira+github,       JIRA:PROJ-091;GH:pr/471, 0.92</div>
+        <div style="color:#9AA0A6">E0217, S. Amir,     INFRA-014 K8s upgrade,  2026-01, 94.1,  OpEx,              jira+pagerduty,    JIRA:INFRA-014;PD:inc/2210, 0.88</div>
+        <div style="color:#9AA0A6">E0089, J. Liu,      PROJ-203 ML ranking,    2026-01, 142.6, § 174 R&amp;D,       jira+github+gcal,  JIRA:PROJ-203;GH:pr/501;CAL:design-review-0302, 0.97</div>
+        <div style="color:#9AA0A6">E0301, N. Park,     PROJ-188 DW rework,     2026-01, 98.3,  ASC 350-40 CapEx,  jira+github,       JIRA:PROJ-188;GH:pr/492, 0.93</div>
+      </div>
+      <p>Column names match the template every R&amp;D boutique we've worked with already uses. <strong>No renames, no re-mapping.</strong></p>
+    </div>
+
+    <!-- SLIDE 8 -->
+    <div class="slide">
+      <div class="slide-head"><span class="slide-no">Slide 08 · Source-event lineage</span><span class="slide-hint">One engineer, one day</span></div>
+      <h2>Every hour cites a source event. <em>Not a memory test.</em></h2>
+      <p>Sample lineage for engineer E-0142 on 2026-01-14. Each Jira transition, GitHub commit, and calendar block generates a time event — classified against the four-part test.</p>
+      <table class="data-table">
+        <thead><tr><th>Time</th><th>Event</th><th>Source</th><th>Project</th><th>Classification</th></tr></thead>
+        <tbody>
+          <tr><td>09:12</td><td>Jira: In Progress → In Review</td><td>jira://PROJ-142-441</td><td>Auth-v2</td><td class="tag-174">§ 174</td></tr>
+          <tr><td>09:48</td><td>GitHub: commit a93f1d2</td><td>gh://repo/commit/a93f1d2</td><td>Auth-v2</td><td class="tag-174">§ 174</td></tr>
+          <tr><td>10:30</td><td>Calendar: Design review (60m)</td><td>gcal://evt/14x82p</td><td>Auth-v2</td><td class="tag-174">§ 174</td></tr>
+          <tr><td>13:14</td><td>GitHub: PR #482 opened</td><td>gh://repo/pull/482</td><td>Auth-v2</td><td class="tag-174">§ 174</td></tr>
+          <tr><td>15:02</td><td>Jira: comment on INFRA-019</td><td>jira://INFRA-019-c/887</td><td>Infra</td><td class="tag-opx">OpEx</td></tr>
+          <tr><td>16:40</td><td>GitHub: commit 4f22abc</td><td>gh://repo/commit/4f22abc</td><td>Billing</td><td class="tag-350">350-40</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- SLIDE 9 -->
+    <div class="slide">
+      <div class="slide-head"><span class="slide-no">Slide 09 · Methodology · 2-page summary</span><span class="slide-hint">Plain English, exam-defensible</span></div>
+      <h2>How we got from source events to qualified hours.</h2>
+      <ul>
+        <li><strong>Data sources.</strong> Event-level ingest from Jira (status transitions, comments, worklogs), GitHub (commits, PRs, reviews), Google Calendar &amp; Microsoft Calendar (meeting blocks with engineering attendees).</li>
+        <li><strong>Attribution.</strong> Each event attributes time to (a) the engineer who generated it and (b) the project inferred from Jira/GitHub metadata. Overlapping events deduplicated per the "primary activity" rule.</li>
+        <li><strong>§ 41 classification.</strong> Four-part test applied per activity bucket: permitted purpose, technological in nature, elimination of uncertainty, process of experimentation. Rules library is auditable; tags are reviewable and overridable.</li>
+        <li><strong>§ 174 capitalization.</strong> Post-enactment (post-2022) software development costs flagged for 5-year amortization unless classified OpEx.</li>
+        <li><strong>ASC 350-40.</strong> Application-development stage separated from preliminary project stage and post-implementation stage using commit/PR lifecycle signals.</li>
+        <li><strong>Human review.</strong> Controller reviews low-confidence (&lt;0.85) classifications weekly, ≤30 minutes. No engineer survey.</li>
+      </ul>
+      <div class="methodology-callout"><strong>Full methodology PDF</strong> ships with every pilot pack. Two pages. Designed for a tax partner to defend in an IRS exam.</div>
+    </div>
+
+    <!-- SLIDE 10 -->
+    <div class="slide dark">
+      <div class="slide-head"><span class="slide-no">Slide 10 · Next step</span><span class="slide-hint">60 days, risk-reversed</span></div>
+      <h2>Your pack. Your numbers. <em>Same four files, 60 days from kickoff.</em></h2>
+      <ul>
+        <li>OAuth into Jira, GitHub, and your calendar system — Week 1.</li>
+        <li>Continuous classification runs through Week 7. Your controller reviews ~30 min/week.</li>
+        <li>Pack delivered Week 8, walked through with your tax firm on the call.</li>
+        <li><strong>Risk reversal:</strong> if your tax firm doesn't think the pack is exam-ready, you don't pay.</li>
+      </ul>
+      <div class="cta-inline">
+        <a class="btn-primary" href="/cfo.html" style="background:#fff;color:var(--ink);border-color:#fff">Start the CFO pilot →</a>
+        <a class="btn-ghost" href="/tax-firms.html" style="color:#fff;border-color:rgba(255,255,255,0.22)">Tax-firm pilot</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="footer-wrap">
+  <footer class="page-footer">
+    <div class="container">
+      <div class="footer-i">
+        <a href="/" class="logo">
+          <div class="logo-mark" style="width:32px;height:32px;border-radius:8px;font-size:18px">T</div>
+          <span class="logo-name" style="font-size:18px">Ty<span class="gr">mr</span></span>
+        </a>
+        <div class="footer-links">
+          <a href="/cfo.html">For CFOs</a>
+          <a href="/tax-firms.html">For tax firms</a>
+          <a href="/sample-pack.html">Sample pack</a>
+          <a href="/rd-credit-calculator.html">Calculator</a>
+          <a href="/utev1.html">UTEv1</a>
+          <a href="/pricing.html">Pricing</a>
+          <a href="/security.html">Security</a>
+        </div>
+        <span class="footer-copy">tymrlogic.com · © 2026 Tymr</span>
+      </div>
+    </div>
+  </footer>
+</div>
+
+<script>
+(function(){
+  var form = document.getElementById('gate-form');
+  var deck = document.getElementById('deck');
+  var gateSec = document.getElementById('gate-form-sec');
+  var gateWrap = document.getElementById('gate-wrap');
+
+  // Unlock if ?unlocked=1 or localStorage flag set
+  var qs = new URLSearchParams(window.location.search);
+  var unlocked = qs.get('unlocked') === '1' || localStorage.getItem('tymr-sample-unlocked') === '1';
+
+  function reveal(){
+    localStorage.setItem('tymr-sample-unlocked','1');
+    deck.classList.add('visible');
+    if (gateWrap) gateWrap.style.display = 'none';
+    document.querySelector('.page-head p.lede').textContent = 'You\u2019re in. Below is the anonymized pack \u2014 10 slides, representative of what your tax firm receives at the end of a 60-day pilot. Print or save as PDF from the toolbar.';
+    // Scroll to deck
+    setTimeout(function(){ deck.scrollIntoView({behavior:'smooth',block:'start'}); }, 100);
+  }
+
+  if (unlocked) reveal();
+
+  if (form) {
+    form.addEventListener('submit', function(e){
+      // If Netlify isn't wired in this environment, still reveal inline for preview
+      var email = (document.getElementById('sp-email')||{}).value;
+      var role  = (document.getElementById('sp-role')||{}).value;
+      if (!email || !role) return;
+      // Let the form submit normally in production; for inline preview we also reveal.
+      try { localStorage.setItem('tymr-sample-unlocked','1'); } catch(_){}
+    });
+  }
+})();
+</script>
+</body>
+</html>

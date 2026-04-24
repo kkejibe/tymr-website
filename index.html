@@ -3,17 +3,17 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Tymr — The labor-cost system of record for R&D credits & software CapEx</title>
-<meta name="description" content="Tymr turns your existing Jira, GitHub, and calendar data into IRS § 174 and ASC 350-40 evidence — audit-ready, with zero timesheets."/>
+<title>Tymr — Audit-ready R&D credits and software CapEx. No engineer surveys.</title>
+<meta name="description" content="Tymr turns your existing Jira, GitHub, and calendar data into audit-ready R&D credit and software CapEx evidence. No engineer surveys. No year-end reconstruction. Built for US & Canadian software companies with 50–500 engineers."/>
 
-<meta property="og:title" content="Tymr — Audit-ready labor-cost layer for R&D credits & software CapEx"/>
-<meta property="og:description" content="Turn your Jira, GitHub, and calendar data into IRS § 174 and ASC 350-40 evidence — audit-ready, zero timesheets."/>
+<meta property="og:title" content="Tymr — Audit-ready R&D credits and software CapEx. No engineer surveys."/>
+<meta property="og:description" content="Jira, GitHub, and calendar data → audit-ready R&D credit and CapEx evidence. Zero engineer surveys."/>
 <meta property="og:type" content="website"/>
 <meta property="og:url" content="https://tymrlogic.com/"/>
 <meta property="og:image" content="https://tymrlogic.com/og.png"/>
 <meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:title" content="Tymr — Audit-ready labor-cost layer for R&D credits & software CapEx"/>
-<meta name="twitter:description" content="Turn your Jira, GitHub, and calendar data into IRS § 174 and ASC 350-40 evidence."/>
+<meta name="twitter:title" content="Tymr — Audit-ready R&D credits and software CapEx. No engineer surveys."/>
+<meta name="twitter:description" content="Jira, GitHub, and calendar data → audit-ready R&D credit and CapEx evidence. Zero engineer surveys."/>
 <meta name="twitter:image" content="https://tymrlogic.com/og.png"/>
 
 <link rel="icon" type="image/png" href="/favicon.png"/>
@@ -29,7 +29,7 @@
 /* Page-specific overrides. Base system lives in _shared.css. */
 
 /* HERO */
-.hero{padding:120px 0 88px;max-width:920px}
+.hero{padding:112px 0 64px;max-width:960px}
 .hero-eyebrow{
   display:inline-flex;align-items:center;gap:8px;
   font-family:var(--font-m);font-size:11px;color:var(--slate);
@@ -38,30 +38,53 @@
 .hero-eyebrow::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--accent)}
 h1{
   font-family:var(--font-h);font-weight:600;
-  font-size:clamp(44px,6vw,76px);line-height:1.02;
-  letter-spacing:-0.035em;color:var(--ink);max-width:880px;
+  font-size:clamp(42px,5.8vw,72px);line-height:1.02;
+  letter-spacing:-0.035em;color:var(--ink);max-width:920px;
   text-wrap:balance;
 }
 h1 em{font-style:normal;color:var(--ink-2)}
 .hero-sub{
-  margin-top:26px;max-width:580px;font-size:18px;
+  margin-top:26px;max-width:620px;font-size:18px;
   color:var(--slate);line-height:1.55;font-weight:400;
 }
-.hero-actions{display:flex;gap:12px;margin-top:40px;flex-wrap:wrap;align-items:center}
-.text-link{
-  display:inline-flex;align-items:center;gap:4px;
-  color:var(--ink);text-decoration:none;font-size:14px;font-weight:500;
-  padding:13px 6px;transition:gap .15s;
+.risk-reversal{
+  margin-top:22px;padding:14px 18px;display:inline-flex;align-items:center;gap:10px;
+  background:var(--accent-soft);border:1px solid var(--accent-line);border-radius:10px;
+  font-size:14px;color:var(--ink);max-width:620px;line-height:1.5;
 }
-.text-link:hover{gap:8px}
+.risk-reversal strong{font-weight:550}
+.risk-dot{width:6px;height:6px;border-radius:50%;background:var(--accent);flex-shrink:0}
 
-.hero-meta{
-  margin-top:64px;padding-top:28px;border-top:1px solid var(--hairline);
-  display:flex;gap:56px;flex-wrap:wrap;
+/* DUAL CTA CARDS */
+.dual-cta{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:40px;max-width:720px}
+@media(max-width:680px){.dual-cta{grid-template-columns:1fr}}
+.dcard{
+  display:flex;flex-direction:column;gap:10px;
+  padding:22px 24px;border:1px solid var(--hairline);border-radius:14px;
+  background:var(--bg);text-decoration:none;transition:border-color .2s,background .2s;
 }
-.hero-meta .m-item{display:flex;flex-direction:column;gap:4px}
-.hero-meta .m-k{font-family:var(--font-m);font-size:11px;color:var(--slate-dim);letter-spacing:.08em;text-transform:uppercase}
-.hero-meta .m-v{font-family:var(--font-h);font-weight:500;font-size:20px;color:var(--ink);letter-spacing:-0.02em}
+.dcard:hover{border-color:var(--ink);background:var(--bg-warm)}
+.dcard .dcard-who{font-family:var(--font-m);font-size:10px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--slate)}
+.dcard .dcard-title{font-family:var(--font-h);font-weight:600;font-size:17px;
+  color:var(--ink);letter-spacing:-0.01em;line-height:1.25}
+.dcard .dcard-hint{font-size:13px;color:var(--slate);line-height:1.5}
+.dcard .dcard-go{margin-top:auto;font-size:13px;color:var(--ink);font-weight:500;
+  display:inline-flex;align-items:center;gap:4px;transition:gap .15s}
+.dcard:hover .dcard-go{gap:8px}
+
+/* ICP BAR */
+.icp-bar{
+  margin-top:72px;padding:22px 26px;border:1px solid var(--hairline);
+  border-radius:12px;background:var(--bg-warm);display:flex;gap:22px;align-items:center;
+}
+.icp-bar .icp-tag{
+  font-family:var(--font-m);font-size:10px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--accent);flex-shrink:0;
+}
+.icp-bar p{font-size:14px;color:var(--ink-2);line-height:1.55;margin:0}
+.icp-bar p strong{color:var(--ink);font-weight:550}
+@media(max-width:680px){.icp-bar{flex-direction:column;align-items:flex-start;gap:8px}}
 
 /* SECTION frame */
 section{padding:100px 0;position:relative}
@@ -80,7 +103,7 @@ section.tight{padding:72px 0}
 .sec-head em{font-style:normal;color:var(--ink-2)}
 .sec-sub{margin-top:18px;max-width:620px;color:var(--slate);font-size:17px;line-height:1.6}
 
-/* FLOOR PREVIEW — clean dark card, no fake browser chrome */
+/* FLOOR PREVIEW */
 .floor-wrap{margin:40px 0 0;position:relative;z-index:1}
 .floor-card{
   background:#0B0B0F;border:1px solid #1A1A1F;border-radius:18px;
@@ -104,9 +127,54 @@ section.tight{padding:72px 0}
 .fnum{font-family:var(--font-m);font-size:11px;color:var(--slate-dim);letter-spacing:.08em;margin-bottom:20px;display:block}
 .ftag{display:inline-block;margin-top:16px;font-family:var(--font-m);font-size:11px;color:var(--slate-dim);letter-spacing:.04em}
 
-/* SPLIT */
-.split{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center}
-@media(max-width:860px){.split{grid-template-columns:1fr;gap:48px}}
+/* DELIVERABLES */
+.deliv-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:48px}
+@media(max-width:980px){.deliv-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:520px){.deliv-grid{grid-template-columns:1fr}}
+.deliv{
+  background:var(--bg);border:1px solid var(--hairline);border-radius:12px;
+  padding:22px;display:flex;flex-direction:column;gap:10px;
+}
+.deliv-ico{
+  width:32px;height:32px;border-radius:8px;background:var(--bg-warm);
+  border:1px solid var(--hairline);display:flex;align-items:center;justify-content:center;
+  font-family:var(--font-m);font-size:10px;color:var(--accent);font-weight:600;letter-spacing:.02em;
+}
+.deliv h3{font-family:var(--font-h);font-weight:600;font-size:15px;color:var(--ink);letter-spacing:-0.01em}
+.deliv p{font-size:13px;color:var(--slate);line-height:1.55;margin:0}
+.deliv .deliv-fmt{font-family:var(--font-m);font-size:11px;color:var(--slate-dim);letter-spacing:.04em;margin-top:auto;padding-top:8px}
+
+/* TAX FIRM FIT BLOCK */
+.fit-wrap{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;margin-top:36px}
+@media(max-width:860px){.fit-wrap{grid-template-columns:1fr;gap:32px}}
+.fit-list{list-style:none;padding:0;display:flex;flex-direction:column;gap:16px}
+.fit-list li{display:flex;gap:14px;align-items:flex-start}
+.fit-list .fk{
+  font-family:var(--font-m);font-size:10px;letter-spacing:.14em;color:var(--accent);
+  text-transform:uppercase;flex-shrink:0;width:96px;padding-top:3px;
+}
+.fit-list .fv{font-size:15px;color:var(--ink-2);line-height:1.5}
+.fit-list .fv strong{color:var(--ink);font-weight:550}
+.fit-panel{
+  background:var(--bg-warm);border:1px solid var(--hairline);border-radius:14px;padding:28px;
+}
+.fit-panel .fp-head{
+  font-family:var(--font-m);font-size:11px;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--slate);margin-bottom:18px;
+}
+.fit-panel .fp-steps{display:flex;flex-direction:column;gap:14px}
+.fp-step{display:flex;gap:14px;align-items:flex-start}
+.fp-num{
+  width:26px;height:26px;border-radius:50%;background:var(--ink);color:#fff;
+  font-family:var(--font-m);font-size:11px;display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;margin-top:1px;
+}
+.fp-txt{font-size:14px;color:var(--ink-2);line-height:1.5}
+.fp-txt strong{color:var(--ink);font-weight:550}
+.fit-panel .fp-ask{
+  margin-top:22px;padding-top:18px;border-top:1px solid var(--hairline);
+  font-size:13px;color:var(--slate);line-height:1.55;
+}
 
 /* WORKER CARDS */
 .worker-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:48px}
@@ -122,37 +190,7 @@ section.tight{padding:72px 0}
 .wcard ul li{font-size:13px;color:var(--slate);padding:8px 0;border-top:1px solid var(--hairline);display:flex;align-items:center;gap:10px;line-height:1.45}
 .wcard ul li::before{content:'';width:4px;height:4px;border-radius:50%;background:var(--ink);flex-shrink:0}
 
-/* LEDGER CARD — dark display for cost section */
-.ledger-card{
-  background:#0B0B0F;border:1px solid #1A1A1F;border-radius:14px;
-  padding:28px;color:#E8E7E2;
-}
-.ledger-head{
-  display:flex;justify-content:space-between;align-items:center;
-  padding-bottom:18px;margin-bottom:18px;border-bottom:1px solid rgba(255,255,255,0.06);
-  font-family:var(--font-m);font-size:11px;letter-spacing:.08em;color:#8E9199;text-transform:uppercase;
-}
-.ledger-head .tag-live{display:inline-flex;align-items:center;gap:6px;color:#F5C56A}
-.ledger-head .tag-live::before{content:'';width:5px;height:5px;border-radius:50%;background:#F5C56A;box-shadow:0 0 8px rgba(245,197,106,0.5)}
-.ledger-rows{display:flex;flex-direction:column;gap:2px}
-.lrow{display:flex;align-items:center;justify-content:space-between;padding:12px 0;font-size:14px}
-.lrow+.lrow{border-top:1px solid rgba(255,255,255,0.05)}
-.l-who{display:flex;align-items:center;gap:12px;color:#E8E7E2}
-.l-shape{width:22px;height:22px;display:flex;align-items:center;justify-content:center;font-family:var(--font-m);font-size:9px;font-weight:600;flex-shrink:0}
-.l-shape.h{background:#3A3D4E;color:#E8E7E2;border-radius:50%}
-.l-shape.a{background:#3A3D4E;color:#E8E7E2;border-radius:3px;transform:rotate(45deg)}
-.l-shape.a span{transform:rotate(-45deg);display:block}
-.l-title{font-size:13px}
-.l-ref{font-family:var(--font-m);font-size:12px;color:#6B6F78}
-.l-amt{font-family:var(--font-m);font-size:13px;font-weight:500;color:#F5C56A}
-.ledger-total{
-  margin-top:18px;padding-top:18px;border-top:1px solid rgba(255,255,255,0.08);
-  display:flex;justify-content:space-between;align-items:baseline;
-}
-.ledger-total .lt-k{font-family:var(--font-m);font-size:11px;color:#8E9199;letter-spacing:.06em;text-transform:uppercase}
-.ledger-total .lt-v{font-family:var(--font-h);font-weight:600;font-size:28px;color:#F5C56A;letter-spacing:-0.02em}
-
-/* INTEGRATIONS — simple clean pills */
+/* INTEGRATIONS */
 .int-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:36px}
 .int-pill{
   display:inline-flex;align-items:center;gap:10px;
@@ -165,38 +203,49 @@ section.tight{padding:72px 0}
 .int-suffix{font-family:var(--font-m);font-size:10px;color:var(--slate);letter-spacing:.04em}
 .int-pill.soon .int-suffix{color:var(--slate-dim)}
 
-/* ROLES */
-.role-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:48px}
-@media(max-width:720px){.role-grid{grid-template-columns:1fr}}
-.rcard{background:var(--bg);border:1px solid var(--hairline);border-radius:14px;padding:28px;transition:border-color .2s}
-.rcard:hover{border-color:var(--hairline-strong)}
-.rtag{font-family:var(--font-m);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--slate);margin-bottom:14px}
-.rcard h3{font-family:var(--font-h);font-weight:600;font-size:17px;color:var(--ink);margin-bottom:18px;letter-spacing:-0.01em}
-.rcard ul{list-style:none}
-.rcard ul li{font-size:13px;color:var(--slate);padding:8px 0;border-top:1px solid var(--hairline);display:flex;align-items:center;gap:10px;line-height:1.45}
-.rcard ul li::before{content:'—';color:var(--slate-dim);font-family:var(--font-m);font-size:12px}
+/* NOT A FIT */
+.not-fit{
+  margin-top:40px;padding:20px 24px;border:1px dashed var(--hairline-strong);
+  border-radius:12px;background:var(--bg);
+  display:flex;gap:14px;align-items:flex-start;
+}
+.not-fit .nf-tag{
+  font-family:var(--font-m);font-size:10px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--slate);padding-top:2px;flex-shrink:0;
+}
+.not-fit p{font-size:13px;color:var(--slate);line-height:1.55;margin:0}
 
 /* CTA BLOCK */
 .cta-block{
-  margin:56px 0 80px;padding:72px 56px;
+  margin:56px 0 80px;padding:64px 56px;
   background:var(--ink);border-radius:18px;
   position:relative;overflow:hidden;
 }
 .cta-block h2{
   font-family:var(--font-h);font-weight:600;
   font-size:clamp(28px,3.6vw,42px);letter-spacing:-0.03em;line-height:1.1;
-  color:#fff;max-width:600px;text-wrap:balance;
+  color:#fff;max-width:640px;text-wrap:balance;
 }
 .cta-block h2 em{font-style:normal;color:#C8C9CC}
 .cta-block p{
   color:#9AA0A6;margin-top:16px;font-size:16px;line-height:1.55;
-  max-width:560px;
+  max-width:600px;
 }
-.cta-block .acts{margin-top:36px;display:flex;gap:10px;flex-wrap:wrap}
-.cta-block .btn-primary{background:#fff;color:var(--ink);border-color:#fff}
-.cta-block .btn-primary:hover{background:#F0F0ED;border-color:#F0F0ED}
-.cta-block .btn-ghost{background:transparent;color:#fff;border-color:rgba(255,255,255,0.22)}
-.cta-block .btn-ghost:hover{background:rgba(255,255,255,0.06);border-color:rgba(255,255,255,0.4)}
+.cta-pair{margin-top:32px;display:grid;grid-template-columns:1fr 1fr;gap:12px;max-width:680px}
+@media(max-width:680px){.cta-pair{grid-template-columns:1fr}}
+.cta-slot{
+  padding:22px 24px;background:rgba(255,255,255,0.04);
+  border:1px solid rgba(255,255,255,0.12);border-radius:12px;
+  display:flex;flex-direction:column;gap:10px;text-decoration:none;
+  transition:background .2s,border-color .2s;
+}
+.cta-slot:hover{background:rgba(255,255,255,0.08);border-color:rgba(255,255,255,0.28)}
+.cta-slot .cs-who{font-family:var(--font-m);font-size:10px;letter-spacing:.14em;
+  text-transform:uppercase;color:#9AA0A6}
+.cta-slot .cs-title{font-family:var(--font-h);font-weight:600;font-size:15px;color:#fff;letter-spacing:-0.01em}
+.cta-slot .cs-go{margin-top:auto;font-size:13px;color:#fff;
+  display:inline-flex;align-items:center;gap:4px;transition:gap .15s}
+.cta-slot:hover .cs-go{gap:8px}
 @media(max-width:680px){.cta-block{padding:48px 28px}}
 
 /* FOOTER */
@@ -224,11 +273,11 @@ footer.site-footer{padding:48px 0 56px;border-top:1px solid var(--hairline);marg
         <span class="logo-name">Ty<span class="gr">mr</span></span>
       </a>
       <ul class="nav-links">
+        <li><a href="/cfo.html">For CFOs</a></li>
+        <li><a href="/tax-firms.html">For tax firms</a></li>
+        <li><a href="/sample-pack.html">Sample pack</a></li>
         <li><a href="/rd-credit-calculator.html">Calculator</a></li>
-        <li><a href="#floor">How it works</a></li>
-        <li><a href="/utev1.html">UTEv1</a></li>
         <li><a href="/pricing.html">Pricing</a></li>
-        <li><a href="/security.html">Security</a></li>
       </ul>
       <a class="nav-cta" href="https://calendly.com/tymrlogic/demo">Request Pilot</a>
     </div>
@@ -239,460 +288,106 @@ footer.site-footer{padding:48px 0 56px;border-top:1px solid var(--hairline);marg
 <div class="container">
   <div class="hero">
     <div class="hero-eyebrow">Design partner cohort · Q2 2026</div>
-    <h1>The labor-cost system of record <em>for R&amp;D credits and software CapEx.</em></h1>
-    <p class="hero-sub">Tymr turns the work your team already logs in Jira, GitHub, and calendars into audit-ready IRS § 174 and ASC 350-40 evidence. No timesheets. No year-end reconstruction.</p>
-    <div class="hero-actions">
-      <a class="btn-primary" href="https://calendly.com/tymrlogic/demo">Request a pilot</a>
-      <a class="text-link" href="/rd-credit-calculator.html">Estimate your credit →</a>
+    <h1>Audit-ready R&amp;D credits and software CapEx. <em>No engineer surveys.</em></h1>
+    <p class="hero-sub">Tymr turns the Jira tickets, GitHub commits, and calendar blocks your team already produces into evidence your tax firm and auditors can defend. No quarterly spreadsheets. No April reconstruction.</p>
+
+    <div class="risk-reversal">
+      <span class="risk-dot"></span>
+      <span><strong>Risk reversal:</strong> If your tax firm doesn't think the data is exam-ready, you don't pay.</span>
     </div>
-    <div class="hero-meta">
-      <div class="m-item"><span class="m-k">Evidence for</span><span class="m-v">IRS § 174</span></div>
-      <div class="m-item"><span class="m-k">Classifies</span><span class="m-v">ASC 350-40</span></div>
-      <div class="m-item"><span class="m-k">Timesheets</span><span class="m-v">Zero</span></div>
-      <div class="m-item"><span class="m-k">Pilot cohort</span><span class="m-v">Q2 2026</span></div>
+
+    <div class="dual-cta">
+      <a class="dcard" href="/cfo.html">
+        <span class="dcard-who">For CFOs &amp; Controllers</span>
+        <span class="dcard-title">Claim a bigger R&amp;D credit and pass a CapEx audit — in 60 days.</span>
+        <span class="dcard-hint">R&amp;D credit uplift estimate + CapEx vs OpEx audit pack. Pay only if your tax firm signs off.</span>
+        <span class="dcard-go">See the CFO pilot →</span>
+      </a>
+      <a class="dcard" href="/tax-firms.html">
+        <span class="dcard-who">For R&amp;D tax &amp; accounting firms</span>
+        <span class="dcard-title">Let your analysts skip the time-survey grind on software clients.</span>
+        <span class="dcard-hint">Free pilot on 3–5 of your software clients. Per-engineer time, § 41/§ 174 tags, workpaper-ready CSV. You keep your study fees.</span>
+        <span class="dcard-go">See the firm offer →</span>
+      </a>
     </div>
-  </div>
-</div>
 
-<!-- FLOOR PREVIEW -->
-<div class="container" id="floor">
-  <div class="floor-wrap">
-    <div class="floor-card">
-      <svg viewBox="0 0 980 460" width="100%" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Tymr audit ledger: live classification of engineering activity into IRS § 174 R&amp;D, ASC 350-40 software CapEx, and OpEx">
-        <defs>
-          <linearGradient id="bgGrad" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0" stop-color="#16181F"/>
-            <stop offset="1" stop-color="#0C0D10"/>
-          </linearGradient>
-          <linearGradient id="goldGrad" x1="0" y1="0" x2="1" y2="0">
-            <stop offset="0" stop-color="#C8962A"/>
-            <stop offset="1" stop-color="#F5C842"/>
-          </linearGradient>
-          <linearGradient id="cyanGrad" x1="0" y1="0" x2="1" y2="0">
-            <stop offset="0" stop-color="#008F7F"/>
-            <stop offset="1" stop-color="#00D9C0"/>
-          </linearGradient>
-          <radialGradient id="ledgerGlow" cx="0.5" cy="0" r="0.9">
-            <stop offset="0" stop-color="rgba(245,200,66,0.1)"/>
-            <stop offset="1" stop-color="rgba(245,200,66,0)"/>
-          </radialGradient>
-          <pattern id="dotGrid" width="20" height="20" patternUnits="userSpaceOnUse">
-            <circle cx="1" cy="1" r="0.7" fill="rgba(245,200,66,0.06)"/>
-          </pattern>
-          <filter id="softGlow" x="-50%" y="-50%" width="200%" height="200%">
-            <feGaussianBlur stdDeviation="2" result="b"/>
-            <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
-          </filter>
-        </defs>
-
-        <rect width="980" height="460" fill="url(#bgGrad)"/>
-        <rect width="980" height="460" fill="url(#dotGrid)"/>
-
-        <rect x="0" y="0" width="980" height="52" fill="rgba(255,255,255,0.015)"/>
-        <line x1="0" y1="52" x2="980" y2="52" stroke="rgba(255,255,255,0.04)"/>
-        <text x="24" y="18" fill="#3A3D4E" font-family="JetBrains Mono,monospace" font-size="9" letter-spacing="0.14em">EVENT SOURCES · NORMALIZED TO UTEv1</text>
-
-        <g font-family="JetBrains Mono,monospace" font-size="10">
-          <g transform="translate(24,28)">
-            <rect width="128" height="18" rx="9" fill="rgba(38,132,255,0.08)" stroke="rgba(38,132,255,0.3)"/>
-            <circle cx="11" cy="9" r="2.5" fill="#2684FF"/>
-            <text x="20" y="12" fill="#8B8FA8">JIRA · 342 issues</text>
-          </g>
-          <g transform="translate(160,28)">
-            <rect width="140" height="18" rx="9" fill="rgba(240,236,228,0.04)" stroke="rgba(240,236,228,0.15)"/>
-            <circle cx="11" cy="9" r="2.5" fill="#F0ECE4"/>
-            <text x="20" y="12" fill="#8B8FA8">GITHUB · 189 PRs</text>
-          </g>
-          <g transform="translate(308,28)">
-            <rect width="148" height="18" rx="9" fill="rgba(66,133,244,0.06)" stroke="rgba(66,133,244,0.2)"/>
-            <circle cx="11" cy="9" r="2.5" fill="#4285F4" opacity="0.75"/>
-            <text x="20" y="12" fill="#8B8FA8">GCAL · 47 meetings</text>
-          </g>
-          <g transform="translate(464,28)">
-            <rect width="134" height="18" rx="9" fill="rgba(0,217,192,0.08)" stroke="rgba(0,217,192,0.3)"/>
-            <rect x="7" y="5" width="8" height="8" rx="1.5" fill="#00D9C0" transform="rotate(45 11 9)"/>
-            <text x="22" y="12" fill="#8B8FA8">AGENTS · 214 runs</text>
-          </g>
-          <g transform="translate(850,28)">
-            <circle cx="0" cy="9" r="3" fill="#00D9C0" filter="url(#softGlow)">
-              <animate attributeName="opacity" values="1;0.3;1" dur="1.6s" repeatCount="indefinite"/>
-            </circle>
-            <text x="10" y="12" fill="#00D9C0" letter-spacing="0.12em">LIVE · STREAMING</text>
-          </g>
-        </g>
-
-        <g transform="translate(24,72)">
-          <rect width="540" height="372" rx="14" fill="rgba(255,255,255,0.015)" stroke="rgba(255,255,255,0.05)"/>
-          <text x="18" y="24" fill="#3A3D4E" font-family="JetBrains Mono,monospace" font-size="9" letter-spacing="0.14em">ACTIVITY FLOOR · ENGINEERING</text>
-          <text x="522" y="24" text-anchor="end" fill="#3A3D4E" font-family="JetBrains Mono,monospace" font-size="9">12 workers · 83% classified</text>
-
-          <g transform="translate(24,44)">
-            <circle cx="22" cy="22" r="20" fill="url(#goldGrad)"/>
-            <text x="22" y="26" text-anchor="middle" fill="#0C0D10" font-family="JetBrains Mono,monospace" font-size="10" font-weight="700">KE</text>
-            <rect x="2" y="48" width="40" height="14" rx="7" fill="rgba(245,200,66,0.12)" stroke="rgba(245,200,66,0.35)"/>
-            <text x="22" y="58" text-anchor="middle" fill="#F5C842" font-family="JetBrains Mono,monospace" font-size="8" font-weight="600">§ 174</text>
-          </g>
-          <g transform="translate(84,44)">
-            <circle cx="22" cy="22" r="20" fill="url(#goldGrad)"/>
-            <text x="22" y="26" text-anchor="middle" fill="#0C0D10" font-family="JetBrains Mono,monospace" font-size="10" font-weight="700">MR</text>
-            <rect x="2" y="48" width="40" height="14" rx="7" fill="rgba(245,200,66,0.12)" stroke="rgba(245,200,66,0.35)"/>
-            <text x="22" y="58" text-anchor="middle" fill="#F5C842" font-family="JetBrains Mono,monospace" font-size="8" font-weight="600">§ 174</text>
-          </g>
-          <g transform="translate(144,44)">
-            <circle cx="22" cy="22" r="20" fill="url(#cyanGrad)"/>
-            <text x="22" y="26" text-anchor="middle" fill="#025C52" font-family="JetBrains Mono,monospace" font-size="10" font-weight="700">JL</text>
-            <rect x="-2" y="48" width="48" height="14" rx="7" fill="rgba(0,217,192,0.1)" stroke="rgba(0,217,192,0.35)"/>
-            <text x="22" y="58" text-anchor="middle" fill="#00D9C0" font-family="JetBrains Mono,monospace" font-size="8" font-weight="600">350-40</text>
-          </g>
-          <g transform="translate(204,44)">
-            <circle cx="22" cy="22" r="20" fill="#3A3D4E"/>
-            <text x="22" y="26" text-anchor="middle" fill="#8B8FA8" font-family="JetBrains Mono,monospace" font-size="10" font-weight="600">SA</text>
-            <rect x="4" y="48" width="36" height="14" rx="7" fill="rgba(255,107,85,0.1)" stroke="rgba(255,107,85,0.3)"/>
-            <text x="22" y="58" text-anchor="middle" fill="#FF6B55" font-family="JetBrains Mono,monospace" font-size="8" font-weight="600">OPX</text>
-          </g>
-          <g transform="translate(264,44)">
-            <rect x="4" y="4" width="36" height="36" rx="7" fill="url(#cyanGrad)" transform="rotate(45 22 22)"/>
-            <text x="22" y="26" text-anchor="middle" fill="#025C52" font-family="JetBrains Mono,monospace" font-size="9" font-weight="700">A1</text>
-            <rect x="2" y="48" width="40" height="14" rx="7" fill="rgba(245,200,66,0.12)" stroke="rgba(245,200,66,0.35)"/>
-            <text x="22" y="58" text-anchor="middle" fill="#F5C842" font-family="JetBrains Mono,monospace" font-size="8" font-weight="600">§ 174</text>
-          </g>
-          <g transform="translate(324,44)">
-            <rect x="4" y="4" width="36" height="36" rx="7" fill="#008F7F" transform="rotate(45 22 22)"/>
-            <text x="22" y="26" text-anchor="middle" fill="#D8FBF6" font-family="JetBrains Mono,monospace" font-size="9" font-weight="700">A2</text>
-            <rect x="2" y="48" width="40" height="14" rx="7" fill="rgba(245,200,66,0.12)" stroke="rgba(245,200,66,0.35)"/>
-            <text x="22" y="58" text-anchor="middle" fill="#F5C842" font-family="JetBrains Mono,monospace" font-size="8" font-weight="600">§ 174</text>
-          </g>
-          <g transform="translate(384,44)">
-            <rect x="4" y="4" width="36" height="36" rx="7" fill="#008F7F" transform="rotate(45 22 22)"/>
-            <text x="22" y="26" text-anchor="middle" fill="#D8FBF6" font-family="JetBrains Mono,monospace" font-size="9" font-weight="700">A3</text>
-            <rect x="-2" y="48" width="48" height="14" rx="7" fill="rgba(0,217,192,0.1)" stroke="rgba(0,217,192,0.35)"/>
-            <text x="22" y="58" text-anchor="middle" fill="#00D9C0" font-family="JetBrains Mono,monospace" font-size="8" font-weight="600">350-40</text>
-          </g>
-
-          <g transform="translate(24,126)">
-            <circle cx="22" cy="22" r="20" fill="url(#goldGrad)"/>
-            <text x="22" y="26" text-anchor="middle" fill="#0C0D10" font-family="JetBrains Mono,monospace" font-size="10" font-weight="700">TR</text>
-            <rect x="-2" y="48" width="48" height="14" rx="7" fill="rgba(0,217,192,0.1)" stroke="rgba(0,217,192,0.35)"/>
-            <text x="22" y="58" text-anchor="middle" fill="#00D9C0" font-family="JetBrains Mono,monospace" font-size="8" font-weight="600">350-40</text>
-          </g>
-          <g transform="translate(84,126)">
-            <circle cx="22" cy="22" r="20" fill="url(#goldGrad)"/>
-            <text x="22" y="26" text-anchor="middle" fill="#0C0D10" font-family="JetBrains Mono,monospace" font-size="10" font-weight="700">NP</text>
-            <rect x="2" y="48" width="40" height="14" rx="7" fill="rgba(245,200,66,0.12)" stroke="rgba(245,200,66,0.35)"/>
-            <text x="22" y="58" text-anchor="middle" fill="#F5C842" font-family="JetBrains Mono,monospace" font-size="8" font-weight="600">§ 174</text>
-          </g>
-          <g transform="translate(144,126)">
-            <rect x="4" y="4" width="36" height="36" rx="7" fill="url(#goldGrad)" transform="rotate(45 22 22)"/>
-            <text x="22" y="26" text-anchor="middle" fill="#0C0D10" font-family="JetBrains Mono,monospace" font-size="9" font-weight="700">A4</text>
-            <rect x="2" y="48" width="40" height="14" rx="7" fill="rgba(245,200,66,0.12)" stroke="rgba(245,200,66,0.35)"/>
-            <text x="22" y="58" text-anchor="middle" fill="#F5C842" font-family="JetBrains Mono,monospace" font-size="8" font-weight="600">§ 174</text>
-          </g>
-          <g transform="translate(204,126)">
-            <circle cx="22" cy="22" r="20" fill="url(#goldGrad)" opacity="0.85"/>
-            <text x="22" y="26" text-anchor="middle" fill="#0C0D10" font-family="JetBrains Mono,monospace" font-size="10" font-weight="700">CB</text>
-            <rect x="2" y="48" width="40" height="14" rx="7" fill="rgba(245,200,66,0.12)" stroke="rgba(245,200,66,0.35)"/>
-            <text x="22" y="58" text-anchor="middle" fill="#F5C842" font-family="JetBrains Mono,monospace" font-size="8" font-weight="600">§ 174</text>
-          </g>
-          <g transform="translate(264,126)">
-            <rect x="4" y="4" width="36" height="36" rx="7" fill="#008F7F" transform="rotate(45 22 22)"/>
-            <text x="22" y="26" text-anchor="middle" fill="#D8FBF6" font-family="JetBrains Mono,monospace" font-size="9" font-weight="700">A5</text>
-            <rect x="4" y="48" width="36" height="14" rx="7" fill="rgba(255,107,85,0.1)" stroke="rgba(255,107,85,0.3)"/>
-            <text x="22" y="58" text-anchor="middle" fill="#FF6B55" font-family="JetBrains Mono,monospace" font-size="8" font-weight="600">OPX</text>
-          </g>
-          <g transform="translate(324,126)">
-            <rect x="4" y="4" width="36" height="36" rx="7" fill="url(#cyanGrad)" transform="rotate(45 22 22)"/>
-            <text x="22" y="26" text-anchor="middle" fill="#025C52" font-family="JetBrains Mono,monospace" font-size="9" font-weight="700">A6</text>
-            <rect x="-2" y="48" width="48" height="14" rx="7" fill="rgba(0,217,192,0.1)" stroke="rgba(0,217,192,0.35)"/>
-            <text x="22" y="58" text-anchor="middle" fill="#00D9C0" font-family="JetBrains Mono,monospace" font-size="8" font-weight="600">350-40</text>
-          </g>
-          <g transform="translate(384,126)">
-            <rect x="4" y="4" width="36" height="36" rx="7" fill="#008F7F" transform="rotate(45 22 22)"/>
-            <text x="22" y="26" text-anchor="middle" fill="#D8FBF6" font-family="JetBrains Mono,monospace" font-size="9" font-weight="700">A7</text>
-            <rect x="2" y="48" width="40" height="14" rx="7" fill="rgba(245,200,66,0.12)" stroke="rgba(245,200,66,0.35)"/>
-            <text x="22" y="58" text-anchor="middle" fill="#F5C842" font-family="JetBrains Mono,monospace" font-size="8" font-weight="600">§ 174</text>
-          </g>
-
-          <g transform="translate(24,208)">
-            <circle cx="22" cy="22" r="20" fill="url(#goldGrad)"/>
-            <text x="22" y="26" text-anchor="middle" fill="#0C0D10" font-family="JetBrains Mono,monospace" font-size="10" font-weight="700">OP</text>
-            <rect x="2" y="48" width="40" height="14" rx="7" fill="rgba(245,200,66,0.12)" stroke="rgba(245,200,66,0.35)"/>
-            <text x="22" y="58" text-anchor="middle" fill="#F5C842" font-family="JetBrains Mono,monospace" font-size="8" font-weight="600">§ 174</text>
-          </g>
-          <g transform="translate(84,208)">
-            <circle cx="22" cy="22" r="20" fill="url(#goldGrad)" opacity="0.8"/>
-            <text x="22" y="26" text-anchor="middle" fill="#0C0D10" font-family="JetBrains Mono,monospace" font-size="10" font-weight="700">YK</text>
-            <rect x="-2" y="48" width="48" height="14" rx="7" fill="rgba(0,217,192,0.1)" stroke="rgba(0,217,192,0.35)"/>
-            <text x="22" y="58" text-anchor="middle" fill="#00D9C0" font-family="JetBrains Mono,monospace" font-size="8" font-weight="600">350-40</text>
-          </g>
-          <g transform="translate(144,208)">
-            <circle cx="22" cy="22" r="20" fill="#3A3D4E"/>
-            <text x="22" y="26" text-anchor="middle" fill="#8B8FA8" font-family="JetBrains Mono,monospace" font-size="10" font-weight="600">DK</text>
-            <rect x="4" y="48" width="36" height="14" rx="7" fill="rgba(255,107,85,0.1)" stroke="rgba(255,107,85,0.3)"/>
-            <text x="22" y="58" text-anchor="middle" fill="#FF6B55" font-family="JetBrains Mono,monospace" font-size="8" font-weight="600">OPX</text>
-          </g>
-          <g transform="translate(204,208)">
-            <circle cx="22" cy="22" r="20" fill="url(#goldGrad)"/>
-            <text x="22" y="26" text-anchor="middle" fill="#0C0D10" font-family="JetBrains Mono,monospace" font-size="10" font-weight="700">FO</text>
-            <rect x="2" y="48" width="40" height="14" rx="7" fill="rgba(245,200,66,0.12)" stroke="rgba(245,200,66,0.35)"/>
-            <text x="22" y="58" text-anchor="middle" fill="#F5C842" font-family="JetBrains Mono,monospace" font-size="8" font-weight="600">§ 174</text>
-          </g>
-          <g transform="translate(264,208)">
-            <rect x="4" y="4" width="36" height="36" rx="7" fill="#008F7F" opacity="0.7" transform="rotate(45 22 22)"/>
-            <text x="22" y="26" text-anchor="middle" fill="#D8FBF6" font-family="JetBrains Mono,monospace" font-size="9" font-weight="700">A8</text>
-            <rect x="2" y="48" width="40" height="14" rx="7" fill="rgba(245,200,66,0.12)" stroke="rgba(245,200,66,0.35)"/>
-            <text x="22" y="58" text-anchor="middle" fill="#F5C842" font-family="JetBrains Mono,monospace" font-size="8" font-weight="600">§ 174</text>
-          </g>
-
-          <g transform="translate(18,298)">
-            <text x="0" y="0" fill="#3A3D4E" font-family="JetBrains Mono,monospace" font-size="9" letter-spacing="0.12em">CLASSIFIED EVENT STREAM → AUDIT LEDGER</text>
-            <line x1="0" y1="12" x2="504" y2="12" stroke="rgba(245,200,66,0.12)" stroke-dasharray="3 4"/>
-            <circle cx="0" cy="12" r="3.5" fill="#F5C842" filter="url(#softGlow)">
-              <animate attributeName="cx" from="0" to="504" dur="3.2s" repeatCount="indefinite"/>
-              <animate attributeName="opacity" values="0;1;1;0" dur="3.2s" repeatCount="indefinite"/>
-            </circle>
-            <circle cx="0" cy="12" r="3.5" fill="#00D9C0" filter="url(#softGlow)">
-              <animate attributeName="cx" from="0" to="504" dur="4s" begin="1s" repeatCount="indefinite"/>
-              <animate attributeName="opacity" values="0;1;1;0" dur="4s" begin="1s" repeatCount="indefinite"/>
-            </circle>
-            <circle cx="0" cy="12" r="3.5" fill="#F5C842" filter="url(#softGlow)">
-              <animate attributeName="cx" from="0" to="504" dur="3.6s" begin="2.1s" repeatCount="indefinite"/>
-              <animate attributeName="opacity" values="0;1;1;0" dur="3.6s" begin="2.1s" repeatCount="indefinite"/>
-            </circle>
-            <circle cx="0" cy="12" r="3.5" fill="#FF6B55" filter="url(#softGlow)">
-              <animate attributeName="cx" from="0" to="504" dur="4.4s" begin="0.6s" repeatCount="indefinite"/>
-              <animate attributeName="opacity" values="0;1;1;0" dur="4.4s" begin="0.6s" repeatCount="indefinite"/>
-            </circle>
-          </g>
-
-          <g transform="translate(18,332)" font-family="JetBrains Mono,monospace" font-size="9">
-            <rect x="0" y="0" width="44" height="14" rx="7" fill="rgba(245,200,66,0.12)" stroke="rgba(245,200,66,0.35)"/>
-            <text x="22" y="10" text-anchor="middle" fill="#F5C842" font-weight="600">§ 174</text>
-            <text x="52" y="10" fill="#8B8FA8">R&amp;D qualified</text>
-            <g transform="translate(160,0)">
-              <rect x="0" y="0" width="52" height="14" rx="7" fill="rgba(0,217,192,0.1)" stroke="rgba(0,217,192,0.35)"/>
-              <text x="26" y="10" text-anchor="middle" fill="#00D9C0" font-weight="600">350-40</text>
-            </g>
-            <text x="220" y="10" fill="#8B8FA8">Software CapEx</text>
-            <g transform="translate(340,0)">
-              <rect x="0" y="0" width="40" height="14" rx="7" fill="rgba(255,107,85,0.1)" stroke="rgba(255,107,85,0.3)"/>
-              <text x="20" y="10" text-anchor="middle" fill="#FF6B55" font-weight="600">OPX</text>
-            </g>
-            <text x="386" y="10" fill="#8B8FA8">OpEx</text>
-          </g>
-        </g>
-
-        <g transform="translate(580,72)">
-          <rect width="376" height="372" rx="14" fill="rgba(245,200,66,0.02)" stroke="rgba(245,200,66,0.14)"/>
-          <rect width="376" height="140" rx="14" fill="url(#ledgerGlow)"/>
-          <text x="18" y="24" fill="rgba(245,200,66,0.65)" font-family="JetBrains Mono,monospace" font-size="9" letter-spacing="0.14em">AUDIT LEDGER · Q2 2026</text>
-          <text x="358" y="24" text-anchor="end" fill="#3A3D4E" font-family="JetBrains Mono,monospace" font-size="9">Updated 4s ago</text>
-
-          <g transform="translate(18,48)">
-            <text x="0" y="0" fill="#8B8FA8" font-family="Inter,sans-serif" font-size="11">IRS § 174 — R&amp;D capitalized</text>
-            <text x="340" y="0" text-anchor="end" fill="#F5C842" font-family="JetBrains Mono,monospace" font-size="14" font-weight="500">$148,430</text>
-            <rect x="0" y="10" width="340" height="5" rx="2.5" fill="#1E2029"/>
-            <rect x="0" y="10" width="282" height="5" rx="2.5" fill="url(#goldGrad)"/>
-            <text x="0" y="30" fill="#3A3D4E" font-family="JetBrains Mono,monospace" font-size="9">412.3 hrs · 9 engineers · 2 agents</text>
-          </g>
-
-          <g transform="translate(18,104)">
-            <text x="0" y="0" fill="#8B8FA8" font-family="Inter,sans-serif" font-size="11">ASC 350-40 — software CapEx</text>
-            <text x="340" y="0" text-anchor="end" fill="#00D9C0" font-family="JetBrains Mono,monospace" font-size="14" font-weight="500">$64,210</text>
-            <rect x="0" y="10" width="340" height="5" rx="2.5" fill="#1E2029"/>
-            <rect x="0" y="10" width="168" height="5" rx="2.5" fill="url(#cyanGrad)"/>
-            <text x="0" y="30" fill="#3A3D4E" font-family="JetBrains Mono,monospace" font-size="9">186.5 hrs · post-feasibility builds</text>
-          </g>
-
-          <g transform="translate(18,160)">
-            <text x="0" y="0" fill="#8B8FA8" font-family="Inter,sans-serif" font-size="11">Operating expense</text>
-            <text x="340" y="0" text-anchor="end" fill="#F0ECE4" font-family="JetBrains Mono,monospace" font-size="14">$32,810</text>
-            <rect x="0" y="10" width="340" height="5" rx="2.5" fill="#1E2029"/>
-            <rect x="0" y="10" width="92" height="5" rx="2.5" fill="#5A5E78"/>
-            <text x="0" y="30" fill="#3A3D4E" font-family="JetBrains Mono,monospace" font-size="9">94.1 hrs · maintenance, bug fixes</text>
-          </g>
-
-          <line x1="18" y1="212" x2="358" y2="212" stroke="rgba(245,200,66,0.18)"/>
-
-          <text x="18" y="236" fill="#8B8FA8" font-family="JetBrains Mono,monospace" font-size="10" letter-spacing="0.1em">ESTIMATED R&amp;D CREDIT · FED + CA</text>
-          <text x="18" y="286" fill="#F5C842" font-family="Inter,sans-serif" font-weight="600" font-size="44" letter-spacing="-0.02em">$38,160</text>
-          <text x="18" y="306" fill="#3A3D4E" font-family="JetBrains Mono,monospace" font-size="9">14% effective rate on qualified expenses</text>
-
-          <g transform="translate(18,324)">
-            <rect width="340" height="30" rx="8" fill="rgba(0,217,192,0.06)" stroke="rgba(0,217,192,0.25)"/>
-            <circle cx="14" cy="15" r="3" fill="#00D9C0">
-              <animate attributeName="opacity" values="1;0.3;1" dur="1.8s" repeatCount="indefinite"/>
-            </circle>
-            <text x="26" y="19" fill="#00D9C0" font-family="JetBrains Mono,monospace" font-size="10">Evidence trail ready · 0 timesheets</text>
-          </g>
-        </g>
-      </svg>
-      <div class="floor-caption">
-        <span>Live floor · humans (circles) and agents (diamonds) classified in real time</span>
-        <span class="live">Streaming from Jira, GitHub, GCal</span>
-      </div>
+    <div class="icp-bar">
+      <span class="icp-tag">Built for</span>
+      <p><strong>US &amp; Canadian software companies, 50–500 engineers</strong>, already claiming R&amp;D credits or SR&amp;ED, running Jira + GitHub + Google or Microsoft Calendar, working with a tax advisor on the credit study.</p>
     </div>
   </div>
 </div>
 
-<!-- THREE OUTPUTS -->
-<div class="container" id="cfo">
+<!-- DELIVERABLES — concrete files, not "dashboards" -->
+<div class="container" id="deliverables">
   <section>
-    <span class="sec-label">Built for the CFO stack</span>
-    <h2 class="sec-head">Three compliance outputs. <em>One live layer.</em></h2>
-    <p class="sec-sub">Every engineering hour — human or agent — continuously classified against the frameworks your tax firm and auditors already use. No reconstruction. No memory tests.</p>
+    <span class="sec-label">What you actually receive</span>
+    <h2 class="sec-head">Four files. <em>Drop straight into your tax firm's workpapers.</em></h2>
+    <p class="sec-sub">No dashboard to learn. No platform to roll out. Every pilot ships the same four deliverables — signed off by your tax firm before you pay a dollar.</p>
 
-    <div class="feat-grid">
-      <div class="fcard">
-        <span class="fnum">01 / § 174</span>
-        <h3>R&amp;D tax credit evidence</h3>
-        <p>Hours auto-classified as qualified research activity, tied to specific Jira tickets and GitHub PRs. Defensible in a § 41 credit study or an IRS exam.</p>
-        <span class="ftag">per-engineer · cited</span>
+    <div class="deliv-grid">
+      <div class="deliv">
+        <div class="deliv-ico">01</div>
+        <h3>R&amp;D credit uplift estimate</h3>
+        <p>Per-engineer, per-project qualified hours with a Fed + state credit estimate against last year's claim.</p>
+        <span class="deliv-fmt">PDF · 6–8 pages</span>
       </div>
-      <div class="fcard">
-        <span class="fnum">02 / 350-40</span>
-        <h3>Software capitalization</h3>
-        <p>Auto-split between capitalizable development (post-feasibility) and OpEx maintenance. Journal-entry ready for month-end close — SOX control built in.</p>
-        <span class="ftag">CapEx / OpEx · journal-ready</span>
+      <div class="deliv">
+        <div class="deliv-ico">02</div>
+        <h3>CapEx vs OpEx audit pack</h3>
+        <p>Capitalizable application-development hours split from OpEx maintenance. Journal-entry ready, SOX-aligned.</p>
+        <span class="deliv-fmt">PDF · journal-ready</span>
       </div>
-      <div class="fcard">
-        <span class="fnum">03 / Trail</span>
-        <h3>Immutable audit trail</h3>
-        <p>Every hour traced back to its source event — a Jira transition, a GitHub commit SHA, a calendar block. Time-stamped, reproducible, immutable.</p>
-        <span class="ftag">append-only · hash-chained</span>
+      <div class="deliv">
+        <div class="deliv-ico">03</div>
+        <h3>Workpaper-ready CSV</h3>
+        <p>Engineer, project, hours, period, classification, evidence link. Pastes into your tax firm's existing Excel template — no rename.</p>
+        <span class="deliv-fmt">CSV · tax-firm schema</span>
       </div>
+      <div class="deliv">
+        <div class="deliv-ico">04</div>
+        <h3>Methodology PDF</h3>
+        <p>Two pages, plain English. Data sources, attribution rules, classification tests, human review steps. Defensible in an exam.</p>
+        <span class="deliv-fmt">PDF · 2 pages</span>
+      </div>
+    </div>
+
+    <div style="margin-top:28px;display:flex;gap:12px;flex-wrap:wrap">
+      <a class="btn-ghost" href="/sample-pack.html">Download the 10-slide sample pack →</a>
     </div>
   </section>
 </div>
 
-<!-- HUMAN + AGENT -->
-<div class="sec-band">
-  <div class="container" id="agents">
-    <section>
-      <span class="sec-label">Evidence you can defend</span>
-      <h2 class="sec-head">Every hour — <em>human or agent</em> — classified the moment it happens.</h2>
-      <p class="sec-sub">Auditors don't want a summary — they want source events. Tymr captures both sides of the modern R&amp;D workforce with the same substantiation rigor.</p>
-
-      <div class="worker-grid">
-        <div class="wcard human">
-          <div class="wcard-shape"></div>
-          <h3>Human engineers</h3>
-          <p>Hours derived from Jira transitions, GitHub commits, and calendar blocks — not timesheets. Every hour tied to a ticket, a PR, or a meeting invite.</p>
-          <ul>
-            <li>§ 174 / 350-40 / OpEx auto-classified</li>
-            <li>Source event per hour (Jira, GitHub, GCal)</li>
-            <li>Per-engineer substantiation record</li>
-            <li>Private personal view by default</li>
-          </ul>
-        </div>
-        <div class="wcard agent">
-          <div class="wcard-shape"></div>
-          <h3>AI agents</h3>
-          <p>Agent runs logged via the open Tymr Agent SDK — with model, token cost, and Jira attribution. Qualified agent compute is § 174-eligible under current IRS guidance.</p>
-          <ul>
-            <li>Token-level cost, tied to project</li>
-            <li>Works with Claude, LangChain, CrewAI</li>
-            <li>UTEv1 open event schema</li>
-            <li>Side-by-side with human substantiation</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-  </div>
-</div>
-
-<!-- LIVE CLASSIFICATION -->
-<div class="container" id="cost">
-  <section>
-    <div class="split">
-      <div>
-        <span class="sec-label">Real-time classification</span>
-        <h2 class="sec-head">Tagged <em>§ 174</em>, <em>350-40</em>, or OpEx — as it happens.</h2>
-        <p class="sec-sub">Classification runs on the stream of source events — not on a year-end reconstruction. Your preparer and auditors review receipts with source links, not a summary someone pieced together in April.</p>
-        <ul style="list-style:none;margin-top:32px;display:flex;flex-direction:column;gap:14px;padding:0">
-          <li style="display:flex;gap:14px;align-items:flex-start"><span style="width:5px;height:5px;border-radius:50%;background:var(--ink);margin-top:9px;flex-shrink:0"></span><span style="font-size:15px;color:var(--slate)">§ 174 qualified research activity — with per-engineer time log</span></li>
-          <li style="display:flex;gap:14px;align-items:flex-start"><span style="width:5px;height:5px;border-radius:50%;background:var(--ink);margin-top:9px;flex-shrink:0"></span><span style="font-size:15px;color:var(--slate)">ASC 350-40 CapEx split — application development vs. maintenance</span></li>
-          <li style="display:flex;gap:14px;align-items:flex-start"><span style="width:5px;height:5px;border-radius:50%;background:var(--ink);margin-top:9px;flex-shrink:0"></span><span style="font-size:15px;color:var(--slate)">Agent compute flagged R&amp;D-eligible under current IRS guidance</span></li>
-        </ul>
-      </div>
-      <div class="ledger-card">
-        <div class="ledger-head">
-          <span>Live session · Auth-v2 reconfig</span>
-          <span class="tag-live">§ 174</span>
-        </div>
-        <div class="ledger-rows">
-          <div class="lrow">
-            <div class="l-who"><div class="l-shape h">KE</div><span class="l-title">Platform Lead</span></div>
-            <span class="l-ref">PROJ-142</span>
-            <span class="l-amt">$22.13</span>
-          </div>
-          <div class="lrow">
-            <div class="l-who"><div class="l-shape h">MR</div><span class="l-title">Sr. Engineer</span></div>
-            <span class="l-ref">PROJ-142</span>
-            <span class="l-amt">$18.54</span>
-          </div>
-          <div class="lrow">
-            <div class="l-who"><div class="l-shape a"><span>A1</span></div><span class="l-title">Design Agent</span></div>
-            <span class="l-ref">claude-sonnet</span>
-            <span class="l-amt">$3.02</span>
-          </div>
-          <div class="lrow">
-            <div class="l-who"><div class="l-shape a"><span>A2</span></div><span class="l-title">Codegen Agent</span></div>
-            <span class="l-ref">claude-sonnet</span>
-            <span class="l-amt">$2.74</span>
-          </div>
-          <div class="lrow">
-            <div class="l-who"><div class="l-shape h">SA</div><span class="l-title">DevOps Engineer</span></div>
-            <span class="l-ref">PROJ-142</span>
-            <span class="l-amt">$16.76</span>
-          </div>
-        </div>
-        <div class="ledger-total">
-          <span class="lt-k">§ 174 accrual · 7m 11s · 5 sources</span>
-          <span class="lt-v">$63.19</span>
-        </div>
-      </div>
-    </div>
-  </section>
-</div>
-
-<!-- CORE CAPABILITIES -->
+<!-- HOW IT FITS YOUR TAX FIRM -->
 <div class="sec-band">
   <div class="container">
     <section>
-      <span class="sec-label">Core capabilities</span>
-      <h2 class="sec-head">One layer. The full audit trail.</h2>
+      <span class="sec-label">How it fits your tax firm</span>
+      <h2 class="sec-head">Your firm keeps the study. <em>Tymr is the time-evidence layer underneath.</em></h2>
+      <p class="sec-sub">Tymr is not a tax firm. We do not file your return, we do not touch Form 6765, and we do not share your firm's fees. We deliver the per-engineer time evidence your preparer already has to collect by hand — so their analysts get their evenings back and your credit study gets defensible.</p>
 
-      <div class="feat-grid">
-        <div class="fcard">
-          <span class="fnum">Floor</span>
-          <h3>Live activity canvas</h3>
-          <p>Real-time view of every engineer and agent at work — each classified as events flow in from source systems.</p>
+      <div class="fit-wrap">
+        <ul class="fit-list">
+          <li><span class="fk">Capacity</span><span class="fv">Analysts stop chasing engineers for quarterly surveys. Per-engineer, per-project hours arrive <strong>pre-classified and cited</strong>.</span></li>
+          <li><span class="fk">Defensibility</span><span class="fv">Every hour traces to a Jira transition, GitHub commit SHA, or calendar block — <strong>contemporaneous, not reconstructed</strong>.</span></li>
+          <li><span class="fk">Fee capture</span><span class="fv">Your firm keeps the full R&amp;D study engagement. We never touch the return or the fee.</span></li>
+          <li><span class="fk">Scope</span><span class="fv">Same workflow. We plug into what your firm already does — no retraining, no new tools for your analysts.</span></li>
+        </ul>
+        <div class="fit-panel">
+          <div class="fp-head">Pilot mechanics · 60 days</div>
+          <div class="fp-steps">
+            <div class="fp-step"><div class="fp-num">1</div><div class="fp-txt">Firm <strong>nominates 3–5 software clients</strong> with messy time tracking, survey fatigue, or 6-figure claims.</div></div>
+            <div class="fp-step"><div class="fp-num">2</div><div class="fp-txt">Tymr deploys as the <strong>time-evidence layer</strong> — OAuth into Jira, GitHub, and calendars. No engineer survey.</div></div>
+            <div class="fp-step"><div class="fp-num">3</div><div class="fp-txt">Firm receives the <strong>same four deliverables</strong> per client — drops into existing workpapers.</div></div>
+            <div class="fp-step"><div class="fp-num">4</div><div class="fp-txt">Joint case study, 5–10 referrals, optional <strong>"Tymr inside"</strong> standardization next year.</div></div>
+          </div>
+          <div class="fp-ask">$0 platform fee during pilot. Standardized clients land at $15–25k/year embedded in the firm's study proposal.</div>
         </div>
-        <div class="fcard">
-          <span class="fnum">SDK</span>
-          <h3>Agent Accountability SDK</h3>
-          <p>Open-source SDK (TypeScript &amp; Python) that logs every agent run — tokens, model, project — in the UTEv1 format. Works with Claude, LangChain, CrewAI.</p>
-        </div>
-        <div class="fcard">
-          <span class="fnum">§ 174</span>
-          <h3>Substantiation pack</h3>
-          <p>Per-engineer R&amp;D time log with source-event citations. The evidence artifact your tax firm needs — generated continuously, not at year-end.</p>
-        </div>
-        <div class="fcard">
-          <span class="fnum">350-40</span>
-          <h3>Journal export</h3>
-          <p>Monthly CapEx / OpEx split ready to drop into NetSuite, Sage Intacct, or QuickBooks. SOX-aligned control with full reproducibility.</p>
-        </div>
-        <div class="fcard">
-          <span class="fnum">Ledger</span>
-          <h3>Immutable event log</h3>
-          <p>Append-only record of every source event — Jira transition, GitHub commit, calendar block, agent run. Time-stamped, hash-chained, reproducible.</p>
-        </div>
-        <div class="fcard">
-          <span class="fnum">Roles</span>
-          <h3>Role-adaptive views</h3>
-          <p>CFO sees credit estimate &amp; CapEx ratio; VP Eng sees project coverage; engineers see their own private record with privacy controls.</p>
-        </div>
+      </div>
+
+      <div style="margin-top:36px;display:flex;gap:12px;flex-wrap:wrap">
+        <a class="btn-primary" href="/tax-firms.html">See the full firm offer →</a>
+        <a class="btn-ghost" href="/sample-pack.html">Download sample pack</a>
       </div>
     </section>
   </div>
@@ -702,60 +397,352 @@ footer.site-footer{padding:48px 0 56px;border-top:1px solid var(--hairline);marg
 <div class="container">
   <section>
     <span class="sec-label">Integrations</span>
-    <h2 class="sec-head">Depth, <em>not breadth.</em></h2>
-    <p class="sec-sub">We go deep on the four systems where R&amp;D actually happens — enough to substantiate every hour to an auditor. Everything else connects via webhook or the open Agent SDK.</p>
+    <h2 class="sec-head">Depth on the four systems <em>where R&amp;D actually happens.</em></h2>
+    <p class="sec-sub">Event-level ingestion — not summaries — so every hour traces to a ticket, a commit, or a meeting invite. Nothing else to install.</p>
 
     <div class="int-row">
       <span class="int-pill"><span class="idot" style="background:#2684FF"></span>Jira <span class="int-suffix">deep</span></span>
       <span class="int-pill"><span class="idot" style="background:#24292E"></span>GitHub <span class="int-suffix">deep</span></span>
       <span class="int-pill"><span class="idot" style="background:#4285F4"></span>Google Calendar <span class="int-suffix">deep</span></span>
-      <span class="int-pill"><span class="idot" style="background:#0072C6"></span>Outlook <span class="int-suffix">deep</span></span>
-      <span class="int-pill"><span class="idot" style="background:#A67512"></span>Agents (Claude, LangChain, CrewAI) <span class="int-suffix">SDK</span></span>
+      <span class="int-pill"><span class="idot" style="background:#0072C6"></span>Microsoft Calendar <span class="int-suffix">deep</span></span>
     </div>
     <div class="int-row" style="margin-top:10px">
       <span class="int-pill soon"><span class="idot" style="background:#CFCFCA"></span>NetSuite <span class="int-suffix">Q3 2026</span></span>
       <span class="int-pill soon"><span class="idot" style="background:#CFCFCA"></span>Sage Intacct <span class="int-suffix">Q3 2026</span></span>
-      <span class="int-pill soon"><span class="idot" style="background:#CFCFCA"></span>Slack <span class="int-suffix">Q3 2026</span></span>
       <span class="int-pill soon"><span class="idot" style="background:#CFCFCA"></span>Workday <span class="int-suffix">Q4 2026</span></span>
+    </div>
+
+    <div class="not-fit">
+      <span class="nf-tag">Not a fit if</span>
+      <p>You're a non-software company, under 50 engineers, have never claimed R&amp;D credits (or SR&amp;ED), or you don't work with a tax advisor on the study. We'll close the loop politely and point you at simpler tools.</p>
     </div>
   </section>
 </div>
 
-<!-- ROLES -->
+<!-- LIVE FLOOR — moved below the fold, kept for depth -->
 <div class="sec-band">
-  <div class="container" id="roles">
+  <div class="container" id="floor">
     <section>
-      <span class="sec-label">Role-adaptive UX</span>
-      <h2 class="sec-head">Three roles. <em>One</em> audit-ready source of truth.</h2>
-      <div class="role-grid">
-        <div class="rcard">
-          <div class="rtag">Engineer</div>
-          <h3>My evidence record</h3>
+      <span class="sec-label">How the evidence is built</span>
+      <h2 class="sec-head">Continuous classification. <em>Not a year-end spreadsheet.</em></h2>
+      <p class="sec-sub">Every Jira transition, GitHub commit, and calendar block is tagged for R&amp;D credit eligibility (§ 41), capitalization (§ 174), and software CapEx vs OpEx (ASC 350-40) as it happens — with human review where it matters.</p>
+
+      <div class="floor-wrap">
+        <div class="floor-card">
+          <svg viewBox="0 0 980 460" width="100%" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Tymr audit ledger: live classification of engineering activity into IRS § 174 R&amp;D, ASC 350-40 software CapEx, and OpEx">
+            <defs>
+              <linearGradient id="bgGrad" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#16181F"/>
+                <stop offset="1" stop-color="#0C0D10"/>
+              </linearGradient>
+              <linearGradient id="goldGrad" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0" stop-color="#C8962A"/>
+                <stop offset="1" stop-color="#F5C842"/>
+              </linearGradient>
+              <linearGradient id="cyanGrad" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0" stop-color="#008F7F"/>
+                <stop offset="1" stop-color="#00D9C0"/>
+              </linearGradient>
+              <radialGradient id="ledgerGlow" cx="0.5" cy="0" r="0.9">
+                <stop offset="0" stop-color="rgba(245,200,66,0.1)"/>
+                <stop offset="1" stop-color="rgba(245,200,66,0)"/>
+              </radialGradient>
+              <pattern id="dotGrid" width="20" height="20" patternUnits="userSpaceOnUse">
+                <circle cx="1" cy="1" r="0.7" fill="rgba(245,200,66,0.06)"/>
+              </pattern>
+              <filter id="softGlow" x="-50%" y="-50%" width="200%" height="200%">
+                <feGaussianBlur stdDeviation="2" result="b"/>
+                <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+              </filter>
+            </defs>
+
+            <rect width="980" height="460" fill="url(#bgGrad)"/>
+            <rect width="980" height="460" fill="url(#dotGrid)"/>
+
+            <rect x="0" y="0" width="980" height="52" fill="rgba(255,255,255,0.015)"/>
+            <line x1="0" y1="52" x2="980" y2="52" stroke="rgba(255,255,255,0.04)"/>
+            <text x="24" y="18" fill="#3A3D4E" font-family="JetBrains Mono,monospace" font-size="9" letter-spacing="0.14em">EVENT SOURCES · CLASSIFIED IN REAL TIME</text>
+
+            <g font-family="JetBrains Mono,monospace" font-size="10">
+              <g transform="translate(24,28)">
+                <rect width="128" height="18" rx="9" fill="rgba(38,132,255,0.08)" stroke="rgba(38,132,255,0.3)"/>
+                <circle cx="11" cy="9" r="2.5" fill="#2684FF"/>
+                <text x="20" y="12" fill="#8B8FA8">JIRA · 342 tickets</text>
+              </g>
+              <g transform="translate(160,28)">
+                <rect width="140" height="18" rx="9" fill="rgba(240,236,228,0.04)" stroke="rgba(240,236,228,0.15)"/>
+                <circle cx="11" cy="9" r="2.5" fill="#F0ECE4"/>
+                <text x="20" y="12" fill="#8B8FA8">GITHUB · 189 PRs</text>
+              </g>
+              <g transform="translate(308,28)">
+                <rect width="148" height="18" rx="9" fill="rgba(66,133,244,0.06)" stroke="rgba(66,133,244,0.2)"/>
+                <circle cx="11" cy="9" r="2.5" fill="#4285F4" opacity="0.75"/>
+                <text x="20" y="12" fill="#8B8FA8">GCAL · 47 meetings</text>
+              </g>
+              <g transform="translate(464,28)">
+                <rect width="148" height="18" rx="9" fill="rgba(0,114,198,0.08)" stroke="rgba(0,114,198,0.3)"/>
+                <circle cx="11" cy="9" r="2.5" fill="#0072C6"/>
+                <text x="20" y="12" fill="#8B8FA8">OUTLOOK · 38 meetings</text>
+              </g>
+              <g transform="translate(850,28)">
+                <circle cx="0" cy="9" r="3" fill="#00D9C0" filter="url(#softGlow)">
+                  <animate attributeName="opacity" values="1;0.3;1" dur="1.6s" repeatCount="indefinite"/>
+                </circle>
+                <text x="10" y="12" fill="#00D9C0" letter-spacing="0.12em">LIVE · STREAMING</text>
+              </g>
+            </g>
+
+            <g transform="translate(24,72)">
+              <rect width="540" height="372" rx="14" fill="rgba(255,255,255,0.015)" stroke="rgba(255,255,255,0.05)"/>
+              <text x="18" y="24" fill="#3A3D4E" font-family="JetBrains Mono,monospace" font-size="9" letter-spacing="0.14em">PER-ENGINEER ACTIVITY · AUTO-TAGGED</text>
+              <text x="522" y="24" text-anchor="end" fill="#3A3D4E" font-family="JetBrains Mono,monospace" font-size="9">12 engineers · 94% classified</text>
+
+              <g transform="translate(24,44)">
+                <circle cx="22" cy="22" r="20" fill="url(#goldGrad)"/>
+                <text x="22" y="26" text-anchor="middle" fill="#0C0D10" font-family="JetBrains Mono,monospace" font-size="10" font-weight="700">KE</text>
+                <rect x="2" y="48" width="40" height="14" rx="7" fill="rgba(245,200,66,0.12)" stroke="rgba(245,200,66,0.35)"/>
+                <text x="22" y="58" text-anchor="middle" fill="#F5C842" font-family="JetBrains Mono,monospace" font-size="8" font-weight="600">§ 174</text>
+              </g>
+              <g transform="translate(84,44)">
+                <circle cx="22" cy="22" r="20" fill="url(#goldGrad)"/>
+                <text x="22" y="26" text-anchor="middle" fill="#0C0D10" font-family="JetBrains Mono,monospace" font-size="10" font-weight="700">MR</text>
+                <rect x="2" y="48" width="40" height="14" rx="7" fill="rgba(245,200,66,0.12)" stroke="rgba(245,200,66,0.35)"/>
+                <text x="22" y="58" text-anchor="middle" fill="#F5C842" font-family="JetBrains Mono,monospace" font-size="8" font-weight="600">§ 174</text>
+              </g>
+              <g transform="translate(144,44)">
+                <circle cx="22" cy="22" r="20" fill="url(#cyanGrad)"/>
+                <text x="22" y="26" text-anchor="middle" fill="#025C52" font-family="JetBrains Mono,monospace" font-size="10" font-weight="700">JL</text>
+                <rect x="-2" y="48" width="48" height="14" rx="7" fill="rgba(0,217,192,0.1)" stroke="rgba(0,217,192,0.35)"/>
+                <text x="22" y="58" text-anchor="middle" fill="#00D9C0" font-family="JetBrains Mono,monospace" font-size="8" font-weight="600">350-40</text>
+              </g>
+              <g transform="translate(204,44)">
+                <circle cx="22" cy="22" r="20" fill="#3A3D4E"/>
+                <text x="22" y="26" text-anchor="middle" fill="#8B8FA8" font-family="JetBrains Mono,monospace" font-size="10" font-weight="600">SA</text>
+                <rect x="4" y="48" width="36" height="14" rx="7" fill="rgba(255,107,85,0.1)" stroke="rgba(255,107,85,0.3)"/>
+                <text x="22" y="58" text-anchor="middle" fill="#FF6B55" font-family="JetBrains Mono,monospace" font-size="8" font-weight="600">OPX</text>
+              </g>
+              <g transform="translate(264,44)">
+                <circle cx="22" cy="22" r="20" fill="url(#goldGrad)"/>
+                <text x="22" y="26" text-anchor="middle" fill="#0C0D10" font-family="JetBrains Mono,monospace" font-size="10" font-weight="700">OP</text>
+                <rect x="2" y="48" width="40" height="14" rx="7" fill="rgba(245,200,66,0.12)" stroke="rgba(245,200,66,0.35)"/>
+                <text x="22" y="58" text-anchor="middle" fill="#F5C842" font-family="JetBrains Mono,monospace" font-size="8" font-weight="600">§ 174</text>
+              </g>
+              <g transform="translate(324,44)">
+                <circle cx="22" cy="22" r="20" fill="url(#goldGrad)"/>
+                <text x="22" y="26" text-anchor="middle" fill="#0C0D10" font-family="JetBrains Mono,monospace" font-size="10" font-weight="700">TR</text>
+                <rect x="-2" y="48" width="48" height="14" rx="7" fill="rgba(0,217,192,0.1)" stroke="rgba(0,217,192,0.35)"/>
+                <text x="22" y="58" text-anchor="middle" fill="#00D9C0" font-family="JetBrains Mono,monospace" font-size="8" font-weight="600">350-40</text>
+              </g>
+              <g transform="translate(384,44)">
+                <circle cx="22" cy="22" r="20" fill="url(#goldGrad)"/>
+                <text x="22" y="26" text-anchor="middle" fill="#0C0D10" font-family="JetBrains Mono,monospace" font-size="10" font-weight="700">NP</text>
+                <rect x="2" y="48" width="40" height="14" rx="7" fill="rgba(245,200,66,0.12)" stroke="rgba(245,200,66,0.35)"/>
+                <text x="22" y="58" text-anchor="middle" fill="#F5C842" font-family="JetBrains Mono,monospace" font-size="8" font-weight="600">§ 174</text>
+              </g>
+
+              <g transform="translate(24,126)">
+                <circle cx="22" cy="22" r="20" fill="url(#goldGrad)" opacity="0.85"/>
+                <text x="22" y="26" text-anchor="middle" fill="#0C0D10" font-family="JetBrains Mono,monospace" font-size="10" font-weight="700">CB</text>
+                <rect x="2" y="48" width="40" height="14" rx="7" fill="rgba(245,200,66,0.12)" stroke="rgba(245,200,66,0.35)"/>
+                <text x="22" y="58" text-anchor="middle" fill="#F5C842" font-family="JetBrains Mono,monospace" font-size="8" font-weight="600">§ 174</text>
+              </g>
+              <g transform="translate(84,126)">
+                <circle cx="22" cy="22" r="20" fill="url(#goldGrad)"/>
+                <text x="22" y="26" text-anchor="middle" fill="#0C0D10" font-family="JetBrains Mono,monospace" font-size="10" font-weight="700">YK</text>
+                <rect x="-2" y="48" width="48" height="14" rx="7" fill="rgba(0,217,192,0.1)" stroke="rgba(0,217,192,0.35)"/>
+                <text x="22" y="58" text-anchor="middle" fill="#00D9C0" font-family="JetBrains Mono,monospace" font-size="8" font-weight="600">350-40</text>
+              </g>
+              <g transform="translate(144,126)">
+                <circle cx="22" cy="22" r="20" fill="#3A3D4E"/>
+                <text x="22" y="26" text-anchor="middle" fill="#8B8FA8" font-family="JetBrains Mono,monospace" font-size="10" font-weight="600">DK</text>
+                <rect x="4" y="48" width="36" height="14" rx="7" fill="rgba(255,107,85,0.1)" stroke="rgba(255,107,85,0.3)"/>
+                <text x="22" y="58" text-anchor="middle" fill="#FF6B55" font-family="JetBrains Mono,monospace" font-size="8" font-weight="600">OPX</text>
+              </g>
+              <g transform="translate(204,126)">
+                <circle cx="22" cy="22" r="20" fill="url(#goldGrad)"/>
+                <text x="22" y="26" text-anchor="middle" fill="#0C0D10" font-family="JetBrains Mono,monospace" font-size="10" font-weight="700">FO</text>
+                <rect x="2" y="48" width="40" height="14" rx="7" fill="rgba(245,200,66,0.12)" stroke="rgba(245,200,66,0.35)"/>
+                <text x="22" y="58" text-anchor="middle" fill="#F5C842" font-family="JetBrains Mono,monospace" font-size="8" font-weight="600">§ 174</text>
+              </g>
+              <g transform="translate(264,126)">
+                <circle cx="22" cy="22" r="20" fill="url(#goldGrad)"/>
+                <text x="22" y="26" text-anchor="middle" fill="#0C0D10" font-family="JetBrains Mono,monospace" font-size="10" font-weight="700">RL</text>
+                <rect x="2" y="48" width="40" height="14" rx="7" fill="rgba(245,200,66,0.12)" stroke="rgba(245,200,66,0.35)"/>
+                <text x="22" y="58" text-anchor="middle" fill="#F5C842" font-family="JetBrains Mono,monospace" font-size="8" font-weight="600">§ 174</text>
+              </g>
+
+              <g transform="translate(18,208)" font-family="JetBrains Mono,monospace" font-size="9">
+                <rect x="0" y="0" width="44" height="14" rx="7" fill="rgba(245,200,66,0.12)" stroke="rgba(245,200,66,0.35)"/>
+                <text x="22" y="10" text-anchor="middle" fill="#F5C842" font-weight="600">§ 174</text>
+                <text x="52" y="10" fill="#8B8FA8">R&amp;D qualified</text>
+                <g transform="translate(160,0)">
+                  <rect x="0" y="0" width="52" height="14" rx="7" fill="rgba(0,217,192,0.1)" stroke="rgba(0,217,192,0.35)"/>
+                  <text x="26" y="10" text-anchor="middle" fill="#00D9C0" font-weight="600">350-40</text>
+                </g>
+                <text x="220" y="10" fill="#8B8FA8">Software CapEx</text>
+                <g transform="translate(340,0)">
+                  <rect x="0" y="0" width="40" height="14" rx="7" fill="rgba(255,107,85,0.1)" stroke="rgba(255,107,85,0.3)"/>
+                  <text x="20" y="10" text-anchor="middle" fill="#FF6B55" font-weight="600">OPX</text>
+                </g>
+                <text x="386" y="10" fill="#8B8FA8">OpEx</text>
+              </g>
+
+              <g transform="translate(18,252)">
+                <text x="0" y="0" fill="#3A3D4E" font-family="JetBrains Mono,monospace" font-size="9" letter-spacing="0.12em">SOURCE EVENT STREAM → WORKPAPER</text>
+                <line x1="0" y1="12" x2="504" y2="12" stroke="rgba(245,200,66,0.12)" stroke-dasharray="3 4"/>
+                <circle cx="0" cy="12" r="3.5" fill="#F5C842" filter="url(#softGlow)">
+                  <animate attributeName="cx" from="0" to="504" dur="3.2s" repeatCount="indefinite"/>
+                  <animate attributeName="opacity" values="0;1;1;0" dur="3.2s" repeatCount="indefinite"/>
+                </circle>
+                <circle cx="0" cy="12" r="3.5" fill="#00D9C0" filter="url(#softGlow)">
+                  <animate attributeName="cx" from="0" to="504" dur="4s" begin="1s" repeatCount="indefinite"/>
+                  <animate attributeName="opacity" values="0;1;1;0" dur="4s" begin="1s" repeatCount="indefinite"/>
+                </circle>
+                <circle cx="0" cy="12" r="3.5" fill="#F5C842" filter="url(#softGlow)">
+                  <animate attributeName="cx" from="0" to="504" dur="3.6s" begin="2.1s" repeatCount="indefinite"/>
+                  <animate attributeName="opacity" values="0;1;1;0" dur="3.6s" begin="2.1s" repeatCount="indefinite"/>
+                </circle>
+              </g>
+
+              <g transform="translate(18,292)" font-family="JetBrains Mono,monospace" font-size="10">
+                <text x="0" y="0" fill="#8B8FA8">PROJ-142 · KE · 2.4h · Jira + 3 commits</text>
+                <text x="500" y="0" text-anchor="end" fill="#F5C842">§ 174</text>
+              </g>
+              <g transform="translate(18,312)" font-family="JetBrains Mono,monospace" font-size="10">
+                <text x="0" y="0" fill="#8B8FA8">PROJ-091 · JL · 1.8h · GitHub PR #482</text>
+                <text x="500" y="0" text-anchor="end" fill="#00D9C0">350-40</text>
+              </g>
+              <g transform="translate(18,332)" font-family="JetBrains Mono,monospace" font-size="10">
+                <text x="0" y="0" fill="#8B8FA8">INFRA-014 · SA · 0.9h · Jira + PagerDuty</text>
+                <text x="500" y="0" text-anchor="end" fill="#FF6B55">OPX</text>
+              </g>
+            </g>
+
+            <g transform="translate(580,72)">
+              <rect width="376" height="372" rx="14" fill="rgba(245,200,66,0.02)" stroke="rgba(245,200,66,0.14)"/>
+              <rect width="376" height="140" rx="14" fill="url(#ledgerGlow)"/>
+              <text x="18" y="24" fill="rgba(245,200,66,0.65)" font-family="JetBrains Mono,monospace" font-size="9" letter-spacing="0.14em">WORKPAPER · Q2 2026</text>
+              <text x="358" y="24" text-anchor="end" fill="#3A3D4E" font-family="JetBrains Mono,monospace" font-size="9">Ready for tax firm</text>
+
+              <g transform="translate(18,48)">
+                <text x="0" y="0" fill="#8B8FA8" font-family="Inter,sans-serif" font-size="11">R&amp;D credit — qualified hours</text>
+                <text x="340" y="0" text-anchor="end" fill="#F5C842" font-family="JetBrains Mono,monospace" font-size="14" font-weight="500">$148,430</text>
+                <rect x="0" y="10" width="340" height="5" rx="2.5" fill="#1E2029"/>
+                <rect x="0" y="10" width="282" height="5" rx="2.5" fill="url(#goldGrad)"/>
+                <text x="0" y="30" fill="#3A3D4E" font-family="JetBrains Mono,monospace" font-size="9">412.3 hrs · 9 engineers · cited</text>
+              </g>
+
+              <g transform="translate(18,104)">
+                <text x="0" y="0" fill="#8B8FA8" font-family="Inter,sans-serif" font-size="11">ASC 350-40 — software CapEx</text>
+                <text x="340" y="0" text-anchor="end" fill="#00D9C0" font-family="JetBrains Mono,monospace" font-size="14" font-weight="500">$64,210</text>
+                <rect x="0" y="10" width="340" height="5" rx="2.5" fill="#1E2029"/>
+                <rect x="0" y="10" width="168" height="5" rx="2.5" fill="url(#cyanGrad)"/>
+                <text x="0" y="30" fill="#3A3D4E" font-family="JetBrains Mono,monospace" font-size="9">186.5 hrs · post-feasibility builds</text>
+              </g>
+
+              <g transform="translate(18,160)">
+                <text x="0" y="0" fill="#8B8FA8" font-family="Inter,sans-serif" font-size="11">Operating expense</text>
+                <text x="340" y="0" text-anchor="end" fill="#F0ECE4" font-family="JetBrains Mono,monospace" font-size="14">$32,810</text>
+                <rect x="0" y="10" width="340" height="5" rx="2.5" fill="#1E2029"/>
+                <rect x="0" y="10" width="92" height="5" rx="2.5" fill="#5A5E78"/>
+                <text x="0" y="30" fill="#3A3D4E" font-family="JetBrains Mono,monospace" font-size="9">94.1 hrs · maintenance, bug fixes</text>
+              </g>
+
+              <line x1="18" y1="212" x2="358" y2="212" stroke="rgba(245,200,66,0.18)"/>
+
+              <text x="18" y="236" fill="#8B8FA8" font-family="JetBrains Mono,monospace" font-size="10" letter-spacing="0.1em">ESTIMATED R&amp;D CREDIT · FED + CA</text>
+              <text x="18" y="286" fill="#F5C842" font-family="Inter,sans-serif" font-weight="600" font-size="44" letter-spacing="-0.02em">$38,160</text>
+              <text x="18" y="306" fill="#3A3D4E" font-family="JetBrains Mono,monospace" font-size="9">14% effective rate on qualified expenses</text>
+
+              <g transform="translate(18,324)">
+                <rect width="340" height="30" rx="8" fill="rgba(0,217,192,0.06)" stroke="rgba(0,217,192,0.25)"/>
+                <circle cx="14" cy="15" r="3" fill="#00D9C0">
+                  <animate attributeName="opacity" values="1;0.3;1" dur="1.8s" repeatCount="indefinite"/>
+                </circle>
+                <text x="26" y="19" fill="#00D9C0" font-family="JetBrains Mono,monospace" font-size="10">Evidence trail ready · 0 engineer surveys</text>
+              </g>
+            </g>
+          </svg>
+          <div class="floor-caption">
+            <span>Anonymized — representative of a 12-engineer team's quarterly pack</span>
+            <span class="live">Streaming from Jira, GitHub, Google &amp; Microsoft Calendar</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+
+<!-- CORE CAPABILITIES (outcome-framed) -->
+<div class="container">
+  <section>
+    <span class="sec-label">Under the hood</span>
+    <h2 class="sec-head">One layer. <em>The full audit trail.</em></h2>
+
+    <div class="feat-grid">
+      <div class="fcard">
+        <span class="fnum">01 / § 41</span>
+        <h3>R&amp;D credit eligibility</h3>
+        <p>Each engineer-hour tagged against the four-part test with a source event behind every minute — defensible in a § 41 exam.</p>
+      </div>
+      <div class="fcard">
+        <span class="fnum">02 / § 174</span>
+        <h3>Capitalization evidence</h3>
+        <p>Per-project capitalizable software development hours, ready for amortization schedules your preparer already runs.</p>
+      </div>
+      <div class="fcard">
+        <span class="fnum">03 / ASC 350-40</span>
+        <h3>CapEx vs OpEx split</h3>
+        <p>Application-development work separated from post-launch maintenance. Journal-entry ready for NetSuite / Sage Intacct / QuickBooks.</p>
+      </div>
+      <div class="fcard">
+        <span class="fnum">04 / Lineage</span>
+        <h3>Source-event citations</h3>
+        <p>Every hour cites the Jira transition, GitHub commit SHA, or calendar block it came from. Hash-chained and reproducible.</p>
+      </div>
+      <div class="fcard">
+        <span class="fnum">05 / Review</span>
+        <h3>Human-in-the-loop</h3>
+        <p>Auto-classification plus lightweight reviewer overrides. No quarterly engineer survey — ever.</p>
+      </div>
+      <div class="fcard">
+        <span class="fnum">06 / Export</span>
+        <h3>Workpaper-ready CSV</h3>
+        <p>Columns match your tax firm's existing Excel template. Paste, don't rename. Every row cites its source.</p>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- AI AGENTS — demoted to roadmap/future-state band -->
+<div class="sec-band">
+  <div class="container" id="agents">
+    <section>
+      <span class="sec-label">Roadmap · already in production</span>
+      <h2 class="sec-head">Every engineering hour — <em>human or agent</em> — covered.</h2>
+      <p class="sec-sub">AI agent compute is <strong>§ 174-eligible under current IRS guidance</strong>, and most tax firms haven't figured out how to claim it yet. Tymr logs agent runs side-by-side with engineer hours, so when the guidance matures your substantiation is already on file. This is upside, not the core pilot.</p>
+
+      <div class="worker-grid">
+        <div class="wcard human">
+          <div class="wcard-shape"></div>
+          <h3>Human engineers — today</h3>
+          <p>Hours derived from Jira transitions, GitHub commits, and calendar blocks — not timesheets. Every hour tied to a ticket, a PR, or a meeting invite.</p>
           <ul>
-            <li>My qualified R&amp;D hours</li>
-            <li>My project + ticket mix</li>
-            <li>Source events behind each hour</li>
-            <li>Privacy &amp; visibility controls</li>
+            <li>§ 41 / § 174 / ASC 350-40 auto-classified</li>
+            <li>Source event cited per hour</li>
+            <li>Per-engineer substantiation record</li>
+            <li>Private personal view by default</li>
           </ul>
         </div>
-        <div class="rcard">
-          <div class="rtag">VP Engineering</div>
-          <h3>Team coverage</h3>
+        <div class="wcard agent">
+          <div class="wcard-shape"></div>
+          <h3>AI agents — already logged</h3>
+          <p>Agent runs logged via the open Tymr Agent SDK — model, token cost, Jira attribution. Works with Claude, LangChain, CrewAI.</p>
           <ul>
-            <li>Classification coverage %</li>
-            <li>Project § 174 / 350-40 mix</li>
-            <li>Evidence gaps to close</li>
-            <li>Capacity &amp; utilization signals</li>
-          </ul>
-        </div>
-        <div class="rcard">
-          <div class="rtag">CFO / Tax</div>
-          <h3>Credit &amp; CapEx</h3>
-          <ul>
-            <li>Estimated R&amp;D credit (Fed + state)</li>
-            <li>Monthly CapEx / OpEx split</li>
-            <li>Journal-entry export</li>
-            <li>Audit-ready substantiation pack</li>
+            <li>Token-level cost, tied to project</li>
+            <li>UTEv1 open event schema</li>
+            <li>Side-by-side with human substantiation</li>
+            <li>Not in scope for the design-partner pilot</li>
           </ul>
         </div>
       </div>
@@ -763,14 +750,22 @@ footer.site-footer{padding:48px 0 56px;border-top:1px solid var(--hairline);marg
   </div>
 </div>
 
-<!-- FINAL CTA -->
+<!-- FINAL CTA — dual-path mirror -->
 <div class="container">
   <div class="cta-block">
-    <h2>Substantiate your R&amp;D credit and CapEx — <em>continuously.</em></h2>
-    <p>Design-partner pilots are open for 100–500 person engineering orgs. Free for 90 days; your tax firm keeps the credit-study engagement.</p>
-    <div class="acts">
-      <a class="btn-primary" href="https://calendly.com/tymrlogic/demo">Request a pilot</a>
-      <a class="btn-ghost" href="/rd-credit-calculator.html">Estimate your credit</a>
+    <h2>Two pilots. <em>One no-engineer-survey bar.</em></h2>
+    <p>We are opening 10 design-partner slots in the Q2 2026 cohort — split between CFO-led pilots and R&amp;D tax firm pilots. Both are free or close to it. Both ship the same four deliverables.</p>
+    <div class="cta-pair">
+      <a class="cta-slot" href="/cfo.html">
+        <span class="cs-who">For CFOs &amp; Controllers</span>
+        <span class="cs-title">60-day pilot. Risk-reversed. $0 if your tax firm doesn't sign off.</span>
+        <span class="cs-go">Start the CFO pilot →</span>
+      </a>
+      <a class="cta-slot" href="/tax-firms.html">
+        <span class="cs-who">For R&amp;D tax firms</span>
+        <span class="cs-title">Pilot on 3–5 software clients. You keep your study fees. We stay underneath.</span>
+        <span class="cs-go">See the firm offer →</span>
+      </a>
     </div>
   </div>
 </div>
@@ -784,21 +779,22 @@ footer.site-footer{padding:48px 0 56px;border-top:1px solid var(--hairline);marg
           <div class="logo-mark">T</div>
           <span class="logo-name">Ty<span class="gr">mr</span></span>
         </a>
-        <p class="footer-tag">The labor-cost system of record for R&amp;D credits and software CapEx.</p>
+        <p class="footer-tag">Audit-ready R&amp;D credits and software CapEx. No engineer surveys.</p>
       </div>
       <div class="footer-cols">
         <div class="footer-col">
-          <h4>Product</h4>
-          <a href="/rd-credit-calculator.html">Calculator</a>
+          <h4>Offer</h4>
+          <a href="/cfo.html">For CFOs</a>
+          <a href="/tax-firms.html">For tax firms</a>
+          <a href="/sample-pack.html">Sample pack</a>
           <a href="/pricing.html">Pricing</a>
-          <a href="/changelog.html">Changelog</a>
-          <a href="/utev1.html">UTEv1 spec</a>
         </div>
         <div class="footer-col">
-          <h4>Compare</h4>
+          <h4>Product</h4>
+          <a href="/rd-credit-calculator.html">Calculator</a>
+          <a href="/utev1.html">UTEv1 spec</a>
+          <a href="/changelog.html">Changelog</a>
           <a href="/vs/tempo.html">vs Tempo</a>
-          <a href="/vs/timely.html">vs Timely</a>
-          <a href="/vs/memory.html">vs Memory</a>
         </div>
         <div class="footer-col">
           <h4>Company</h4>
@@ -811,7 +807,7 @@ footer.site-footer{padding:48px 0 56px;border-top:1px solid var(--hairline);marg
     </div>
     <div class="footer-bottom">
       <span class="footer-copy">tymrlogic.com · © 2026 Tymr</span>
-      <span class="footer-copy">Audit-ready labor-cost layer</span>
+      <span class="footer-copy">Audit-ready · no engineer surveys</span>
     </div>
   </div>
 </footer>
