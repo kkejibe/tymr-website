@@ -4,15 +4,15 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Pricing — Tymr</title>
-<meta name="description" content="Design-partner pilots for US/Canadian software companies and R&D tax firms. One number, one year, one use case — priced on the audit-ready R&D + CapEx pack we deliver."/>
+<meta name="description" content="One flat fee for the 2026 design-partner cohort. Tiered seats after. CFO design partner, R&D tax firm pilot, engineering leader walkthrough — and the seat-based tiers Tymr lands on once we standardize."/>
 <meta property="og:title" content="Pricing — Tymr"/>
-<meta property="og:description" content="Design-partner pilots. Flat, simple, risk-reversed. No seat math on early sales calls."/>
+<meta property="og:description" content="One flat fee for the cohort. Tiered seats after. Risk-reversed."/>
 <meta property="og:type" content="website"/>
 <meta property="og:url" content="https://tymrlogic.com/pricing"/>
 <meta property="og:image" content="https://tymrlogic.com/og.png"/>
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:title" content="Pricing — Tymr"/>
-<meta name="twitter:description" content="Design-partner pilots. Flat, simple, risk-reversed."/>
+<meta name="twitter:description" content="One flat fee for the cohort. Tiered seats after."/>
 <link rel="icon" type="image/png" href="/favicon.png"/>
 <link rel="apple-touch-icon" href="/apple-touch-icon.png"/>
 <link rel="manifest" href="/site.webmanifest"/>
@@ -31,16 +31,40 @@
 .risk-reversal strong{font-weight:550}
 .risk-dot{width:6px;height:6px;border-radius:50%;background:var(--accent);flex-shrink:0}
 
-.price-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:32px}
-@media(max-width:760px){.price-grid{grid-template-columns:1fr}}
+.price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:32px}
+@media(max-width:980px){.price-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:680px){.price-grid{grid-template-columns:1fr}}
 
-.future-card{
-  margin-top:36px;padding:24px 26px;border:1px dashed var(--hairline-strong);border-radius:14px;
-  background:var(--bg);
+/* AFTER-THE-COHORT TIER GRID */
+.tier-section{margin-top:56px;padding-top:48px;border-top:1px solid var(--hairline)}
+.tier-section h2{margin-bottom:8px}
+.tier-section p.tier-sub{color:var(--slate);font-size:15px;line-height:1.55;max-width:640px;margin-bottom:12px}
+.tier-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:32px}
+@media(max-width:1080px){.tier-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.tier-grid{grid-template-columns:1fr}}
+.tier{
+  background:var(--bg);border:1px solid var(--hairline);border-radius:12px;
+  padding:24px;display:flex;flex-direction:column;gap:10px;
 }
-.future-card .fc-tag{font-family:var(--font-m);font-size:10px;letter-spacing:.14em;color:var(--slate);text-transform:uppercase;margin-bottom:10px}
-.future-card h3{font-family:var(--font-h);font-weight:600;font-size:17px;color:var(--ink);margin-bottom:8px;letter-spacing:-0.01em}
-.future-card p{font-size:14px;color:var(--slate);line-height:1.55;margin:0}
+.tier .tier-name{font-family:var(--font-h);font-weight:600;font-size:15px;color:var(--ink);letter-spacing:-0.01em}
+.tier .tier-price{font-family:var(--font-h);font-weight:600;font-size:26px;color:var(--ink);letter-spacing:-0.02em;line-height:1.1}
+.tier .tier-price small{font-family:var(--font-b);font-size:12px;color:var(--slate);font-weight:400;margin-left:6px}
+.tier .tier-tag{
+  display:inline-flex;align-items:center;font-family:var(--font-m);font-size:10px;
+  letter-spacing:.12em;text-transform:uppercase;color:var(--accent);
+}
+.tier .tier-summary{font-family:var(--font-h);font-weight:550;font-size:14px;color:var(--ink);letter-spacing:-0.01em;line-height:1.3}
+.tier p{font-size:13px;color:var(--slate);line-height:1.55;margin:0}
+.tier .tier-note{
+  margin-top:auto;padding-top:14px;border-top:1px solid var(--hairline);
+  font-family:var(--font-m);font-size:11px;color:var(--slate-dim);letter-spacing:.04em;line-height:1.5;
+}
+
+.cohort-footer{
+  margin-top:24px;padding:18px 22px;border:1px dashed var(--hairline-strong);border-radius:12px;
+  font-size:13px;color:var(--slate);line-height:1.55;background:var(--bg-warm);
+}
+.cohort-footer strong{color:var(--ink);font-weight:550}
 
 .faq-block{margin-top:48px}
 .faq-block h2{margin-bottom:8px}
@@ -59,6 +83,7 @@
       <ul class="nav-links">
         <li><a href="/cfo.html">For CFOs</a></li>
         <li><a href="/tax-firms.html">For tax firms</a></li>
+        <li><a href="/engineering.html">Engineering</a></li>
         <li><a href="/sample-pack.html">Sample pack</a></li>
         <li><a href="/rd-credit-calculator.html">Calculator</a></li>
         <li><a href="/pricing.html" class="active">Pricing</a></li>
@@ -70,9 +95,9 @@
 
 <div class="container">
   <div class="page-head">
-    <div class="eyebrow">PRICING · 2026 DESIGN PARTNERS</div>
-    <h1>One flat fee. <em>No seat math.</em></h1>
-    <p class="lede">We're in the design-partner phase for 2026. Pricing is a single flat number — scoped to what you get (the four files), not how many seats you have. No tiers, no usage meters, no lock-in.</p>
+    <div class="eyebrow">PRICING · 2026 DESIGN-PARTNER COHORT</div>
+    <h1>One flat fee for the cohort. <em>Tiered seats after.</em></h1>
+    <p class="lede">We're running the 2026 design-partner cohort flat — same fee, same pack, same risk reversal. After we standardize across 5–10 customers, seat-based pricing kicks in. Below: what's available now, and where pricing lands.</p>
     <div class="risk-reversal">
       <span class="risk-dot"></span>
       <span>Your tax firm signs off <strong>before you pay</strong>. If the pack isn't exam-ready, you owe nothing.</span>
@@ -90,8 +115,8 @@
         <ul class="price-list">
           <li>60-day pilot on one engineering group</li>
           <li>Four deliverables — R&amp;D credit uplift PDF, CapEx vs OpEx audit pack, workpaper-ready CSV, 2-page methodology PDF</li>
-          <li>Jira + GitHub + Google/Microsoft Calendar event-level ingest</li>
-          <li>Continuous classification (§ 41 / § 174 / ASC 350-40)</li>
+          <li>Jira · GitHub · Google Calendar · Microsoft Calendar · @tymr/agent-events</li>
+          <li>Continuous classification — § 174 · 350-40 · OpEx</li>
           <li>Weekly check-in with founder</li>
           <li><strong>Risk reversal:</strong> $0 if your tax firm doesn't sign off on the pack as exam-ready</li>
           <li>First cohort: <strong>free in exchange for a joint case study &amp; reference rights</strong></li>
@@ -111,20 +136,75 @@
           <li>Your firm keeps 100% of the R&amp;D study fees</li>
           <li>Per-engineer time + § 41/§ 174 tags + workpaper-ready CSV</li>
           <li>Drops into your existing workpaper template — no rename</li>
-          <li>Asks from your firm: joint case study, 5–10 referrals, optional standardization next cycle</li>
+          <li>Asks: joint case study, 5–10 referrals, optional standardization next cycle</li>
           <li>Post-pilot: <strong>$15–25K per client per year</strong>, embedded in your firm's study proposal</li>
         </ul>
         <div class="price-cta">
           <a href="/tax-firms.html" class="btn-primary" style="width:100%">See the firm offer</a>
         </div>
       </div>
+
+      <div class="price-card featured">
+        <div class="price-name">Engineering leader walkthrough <span class="tag tag-amber">Joint</span></div>
+        <div class="price-note">VPs of Engineering, CTOs, Eng Directors.</div>
+        <div class="price-amount">$0<small>walkthrough</small></div>
+        <div class="price-divider"></div>
+        <ul class="price-list">
+          <li>Sit between your CFO and your tax firm — same 30-minute session</li>
+          <li>Operating layer for your team — capacity, agent ROI, meeting cost, incident cost</li>
+          <li>Audit pack walkthrough for your finance lead</li>
+          <li>Pilots run through the <strong>CFO design-partner offer</strong> — same risk reversal</li>
+          <li>Privacy by default — IC-private, manager-team optional, org-wide opt-in</li>
+          <li>$0 if your engineering team can't see the value within 60 days</li>
+        </ul>
+        <div class="price-cta">
+          <a href="/engineering.html" class="btn-primary" style="width:100%">Book the joint walkthrough</a>
+        </div>
+      </div>
     </div>
 
-    <div class="future-card">
-      <div class="fc-tag">Future state · not for the design-partner phase</div>
-      <h3>Seat-based pricing lands after the 2026 cohort.</h3>
-      <p>Once the pilots wrap and we've standardized the pack across 5–10 customers, we'll publish seat-based tiers for self-serve adoption. Design-partner pricing is grandfathered for the 2026 cohort. If you're looking at us now, we'd rather do one flat-fee year than negotiate seat math.</p>
-    </div>
+    <section class="tier-section">
+      <h2>After the 2026 cohort — where pricing lands</h2>
+      <p class="tier-sub">These are the seat-based tiers Tymr lands on after the design-partner cohort graduates. Cohort partners convert at a discount.</p>
+
+      <div class="tier-grid">
+        <div class="tier">
+          <span class="tier-tag">Starter</span>
+          <div class="tier-price">$0<small>forever</small></div>
+          <div class="tier-summary">My Time. Personal time record.</div>
+          <p>Free, forever. Private by default. No reports, no audit features.</p>
+          <span class="tier-note">For every engineer in the org who wants their own time visible to themselves.</span>
+        </div>
+
+        <div class="tier">
+          <span class="tier-tag">Professional</span>
+          <div class="tier-price">$22<small>seat / month</small></div>
+          <div class="tier-summary">Cost &amp; Utilization. The tier finance buys.</div>
+          <p>CapEx vs OpEx classification at the source. R&amp;D credit and CapEx audit pack export — PDF, CSV, methodology, lineage.</p>
+          <span class="tier-note">Jira · GitHub · Google Calendar · Microsoft Calendar.</span>
+        </div>
+
+        <div class="tier">
+          <span class="tier-tag">Workforce Intelligence</span>
+          <div class="tier-price">+ $10<small>seat / month</small></div>
+          <div class="tier-summary">The operating layer. Optional, opt-in.</div>
+          <p>Live floor view of humans and AI agents. Per-meeting cost ticker. Incident cost burn. Capacity &amp; allocation analytics. AI agent visibility (org-flag opt-in).</p>
+          <span class="tier-note">Add-on to Professional. Default-off, opt-in per org.</span>
+        </div>
+
+        <div class="tier">
+          <span class="tier-tag">Enterprise</span>
+          <div class="tier-price">Custom</div>
+          <div class="tier-summary">@tymr/agent-events SDK. White-glove.</div>
+          <p>White-glove onboarding for instrumenting your own agents. SSO/SCIM. DCAA audit trail (Phase 2, Q4 2026). Workday write-back (post-certification). Dedicated CSM.</p>
+          <span class="tier-note">For orgs running custom agent stacks or DCAA-bound contracts.</span>
+        </div>
+      </div>
+
+      <div class="cohort-footer">
+        <strong>Cohort partners lock in 50% off Professional and free Workforce Intelligence for year one</strong> of the standardized tiers.
+      </div>
+    </section>
 
     <section>
       <h2>What every design-partner pilot includes</h2>
@@ -163,12 +243,16 @@
       <p class="faq-q">Why not seat-based pricing now?</p>
       <p class="faq-a">Seat math puts the customer on defense during a design-partner pilot. "Is it 50 engineers or 75? Do observers count?" We'd rather spend that energy on making the pack defensible. Seat-based tiers come once the product is standardized.</p>
 
+      <p class="faq-q">Does Workforce Intelligence default to org-wide visibility?</p>
+      <p class="faq-a">No. Default visibility across every tier is private — the IC owns their record. Team-scope is manager opt-in. Full-floor org visibility is a per-org flag, off by default. EU Works Council–compatible.</p>
+
       <p class="faq-q">What happens after the pilot?</p>
-      <p class="faq-a">Three paths. (1) Roll wider — flat annual engagement across your whole engineering org. (2) Embed into your tax firm's study proposal as a standardized line item. (3) Walk away with your files — no lock-in, no exit fees.</p>
+      <p class="faq-a">Three paths. (1) Roll wider — convert to the seat-based Professional tier (cohort partners at 50% off). (2) Embed into your tax firm's study proposal as a standardized line item. (3) Walk away with your files — no lock-in, no exit fees.</p>
     </section>
 
     <div class="cta-inline">
       <a href="/cfo.html" class="btn-primary">Start the CFO pilot</a>
+      <a href="/engineering.html" class="btn-ghost">Engineering walkthrough →</a>
       <a href="/tax-firms.html" class="btn-ghost">Firm pilot →</a>
     </div>
   </div>
@@ -185,6 +269,7 @@
         <div class="footer-links">
           <a href="/cfo.html">For CFOs</a>
           <a href="/tax-firms.html">For tax firms</a>
+          <a href="/engineering.html">Engineering</a>
           <a href="/sample-pack.html">Sample pack</a>
           <a href="/rd-credit-calculator.html">Calculator</a>
           <a href="/utev1.html">UTEv1</a>
