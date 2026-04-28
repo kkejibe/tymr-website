@@ -3,17 +3,17 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Tymr — Time tracking for engineering teams. Without the timesheets.</title>
-<meta name="description" content="Tymr auto-aggregates Jira, GitHub, and calendar activity into clean per-engineer, per-project hours. Finance uses the same data for R&D credits, software CapEx, and audit trails — no timesheets, no surveys."/>
+<title>Tymr — Workforce intelligence for humans and AI agents. With a compliance layer.</title>
+<meta name="description" content="Tymr is the workforce intelligence platform that tracks humans and AI agents on one ledger. Capacity, agent ROI, EVM project health, and audit-ready R&D / CapEx / SOX evidence — drawn from Jira, GitHub, calendars, and your agent stack. Without timesheets."/>
 
-<meta property="og:title" content="Tymr — Time tracking for engineering teams. Without the timesheets."/>
-<meta property="og:description" content="Jira + GitHub + calendars → clean per-engineer, per-project hours. Finance uses the same data for R&D credits, CapEx, and audit trails."/>
+<meta property="og:title" content="Tymr — Workforce intelligence for humans and AI agents."/>
+<meta property="og:description" content="One ledger for humans and AI agents. Capacity, agent ROI, EVM, and audit-ready R&D / CapEx / SOX evidence. No timesheets."/>
 <meta property="og:type" content="website"/>
 <meta property="og:url" content="https://tymrlogic.com/"/>
 <meta property="og:image" content="https://tymrlogic.com/og.png"/>
 <meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:title" content="Tymr — Audit-ready R&D credits and software CapEx. No engineer surveys."/>
-<meta name="twitter:description" content="Jira, GitHub, and calendar data → audit-ready R&D credit and CapEx evidence. Zero engineer surveys."/>
+<meta name="twitter:title" content="Tymr — Workforce intelligence for humans and AI agents."/>
+<meta name="twitter:description" content="One ledger for humans and AI agents. Capacity, agent ROI, EVM, audit-ready R&D / CapEx / SOX. No timesheets."/>
 <meta name="twitter:image" content="https://tymrlogic.com/og.png"/>
 
 <link rel="icon" type="image/png" href="/favicon.png"/>
@@ -292,7 +292,9 @@ section.tight{padding:72px 0}
   max-width:600px;
 }
 .cta-pair{margin-top:32px;display:grid;grid-template-columns:1fr 1fr;gap:12px;max-width:680px}
-@media(max-width:680px){.cta-pair{grid-template-columns:1fr}}
+.cta-pair.three{grid-template-columns:repeat(3,1fr);max-width:none}
+@media(max-width:880px){.cta-pair.three{grid-template-columns:1fr 1fr}}
+@media(max-width:680px){.cta-pair{grid-template-columns:1fr}.cta-pair.three{grid-template-columns:1fr}}
 .cta-slot{
   padding:22px 24px;background:rgba(255,255,255,0.04);
   border:1px solid rgba(255,255,255,0.12);border-radius:12px;
@@ -307,6 +309,27 @@ section.tight{padding:72px 0}
   display:inline-flex;align-items:center;gap:4px;transition:gap .15s}
 .cta-slot:hover .cs-go{gap:8px}
 @media(max-width:680px){.cta-block{padding:48px 28px}}
+
+/* CUSTOMER SEGMENTS */
+.seg-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:48px}
+@media(max-width:980px){.seg-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){.seg-grid{grid-template-columns:1fr}}
+.seg{
+  background:var(--bg);border:1px solid var(--hairline);border-radius:14px;
+  padding:28px;display:flex;flex-direction:column;gap:12px;transition:border-color .2s;
+}
+.seg:hover{border-color:var(--hairline-strong)}
+.seg .seg-tag{
+  font-family:var(--font-m);font-size:10px;letter-spacing:.14em;
+  color:var(--accent);text-transform:uppercase;
+}
+.seg h3{font-family:var(--font-h);font-weight:600;font-size:17px;color:var(--ink);letter-spacing:-0.015em;line-height:1.2}
+.seg p{font-size:14px;color:var(--slate);line-height:1.6;margin:0}
+.seg .seg-hook{
+  margin-top:auto;padding-top:14px;border-top:1px solid var(--hairline);
+  font-family:var(--font-m);font-size:11px;color:var(--slate-dim);letter-spacing:.04em;line-height:1.5;
+}
+.seg .seg-hook strong{color:var(--ink-2);font-weight:550}
 
 /* FOOTER */
 footer.site-footer{padding:48px 0 56px;border-top:1px solid var(--hairline);margin-top:0}
@@ -348,44 +371,111 @@ footer.site-footer{padding:48px 0 56px;border-top:1px solid var(--hairline);marg
 <!-- HERO -->
 <div class="container">
   <div class="hero">
-    <div class="hero-eyebrow">Design-partner cohort · Q2 2026</div>
-    <h1>Time tracking for engineering teams. <em>Without the timesheets.</em></h1>
-    <p class="hero-sub">Tymr auto-aggregates Jira tickets, GitHub commits, and calendar blocks into clean per-engineer, per-project hours — in real time, with zero surveys. Finance uses the same data for R&amp;D credits, software CapEx, and audit trails.</p>
+    <div class="hero-eyebrow">Workforce intelligence · Compliance layer · 2026 cohort</div>
+    <h1>Your workforce now includes AI agents. <em>Track both on one ledger.</em></h1>
+    <p class="hero-sub">Tymr is the workforce intelligence platform for the AI era — capacity, agent ROI, project health, and audit-ready compliance evidence, drawn from the tools your teams already use. No timesheets. No surveys. Humans and agents on the same floor.</p>
 
     <div class="outcomes">
-      <span class="outcomes-label">What finance uses the data for</span>
+      <span class="outcomes-label">What the same data layer powers</span>
       <div class="outcomes-row">
-        <span class="opill"><span class="odot"></span>R&amp;D tax credit</span>
-        <span class="opill"><span class="odot"></span>Software CapEx (ASC 350-40)</span>
-        <span class="opill"><span class="odot"></span>Audit-ready trail</span>
+        <span class="opill"><span class="odot"></span>Mixed human + agent capacity</span>
+        <span class="opill"><span class="odot"></span>EVM project health (SPI/CPI)</span>
+        <span class="opill"><span class="odot"></span>R&amp;D credit · CapEx · SOX</span>
+        <span class="opill"><span class="odot"></span>DCAA audit trail</span>
       </div>
     </div>
 
     <div class="risk-reversal">
       <span class="risk-dot"></span>
-      <span>Your tax firm signs off <strong>before you pay</strong>. If the data isn't exam-ready, you owe nothing.</span>
+      <span>The only platform that puts <strong>humans and AI agents on one workforce ledger</strong> — with the compliance exports finance, defense, and audit teams need.</span>
     </div>
 
     <div class="dual-cta">
+      <a class="dcard" href="/engineering.html">
+        <span class="dcard-who">For Eng &amp; AI Platform Leads</span>
+        <span class="dcard-title">See where your humans end and your agents begin — across capacity, projects, and cost.</span>
+        <span class="dcard-hint">Live floor view of humans + agents. Per-task agent ROI. EVM project health. Incident &amp; meeting cost. No timesheets.</span>
+        <span class="dcard-go">See the operating layer →</span>
+      </a>
       <a class="dcard" href="/cfo.html">
         <span class="dcard-who">For CFOs &amp; Controllers</span>
-        <span class="dcard-title">Claim a bigger R&amp;D credit and pass a CapEx audit — in 60 days.</span>
-        <span class="dcard-hint">R&amp;D credit uplift estimate + CapEx vs OpEx audit pack. Pay only if your tax firm signs off.</span>
+        <span class="dcard-title">Audit-ready R&amp;D credit, software CapEx, and SOX evidence — in 60 days.</span>
+        <span class="dcard-hint">R&amp;D credit uplift estimate + CapEx / OpEx audit pack + SOX-aligned PDF. Pay only if your tax firm signs off.</span>
         <span class="dcard-go">See the CFO pilot →</span>
-      </a>
-      <a class="dcard" href="/tax-firms.html">
-        <span class="dcard-who">For R&amp;D tax &amp; accounting firms</span>
-        <span class="dcard-title">Let your analysts skip the time-survey grind on software clients.</span>
-        <span class="dcard-hint">Free pilot on 3–5 of your software clients. Per-engineer time, § 41/§ 174 tags, workpaper-ready CSV. You keep your study fees.</span>
-        <span class="dcard-go">See the firm offer →</span>
       </a>
     </div>
 
     <div class="icp-bar">
       <span class="icp-tag">Built for</span>
-      <p><strong>US &amp; Canadian software companies, 50–500 engineers</strong>, already claiming R&amp;D credits or SR&amp;ED, running Jira + GitHub + Google or Microsoft Calendar, working with a tax advisor on the credit study.</p>
+      <p><strong>Companies with 50–500 employees running mixed human + AI workforces</strong> — software, professional services, defense contractors, R&amp;D-intensive orgs, and engineering teams with serious incident or compliance exposure.</p>
     </div>
   </div>
+</div>
+
+<!-- WHERE TYMR SITS — market positioning -->
+<div class="sec-band">
+  <div class="container" id="positioning">
+    <section>
+      <span class="sec-label">Where Tymr sits</span>
+      <h2 class="sec-head">Tymr isn't a time tracker. <em>It's a workforce intelligence platform with a compliance layer.</em></h2>
+      <p class="sec-sub">There's a wide gap between consumer time trackers (Toggl, Harvest, Clockify) and enterprise workforce-management suites (Replicon, Deltek, Workday). Tymr occupies that middle stratum — but with four capabilities no competitor at any tier currently offers. That's the first-mover window.</p>
+
+      <div class="moat-prose" style="margin-top:32px;max-width:900px">
+        <p><strong>1. AI agent tracking.</strong> No time tracking product currently sees AI agent sessions, capacity, or project allocation alongside human workers. As enterprises scale agent deployment, they need exactly this — mixed-workforce capacity planning, cost attribution between human and agent labor, and project-level AI utilization. Tymr owns this lane right now.</p>
+        <p><strong>2. The Virtual Floor.</strong> Real-time presence, room operations, meeting cost ticker, and the time ledger in one canvas. Solves remote-team visibility in a way no time tracker attempts — and the live $/hr burn during P1 / P2 incidents is genuinely novel.</p>
+        <p><strong>3. SOX CapEx + R&amp;D Credit PDF exports.</strong> High-stakes, audit-mandatory outputs that justify per-seat spend on their own. A finance team defending an R&amp;D credit claim or capitalization schedule pays a premium just for these. No direct competitor generates them natively.</p>
+        <p><strong>4. EVM-native project health (SPI / CPI).</strong> Earned Value Management is normally only in MS Project or Primavera. Having it inside the time layer — connected to logged hours, rate cards, and budgets — is a meaningful capability gap Tymr fills for engineering and professional services.</p>
+      </div>
+    </section>
+  </div>
+</div>
+
+<!-- WHO TYMR IS FOR — five segments -->
+<div class="container" id="segments">
+  <section>
+    <span class="sec-label">Who Tymr is for</span>
+    <h2 class="sec-head">Five workforces. <em>One platform underneath.</em></h2>
+    <p class="sec-sub">Each segment has a different lead use case — but they share the same data layer. Mixed human + agent capacity, with the right compliance export bolted on.</p>
+
+    <div class="seg-grid">
+      <div class="seg">
+        <span class="seg-tag">01 · AI-first tech</span>
+        <h3>Companies running production AI agents.</h3>
+        <p>Cursor, Devin, Claude agents, custom LLM pipelines in production workflows. No tool sees AI capacity against human capacity in one workforce view. Tymr does.</p>
+        <span class="seg-hook"><strong>Lead:</strong> Mixed-workforce capacity · agent ROI · cost attribution</span>
+      </div>
+      <div class="seg">
+        <span class="seg-tag">02 · Defense &amp; GovCon</span>
+        <h3>DCAA-compliant contractors.</h3>
+        <p>Immutable audit trail and tamper-evident time events — the same tier as Replicon, Journyx, and Hour Timesheet, with EVM, scenario planning, and a modern UX they don't have.</p>
+        <span class="seg-hook"><strong>Lead:</strong> DCAA · SF1408 · contract performance</span>
+      </div>
+      <div class="seg">
+        <span class="seg-tag">03 · R&amp;D-intensive</span>
+        <h3>Pharma, biotech, SaaS, advanced manufacturing.</h3>
+        <p>Companies claiming the US R&amp;D credit or Canadian SR&amp;ED. The R&amp;D Credit PDF and SOX CapEx PDF are audit-ready substantiation no competitor exports natively.</p>
+        <span class="seg-hook"><strong>Lead:</strong> R&amp;D credit · § 174 · ASC 350-40</span>
+      </div>
+      <div class="seg">
+        <span class="seg-tag">04 · Engineering &amp; DevOps</span>
+        <h3>Teams with serious incident exposure.</h3>
+        <p>Unplanned-work ratio pulled from ServiceNow and PagerDuty. Live $/hr burn during P1 / P2. The cost-of-toil metric engineering managers actually need.</p>
+        <span class="seg-hook"><strong>Lead:</strong> Incident cost · oncall · unplanned-work ratio</span>
+      </div>
+      <div class="seg">
+        <span class="seg-tag">05 · Professional services</span>
+        <h3>Consulting and IT services, 30–300 people.</h3>
+        <p>Project health, utilization, and clean billing — Harvest's market, with EVM, scenario planning, CapEx / R&amp;D exports, and the Virtual Floor on top.</p>
+        <span class="seg-hook"><strong>Lead:</strong> Utilization · rate cards · EVM · billing</span>
+      </div>
+      <div class="seg">
+        <span class="seg-tag">+ Channel</span>
+        <h3>R&amp;D tax &amp; accounting firms.</h3>
+        <p>Stop chasing engineers for surveys. Per-engineer time, § 41 / § 174 tags, workpaper-ready CSV. Your firm keeps the full study fee.</p>
+        <span class="seg-hook"><strong>Lead:</strong> Time-evidence layer underneath your study</span>
+      </div>
+    </div>
+  </section>
 </div>
 
 <!-- HOW IT WORKS — 3 simple steps -->
@@ -497,24 +587,29 @@ footer.site-footer{padding:48px 0 56px;border-top:1px solid var(--hairline);marg
 <div class="container">
   <section>
     <span class="sec-label">Integrations</span>
-    <h2 class="sec-head">Depth on the four systems <em>where R&amp;D actually happens.</em></h2>
-    <p class="sec-sub">Event-level ingestion — not summaries — so every hour traces to a ticket, a commit, or a meeting invite. Nothing else to install.</p>
+    <h2 class="sec-head">Event-level ingestion <em>across the systems your work already lives in.</em></h2>
+    <p class="sec-sub">Not summaries — events. Every hour traces back to a ticket transition, a commit SHA, a calendar invite, an incident, or an agent run. Nothing else to install.</p>
 
     <div class="int-row">
       <span class="int-pill"><span class="idot" style="background:#2684FF"></span>Jira <span class="int-suffix">deep</span></span>
       <span class="int-pill"><span class="idot" style="background:#24292E"></span>GitHub <span class="int-suffix">deep</span></span>
       <span class="int-pill"><span class="idot" style="background:#4285F4"></span>Google Calendar <span class="int-suffix">deep</span></span>
       <span class="int-pill"><span class="idot" style="background:#0072C6"></span>Microsoft Calendar <span class="int-suffix">deep</span></span>
+      <span class="int-pill"><span class="idot" style="background:#62D84E"></span>ServiceNow <span class="int-suffix">deep</span></span>
+      <span class="int-pill"><span class="idot" style="background:#06AC38"></span>PagerDuty <span class="int-suffix">deep</span></span>
+      <span class="int-pill"><span class="idot" style="background:#4A154B"></span>Slack <span class="int-suffix">deep</span></span>
+      <span class="int-pill"><span class="idot" style="background:#F5C842"></span>@tymr/agent-events <span class="int-suffix">SDK</span></span>
     </div>
     <div class="int-row" style="margin-top:10px">
       <span class="int-pill soon"><span class="idot" style="background:#CFCFCA"></span>NetSuite <span class="int-suffix">Q3 2026</span></span>
       <span class="int-pill soon"><span class="idot" style="background:#CFCFCA"></span>Sage Intacct <span class="int-suffix">Q3 2026</span></span>
-      <span class="int-pill soon"><span class="idot" style="background:#CFCFCA"></span>Workday <span class="int-suffix">Q4 2026</span></span>
+      <span class="int-pill soon"><span class="idot" style="background:#CFCFCA"></span>Workday writeback <span class="int-suffix">Q4 2026</span></span>
+      <span class="int-pill soon"><span class="idot" style="background:#CFCFCA"></span>Physical room sensors <span class="int-suffix">Q4 2026</span></span>
     </div>
 
     <div class="not-fit">
       <span class="nf-tag">Not a fit if</span>
-      <p>You're a non-software company, under 50 engineers, have never claimed R&amp;D credits (or SR&amp;ED), or you don't work with a tax advisor on the study. We'll close the loop politely and point you at simpler tools.</p>
+      <p>You're under 10 people, your team isn't running modern dev or work tools (Jira / GitHub / calendars / ServiceNow), or you just need a personal time tracker. We'll point you at simpler tools and close the loop politely.</p>
     </div>
   </section>
 </div>
@@ -523,14 +618,14 @@ footer.site-footer{padding:48px 0 56px;border-top:1px solid var(--hairline);marg
 <div class="sec-band">
   <div class="container" id="floor">
     <section>
-      <span class="sec-label">The moat</span>
-      <h2 class="sec-head">One floor. Humans and agents. <em>One ledger.</em></h2>
+      <span class="sec-label">The Virtual Floor</span>
+      <h2 class="sec-head">One floor. Humans and agents. <em>One ledger. Live.</em></h2>
 
       <div class="moat-prose">
-        <p>AI agents are now on your engineering team. Most R&amp;D platforms don't see them at all. The ones that do don't tag the runs against § 174.</p>
-        <p>Tymr puts agents on the <strong>same floor as your engineers</strong> — same time grid, same § 174 / 350-40 / OpEx classification, same audit trail.</p>
-        <p>Tymr ingests engineering work from where it already happens — <strong>Jira</strong> tickets, <strong>GitHub</strong> commits, <strong>Google</strong> and <strong>Microsoft</strong> calendar blocks. Agents emit through <code>@tymr/agent-events</code> — wraps Claude, LangChain, CrewAI, OpenAI Assistants, Vercel AI. <strong>UTEv1 schema</strong> across both. Same workpaper export.</p>
-        <p>When the IRS asks who produced the qualified research time, you show the engineer-hours, the agent-hours, the lineage, and the primary events behind both.</p>
+        <p>AI agents are now on your team. Most workforce platforms don't see them at all. The ones that do can't tag the runs against capacity, project, or compliance line.</p>
+        <p>Tymr puts agents on the <strong>same floor as your humans</strong> — same time grid, same project mapping, same § 174 / 350-40 / OpEx classification, same audit trail. Real-time presence. Live meeting-cost ticker. Live incident-cost burn during P1 / P2.</p>
+        <p>Tymr ingests work from where it already happens — <strong>Jira</strong>, <strong>GitHub</strong>, <strong>Google</strong> and <strong>Microsoft</strong> calendars, <strong>ServiceNow</strong>, <strong>PagerDuty</strong>. Agents emit through <code>@tymr/agent-events</code> — wraps Claude, LangChain, CrewAI, OpenAI Assistants, Vercel AI, custom LLM pipelines. <strong>UTEv1 schema</strong> across both. Same export, same workpapers, same lineage.</p>
+        <p>When an incident commander asks where the burn is going, when the CFO asks who produced the qualified research time, when a DCAA auditor asks for tamper-evident lineage — you show humans, agents, and the primary events behind both.</p>
       </div>
 
       <div class="floor-wrap">
@@ -754,28 +849,28 @@ footer.site-footer{padding:48px 0 56px;border-top:1px solid var(--hairline);marg
 
       <!-- Rest of the year sub-block -->
       <div class="rest-of-year">
-        <span class="sec-label">What you get the rest of the year</span>
-        <h3 class="roy-head">The audit pack ships once. <em>The data lands every week.</em></h3>
+        <span class="sec-label">The operating layer</span>
+        <h3 class="roy-head">The compliance pack ships once. <em>The operating layer runs every day.</em></h3>
         <div class="roy-grid">
           <div class="roy">
-            <h4>Capacity &amp; allocation.</h4>
-            <p>Where engineering effort actually went, by initiative, by project. Real-time, no surveys.</p>
+            <h4>Mixed-workforce capacity.</h4>
+            <p>Humans and agents on one capacity plan. Where effort actually went, by initiative, project, and worker type. Real-time. No surveys.</p>
+          </div>
+          <div class="roy">
+            <h4>EVM project health.</h4>
+            <p>SPI and CPI native to the time layer — connected to logged hours, rate cards, and budgets. The metric MS Project and Primavera charge enterprise prices for.</p>
           </div>
           <div class="roy">
             <h4>Agent ROI.</h4>
-            <p>What your AI agents did, what they cost, whether they're paying for themselves. Per-task, per-project, paired with the engineer they assisted.</p>
+            <p>What your agents did, what they cost, whether they're paying for themselves — per-task, per-project, paired with the human they assisted.</p>
           </div>
           <div class="roy">
-            <h4>Meeting cost.</h4>
-            <p>Every recurring meeting carries a dollar weight. Engineering leadership sees which ones are worth it.</p>
-          </div>
-          <div class="roy">
-            <h4>Incident cost.</h4>
-            <p>Engineer-hours and dollar cost per incident. The metric oncall managers actually need.</p>
+            <h4>Unplanned-work ratio.</h4>
+            <p>Pulled directly from ServiceNow and PagerDuty. The cost of toil, the live $/hr burn during P1 / P2, the metric oncall managers actually need.</p>
           </div>
         </div>
         <div class="roy-cta">
-          <a class="btn-ghost" href="/engineering.html">Engineering leader? See the operating layer →</a>
+          <a class="btn-ghost" href="/engineering.html">Engineering or AI platform lead? See the operating layer →</a>
         </div>
       </div>
     </section>
@@ -786,34 +881,39 @@ footer.site-footer{padding:48px 0 56px;border-top:1px solid var(--hairline);marg
 <div class="container">
   <section class="tight" style="padding:48px 0">
     <div style="display:flex;justify-content:space-between;align-items:center;gap:18px;flex-wrap:wrap;padding:20px 24px;background:var(--bg-warm);border:1px solid var(--hairline);border-radius:12px">
-      <div style="font-size:14px;color:var(--slate);line-height:1.55;max-width:680px">
+      <div style="font-size:14px;color:var(--slate);line-height:1.55;max-width:720px">
         <strong style="color:var(--ink);font-weight:550">On the roadmap:</strong>
-        GovCon (DCAA · SF1408) · NetSuite &amp; Sage Intacct · Workday certification · benchmark dataset (post 25+ customers).
+        DCAA audit trail · SCIM/SAML/SSO · Workday writeback · agent SDK GA · physical room sensors · cross-org benchmark dataset (post 25+ customers).
       </div>
       <a href="/utev1.html" style="font-family:var(--font-m);font-size:12px;letter-spacing:.04em;color:var(--ink);text-decoration:none;padding:8px 14px;border:1px solid var(--hairline);border-radius:8px">See the UTEv1 spec →</a>
     </div>
   </section>
 </div>
 
-<!-- FINAL CTA — dual-path mirror -->
+<!-- FINAL CTA — three paths -->
 <div class="container">
   <div class="cta-block">
-    <h2>Two pilots. <em>One no-engineer-survey bar.</em></h2>
-    <p>We are opening 10 design-partner slots in the Q2 2026 cohort — split between CFO-led pilots and R&amp;D tax firm pilots. Both are free or close to it. Both ship the same four deliverables.</p>
-    <div class="cta-pair">
+    <h2>Three ways in. <em>One workforce ledger underneath.</em></h2>
+    <p>We are opening 10 design-partner slots in the Q2 2026 cohort. Pick the lead use case that matches your role — the platform underneath is the same.</p>
+    <div class="cta-pair three">
+      <a class="cta-slot" href="/engineering.html">
+        <span class="cs-who">Eng &amp; AI Platform</span>
+        <span class="cs-title">See humans + agents on one floor. Capacity, ROI, EVM, incident burn.</span>
+        <span class="cs-go">See the operating layer →</span>
+      </a>
       <a class="cta-slot" href="/cfo.html">
-        <span class="cs-who">For CFOs &amp; Controllers</span>
-        <span class="cs-title">60-day pilot. Risk-reversed. $0 if your tax firm doesn't sign off.</span>
+        <span class="cs-who">CFO / Controller</span>
+        <span class="cs-title">60-day pilot. R&amp;D credit, CapEx, SOX evidence. $0 if your tax firm doesn't sign off.</span>
         <span class="cs-go">Start the CFO pilot →</span>
       </a>
       <a class="cta-slot" href="/tax-firms.html">
-        <span class="cs-who">For R&amp;D tax firms</span>
+        <span class="cs-who">R&amp;D Tax Firm</span>
         <span class="cs-title">Pilot on 3–5 software clients. You keep your study fees. We stay underneath.</span>
         <span class="cs-go">See the firm offer →</span>
       </a>
     </div>
     <p style="margin-top:24px;color:#9AA0A6;font-size:14px;line-height:1.55">
-      Engineering leader? See what your CFO is unlocking — and what you get every week. <a href="/engineering.html" style="color:#fff;text-decoration:underline;text-decoration-color:rgba(255,255,255,0.3);text-underline-offset:3px">→ /engineering</a>
+      Defense / GovCon, professional services, or running production AI agents? <a href="mailto:hello@tymrlogic.com" style="color:#fff;text-decoration:underline;text-decoration-color:rgba(255,255,255,0.3);text-underline-offset:3px">Talk to us directly →</a>
     </p>
   </div>
 </div>
