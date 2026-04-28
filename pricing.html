@@ -4,7 +4,7 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Pricing — Tymr</title>
-<meta name="description" content="One flat fee for the 2026 design-partner cohort. Tiered seats after. CFO design partner, R&D tax firm pilot, engineering leader walkthrough — and the seat-based tiers Tymr lands on once we standardize."/>
+<meta name="description" content="Five tiers from Free to Enterprise. Workforce intelligence at $8 to $75/user, with the compliance layer (R&D, CapEx, SOX, DCAA) bundled into Professional and up. 2026 cohort partners convert at 50% off."/>
 <meta property="og:title" content="Pricing — Tymr"/>
 <meta property="og:description" content="One flat fee for the cohort. Tiered seats after. Risk-reversed."/>
 <meta property="og:type" content="website"/>
@@ -40,8 +40,10 @@
 .tier-section h2{margin-bottom:8px}
 .tier-section p.tier-sub{color:var(--slate);font-size:15px;line-height:1.55;max-width:640px;margin-bottom:12px}
 .tier-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:32px}
-@media(max-width:1080px){.tier-grid{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:560px){.tier-grid{grid-template-columns:1fr}}
+.tier-grid.five{grid-template-columns:repeat(5,1fr)}
+@media(max-width:1240px){.tier-grid.five{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:1080px){.tier-grid{grid-template-columns:repeat(2,1fr)}.tier-grid.five{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.tier-grid{grid-template-columns:1fr}.tier-grid.five{grid-template-columns:1fr}}
 .tier{
   background:var(--bg);border:1px solid var(--hairline);border-radius:12px;
   padding:24px;display:flex;flex-direction:column;gap:10px;
@@ -96,8 +98,8 @@
 <div class="container">
   <div class="page-head">
     <div class="eyebrow">PRICING · 2026 DESIGN-PARTNER COHORT</div>
-    <h1>One flat fee for the cohort. <em>Tiered seats after.</em></h1>
-    <p class="lede">We're running the 2026 design-partner cohort flat — same fee, same pack, same risk reversal. After we standardize across 5–10 customers, seat-based pricing kicks in. Below: what's available now, and where pricing lands.</p>
+    <h1>Free to start. <em>Five tiers as you grow.</em></h1>
+    <p class="lede">Tymr is free for teams under 10 and lands at $8 to $75 per user as workforces scale. The 2026 design-partner cohort runs flat — same fee, same compliance pack, same risk reversal. Below: the cohort offer, and the seat-based tiers we land on.</p>
     <div class="risk-reversal">
       <span class="risk-dot"></span>
       <span>Your tax firm signs off <strong>before you pay</strong>. If the pack isn't exam-ready, you owe nothing.</span>
@@ -165,39 +167,47 @@
 
     <section class="tier-section">
       <h2>After the 2026 cohort — where pricing lands</h2>
-      <p class="tier-sub">These are the seat-based tiers Tymr lands on after the design-partner cohort graduates. Cohort partners convert at a discount.</p>
+      <p class="tier-sub">These are the seat-based tiers Tymr lands on after the design-partner cohort graduates. Five tiers, mapped to the five workforces we serve. Cohort partners convert at a discount.</p>
 
-      <div class="tier-grid">
+      <div class="tier-grid five">
+        <div class="tier">
+          <span class="tier-tag">Free</span>
+          <div class="tier-price">$0<small>forever</small></div>
+          <div class="tier-summary">Up to 10 users. The on-ramp.</div>
+          <p>Personal time tracking, timesheets &amp; approvals, basic project management (capped), Google / Outlook calendar sync, standard reports, floor plan, time ledger, work schedules.</p>
+          <span class="tier-note">Private by default. Designed to be the no-friction way in for any team under 10.</span>
+        </div>
+
         <div class="tier">
           <span class="tier-tag">Starter</span>
-          <div class="tier-price">$0<small>forever</small></div>
-          <div class="tier-summary">My Time. Personal time record.</div>
-          <p>Free, forever. Private by default. No reports, no audit features.</p>
-          <span class="tier-note">For every engineer in the org who wants their own time visible to themselves.</span>
+          <div class="tier-price">$8<small>user / month</small></div>
+          <div class="tier-summary">Unlimited users. Free, uncapped.</div>
+          <p>Everything in Free with the 10-user ceiling lifted, higher project limits, recurring templates, personal audit trail, timeline view, integrations at Starter depth.</p>
+          <span class="tier-note">For growing teams that have outgrown the free tier but don't need finance-grade exports yet.</span>
         </div>
 
         <div class="tier">
           <span class="tier-tag">Professional</span>
-          <div class="tier-price">$22<small>seat / month</small></div>
-          <div class="tier-summary">Cost &amp; Utilization. The tier finance buys.</div>
-          <p>CapEx vs OpEx classification at the source. R&amp;D credit and CapEx audit pack export — PDF, CSV, methodology, lineage.</p>
-          <span class="tier-note">Jira · GitHub · Google Calendar · Microsoft Calendar.</span>
+          <div class="tier-price">$18<small>user / month</small></div>
+          <div class="tier-summary">The tier finance buys. <em style="color:var(--accent);font-style:normal">Launch at $14.</em></div>
+          <p>EVM project health (SPI / CPI), scenario planner, capacity forecasting, rate cards, CapEx / OpEx reports, R&amp;D Credit PDF, SOX PDF, cost attribution, bulk invites, team management, ServiceNow / GitHub depth, API keys.</p>
+          <span class="tier-note">Standalone — every compliance export ships in this tier. Launch pricing $14/user/mo for the first year.</span>
         </div>
 
         <div class="tier">
           <span class="tier-tag">Workforce Intelligence</span>
-          <div class="tier-price">+ $10<small>seat / month</small></div>
-          <div class="tier-summary">The operating layer. Optional, opt-in.</div>
-          <p>Live floor view of humans and AI agents. Per-meeting cost ticker. Incident cost burn. Capacity &amp; allocation analytics. AI agent visibility (org-flag opt-in).</p>
-          <span class="tier-note">Add-on to Professional. Default-off, opt-in per org.</span>
+          <div class="tier-price">+$8<small>user / month · add-on</small></div>
+          <div class="tier-summary">The Virtual Floor. Per-org, opt-in.</div>
+          <p>Live Virtual Floor of humans and AI agents. Per-meeting cost ticker. Live incident-cost burn during P1 / P2. Cross-org benchmarks. Slack deep integration.</p>
+          <span class="tier-note">Add-on to Professional. Default-off — enabled per-org. EU Works Council–compatible.</span>
         </div>
 
         <div class="tier">
           <span class="tier-tag">Enterprise</span>
-          <div class="tier-price">Custom</div>
-          <div class="tier-summary">@tymr/agent-events SDK. White-glove.</div>
-          <p>White-glove onboarding for instrumenting your own agents. SSO/SCIM. DCAA audit trail (Phase 2, Q4 2026). Workday write-back (post-certification). Dedicated CSM.</p>
-          <span class="tier-note">For orgs running custom agent stacks or DCAA-bound contracts.</span>
+          <div class="tier-price">Custom<small>~$55–75 / user</small></div>
+          <div class="tier-summary">DCAA &amp; the agent SDK. White-glove.</div>
+          <p>DCAA audit trail. SCIM / SAML / SSO. Workday writeback (post-certification). Physical room sensor integration. Agent SDK and agent capacity config. Dedicated CSM.</p>
+          <span class="tier-note">For DCAA-bound contractors and orgs running custom agent stacks at scale.</span>
         </div>
       </div>
 
@@ -225,10 +235,13 @@
     </section>
 
     <section>
-      <h2>The math behind the flat fee</h2>
-      <p>A 100-engineer US software company with a fully-loaded dev cost of $180K/engineer spends roughly <strong>$18M/year</strong> on engineering. If 55% of that qualifies for the US R&amp;D credit — typical for product-shipping software — that's ~$9.9M in QREs. At a conservative <strong>8% federal ASC rate</strong>, that's <strong>~$790K federal credit</strong>, plus state (California ~$740K, Massachusetts ~$640K).</p>
-      <p>$10–20K flat for a pilot that puts a source event behind every qualified hour is a rounding error against that credit — and most teams recover more than the flat fee in removed haircut alone.</p>
-      <p><a href="/rd-credit-calculator.html">Run your own numbers in the calculator →</a></p>
+      <h2>The math behind the price</h2>
+      <p>A 100-person workforce on Professional + Workforce Intelligence runs <strong>$31K/year</strong> ($26/user/mo all-in). Against that, here's what the same data layer is worth.</p>
+      <p><strong>R&amp;D credit.</strong> A 100-engineer software company with $180K fully-loaded dev cost spends ~$18M/year on engineering. At 55% qualifying — typical for product-shipping software — that's ~$9.9M in QREs and ~$790K federal credit at the 8% ASC rate. Tymr is a rounding error against the recovered haircut.</p>
+      <p><strong>EVM project health.</strong> MS Project Server and Primavera P6 list at $1,800–$3,300 per named user. Tymr ships SPI / CPI native, connected to actual logged hours and rate cards, inside the seat price.</p>
+      <p><strong>Agent ROI.</strong> A team running 10 AI agents in production at conservative usage burns six figures of compute per year. Tymr is the only platform that tracks that spend against the human capacity it offsets — which is the question every CFO is going to ask in 2026.</p>
+      <p><strong>Incident cost.</strong> One unplanned-work P1 with 8 engineers off-task for 6 hours costs ~$8K in fully-loaded labor — before any customer impact. Live $/hr burn during the incident is the metric oncall managers actually need.</p>
+      <p><a href="/rd-credit-calculator.html">Run your own R&amp;D credit numbers in the calculator →</a></p>
     </section>
 
     <section class="faq-block">
