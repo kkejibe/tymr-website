@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>At the ledger — Three seats, one source of truth | Tymr</title>
+<meta name="description" content="Three roles, one ledger. CFOs claim a bigger R&D credit and pass a CapEx audit. R&D tax firms skip the time-survey grind. Engineering leaders see capacity, agent ROI, and meeting cost — without timesheets."/>
+<meta property="og:title" content="At the ledger — Tymr"/>
+<meta property="og:description" content="Three seats around one ledger — CFO, R&D tax firm, engineering leader. Same data, different read."/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://tymrlogic.com/at-the-ledger"/>
+<meta property="og:image" content="https://tymrlogic.com/og.png"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="At the ledger — Tymr"/>
+<meta name="twitter:description" content="Three seats, one source of truth."/>
+<link rel="icon" type="image/png" href="/favicon.png"/>
+<link rel="apple-touch-icon" href="/apple-touch-icon.png"/>
+<link rel="manifest" href="/site.webmanifest"/>
+<meta name="theme-color" content="#0B0B0F"/>
+<script defer data-domain="tymrlogic.com" src="https://plausible.io/js/script.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="/_shared.css"/>
+<style>
+.page-head{padding:112px 0 28px;max-width:880px}
+.page-head h1{font-size:clamp(40px,5.2vw,64px);letter-spacing:-0.035em;line-height:1.02;max-width:880px}
+.tabs{margin-top:40px}
+.tab-content{margin-top:40px}
+
+/* DELIVERABLES */
+.deliv-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:24px}
+@media(max-width:720px){.deliv-grid{grid-template-columns:1fr}}
+.deliv{background:var(--bg);border:1px solid var(--hairline);border-radius:12px;padding:24px;display:flex;flex-direction:column;gap:10px}
+.deliv-ico{width:32px;height:32px;border-radius:8px;background:var(--bg-warm);border:1px solid var(--hairline);display:flex;align-items:center;justify-content:center;font-family:var(--font-m);font-size:10px;color:var(--accent);font-weight:600}
+.deliv h3{font-family:var(--font-h);font-weight:600;font-size:16px;color:var(--ink);letter-spacing:-0.01em}
+.deliv p{font-size:14px;color:var(--slate);line-height:1.55;margin:0}
+.deliv .deliv-fmt{font-family:var(--font-m);font-size:11px;color:var(--slate-dim);letter-spacing:.04em;margin-top:auto;padding-top:8px}
+
+/* TIMELINE STRIP */
+.timeline-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;margin-top:24px;background:var(--hairline);border:1px solid var(--hairline);border-radius:14px;overflow:hidden}
+@media(max-width:860px){.timeline-strip{grid-template-columns:1fr}}
+.ts-col{background:var(--bg);padding:26px 24px;display:flex;flex-direction:column;gap:10px}
+.ts-week{font-family:var(--font-m);font-size:10px;letter-spacing:.14em;color:var(--accent);text-transform:uppercase}
+.ts-col h3{font-family:var(--font-h);font-weight:600;font-size:15px;color:var(--ink);letter-spacing:-0.01em}
+.ts-col p{font-size:13px;color:var(--slate);line-height:1.55;margin:0}
+
+/* PAYBACK BLOCK */
+.payback{margin-top:32px;padding:26px 28px;background:var(--ink);border-radius:14px;color:#E8E7E2}
+.payback .pb-tag{font-family:var(--font-m);font-size:10px;letter-spacing:.14em;color:#F5C56A;text-transform:uppercase;margin-bottom:14px}
+.payback h2{font-family:var(--font-h);font-weight:600;font-size:22px;letter-spacing:-0.02em;color:#fff;margin-bottom:16px}
+.payback p{color:#9AA0A6;font-size:14px;line-height:1.6;margin-bottom:10px}
+.payback strong{color:#F5C56A;font-weight:500}
+
+/* WHAT IT IS NOT */
+.what-not{margin-top:28px;padding:20px 24px;border:1px dashed var(--hairline-strong);border-radius:12px;background:var(--bg);display:flex;gap:16px;align-items:flex-start}
+.what-not .nf-tag{font-family:var(--font-m);font-size:10px;letter-spacing:.14em;color:var(--slate);text-transform:uppercase;padding-top:2px;flex-shrink:0}
+.what-not p{font-size:13px;color:var(--slate);line-height:1.55;margin:0}
+
+/* OUTCOME GRID (engineering) */
+.outcome-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:24px}
+@media(max-width:760px){.outcome-grid{grid-template-columns:1fr}}
+.outcome{background:var(--bg);border:1px solid var(--hairline);border-radius:14px;padding:28px;display:flex;flex-direction:column;gap:12px}
+.outcome .o-tag{font-family:var(--font-m);font-size:10px;letter-spacing:.14em;color:var(--accent);text-transform:uppercase}
+.outcome h3{font-family:var(--font-h);font-weight:600;font-size:18px;color:var(--ink);letter-spacing:-0.02em;line-height:1.2}
+.outcome p{font-size:14px;color:var(--slate);line-height:1.6;margin:0}
+.outcome .o-source{margin-top:auto;padding-top:14px;border-top:1px solid var(--hairline);font-family:var(--font-m);font-size:11px;color:var(--slate-dim);letter-spacing:.04em}
+
+/* FIT PANEL */
+.fit-panel{margin-top:24px;padding:28px;background:var(--bg-warm);border:1px solid var(--hairline);border-radius:14px}
+.fit-panel h3{font-family:var(--font-h);font-weight:600;font-size:18px;color:var(--ink);margin-bottom:10px;letter-spacing:-0.02em}
+.fit-panel p{font-size:15px;color:var(--ink-2);line-height:1.55;margin:0}
+.fit-panel p strong{color:var(--ink);font-weight:550}
+
+/* PRIVACY GRID */
+.privacy-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:24px}
+@media(max-width:760px){.privacy-grid{grid-template-columns:1fr}}
+.priv{background:var(--bg);border:1px solid var(--hairline);border-radius:12px;padding:22px;display:flex;flex-direction:column;gap:8px}
+.priv .priv-tag{font-family:var(--font-m);font-size:10px;letter-spacing:.14em;color:var(--accent);text-transform:uppercase}
+.priv h3{font-family:var(--font-h);font-weight:600;font-size:15px;color:var(--ink);letter-spacing:-0.01em}
+.priv p{font-size:13px;color:var(--slate);line-height:1.55;margin:0}
+
+/* NOT-LIST (engineering) */
+.not-list{margin-top:24px;display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+@media(max-width:760px){.not-list{grid-template-columns:1fr}}
+.not-card{background:var(--bg);border:1px dashed var(--hairline-strong);border-radius:12px;padding:22px}
+.not-card h3{font-family:var(--font-h);font-weight:600;font-size:15px;color:var(--slate);margin-bottom:8px;letter-spacing:-0.01em}
+.not-card p{font-size:13px;color:var(--slate);line-height:1.55;margin:0}
+
+/* FORM PANEL (shared across all tabs) */
+.form-panel{background:var(--bg-warm);border:1px solid var(--hairline);border-radius:16px;padding:32px;margin-top:32px}
+.form-panel h2{margin-bottom:6px}
+.form-panel p.fp-sub{font-size:14px;color:var(--slate);margin-bottom:22px;line-height:1.55}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:640px){.form-grid{grid-template-columns:1fr}}
+.field{display:flex;flex-direction:column;gap:6px}
+.field.full{grid-column:1/-1}
+.field label{font-family:var(--font-m);font-size:10px;letter-spacing:.12em;color:var(--slate);text-transform:uppercase}
+.field input,.field select,.field textarea{background:var(--bg);border:1px solid var(--hairline);border-radius:8px;padding:11px 12px;font-family:var(--font-b);font-size:14px;color:var(--ink);width:100%;outline:none;transition:border-color .2s}
+.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--ink)}
+.field textarea{resize:vertical;min-height:72px;font-family:var(--font-b)}
+.form-confirm{margin-top:14px;padding:14px 18px;background:var(--bg);border:1px solid var(--hairline);border-radius:10px;font-size:13px;color:var(--slate);line-height:1.55}
+.form-confirm strong{color:var(--ink);font-weight:550}
+.form-alt{margin-top:14px;font-size:13px;color:var(--slate);line-height:1.55}
+.form-alt a{color:var(--ink)}
+
+/* SEAT INTRO — three seats overview (above tabs) */
+.seats-intro{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:32px}
+@media(max-width:760px){.seats-intro{grid-template-columns:1fr}}
+.seat{
+  background:var(--bg);border:1px solid var(--hairline);border-radius:12px;padding:20px;
+  display:flex;flex-direction:column;gap:8px;cursor:pointer;text-align:left;
+  transition:border-color .2s,background .2s;font-family:var(--font-b);
+}
+.seat:hover{border-color:var(--hairline-strong);background:var(--bg-warm)}
+.seat-tag{font-family:var(--font-m);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+.seat.teal .seat-tag{color:var(--teal)}
+.seat.indigo .seat-tag{color:var(--indigo)}
+.seat h3{font-family:var(--font-h);font-weight:600;font-size:16px;color:var(--ink);letter-spacing:-0.01em;line-height:1.25}
+.seat p{font-size:13px;color:var(--slate);line-height:1.5;margin:0}
+
+/* STANCE (tax firms) */
+.stance{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:24px}
+@media(max-width:760px){.stance{grid-template-columns:1fr}}
+.stance-card{background:var(--bg);border:1px solid var(--hairline);border-radius:12px;padding:22px}
+.stance-card.neg{background:var(--bg-warm)}
+.stance-tag{font-family:var(--font-m);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--slate);margin-bottom:10px}
+.stance-card.neg .stance-tag{color:var(--slate-dim)}
+.stance-card h3{font-family:var(--font-h);font-weight:600;font-size:16px;color:var(--ink);margin-bottom:8px;letter-spacing:-0.01em}
+.stance-card.neg h3{color:var(--slate)}
+.stance-card p{font-size:14px;color:var(--slate);line-height:1.55;margin:0}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="container">
+    <div class="nav-i">
+      <a href="/" class="logo">
+        <div class="logo-mark">T</div>
+        <span class="logo-name">Ty<span class="gr">mr</span></span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="/at-the-ledger.html" class="active">At the ledger</a></li>
+        <li><a href="/sample-pack.html">Sample pack</a></li>
+        <li><a href="/rd-credit-calculator.html">Calculator</a></li>
+        <li><a href="/pricing.html">Pricing</a></li>
+      </ul>
+      <a class="nav-cta" href="https://calendly.com/tymrlogic/demo">Request Pilot</a>
+    </div>
+  </div>
+</nav>
+
+<div class="container">
+  <div class="page-head">
+    <span class="accent-bar"></span>
+    <div class="eyebrow">AT THE LEDGER</div>
+    <h1>Three seats. <em>One source of truth.</em></h1>
+    <p class="lede">Same event stream, three different reads. CFOs use it for the R&amp;D credit and CapEx audit pack. R&amp;D tax firms use it as the time-evidence layer underneath the study. Engineering leaders use it to see capacity, agent ROI, and meeting cost.</p>
+
+    <div class="seats-intro">
+      <button class="seat" data-jump="cfo">
+        <span class="seat-tag">Seat 01</span>
+        <h3>For CFOs &amp; Controllers</h3>
+        <p>Claim a bigger R&amp;D credit. Pass a software CapEx audit. Pilot in 60 days.</p>
+      </button>
+      <button class="seat teal" data-jump="tax">
+        <span class="seat-tag">Seat 02</span>
+        <h3>For R&amp;D tax firms</h3>
+        <p>Skip the time-survey grind on software clients. You keep the study.</p>
+      </button>
+      <button class="seat indigo" data-jump="eng">
+        <span class="seat-tag">Seat 03</span>
+        <h3>For engineering leaders</h3>
+        <p>Capacity, agent ROI, meeting cost — drawn from events your team already emits.</p>
+      </button>
+    </div>
+  </div>
+
+  <div class="content">
+
+    <!-- TABS -->
+    <div class="tabs" role="tablist">
+      <button class="tab-btn active" role="tab" data-tab="cfo">For CFOs &amp; Controllers</button>
+      <button class="tab-btn" role="tab" data-tab="tax">For R&amp;D tax firms</button>
+      <button class="tab-btn" role="tab" data-tab="eng">For engineering leaders</button>
+    </div>
+
+    <!-- TAB 1: CFOs -->
+    <div class="tab-panel active tab-content" id="tab-cfo" role="tabpanel">
+      <h2>Claim a bigger R&amp;D credit. Pass a software CapEx audit. <em>In 60 days.</em></h2>
+      <p>A 60-day pilot for US &amp; Canadian software companies running an active R&amp;D credit study. We instrument one engineering group and ship four audit-ready files. Your tax firm keeps the study. You keep the credit.</p>
+
+      <section>
+        <h2>The four files you receive</h2>
+        <p>No dashboard to roll out. No platform for your team to learn. Every pilot ships the same four deliverables — sized to drop straight into the workpapers your preparer is already using.</p>
+        <div class="deliv-grid">
+          <div class="deliv">
+            <div class="deliv-ico">01</div>
+            <h3>R&amp;D credit uplift estimate</h3>
+            <p>Per-engineer, per-project qualified hours with a Fed + state credit estimate benchmarked against last year's claim. Where the uplift is, where the exposure is.</p>
+            <span class="deliv-fmt">PDF · 6–8 pages · CFO-ready</span>
+          </div>
+          <div class="deliv">
+            <div class="deliv-ico">02</div>
+            <h3>CapEx vs OpEx audit pack</h3>
+            <p>Capitalizable application-development hours cleanly split from OpEx maintenance. Journal-entry ready and SOX-aligned for your auditor's ITGC walkthrough.</p>
+            <span class="deliv-fmt">PDF · journal-entry ready</span>
+          </div>
+          <div class="deliv">
+            <div class="deliv-ico">03</div>
+            <h3>Workpaper-ready CSV</h3>
+            <p>Engineer, project, hours, period, classification, evidence link. The column schema your tax firm already uses — paste, don't rename.</p>
+            <span class="deliv-fmt">CSV · tax-firm schema</span>
+          </div>
+          <div class="deliv">
+            <div class="deliv-ico">04</div>
+            <h3>Methodology PDF</h3>
+            <p>Two pages, plain English. Data sources, attribution rules, classification tests, human review steps — the document a tax partner defends in an exam.</p>
+            <span class="deliv-fmt">PDF · 2 pages</span>
+          </div>
+        </div>
+        <div style="margin-top:20px">
+          <a class="btn-ghost" href="/sample-pack.html">Preview the 10-slide sample pack →</a>
+        </div>
+      </section>
+
+      <section>
+        <h2>How the 60 days run</h2>
+        <p>One engineering group. One pilot scope. Four deliverables at the end. No engineer surveys, no quarterly spreadsheets, no re-platforming.</p>
+        <div class="timeline-strip">
+          <div class="ts-col">
+            <span class="ts-week">Week 1</span>
+            <h3>Connect &amp; calibrate</h3>
+            <p>OAuth into Jira, GitHub, and your calendar system. Scope one engineering group. Pull last year's R&amp;D claim for benchmarking.</p>
+          </div>
+          <div class="ts-col">
+            <span class="ts-week">Weeks 2–7</span>
+            <h3>Classify continuously</h3>
+            <p>Every Jira transition, commit, and calendar block auto-tagged for § 41 eligibility and ASC 350-40 CapEx / OpEx. Your controller reviews edge cases in ≤30 min/week.</p>
+          </div>
+          <div class="ts-col">
+            <span class="ts-week">Week 8</span>
+            <h3>Ship the pack</h3>
+            <p>Four files delivered. Walkthrough with your tax firm on the call. Preparer signs off on methodology before you pay anything.</p>
+          </div>
+          <div class="ts-col">
+            <span class="ts-week">After</span>
+            <h3>Roll wider — or don't</h3>
+            <p>If the pack is exam-ready, standardize across the whole engineering org. If not, no invoice.</p>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Your tax firm keeps the study</h2>
+        <p>Tymr is not a tax firm. We don't prepare Form 6765, we don't touch your return, and we don't share a fee with your preparer. We produce the per-engineer time evidence your firm already has to collect — just cleaner, contemporaneous, and cited back to source events.</p>
+        <p>Whether your study is run by an R&amp;D boutique, a national firm's software practice, or your in-house tax lead — <strong>they keep the engagement</strong>. Most of them end up happier: their analysts stop chasing engineers for time surveys, and the study is defensible without the April scramble.</p>
+      </section>
+
+      <section>
+        <h2>Who this is for</h2>
+        <p>We built the pilot narrowly on purpose. It works when <strong>all three</strong> are true:</p>
+        <ul>
+          <li><strong>US or Canadian software company</strong> where software development is material to the business.</li>
+          <li><strong>Already claimed an R&amp;D credit or SR&amp;ED</strong> in the last 1–3 years (or plan to claim this year).</li>
+          <li><strong>Jira + GitHub + Google or Microsoft 365</strong> — the systems where the work actually happens.</li>
+        </ul>
+
+        <div class="what-not">
+          <span class="nf-tag">Not a fit</span>
+          <p>Non-software companies, anyone without a tax advisor on the R&amp;D study, or teams not on Jira + GitHub. We'll say so on the first call and point you at simpler tools.</p>
+        </div>
+      </section>
+
+      <div class="payback">
+        <div class="pb-tag">The math behind the pilot</div>
+        <h2>Most software orgs leave six or seven figures of credit on the table — before state.</h2>
+        <p>At a fully-loaded $180K/engineer and 55% qualifying R&amp;D time, a typical product-shipping software org sees a conservative 8% federal ASC credit on QRE. California adds ~7.5% effective on top; Massachusetts ~5%; New York ~6%.</p>
+        <p>Most of that gets claimed. What doesn't get claimed is the <strong>audit defensibility</strong> — which is why preparers haircut aggressive claims 20–40%. Tymr's pilot removes the haircut by putting a source event behind every hour.</p>
+        <p style="margin-top:16px"><a href="/rd-credit-calculator.html" style="color:#F5C56A;text-decoration:underline;text-decoration-color:rgba(245,197,106,0.4)">Run your own numbers in the calculator →</a></p>
+      </div>
+
+      <section id="apply-cfo" class="form-panel">
+        <h2>Start the pilot</h2>
+        <p class="fp-sub">Four fields. We reply within one business day with a 30-minute walkthrough slot and a sample pack.</p>
+        <form name="cfo-pilot" method="POST" data-netlify="true" action="/thanks-cfo.html">
+          <input type="hidden" name="form-name" value="cfo-pilot"/>
+          <div class="form-grid">
+            <div class="field">
+              <label for="cfo-email">Work email</label>
+              <input id="cfo-email" name="email" type="email" required placeholder="you@company.com"/>
+            </div>
+            <div class="field">
+              <label for="cfo-company">Company</label>
+              <input id="cfo-company" name="company" type="text" required placeholder="Acme Cloud"/>
+            </div>
+            <div class="field">
+              <label for="cfo-role">Your role</label>
+              <select id="cfo-role" name="role" required>
+                <option value="">Select…</option>
+                <option>CFO</option>
+                <option>Controller</option>
+                <option>VP Finance</option>
+                <option>Head of Tax</option>
+                <option>Other finance lead</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="cfo-size">Engineering headcount</label>
+              <select id="cfo-size" name="engineers" required>
+                <option value="">Select…</option>
+                <option>Small team</option>
+                <option>Mid-size</option>
+                <option>Large org</option>
+                <option>Enterprise</option>
+              </select>
+            </div>
+          </div>
+          <div style="margin-top:22px;display:flex;gap:10px;flex-wrap:wrap">
+            <button type="submit" class="btn-primary" style="border:none;cursor:pointer">Request the pilot</button>
+            <a class="btn-ghost" href="https://calendly.com/tymrlogic/demo">Or grab a time directly</a>
+          </div>
+          <div class="form-confirm">
+            <strong>What happens next.</strong> You'll see a confirmation page that restates the offer (60-day pilot, four deliverables). We email within one business day.
+          </div>
+        </form>
+        <p class="form-alt">Prefer email? <a href="mailto:hello@tymrlogic.com?subject=CFO%20pilot%20inquiry">hello@tymrlogic.com</a>. Prefer a calendar link? <a href="https://calendly.com/tymrlogic/demo">calendly.com/tymrlogic/demo</a>.</p>
+      </section>
+    </div>
+
+    <!-- TAB 2: TAX FIRMS -->
+    <div class="tab-panel tab-content" id="tab-tax" role="tabpanel">
+      <h2>Let your analysts <em>skip the time-survey grind</em> on your software clients.</h2>
+      <p>Tymr is the Universal Time Accountability Layer your firm plugs in underneath an existing R&amp;D credit study. Per-engineer, per-project time with § 41 / § 174 tags, cited back to Jira tickets and GitHub commits — generated continuously, not reconstructed in April.</p>
+
+      <section>
+        <h2>What Tymr is — and is not</h2>
+        <p>We wrote this explicitly so there's no ambiguity on the first call. Tymr sits underneath your firm's workflow. We do not compete with it.</p>
+        <div class="stance">
+          <div class="stance-card">
+            <div class="stance-tag">What Tymr is</div>
+            <h3>The time-evidence layer your study already requires</h3>
+            <p>Contemporaneous per-engineer, per-project time with § 41 eligibility and § 174 capitalization tags. Every hour cites a Jira transition, GitHub commit SHA, or calendar block. Exports as CSV into your firm's existing workpaper template.</p>
+          </div>
+          <div class="stance-card neg">
+            <div class="stance-tag">What Tymr is not</div>
+            <h3>Not a tax firm. Not a Form 6765 preparer. Not a study.</h3>
+            <p>We do not file returns. We do not touch the credit study. We do not share or cap your firm's fees. We do not build a direct relationship with the client for tax advice — you stay the advisor of record.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="apply-tax" class="form-panel">
+        <h2>Partner with us</h2>
+        <p class="fp-sub">If you're at an R&amp;D boutique or a national firm's software practice, tell us a bit about your book. We reply within one business day.</p>
+        <form name="firm-pilot" method="POST" data-netlify="true" action="/thanks-firm.html">
+          <input type="hidden" name="form-name" value="firm-pilot"/>
+          <div class="form-grid">
+            <div class="field">
+              <label for="f-email">Work email</label>
+              <input id="f-email" name="email" type="email" required placeholder="you@firm.com"/>
+            </div>
+            <div class="field">
+              <label for="f-firm">Firm</label>
+              <input id="f-firm" name="firm" type="text" required placeholder="Your firm"/>
+            </div>
+            <div class="field">
+              <label for="f-role">Your role</label>
+              <select id="f-role" name="role" required>
+                <option value="">Select…</option>
+                <option>R&amp;D partner</option>
+                <option>R&amp;D director / senior manager</option>
+                <option>R&amp;D practice lead</option>
+                <option>Senior analyst</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="f-book">Software clients in your book</label>
+              <select id="f-book" name="book" required>
+                <option value="">Select…</option>
+                <option>Under 5</option>
+                <option>5–20</option>
+                <option>20–50</option>
+                <option>50+</option>
+              </select>
+            </div>
+          </div>
+          <div style="margin-top:22px;display:flex;gap:10px;flex-wrap:wrap">
+            <button type="submit" class="btn-primary" style="border:none;cursor:pointer">Request the firm pilot</button>
+            <a class="btn-ghost" href="https://calendly.com/tymrlogic/demo">Or grab a time directly</a>
+          </div>
+          <div class="form-confirm">
+            <strong>What happens next.</strong> Confirmation page restates the offer (free pilot on a handful of your software clients, firm keeps study fees). We reply within one business day.
+          </div>
+        </form>
+        <p class="form-alt">Prefer email? <a href="mailto:hello@tymrlogic.com?subject=R%26D%20firm%20partnership">hello@tymrlogic.com</a>.</p>
+      </section>
+    </div>
+
+    <!-- TAB 3: ENGINEERING -->
+    <div class="tab-panel tab-content" id="tab-eng" role="tabpanel">
+      <h2>Capacity, agent ROI, meeting cost — <em>without making your team fill out timesheets.</em></h2>
+      <p>Tymr produces audit-ready substantiation for finance — automatically — from events your team already emits. Engineering leadership gets the same data, daily.</p>
+
+      <section>
+        <h2>What engineering leadership gets, daily</h2>
+        <p>Four numbers your VPs and CTOs ask for and never have. Drawn from the same Jira tickets, GitHub commits, and calendar blocks your team already emits — plus AI agent runs through <code>@tymr/agent-events</code>.</p>
+        <div class="outcome-grid">
+          <div class="outcome">
+            <span class="o-tag">Capacity &amp; allocation</span>
+            <h3>Where engineering effort actually went, by initiative.</h3>
+            <p>Per-engineer, per-project hours updated in real time. Shows you which initiatives are actually getting effort, not which ones managers say they are. Aggregated from Jira + GitHub + calendar — no surveys.</p>
+            <span class="o-source">Jira · GitHub · Google &amp; Microsoft Calendar</span>
+          </div>
+          <div class="outcome">
+            <span class="o-tag">AI agent ROI</span>
+            <h3>Whether your agents are paying for themselves.</h3>
+            <p>Every agent run costs compute. Tymr tags them against the tasks they served and the engineers they paired with. For the first time, in your own data: was the agent-engineer pair cheaper than two engineers?</p>
+            <span class="o-source">@tymr/agent-events · Claude · LangChain · CrewAI · OpenAI Assistants · Vercel AI</span>
+          </div>
+          <div class="outcome">
+            <span class="o-tag">Meeting cost</span>
+            <h3>Which standing meetings are worth keeping.</h3>
+            <p>Every recurring meeting carries a dollar weight. Surfaces the standing meetings worth keeping and the ones bleeding capacity. Aggregate or per-meeting depending on your privacy mode.</p>
+            <span class="o-source">Google Calendar · Microsoft Calendar · loaded cost</span>
+          </div>
+          <div class="outcome">
+            <span class="o-tag">Incident cost</span>
+            <h3>The metric oncall managers actually need.</h3>
+            <p>Engineer-hours and dollars per incident, by service and by team. Turns post-incident reviews into budget conversations.</p>
+            <span class="o-source">Jira · PagerDuty · GitHub · loaded cost</span>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>How it fits with finance</h2>
+        <div class="fit-panel">
+          <h3>One ledger. Two readers.</h3>
+          <p>The same data your engineering team produces drives your CFO's R&amp;D credit and CapEx audit pack. <strong>Finance gets the four files.</strong> You get the daily picture. The audit pack ships once a quarter; the operating data lands every week.</p>
+        </div>
+        <div style="margin-top:18px;display:flex;gap:10px;flex-wrap:wrap">
+          <a class="btn-ghost" href="#" data-jump="cfo">See the CFO view →</a>
+          <a class="btn-ghost" href="/sample-pack.html">Preview the audit pack →</a>
+        </div>
+      </section>
+
+      <section>
+        <h2>Privacy by default</h2>
+        <p>Default visibility is private. Engineers see their own time, not each other's. The full-floor view is opt-in by org, not default. EU Works Council–compatible.</p>
+        <div class="privacy-grid">
+          <div class="priv">
+            <span class="priv-tag">Default</span>
+            <h3>Private — self-only.</h3>
+            <p>The IC owns their record. Their record is theirs. Default for every new seat.</p>
+          </div>
+          <div class="priv">
+            <span class="priv-tag">Optional</span>
+            <h3>Team — manager-scope.</h3>
+            <p>Direct team visibility. Manager sees their reports' allocation, not the rest of the org.</p>
+          </div>
+          <div class="priv">
+            <span class="priv-tag">Opt-in</span>
+            <h3>Org-wide — full floor.</h3>
+            <p>Optional. Org-flag opt-in. Part of the Workforce Intelligence add-on, not the base tier.</p>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>What it isn't</h2>
+        <div class="not-list">
+          <div class="not-card">
+            <h3>Not a productivity tracker.</h3>
+            <p>We don't score keystrokes or activity. No leaderboards.</p>
+          </div>
+          <div class="not-card">
+            <h3>Not a surveillance tool.</h3>
+            <p>ICs see their own record. Their record is theirs. Default-private, opt-in for everything wider.</p>
+          </div>
+          <div class="not-card">
+            <h3>Not a replacement for OKRs.</h3>
+            <p>We tell you where time went; you decide whether it should have.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="apply-eng" class="form-panel">
+        <h2>Walk it through with your CFO</h2>
+        <p class="fp-sub">Sit between your CFO and your tax firm. We walk the operating layer with your team and the audit pack with your finance lead in the same session — 30 minutes. We reply within one business day.</p>
+        <form name="engineering-pilot" method="POST" data-netlify="true" action="/thanks-engineering.html">
+          <input type="hidden" name="form-name" value="engineering-pilot"/>
+          <div class="form-grid">
+            <div class="field">
+              <label for="eng-email">Work email</label>
+              <input id="eng-email" name="email" type="email" required placeholder="you@company.com"/>
+            </div>
+            <div class="field">
+              <label for="eng-company">Company</label>
+              <input id="eng-company" name="company" type="text" required placeholder="Acme Cloud"/>
+            </div>
+            <div class="field">
+              <label for="eng-role">Your role</label>
+              <select id="eng-role" name="role" required>
+                <option value="">Select…</option>
+                <option>VP Engineering</option>
+                <option>CTO</option>
+                <option>Director of Engineering</option>
+                <option>Other engineering lead</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="eng-size">Engineer headcount</label>
+              <select id="eng-size" name="engineers" required>
+                <option value="">Select…</option>
+                <option>Small team</option>
+                <option>Mid-size</option>
+                <option>Large org</option>
+                <option>Enterprise</option>
+              </select>
+            </div>
+            <div class="field full">
+              <label for="eng-firm">Current R&amp;D credit firm (optional)</label>
+              <input id="eng-firm" name="rd_firm" type="text" placeholder="Boutique, national firm, in-house, etc."/>
+            </div>
+          </div>
+          <div style="margin-top:22px;display:flex;gap:10px;flex-wrap:wrap">
+            <button type="submit" class="btn-primary" style="border:none;cursor:pointer">Walk it through with your CFO</button>
+            <a class="btn-ghost" href="https://calendly.com/tymrlogic/demo">Or grab a time directly</a>
+          </div>
+          <div class="form-confirm">
+            <strong>What happens next.</strong> You'll see a confirmation page that restates the offer (joint walkthrough with your CFO and tax firm). We email within one business day.
+          </div>
+        </form>
+        <p class="form-alt">Prefer email? <a href="mailto:hello@tymrlogic.com?subject=Engineering%20walkthrough">hello@tymrlogic.com</a>. Prefer a calendar link? <a href="https://calendly.com/tymrlogic/demo">calendly.com/tymrlogic/demo</a>.</p>
+      </section>
+    </div>
+
+  </div>
+</div>
+
+<div class="footer-wrap">
+  <footer class="page-footer">
+    <div class="container">
+      <div class="footer-i">
+        <a href="/" class="logo">
+          <div class="logo-mark" style="width:32px;height:32px;border-radius:8px;font-size:18px">T</div>
+          <span class="logo-name" style="font-size:18px">Ty<span class="gr">mr</span></span>
+        </a>
+        <div class="footer-links">
+          <a href="/at-the-ledger.html">At the ledger</a>
+          <a href="/sample-pack.html">Sample pack</a>
+          <a href="/rd-credit-calculator.html">Calculator</a>
+          <a href="/utev1.html">UTEv1</a>
+          <a href="/pricing.html">Pricing</a>
+          <a href="/security.html">Security</a>
+          <a href="/privacy.html">Privacy</a>
+          <a href="/terms.html">Terms</a>
+        </div>
+        <span class="footer-copy">tymrlogic.com · © 2026 Tymr</span>
+      </div>
+    </div>
+  </footer>
+</div>
+
+<script>
+function selectTab(name) {
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.toggle('active', b.dataset.tab === name));
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.toggle('active', p.id === 'tab-' + name));
+  if (history.replaceState) history.replaceState(null, '', '#' + name);
+}
+
+// Tab clicks
+document.querySelectorAll('.tab-btn').forEach(btn => {
+  btn.addEventListener('click', () => selectTab(btn.dataset.tab));
+});
+
+// Seat-card jumps + cross-tab anchor links
+document.querySelectorAll('[data-jump]').forEach(el => {
+  el.addEventListener('click', (e) => {
+    e.preventDefault();
+    const name = el.dataset.jump;
+    selectTab(name);
+    const tabs = document.querySelector('.tabs');
+    if (tabs) tabs.scrollIntoView({behavior: 'smooth', block: 'start'});
+  });
+});
+
+// Honor URL hash on load
+const initialHash = (window.location.hash || '').replace('#','');
+if (['cfo','tax','eng'].includes(initialHash)) selectTab(initialHash);
+
+// Listen for hash changes (back/forward nav)
+window.addEventListener('hashchange', () => {
+  const h = window.location.hash.replace('#','');
+  if (['cfo','tax','eng'].includes(h)) selectTab(h);
+});
+</script>
+</body>
+</html>
