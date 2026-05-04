@@ -4,15 +4,15 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Pricing — Tymr</title>
-<meta name="description" content="One flat fee for the 2026 design-partner cohort. Tiered seats after. CFO design partner, R&D tax firm pilot, engineering leader walkthrough — and the seat-based tiers Tymr lands on once we standardize."/>
+<meta name="description" content="Tymr pricing. Free for teams of 10 or fewer. Starter $8/seat. Professional $14/seat with agent tracking, project health, R&D credit export. Workforce Intelligence add-on. Enterprise custom."/>
 <meta property="og:title" content="Pricing — Tymr"/>
-<meta property="og:description" content="One flat fee for the cohort. Tiered seats after. Risk-reversed."/>
+<meta property="og:description" content="Free, Starter, Professional, Enterprise — plus the Workforce Intelligence add-on."/>
 <meta property="og:type" content="website"/>
 <meta property="og:url" content="https://tymrlogic.com/pricing"/>
 <meta property="og:image" content="https://tymrlogic.com/og.png"/>
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:title" content="Pricing — Tymr"/>
-<meta name="twitter:description" content="One flat fee for the cohort. Tiered seats after."/>
+<meta name="twitter:description" content="Free, Starter, Professional, Enterprise."/>
 <link rel="icon" type="image/png" href="/favicon.png"/>
 <link rel="apple-touch-icon" href="/apple-touch-icon.png"/>
 <link rel="manifest" href="/site.webmanifest"/>
@@ -35,36 +35,73 @@
 @media(max-width:980px){.price-grid{grid-template-columns:1fr 1fr}}
 @media(max-width:680px){.price-grid{grid-template-columns:1fr}}
 
-/* AFTER-THE-COHORT TIER GRID */
+/* TIER GRID */
 .tier-section{margin-top:56px;padding-top:48px;border-top:1px solid var(--hairline)}
 .tier-section h2{margin-bottom:8px}
 .tier-section p.tier-sub{color:var(--slate);font-size:15px;line-height:1.55;max-width:640px;margin-bottom:12px}
-.tier-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:32px}
-@media(max-width:1080px){.tier-grid{grid-template-columns:repeat(2,1fr)}}
+.tier-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:36px;align-items:stretch}
+@media(max-width:980px){.tier-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:560px){.tier-grid{grid-template-columns:1fr}}
 .tier{
-  background:var(--bg);border:1px solid var(--hairline);border-radius:12px;
-  padding:24px;display:flex;flex-direction:column;gap:10px;
+  background:var(--bg);border:1px solid var(--hairline);border-radius:14px;
+  padding:24px 22px;display:flex;flex-direction:column;gap:12px;
+  transition:border-color .2s,box-shadow .2s;
 }
-.tier .tier-name{font-family:var(--font-h);font-weight:600;font-size:15px;color:var(--ink);letter-spacing:-0.01em}
-.tier .tier-price{font-family:var(--font-h);font-weight:600;font-size:26px;color:var(--ink);letter-spacing:-0.02em;line-height:1.1}
-.tier .tier-price small{font-family:var(--font-b);font-size:12px;color:var(--slate);font-weight:400;margin-left:6px}
+.tier .tier-features{margin-top:auto}
+.tier:hover{border-color:var(--hairline-strong)}
+.tier.featured{border-color:var(--accent-line);background:linear-gradient(180deg,var(--accent-soft) 0%,var(--bg) 60%);box-shadow:0 1px 0 rgba(166,117,18,0.06)}
+.tier .tier-name{font-family:var(--font-h);font-weight:600;font-size:16px;color:var(--ink);letter-spacing:-0.01em}
+.tier .tier-price{font-family:var(--font-h);font-weight:600;font-size:30px;color:var(--ink);letter-spacing:-0.03em;line-height:1.05}
+.tier .tier-price small{font-family:var(--font-b);font-size:12px;color:var(--slate);font-weight:400;margin-left:6px;display:block;margin-top:2px}
 .tier .tier-tag{
-  display:inline-flex;align-items:center;font-family:var(--font-m);font-size:10px;
-  letter-spacing:.12em;text-transform:uppercase;color:var(--accent);
+  display:inline-flex;align-items:center;font-family:var(--font-m);font-size:11px;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--accent);
 }
-.tier .tier-summary{font-family:var(--font-h);font-weight:550;font-size:14px;color:var(--ink);letter-spacing:-0.01em;line-height:1.3}
-.tier p{font-size:13px;color:var(--slate);line-height:1.55;margin:0}
+.tier .tier-summary{font-family:var(--font-h);font-weight:550;font-size:14px;color:var(--ink);letter-spacing:-0.01em;line-height:1.35}
+.tier p.tier-desc{font-size:13px;color:var(--slate);line-height:1.55;margin:0}
 .tier .tier-note{
-  margin-top:auto;padding-top:14px;border-top:1px solid var(--hairline);
+  padding-top:14px;border-top:1px solid var(--hairline);
   font-family:var(--font-m);font-size:11px;color:var(--slate-dim);letter-spacing:.04em;line-height:1.5;
 }
+.tier.featured .tier-note{border-top-color:var(--accent-line)}
 
-.cohort-footer{
+/* Collapsible feature list */
+.tier-features summary{
+  list-style:none;cursor:pointer;display:flex;align-items:center;gap:8px;
+  padding:12px 0;font-family:var(--font-m);font-size:11px;
+  letter-spacing:.12em;text-transform:uppercase;color:var(--slate);
+  border-top:1px solid var(--hairline);
+  transition:color .15s;
+}
+.tier.featured .tier-features summary{border-top-color:var(--accent-line)}
+.tier-features summary:hover{color:var(--ink)}
+.tier-features summary::-webkit-details-marker{display:none}
+.tier-features summary::after{
+  content:'';width:8px;height:8px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;
+  transform:rotate(45deg);margin-left:auto;transition:transform .2s;display:inline-block;margin-top:-2px;
+}
+.tier-features[open] summary::after{transform:rotate(-135deg);margin-top:2px}
+.tier-features ul{list-style:none;padding:6px 0 12px;margin:0;display:flex;flex-direction:column;gap:7px}
+.tier-features ul li{
+  display:flex;gap:8px;align-items:flex-start;
+  font-size:12.5px;color:var(--ink-2);line-height:1.45;
+}
+.tier-features ul li::before{
+  content:'';width:4px;height:4px;border-radius:50%;background:var(--accent);
+  flex-shrink:0;margin-top:7px;
+}
+.tier-features ul li strong{color:var(--ink);font-weight:550}
+.tier-features ul li.section-head{
+  font-family:var(--font-m);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--slate);padding-top:4px;
+}
+.tier-features ul li.section-head::before{display:none}
+
+.tier-footer{
   margin-top:24px;padding:18px 22px;border:1px dashed var(--hairline-strong);border-radius:12px;
   font-size:13px;color:var(--slate);line-height:1.55;background:var(--bg-warm);
 }
-.cohort-footer strong{color:var(--ink);font-weight:550}
+.tier-footer strong{color:var(--ink);font-weight:550}
 
 .faq-block{margin-top:48px}
 .faq-block h2{margin-bottom:8px}
@@ -81,9 +118,7 @@
         <span class="logo-name">Ty<span class="gr">mr</span></span>
       </a>
       <ul class="nav-links">
-        <li><a href="/cfo.html">For CFOs</a></li>
-        <li><a href="/tax-firms.html">For tax firms</a></li>
-        <li><a href="/engineering.html">Engineering</a></li>
+        <li><a href="/at-the-ledger.html">At the ledger</a></li>
         <li><a href="/sample-pack.html">Sample pack</a></li>
         <li><a href="/rd-credit-calculator.html">Calculator</a></li>
         <li><a href="/pricing.html" class="active">Pricing</a></li>
@@ -95,165 +130,156 @@
 
 <div class="container">
   <div class="page-head">
-    <div class="eyebrow">PRICING · 2026 DESIGN-PARTNER COHORT</div>
-    <h1>One flat fee for the cohort. <em>Tiered seats after.</em></h1>
-    <p class="lede">We're running the 2026 design-partner cohort flat — same fee, same pack, same risk reversal. After we standardize across 5–10 customers, seat-based pricing kicks in. Below: what's available now, and where pricing lands.</p>
-    <div class="risk-reversal">
-      <span class="risk-dot"></span>
-      <span>Your tax firm signs off <strong>before you pay</strong>. If the pack isn't exam-ready, you owe nothing.</span>
-    </div>
+    <span class="accent-bar"></span>
+    <div class="eyebrow">PRICING</div>
+    <h1>Four tiers. <em>One ledger.</em></h1>
+    <p class="lede">Free for teams of ten or fewer. Starter for growing teams. Professional for finance, ops, and PMs. Enterprise for SSO and DCAA. The Workforce Intelligence add-on layers on top.</p>
   </div>
 
   <div class="content">
 
-    <div class="price-grid">
-      <div class="price-card featured">
-        <div class="price-name">CFO design partner <span class="tag tag-amber">2026 cohort</span></div>
-        <div class="price-note">Software companies, 50–500 engineers. Up to 10 partners total.</div>
-        <div class="price-amount">$10–20K<small>flat · year one</small></div>
-        <div class="price-divider"></div>
-        <ul class="price-list">
-          <li>60-day pilot on one engineering group</li>
-          <li>Four deliverables — R&amp;D credit uplift PDF, CapEx vs OpEx audit pack, workpaper-ready CSV, 2-page methodology PDF</li>
-          <li>Jira · GitHub · Google Calendar · Microsoft Calendar · @tymr/agent-events</li>
-          <li>Continuous classification — § 174 · 350-40 · OpEx</li>
-          <li>Weekly check-in with founder</li>
-          <li><strong>Risk reversal:</strong> $0 if your tax firm doesn't sign off on the pack as exam-ready</li>
-          <li>First cohort: <strong>free in exchange for a joint case study &amp; reference rights</strong></li>
-        </ul>
-        <div class="price-cta">
-          <a href="/cfo.html" class="btn-primary" style="width:100%">Start the CFO pilot</a>
-        </div>
-      </div>
-
-      <div class="price-card featured">
-        <div class="price-name">R&amp;D tax firm pilot <span class="tag tag-amber">Channel</span></div>
-        <div class="price-note">R&amp;D boutiques and software practices at national firms.</div>
-        <div class="price-amount">$0<small>platform fee · pilot</small></div>
-        <div class="price-divider"></div>
-        <ul class="price-list">
-          <li>Pilot on 3–5 of your software clients, one study cycle</li>
-          <li>Your firm keeps 100% of the R&amp;D study fees</li>
-          <li>Per-engineer time + § 41/§ 174 tags + workpaper-ready CSV</li>
-          <li>Drops into your existing workpaper template — no rename</li>
-          <li>Asks: joint case study, 5–10 referrals, optional standardization next cycle</li>
-          <li>Post-pilot: <strong>$15–25K per client per year</strong>, embedded in your firm's study proposal</li>
-        </ul>
-        <div class="price-cta">
-          <a href="/tax-firms.html" class="btn-primary" style="width:100%">See the firm offer</a>
-        </div>
-      </div>
-
-      <div class="price-card featured">
-        <div class="price-name">Engineering leader walkthrough <span class="tag tag-amber">Joint</span></div>
-        <div class="price-note">VPs of Engineering, CTOs, Eng Directors.</div>
-        <div class="price-amount">$0<small>walkthrough</small></div>
-        <div class="price-divider"></div>
-        <ul class="price-list">
-          <li>Sit between your CFO and your tax firm — same 30-minute session</li>
-          <li>Operating layer for your team — capacity, agent ROI, meeting cost, incident cost</li>
-          <li>Audit pack walkthrough for your finance lead</li>
-          <li>Pilots run through the <strong>CFO design-partner offer</strong> — same risk reversal</li>
-          <li>Privacy by default — IC-private, manager-team optional, org-wide opt-in</li>
-          <li>$0 if your engineering team can't see the value within 60 days</li>
-        </ul>
-        <div class="price-cta">
-          <a href="/engineering.html" class="btn-primary" style="width:100%">Book the joint walkthrough</a>
-        </div>
-      </div>
-    </div>
-
-    <section class="tier-section">
-      <h2>After the 2026 cohort — where pricing lands</h2>
-      <p class="tier-sub">These are the seat-based tiers Tymr lands on after the design-partner cohort graduates. Cohort partners convert at a discount.</p>
+    <section class="tier-section" style="margin-top:0;padding-top:0;border-top:none">
+      <h2>Tiers</h2>
+      <p class="tier-sub">Four tiers, plus the Workforce Intelligence add-on layered on top. Every tier ships the virtual floor and one-ledger time view.</p>
 
       <div class="tier-grid">
         <div class="tier">
-          <span class="tier-tag">Starter</span>
+          <span class="tier-tag" style="color:var(--teal)">Free</span>
           <div class="tier-price">$0<small>forever</small></div>
-          <div class="tier-summary">My Time. Personal time record.</div>
-          <p>Free, forever. Private by default. No reports, no audit features.</p>
-          <span class="tier-note">For every engineer in the org who wants their own time visible to themselves.</span>
+          <div class="tier-summary">For teams of 10 or fewer.</div>
+          <p class="tier-desc">The virtual floor and a personal time ledger — at no cost. Private by default.</p>
+          <details class="tier-features">
+            <summary>What's included</summary>
+            <ul>
+              <li>Virtual floor (basic) — live grid of rooms with avatar positions</li>
+              <li>My Time dashboard — personal day/week timer + tracked-time review</li>
+              <li>Personal audit trail — tamper-evident log of who edited what when</li>
+              <li>Manual event entry — bypass integrations when needed</li>
+              <li>Basic project management — capped projects, owners, dates, status</li>
+              <li>Manage Floors &amp; Rooms — capped rooms per pool</li>
+              <li>Light integrations — free Google Calendar, free Outlook</li>
+              <li>Org work hours, holidays, timezone, currency, locale</li>
+              <li>Role-based access (Admin / Manager / Member)</li>
+              <li>Light/Dark theme, full localization (i18n)</li>
+            </ul>
+          </details>
+          <span class="tier-note">Up to 10 users. No reports, no audit pack — but the floor and the personal ledger.</span>
         </div>
 
         <div class="tier">
+          <span class="tier-tag">Starter</span>
+          <div class="tier-price">$8<small>seat / month</small></div>
+          <div class="tier-summary">For growing teams beyond 10 users.</div>
+          <p class="tier-desc">Everything in Free, plus paid integrations and the timesheet workflow.</p>
+          <details class="tier-features">
+            <summary>What's included</summary>
+            <ul>
+              <li class="section-head">Everything in Free</li>
+              <li><strong>Paid integrations</strong> — Jira, Google &amp; Microsoft 365 (deep), Teams, Meet</li>
+              <li>My Timesheet — submit weekly timesheet for approval</li>
+              <li>Submission &amp; approval queue (manager review)</li>
+              <li>Recurring templates — pre-fill standups, 1:1s, recurring activities</li>
+              <li>Daily-draft estimated duration — auto-fills from event durations</li>
+              <li>Timeline view — day/week ribbon with override dialog</li>
+              <li>Multi-org-aware data layer</li>
+              <li>API keys for SDK &amp; integrations</li>
+              <li>Privacy Shield page — inventory of integration data flows</li>
+              <li class="section-head">Optional add-on</li>
+              <li>Workforce Intelligence (+$10/seat) — live floor, meeting cost ticker, benchmarks, agent avatars</li>
+            </ul>
+          </details>
+          <span class="tier-note">Default scope. Workforce Intelligence add-on optional.</span>
+        </div>
+
+        <div class="tier featured">
           <span class="tier-tag">Professional</span>
-          <div class="tier-price">$22<small>seat / month</small></div>
-          <div class="tier-summary">Cost &amp; Utilization. The tier finance buys.</div>
-          <p>CapEx vs OpEx classification at the source. R&amp;D credit and CapEx audit pack export — PDF, CSV, methodology, lineage.</p>
-          <span class="tier-note">Jira · GitHub · Google Calendar · Microsoft Calendar.</span>
-        </div>
-
-        <div class="tier">
-          <span class="tier-tag">Workforce Intelligence</span>
-          <div class="tier-price">+ $10<small>seat / month</small></div>
-          <div class="tier-summary">The operating layer. Optional, opt-in.</div>
-          <p>Live floor view of humans and AI agents. Per-meeting cost ticker. Incident cost burn. Capacity &amp; allocation analytics. AI agent visibility (org-flag opt-in).</p>
-          <span class="tier-note">Add-on to Professional. Default-off, opt-in per org.</span>
+          <div class="tier-price">$14<small>seat / month</small></div>
+          <div class="tier-summary">The tier finance, ops, and PMs buy.</div>
+          <p class="tier-desc">The audit pack, the planning brain, and agent tracking — all included.</p>
+          <details class="tier-features">
+            <summary>What's included</summary>
+            <ul>
+              <li class="section-head">Everything in Starter</li>
+              <li class="section-head">Finance &amp; audit</li>
+              <li><strong>Cost &amp; Utilization</strong> reports — admin view with dollar columns</li>
+              <li><strong>CapEx vs OpEx</strong> classification + reports + SOX-flavored PDF export</li>
+              <li><strong>R&amp;D Credit summary export</strong> — per-project qualifying-labor PDF</li>
+              <li>Budget variance &amp; cost composition (portfolio)</li>
+              <li>Event-room cost reports — slicers by room, attendee, project</li>
+              <li class="section-head">Resource planning &amp; project health</li>
+              <li><strong>Project Health (EVM)</strong> — SPI, CPI, schedule/cost variance per project</li>
+              <li>Project health alerts — red/amber/green with PM-enhanced reasons</li>
+              <li>Roadmap (milestones &amp; phases) — Gantt-style view</li>
+              <li>Project budgets, costs, risks</li>
+              <li>Resource allocations — FTE % over time</li>
+              <li>Task estimation &amp; calibration</li>
+              <li>Capacity forecast (configurable weeks)</li>
+              <li>Scenario planner (what-if)</li>
+              <li>8-week capacity history</li>
+              <li>Unplanned-work ratio (ServiceNow / PagerDuty)</li>
+              <li>Resource availability forecast</li>
+              <li class="section-head">Agents</li>
+              <li><strong>Agent tracking included</strong> — agent dashboard, detail, timeline, sessions</li>
+              <li class="section-head">Integrations (deep)</li>
+              <li>Slack — huddles, focus / meeting / OOO statuses</li>
+              <li>ServiceNow — P1-P4 incidents, change requests, problems</li>
+              <li>GitHub — PRs, reviews, commits as activity</li>
+              <li>PagerDuty — incident events</li>
+              <li>Integration health page, alerts, event log, activity catalog</li>
+              <li>Org OAuth client config (per-org Google/MS/Slack)</li>
+              <li class="section-head">Workforce admin</li>
+              <li>Bulk invite users (multi-email)</li>
+              <li>Manage Teams + reporting hierarchy</li>
+              <li>Rate Cards / Rate Tiers (auto-seeded)</li>
+              <li>Overtime pay &amp; cost handling</li>
+              <li>User leaves (PTO) tracking</li>
+              <li>Org visibility config &amp; feature flags</li>
+            </ul>
+          </details>
+          <span class="tier-note">Virtual floor + audit pack + planning brain. Workforce Intelligence add-on optional.</span>
         </div>
 
         <div class="tier">
           <span class="tier-tag">Enterprise</span>
           <div class="tier-price">Custom</div>
-          <div class="tier-summary">@tymr/agent-events SDK. White-glove.</div>
-          <p>White-glove onboarding for instrumenting your own agents. SSO/SCIM. DCAA audit trail (Phase 2, Q4 2026). Workday write-back (post-certification). Dedicated CSM.</p>
-          <span class="tier-note">For orgs running custom agent stacks or DCAA-bound contracts.</span>
+          <div class="tier-summary">SSO, DCAA, Workday writeback, agent SDK.</div>
+          <p class="tier-desc">For regulated orgs, custom agent stacks, or DCAA-bound contracts.</p>
+          <details class="tier-features">
+            <summary>What's included</summary>
+            <ul>
+              <li class="section-head">Everything in Professional</li>
+              <li class="section-head">Identity &amp; access</li>
+              <li><strong>SSO (OIDC)</strong> per org</li>
+              <li><strong>SAML</strong> support</li>
+              <li><strong>SCIM v2</strong> auto-provisioning + token UI</li>
+              <li class="section-head">Compliance</li>
+              <li><strong>DCAA audit trail</strong> — tamper-evident time-event log + immutability</li>
+              <li>Benchmark consent governance</li>
+              <li class="section-head">Agents (full SDK)</li>
+              <li><strong>@tymr/agent-events SDK</strong> + agent-api edge function</li>
+              <li>Agent capacity config — concurrency / throughput limits</li>
+              <li>Manage agents (admin CRUD)</li>
+              <li>Agent demo keys</li>
+              <li class="section-head">Integrations (full)</li>
+              <li><strong>Workday writeback</strong> — completed time events posted back</li>
+              <li>Physical-room integration — bind virtual room to physical resource</li>
+              <li class="section-head">Service</li>
+              <li>White-glove onboarding</li>
+              <li>Dedicated CSM</li>
+            </ul>
+          </details>
+          <span class="tier-note">Custom-priced. Annual contract.</span>
         </div>
       </div>
 
-      <div class="cohort-footer">
-        <strong>Cohort partners lock in 50% off Professional and free Workforce Intelligence for year one</strong> of the standardized tiers.
+      <div class="tier-footer">
+        <strong>Workforce Intelligence (+$10/seat add-on)</strong> — live floor view of humans and AI agents, per-meeting cost ticker, incident cost burn, cross-org benchmarks. Layers on top of any paid tier. Default-off, opt-in per org.
       </div>
-    </section>
-
-    <section>
-      <h2>What every design-partner pilot includes</h2>
-      <div class="grid-3">
-        <div class="card">
-          <h3>One number, one year</h3>
-          <p>No seat counts, no usage tiers, no per-module add-ons during the pilot. If we can't deliver audit-ready files for a flat fee, we aren't ready for seat math.</p>
-        </div>
-        <div class="card">
-          <h3>No setup fees</h3>
-          <p>OAuth into your tools. No professional services gate. No implementation consultant. First pack ships inside 8 weeks from kickoff.</p>
-        </div>
-        <div class="card">
-          <h3>Your data, your files</h3>
-          <p>Every pack (PDF + CSV) is yours to keep. If the pilot doesn't renew, you still walk away with an exam-ready workpaper for the period you ran.</p>
-        </div>
-      </div>
-    </section>
-
-    <section>
-      <h2>The math behind the flat fee</h2>
-      <p>A 100-engineer US software company with a fully-loaded dev cost of $180K/engineer spends roughly <strong>$18M/year</strong> on engineering. If 55% of that qualifies for the US R&amp;D credit — typical for product-shipping software — that's ~$9.9M in QREs. At a conservative <strong>8% federal ASC rate</strong>, that's <strong>~$790K federal credit</strong>, plus state (California ~$740K, Massachusetts ~$640K).</p>
-      <p>$10–20K flat for a pilot that puts a source event behind every qualified hour is a rounding error against that credit — and most teams recover more than the flat fee in removed haircut alone.</p>
-      <p><a href="/rd-credit-calculator.html">Run your own numbers in the calculator →</a></p>
-    </section>
-
-    <section class="faq-block">
-      <h2>Still have questions?</h2>
-
-      <p class="faq-q">How does the risk reversal actually work?</p>
-      <p class="faq-a">At the end of the 60-day pilot we hand the pack directly to your tax firm. They review the methodology PDF, the workpaper CSV, and a sample of source-event lineage. If they say "no, this wouldn't hold up in an exam," you walk away at $0 — no invoice, no future obligation. We lose the bet, not you.</p>
-
-      <p class="faq-q">Do you replace our tax firm or our accounting software?</p>
-      <p class="faq-a">No. We don't touch Form 6765, we don't share your tax firm's fees, and we don't replace NetSuite / Sage Intacct / QuickBooks. We produce the per-engineer time evidence your preparer already has to collect — so they're not running quarterly engineer surveys.</p>
-
-      <p class="faq-q">Why not seat-based pricing now?</p>
-      <p class="faq-a">Seat math puts the customer on defense during a design-partner pilot. "Is it 50 engineers or 75? Do observers count?" We'd rather spend that energy on making the pack defensible. Seat-based tiers come once the product is standardized.</p>
-
-      <p class="faq-q">Does Workforce Intelligence default to org-wide visibility?</p>
-      <p class="faq-a">No. Default visibility across every tier is private — the IC owns their record. Team-scope is manager opt-in. Full-floor org visibility is a per-org flag, off by default. EU Works Council–compatible.</p>
-
-      <p class="faq-q">What happens after the pilot?</p>
-      <p class="faq-a">Three paths. (1) Roll wider — convert to the seat-based Professional tier (cohort partners at 50% off). (2) Embed into your tax firm's study proposal as a standardized line item. (3) Walk away with your files — no lock-in, no exit fees.</p>
     </section>
 
     <div class="cta-inline">
-      <a href="/cfo.html" class="btn-primary">Start the CFO pilot</a>
-      <a href="/engineering.html" class="btn-ghost">Engineering walkthrough →</a>
-      <a href="/tax-firms.html" class="btn-ghost">Firm pilot →</a>
+      <a href="https://calendly.com/tymrlogic/demo" class="btn-primary">Request Pilot</a>
+      <a href="/rd-credit-calculator.html" class="btn-ghost">Run the calculator →</a>
     </div>
   </div>
 </div>
@@ -267,9 +293,7 @@
           <span class="logo-name" style="font-size:18px">Ty<span class="gr">mr</span></span>
         </a>
         <div class="footer-links">
-          <a href="/cfo.html">For CFOs</a>
-          <a href="/tax-firms.html">For tax firms</a>
-          <a href="/engineering.html">Engineering</a>
+          <a href="/at-the-ledger.html">At the ledger</a>
           <a href="/sample-pack.html">Sample pack</a>
           <a href="/rd-credit-calculator.html">Calculator</a>
           <a href="/utev1.html">UTEv1</a>

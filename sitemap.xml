@@ -6,17 +6,7 @@
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://tymrlogic.com/cfo</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.95</priority>
-  </url>
-  <url>
-    <loc>https://tymrlogic.com/tax-firms</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.95</priority>
-  </url>
-  <url>
-    <loc>https://tymrlogic.com/engineering</loc>
+    <loc>https://tymrlogic.com/at-the-ledger</loc>
     <changefreq>weekly</changefreq>
     <priority>0.95</priority>
   </url>
@@ -49,21 +39,6 @@
     <loc>https://tymrlogic.com/changelog</loc>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://tymrlogic.com/vs/tempo</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://tymrlogic.com/vs/timely</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://tymrlogic.com/vs/memory</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://tymrlogic.com/privacy</loc>

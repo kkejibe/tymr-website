@@ -63,6 +63,12 @@ h1 em{font-style:normal;color:var(--ink-2)}
   background:var(--bg);font-size:13px;color:var(--ink);
 }
 .opill .odot{width:6px;height:6px;border-radius:50%;background:var(--accent);flex-shrink:0}
+.opill.tint-gold{background:var(--accent-soft);border-color:var(--accent-line)}
+.opill.tint-gold .odot{background:var(--accent)}
+.opill.tint-teal{background:var(--teal-soft);border-color:var(--teal-line)}
+.opill.tint-teal .odot{background:var(--teal)}
+.opill.tint-indigo{background:var(--indigo-soft);border-color:var(--indigo-line)}
+.opill.tint-indigo .odot{background:var(--indigo)}
 
 .risk-reversal{
   margin-top:20px;padding:14px 18px;display:inline-flex;align-items:center;gap:10px;
@@ -333,9 +339,7 @@ footer.site-footer{padding:48px 0 56px;border-top:1px solid var(--hairline);marg
         <span class="logo-name">Ty<span class="gr">mr</span></span>
       </a>
       <ul class="nav-links">
-        <li><a href="/cfo.html">For CFOs</a></li>
-        <li><a href="/tax-firms.html">For tax firms</a></li>
-        <li><a href="/engineering.html">Engineering</a></li>
+        <li><a href="/at-the-ledger.html">At the ledger</a></li>
         <li><a href="/sample-pack.html">Sample pack</a></li>
         <li><a href="/rd-credit-calculator.html">Calculator</a></li>
         <li><a href="/pricing.html">Pricing</a></li>
@@ -348,42 +352,35 @@ footer.site-footer{padding:48px 0 56px;border-top:1px solid var(--hairline);marg
 <!-- HERO -->
 <div class="container">
   <div class="hero">
-    <div class="hero-eyebrow">Design-partner cohort · Q2 2026</div>
-    <h1>Time tracking for engineering teams. <em>Without the timesheets.</em></h1>
-    <p class="hero-sub">Tymr auto-aggregates Jira tickets, GitHub commits, and calendar blocks into clean per-engineer, per-project hours — in real time, with zero surveys. Finance uses the same data for R&amp;D credits, software CapEx, and audit trails.</p>
+    <div class="hero-eyebrow">Project Management · Resource Planning · Auto Task Logging</div>
+    <h1>Track both on one virtual floor <em>and one ledger.</em></h1>
+    <p class="hero-sub">Tymr auto-aggregates Jira tickets, GitHub commits, calendar blocks, Slack, ServiceNow, and Workday into clean per-engineer, per-project hours — in real time, with zero surveys. Humans and AI agents on one floor; finance, ops, and engineering on one ledger.</p>
 
     <div class="outcomes">
-      <span class="outcomes-label">What finance uses the data for</span>
+      <span class="outcomes-label">What teams use the data for</span>
       <div class="outcomes-row">
-        <span class="opill"><span class="odot"></span>R&amp;D tax credit</span>
-        <span class="opill"><span class="odot"></span>Software CapEx (ASC 350-40)</span>
-        <span class="opill"><span class="odot"></span>Audit-ready trail</span>
+        <span class="opill tint-gold"><span class="odot"></span>R&amp;D tax credit</span>
+        <span class="opill tint-gold"><span class="odot"></span>Software CapEx (ASC 350-40)</span>
+        <span class="opill tint-teal"><span class="odot"></span>Resource planning</span>
+        <span class="opill tint-teal"><span class="odot"></span>Capacity forecasting</span>
+        <span class="opill tint-indigo"><span class="odot"></span>Project health (EVM)</span>
+        <span class="opill tint-indigo"><span class="odot"></span>Agent ROI</span>
       </div>
     </div>
 
-    <div class="risk-reversal">
-      <span class="risk-dot"></span>
-      <span>Your tax firm signs off <strong>before you pay</strong>. If the data isn't exam-ready, you owe nothing.</span>
-    </div>
-
     <div class="dual-cta">
-      <a class="dcard" href="/cfo.html">
+      <a class="dcard" href="/at-the-ledger.html#cfo">
         <span class="dcard-who">For CFOs &amp; Controllers</span>
         <span class="dcard-title">Claim a bigger R&amp;D credit and pass a CapEx audit — in 60 days.</span>
         <span class="dcard-hint">R&amp;D credit uplift estimate + CapEx vs OpEx audit pack. Pay only if your tax firm signs off.</span>
         <span class="dcard-go">See the CFO pilot →</span>
       </a>
-      <a class="dcard" href="/tax-firms.html">
+      <a class="dcard" href="/at-the-ledger.html#tax">
         <span class="dcard-who">For R&amp;D tax &amp; accounting firms</span>
         <span class="dcard-title">Let your analysts skip the time-survey grind on software clients.</span>
-        <span class="dcard-hint">Free pilot on 3–5 of your software clients. Per-engineer time, § 41/§ 174 tags, workpaper-ready CSV. You keep your study fees.</span>
+        <span class="dcard-hint">Free pilot on a handful of your software clients. Per-engineer time, § 41/§ 174 tags, workpaper-ready CSV. You keep your study fees.</span>
         <span class="dcard-go">See the firm offer →</span>
       </a>
-    </div>
-
-    <div class="icp-bar">
-      <span class="icp-tag">Built for</span>
-      <p><strong>US &amp; Canadian software companies, 50–500 engineers</strong>, already claiming R&amp;D credits or SR&amp;ED, running Jira + GitHub + Google or Microsoft Calendar, working with a tax advisor on the credit study.</p>
     </div>
   </div>
 </div>
@@ -418,37 +415,38 @@ footer.site-footer{padding:48px 0 56px;border-top:1px solid var(--hairline);marg
   </section>
 </div>
 
-<!-- DELIVERABLES — concrete files, not "dashboards" -->
+<!-- WHAT THE DATA BECOMES — the broader product picture -->
 <div class="container" id="deliverables">
   <section>
-    <span class="sec-label">The four files</span>
-    <h2 class="sec-head">What the time data becomes.</h2>
-    <p class="sec-sub">The same event stream feeds all four deliverables. Every pilot ships the same set — designed to drop into the workpapers your tax firm already uses.</p>
+    <span class="accent-bar"></span>
+    <span class="sec-label">What the data becomes</span>
+    <h2 class="sec-head">One event stream. <em>A finance pack, an operating layer, and a planning brain.</em></h2>
+    <p class="sec-sub">Every Jira transition, GitHub commit, calendar block, Slack huddle, ServiceNow incident, and agent run is captured once and re-used everywhere. You get an audit-ready evidence pack and a real-time operating layer for capacity, projects, and scenarios — not a static export.</p>
 
     <div class="deliv-grid">
       <div class="deliv">
         <div class="deliv-ico">01</div>
-        <h3>R&amp;D credit uplift estimate</h3>
-        <p>Per-engineer, per-project qualified hours with a Fed + state credit estimate against last year's claim.</p>
-        <span class="deliv-fmt">PDF · 6–8 pages</span>
+        <h3>Audit-ready evidence pack</h3>
+        <p>R&amp;D credit uplift PDF, CapEx vs OpEx audit pack, workpaper-ready CSV, and a 2-page methodology — every hour cited to a source event. Drops into your tax firm's existing workpapers.</p>
+        <span class="deliv-fmt">PDF + CSV · preparer-ready</span>
       </div>
       <div class="deliv">
         <div class="deliv-ico">02</div>
-        <h3>CapEx vs OpEx audit pack</h3>
-        <p>Capitalizable application-development hours split from OpEx maintenance. Journal-entry ready, SOX-aligned.</p>
-        <span class="deliv-fmt">PDF · journal-ready</span>
+        <h3>Resource planning &amp; capacity</h3>
+        <p>Per-team capacity forecasts, FTE allocations, PTO &amp; leave overlays, scenario planner for what-if. See where engineering effort actually went, by initiative — not by self-report.</p>
+        <span class="deliv-fmt">Live dashboards</span>
       </div>
       <div class="deliv">
         <div class="deliv-ico">03</div>
-        <h3>Workpaper-ready CSV</h3>
-        <p>Engineer, project, hours, period, classification, evidence link. Pastes into your tax firm's existing Excel template — no rename.</p>
-        <span class="deliv-fmt">CSV · tax-firm schema</span>
+        <h3>Project health (EVM)</h3>
+        <p>Earned-value-style SPI, CPI, schedule and cost variance per project. Red/amber/green status with the source events that drove the call. Roadmap, milestones, risks.</p>
+        <span class="deliv-fmt">Per-project</span>
       </div>
       <div class="deliv">
         <div class="deliv-ico">04</div>
-        <h3>Methodology PDF</h3>
-        <p>Two pages, plain English. Data sources, attribution rules, classification tests, human review steps. Defensible in an exam.</p>
-        <span class="deliv-fmt">PDF · 2 pages</span>
+        <h3>Operating insights</h3>
+        <p>Meeting cost ticker, incident cost burn, agent ROI, planned vs actual, unplanned-work ratio, 8-week capacity history, cross-org benchmarks. Same ledger, daily.</p>
+        <span class="deliv-fmt">Real-time</span>
       </div>
     </div>
 
@@ -458,63 +456,28 @@ footer.site-footer{padding:48px 0 56px;border-top:1px solid var(--hairline);marg
   </section>
 </div>
 
-<!-- HOW IT FITS YOUR TAX FIRM -->
-<div class="sec-band">
-  <div class="container">
-    <section>
-      <span class="sec-label">How it fits your tax firm</span>
-      <h2 class="sec-head">Your firm keeps the study. <em>Tymr is the time-evidence layer underneath.</em></h2>
-      <p class="sec-sub">Tymr is not a tax firm. We do not file your return, we do not touch Form 6765, and we do not share your firm's fees. We deliver the per-engineer time evidence your preparer already has to collect by hand — so their analysts get their evenings back and your credit study gets defensible.</p>
-
-      <div class="fit-wrap">
-        <ul class="fit-list">
-          <li><span class="fk">Capacity</span><span class="fv">Analysts stop chasing engineers for quarterly surveys. Per-engineer, per-project hours arrive <strong>pre-classified and cited</strong>.</span></li>
-          <li><span class="fk">Defensibility</span><span class="fv">Every hour traces to a Jira transition, GitHub commit SHA, or calendar block — <strong>contemporaneous, not reconstructed</strong>.</span></li>
-          <li><span class="fk">Fee capture</span><span class="fv">Your firm keeps the full R&amp;D study engagement. We never touch the return or the fee.</span></li>
-          <li><span class="fk">Scope</span><span class="fv">Same workflow. We plug into what your firm already does — no retraining, no new tools for your analysts.</span></li>
-        </ul>
-        <div class="fit-panel">
-          <div class="fp-head">Pilot mechanics · 60 days</div>
-          <div class="fp-steps">
-            <div class="fp-step"><div class="fp-num">1</div><div class="fp-txt">Firm <strong>nominates 3–5 software clients</strong> with messy time tracking, survey fatigue, or 6-figure claims.</div></div>
-            <div class="fp-step"><div class="fp-num">2</div><div class="fp-txt">Tymr deploys as the <strong>time-evidence layer</strong> — OAuth into Jira, GitHub, and calendars. No engineer survey.</div></div>
-            <div class="fp-step"><div class="fp-num">3</div><div class="fp-txt">Firm receives the <strong>same four deliverables</strong> per client — drops into existing workpapers.</div></div>
-            <div class="fp-step"><div class="fp-num">4</div><div class="fp-txt">Joint case study, 5–10 referrals, optional <strong>"Tymr inside"</strong> standardization next year.</div></div>
-          </div>
-          <div class="fp-ask">$0 platform fee during pilot. Standardized clients land at $15–25k/year embedded in the firm's study proposal.</div>
-        </div>
-      </div>
-
-      <div style="margin-top:36px;display:flex;gap:12px;flex-wrap:wrap">
-        <a class="btn-primary" href="/tax-firms.html">See the full firm offer →</a>
-        <a class="btn-ghost" href="/sample-pack.html">Download sample pack</a>
-      </div>
-    </section>
-  </div>
-</div>
-
 <!-- INTEGRATIONS -->
 <div class="container">
   <section>
+    <span class="accent-bar teal"></span>
     <span class="sec-label">Integrations</span>
-    <h2 class="sec-head">Depth on the four systems <em>where R&amp;D actually happens.</em></h2>
-    <p class="sec-sub">Event-level ingestion — not summaries — so every hour traces to a ticket, a commit, or a meeting invite. Nothing else to install.</p>
+    <h2 class="sec-head">Event-level ingestion <em>across the systems where work actually happens.</em></h2>
+    <p class="sec-sub">Every hour traces to a ticket, a commit, a meeting invite, a huddle, an incident, or an HRIS record. Nothing else to install.</p>
 
     <div class="int-row">
       <span class="int-pill"><span class="idot" style="background:#2684FF"></span>Jira <span class="int-suffix">deep</span></span>
       <span class="int-pill"><span class="idot" style="background:#24292E"></span>GitHub <span class="int-suffix">deep</span></span>
       <span class="int-pill"><span class="idot" style="background:#4285F4"></span>Google Calendar <span class="int-suffix">deep</span></span>
-      <span class="int-pill"><span class="idot" style="background:#0072C6"></span>Microsoft Calendar <span class="int-suffix">deep</span></span>
+      <span class="int-pill"><span class="idot" style="background:#0072C6"></span>Microsoft 365 <span class="int-suffix">deep</span></span>
+      <span class="int-pill"><span class="idot" style="background:#4A154B"></span>Slack <span class="int-suffix">deep</span></span>
+      <span class="int-pill"><span class="idot" style="background:#62D84E"></span>ServiceNow <span class="int-suffix">deep</span></span>
+      <span class="int-pill"><span class="idot" style="background:#F38B00"></span>Workday <span class="int-suffix">deep · writeback</span></span>
+      <span class="int-pill"><span class="idot" style="background:#FF6B55"></span>PagerDuty <span class="int-suffix">deep</span></span>
+      <span class="int-pill"><span class="idot" style="background:#A67512"></span>@tymr/agent-events <span class="int-suffix">SDK</span></span>
     </div>
     <div class="int-row" style="margin-top:10px">
       <span class="int-pill soon"><span class="idot" style="background:#CFCFCA"></span>NetSuite <span class="int-suffix">Q3 2026</span></span>
       <span class="int-pill soon"><span class="idot" style="background:#CFCFCA"></span>Sage Intacct <span class="int-suffix">Q3 2026</span></span>
-      <span class="int-pill soon"><span class="idot" style="background:#CFCFCA"></span>Workday <span class="int-suffix">Q4 2026</span></span>
-    </div>
-
-    <div class="not-fit">
-      <span class="nf-tag">Not a fit if</span>
-      <p>You're a non-software company, under 50 engineers, have never claimed R&amp;D credits (or SR&amp;ED), or you don't work with a tax advisor on the study. We'll close the loop politely and point you at simpler tools.</p>
     </div>
   </section>
 </div>
@@ -529,7 +492,7 @@ footer.site-footer{padding:48px 0 56px;border-top:1px solid var(--hairline);marg
       <div class="moat-prose">
         <p>AI agents are now on your engineering team. Most R&amp;D platforms don't see them at all. The ones that do don't tag the runs against § 174.</p>
         <p>Tymr puts agents on the <strong>same floor as your engineers</strong> — same time grid, same § 174 / 350-40 / OpEx classification, same audit trail.</p>
-        <p>Tymr ingests engineering work from where it already happens — <strong>Jira</strong> tickets, <strong>GitHub</strong> commits, <strong>Google</strong> and <strong>Microsoft</strong> calendar blocks. Agents emit through <code>@tymr/agent-events</code> — wraps Claude, LangChain, CrewAI, OpenAI Assistants, Vercel AI. <strong>UTEv1 schema</strong> across both. Same workpaper export.</p>
+        <p>Tymr ingests work from where it already happens — <strong>Jira</strong>, <strong>GitHub</strong>, <strong>Google</strong> &amp; <strong>Microsoft 365</strong> calendars, <strong>Slack</strong> huddles, <strong>ServiceNow</strong> incidents, <strong>Workday</strong> PTO &amp; training, and <strong>PagerDuty</strong>. Agents emit through <code>@tymr/agent-events</code> — wraps Claude, LangChain, CrewAI, OpenAI Assistants, Vercel AI. <strong>UTEv1 schema</strong> across both. Same workpaper export.</p>
         <p>When the IRS asks who produced the qualified research time, you show the engineer-hours, the agent-hours, the lineage, and the primary events behind both.</p>
       </div>
 
@@ -752,37 +715,11 @@ footer.site-footer{padding:48px 0 56px;border-top:1px solid var(--hairline);marg
         </div>
       </div>
 
-      <!-- Rest of the year sub-block -->
-      <div class="rest-of-year">
-        <span class="sec-label">What you get the rest of the year</span>
-        <h3 class="roy-head">The audit pack ships once. <em>The data lands every week.</em></h3>
-        <div class="roy-grid">
-          <div class="roy">
-            <h4>Capacity &amp; allocation.</h4>
-            <p>Where engineering effort actually went, by initiative, by project. Real-time, no surveys.</p>
-          </div>
-          <div class="roy">
-            <h4>Agent ROI.</h4>
-            <p>What your AI agents did, what they cost, whether they're paying for themselves. Per-task, per-project, paired with the engineer they assisted.</p>
-          </div>
-          <div class="roy">
-            <h4>Meeting cost.</h4>
-            <p>Every recurring meeting carries a dollar weight. Engineering leadership sees which ones are worth it.</p>
-          </div>
-          <div class="roy">
-            <h4>Incident cost.</h4>
-            <p>Engineer-hours and dollar cost per incident. The metric oncall managers actually need.</p>
-          </div>
-        </div>
-        <div class="roy-cta">
-          <a class="btn-ghost" href="/engineering.html">Engineering leader? See the operating layer →</a>
-        </div>
-      </div>
     </section>
   </div>
 </div>
 
-<!-- ROADMAP NOTE — what's still ahead, post-cohort -->
+<!-- ROADMAP NOTE -->
 <div class="container">
   <section class="tight" style="padding:48px 0">
     <div style="display:flex;justify-content:space-between;align-items:center;gap:18px;flex-wrap:wrap;padding:20px 24px;background:var(--bg-warm);border:1px solid var(--hairline);border-radius:12px">
@@ -799,21 +736,21 @@ footer.site-footer{padding:48px 0 56px;border-top:1px solid var(--hairline);marg
 <div class="container">
   <div class="cta-block">
     <h2>Two pilots. <em>One no-engineer-survey bar.</em></h2>
-    <p>We are opening 10 design-partner slots in the Q2 2026 cohort — split between CFO-led pilots and R&amp;D tax firm pilots. Both are free or close to it. Both ship the same four deliverables.</p>
+    <p>Two paths in — CFO-led pilots and R&amp;D tax firm pilots. Both are free or close to it. Both ship the same four deliverables.</p>
     <div class="cta-pair">
-      <a class="cta-slot" href="/cfo.html">
+      <a class="cta-slot" href="/at-the-ledger.html#cfo">
         <span class="cs-who">For CFOs &amp; Controllers</span>
         <span class="cs-title">60-day pilot. Risk-reversed. $0 if your tax firm doesn't sign off.</span>
         <span class="cs-go">Start the CFO pilot →</span>
       </a>
-      <a class="cta-slot" href="/tax-firms.html">
+      <a class="cta-slot" href="/at-the-ledger.html#tax">
         <span class="cs-who">For R&amp;D tax firms</span>
         <span class="cs-title">Pilot on 3–5 software clients. You keep your study fees. We stay underneath.</span>
         <span class="cs-go">See the firm offer →</span>
       </a>
     </div>
     <p style="margin-top:24px;color:#9AA0A6;font-size:14px;line-height:1.55">
-      Engineering leader? See what your CFO is unlocking — and what you get every week. <a href="/engineering.html" style="color:#fff;text-decoration:underline;text-decoration-color:rgba(255,255,255,0.3);text-underline-offset:3px">→ /engineering</a>
+      Engineering leader? See what your CFO is unlocking — and what you get every week. <a href="/at-the-ledger.html#eng" style="color:#fff;text-decoration:underline;text-decoration-color:rgba(255,255,255,0.3);text-underline-offset:3px">→ /engineering</a>
     </p>
   </div>
 </div>
@@ -827,14 +764,11 @@ footer.site-footer{padding:48px 0 56px;border-top:1px solid var(--hairline);marg
           <div class="logo-mark">T</div>
           <span class="logo-name">Ty<span class="gr">mr</span></span>
         </a>
-        <p class="footer-tag">Audit-ready R&amp;D credits and software CapEx. No engineer surveys.</p>
       </div>
       <div class="footer-cols">
         <div class="footer-col">
           <h4>Offer</h4>
-          <a href="/cfo.html">For CFOs</a>
-          <a href="/tax-firms.html">For tax firms</a>
-          <a href="/engineering.html">Engineering</a>
+          <a href="/at-the-ledger.html">At the ledger</a>
           <a href="/sample-pack.html">Sample pack</a>
           <a href="/pricing.html">Pricing</a>
         </div>
@@ -843,7 +777,6 @@ footer.site-footer{padding:48px 0 56px;border-top:1px solid var(--hairline);marg
           <a href="/rd-credit-calculator.html">Calculator</a>
           <a href="/utev1.html">UTEv1 spec</a>
           <a href="/changelog.html">Changelog</a>
-          <a href="/vs/tempo.html">vs Tempo</a>
         </div>
         <div class="footer-col">
           <h4>Company</h4>
@@ -856,7 +789,6 @@ footer.site-footer{padding:48px 0 56px;border-top:1px solid var(--hairline);marg
     </div>
     <div class="footer-bottom">
       <span class="footer-copy">tymrlogic.com · © 2026 Tymr</span>
-      <span class="footer-copy">Audit-ready · no engineer surveys</span>
     </div>
   </div>
 </footer>

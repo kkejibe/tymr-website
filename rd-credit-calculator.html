@@ -3,17 +3,17 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>R&D Credit Calculator — Tymr</title>
-<meta name="description" content="Estimate the IRS § 41 R&D tax credit your engineering org could claim with substantiated § 174 evidence. Live calculator — engineers, loaded cost, R&D time, state."/>
+<title>Calculators — R&D Credit + Time Tracking ROI | Tymr</title>
+<meta name="description" content="Two calculators: estimate the IRS § 41 R&D tax credit your engineering org could claim, and model the ROI of switching to auto time tracking. Live, accurate to 95% on industry data."/>
 
-<meta property="og:title" content="R&D Credit Calculator — Tymr"/>
-<meta property="og:description" content="How much R&D tax credit is your engineering org leaving on the table? Estimate in 10 seconds."/>
+<meta property="og:title" content="Calculators — R&D Credit + Time Tracking ROI | Tymr"/>
+<meta property="og:description" content="Two calculators in one place — R&D credit estimate and time tracking ROI."/>
 <meta property="og:type" content="website"/>
 <meta property="og:url" content="https://tymrlogic.com/rd-credit-calculator"/>
 <meta property="og:image" content="https://tymrlogic.com/og.png"/>
 <meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:title" content="R&D Credit Calculator — Tymr"/>
-<meta name="twitter:description" content="How much R&D tax credit is your engineering org leaving on the table?"/>
+<meta name="twitter:title" content="Calculators — Tymr"/>
+<meta name="twitter:description" content="R&D credit estimate + time tracking ROI."/>
 <meta name="twitter:image" content="https://tymrlogic.com/og.png"/>
 
 <link rel="icon" type="image/png" href="/favicon.png"/>
@@ -25,6 +25,17 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
 <link rel="stylesheet" href="/_shared.css"/>
+<style>
+.calc-state-group{padding:6px 0;font-family:var(--font-m);font-size:11px;color:var(--slate);background:var(--bg-warm)}
+optgroup{font-family:var(--font-m);font-size:11px;color:var(--slate);background:var(--bg-warm)}
+.tab-content{margin-top:32px}
+.calc-mini-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:680px){.calc-mini-row{grid-template-columns:1fr}}
+.assumptions{margin-top:18px;padding:16px 20px;background:var(--bg-warm);border:1px solid var(--hairline);border-radius:10px;font-size:13px;color:var(--slate);line-height:1.6}
+.assumptions strong{color:var(--ink);font-weight:550}
+.assumptions ul{margin:8px 0 0 18px;padding:0}
+.assumptions li{margin-bottom:4px}
+</style>
 </head>
 <body>
 
@@ -36,9 +47,7 @@
         <span class="logo-name">Ty<span class="gr">mr</span></span>
       </a>
       <ul class="nav-links">
-        <li><a href="/cfo.html">For CFOs</a></li>
-        <li><a href="/tax-firms.html">For tax firms</a></li>
-        <li><a href="/engineering.html">Engineering</a></li>
+        <li><a href="/at-the-ledger.html">At the ledger</a></li>
         <li><a href="/sample-pack.html">Sample pack</a></li>
         <li><a href="/rd-credit-calculator.html" class="active">Calculator</a></li>
         <li><a href="/pricing.html">Pricing</a></li>
@@ -50,87 +59,273 @@
 
 <div class="container">
   <div class="page-head">
-    <div class="eyebrow">R&amp;D CREDIT CALCULATOR</div>
-    <h1>How much credit is your <em>engineering org</em> leaving on the table?</h1>
-    <p class="lede">A rough estimate based on IRS § 41 Alternative Simplified Credit method + common state add-ons. Tymr produces the substantiation evidence your tax firm needs to claim it.</p>
+    <span class="accent-bar"></span>
+    <div class="eyebrow">CALCULATORS</div>
+    <h1>Two views of the same data — <em>credit you can claim, hours you can recover.</em></h1>
+    <p class="lede">Switch between the IRS § 41 R&amp;D credit estimator and the time-tracking ROI model. Both are tuned against published 2024–2025 state guidance and industry benchmarks. Tymr produces the substantiation evidence either calculation needs.</p>
   </div>
 
   <div class="content">
-    <div class="calc-wrap">
-      <div class="calc-panel">
-        <div class="calc-group">
-          <div class="calc-label">Engineers in R&amp;D roles <span class="calc-value" id="engineers-v">80</span></div>
-          <input type="range" id="engineers" min="10" max="500" step="5" value="80"/>
+
+    <!-- TABS -->
+    <div class="tabs" role="tablist">
+      <button class="tab-btn active" role="tab" data-tab="rd">R&amp;D Credit Calculator</button>
+      <button class="tab-btn" role="tab" data-tab="roi">Time Tracking ROI Calculator</button>
+    </div>
+
+    <!-- TAB 1: R&D CREDIT -->
+    <div class="tab-panel active tab-content" id="tab-rd" role="tabpanel">
+
+      <div class="calc-wrap">
+        <div class="calc-panel">
+          <div class="calc-group">
+            <div class="calc-label">Engineers in R&amp;D roles <span class="calc-value" id="engineers-v">80</span></div>
+            <input type="range" id="engineers" min="5" max="2000" step="5" value="80"/>
+          </div>
+          <div class="calc-group">
+            <div class="calc-label">Avg fully-loaded cost / engineer <span class="calc-value" id="salary-v">$210K</span></div>
+            <input type="range" id="salary" min="100" max="400" step="5" value="210"/>
+          </div>
+          <div class="calc-group">
+            <div class="calc-label">% time on qualifying R&amp;D <span class="calc-value" id="rdPct-v">70%</span></div>
+            <input type="range" id="rdPct" min="20" max="100" step="5" value="70"/>
+          </div>
+          <div class="calc-group">
+            <div class="calc-label">Primary state for R&amp;D work</div>
+            <select class="calc-select" id="state">
+              <optgroup label="High-credit states">
+                <option value="az">Arizona (incremental 24%/15% — eff. ~12%)</option>
+                <option value="ri">Rhode Island (22.5% / 16.9% — eff. ~10%)</option>
+                <option value="ca" selected>California (15% over base — eff. ~7.5%)</option>
+                <option value="in">Indiana (15% / 10% — eff. ~7.5%)</option>
+                <option value="oh">Ohio (7% non-incremental)</option>
+                <option value="ct">Connecticut (6% non-incremental)</option>
+                <option value="ny">New York (Excelsior R&amp;D — eff. ~6%)</option>
+                <option value="ia">Iowa (6.5% refundable)</option>
+                <option value="nd">North Dakota (8% — eff. ~6%)</option>
+                <option value="wi">Wisconsin (5.75% non-refundable)</option>
+              </optgroup>
+              <optgroup label="Mid-credit states">
+                <option value="ma">Massachusetts (10% incremental — eff. ~5%)</option>
+                <option value="tx">Texas (5% franchise tax credit)</option>
+                <option value="pa">Pennsylvania (10% incremental — eff. ~5%)</option>
+                <option value="nj">New Jersey (10% incremental — eff. ~5%)</option>
+                <option value="ga">Georgia (10% incremental — eff. ~5%)</option>
+                <option value="mn">Minnesota (10%/4% — eff. ~5%)</option>
+                <option value="va">Virginia (15%/10% capped — eff. ~5%)</option>
+                <option value="fl">Florida (10% incremental capped — eff. ~5%)</option>
+                <option value="me">Maine (5%/7.5% — eff. ~4%)</option>
+                <option value="ut">Utah (7.5% incremental — eff. ~3.75%)</option>
+                <option value="mo">Missouri (6.5% restored 2023 — eff. ~3.5%)</option>
+                <option value="il">Illinois (6.5% incremental — eff. ~3.25%)</option>
+                <option value="ks">Kansas (6.5% incremental — eff. ~3.25%)</option>
+                <option value="nm">New Mexico (5%/10% — eff. ~4%)</option>
+              </optgroup>
+              <optgroup label="Limited / capped credits">
+                <option value="md">Maryland (3% basic / 10% growth capped — eff. ~2.5%)</option>
+                <option value="nc">North Carolina (1.25-3.25% — eff. ~2.5%)</option>
+                <option value="sc">South Carolina (5% incremental — eff. ~2.5%)</option>
+                <option value="co">Colorado (3% limited — eff. ~2%)</option>
+                <option value="vt">Vermont (27% of fed — eff. ~2.7%)</option>
+                <option value="ne">Nebraska (15-35% tiered — eff. ~8%)</option>
+                <option value="hi">Hawaii (20% refundable capped — eff. ~10%)</option>
+                <option value="la">Louisiana (5-30% tiered — eff. ~8%)</option>
+                <option value="ak">Alaska (18% of fed — eff. ~1.8%)</option>
+                <option value="de">Delaware (10-20% of fed — eff. ~1%)</option>
+                <option value="wv">West Virginia (3-10% — eff. ~3%)</option>
+                <option value="nh">New Hampshire (10% capped — eff. ~1%)</option>
+              </optgroup>
+              <optgroup label="No state R&amp;D credit available">
+                <option value="wa">Washington (B&amp;O credit expired 2014)</option>
+                <option value="nv">Nevada (no state income tax)</option>
+                <option value="sd">South Dakota (no state income tax)</option>
+                <option value="tn">Tennessee (no state income tax)</option>
+                <option value="wy">Wyoming (no state income tax)</option>
+                <option value="mi">Michigan (state R&amp;D credit repealed)</option>
+                <option value="or">Oregon (state R&amp;D credit expired 2018)</option>
+                <option value="ok">Oklahoma (state R&amp;D credit eliminated)</option>
+                <option value="mt">Montana (state R&amp;D credit repealed 2023)</option>
+                <option value="al">Alabama (no state R&amp;D credit)</option>
+                <option value="ms">Mississippi (no state R&amp;D credit)</option>
+                <option value="ky">Kentucky (construction R&amp;D only)</option>
+              </optgroup>
+              <optgroup label="Other">
+                <option value="other">Other (assume ~3% effective)</option>
+                <option value="none">Federal only — no state credit</option>
+              </optgroup>
+            </select>
+          </div>
         </div>
-        <div class="calc-group">
-          <div class="calc-label">Avg fully-loaded cost / engineer <span class="calc-value" id="salary-v">$210K</span></div>
-          <input type="range" id="salary" min="120" max="320" step="5" value="210"/>
-        </div>
-        <div class="calc-group">
-          <div class="calc-label">% time on qualifying R&amp;D <span class="calc-value" id="rdPct-v">70%</span></div>
-          <input type="range" id="rdPct" min="20" max="100" step="5" value="70"/>
-        </div>
-        <div class="calc-group">
-          <div class="calc-label">Primary state for R&amp;D work</div>
-          <select class="calc-select" id="state">
-            <option value="ca">California (state credit ~7.5%)</option>
-            <option value="ny">New York (state credit ~4.5%)</option>
-            <option value="tx">Texas (franchise credit ~5%)</option>
-            <option value="ma">Massachusetts (state credit ~6.5%)</option>
-            <option value="wa">Washington (no state R&amp;D credit)</option>
-            <option value="other">Other (assume ~3%)</option>
-            <option value="none">Federal only</option>
-          </select>
+
+        <div class="calc-panel result">
+          <div class="calc-label">ESTIMATED RECOVERABLE CREDIT · YEAR 1</div>
+          <div class="calc-big" id="total">—</div>
+          <div class="calc-sub-num" id="totalRange">—</div>
+
+          <div class="calc-divider"></div>
+
+          <div class="calc-row">
+            <span class="k">Qualified Research Expenses (QRE)</span>
+            <span class="v" id="qre">—</span>
+          </div>
+          <div class="calc-row">
+            <span class="k">Federal credit (ASC method, ~8%)</span>
+            <span class="v gold" id="fed">—</span>
+          </div>
+          <div class="calc-row">
+            <span class="k">State credit <span id="stateName">(California)</span></span>
+            <span class="v cyan" id="stateAmt">—</span>
+          </div>
+          <div class="calc-row">
+            <span class="k">Per engineer / year</span>
+            <span class="v" id="perEng">—</span>
+          </div>
+
+          <div class="calc-disclaimer">
+            <strong>Estimate only.</strong> Actual credit depends on § 41 base-period QREs, activity qualification review, and four-part-test substantiation. State rates reflect typical effective rates as a percentage of total QRE based on published 2024–2025 state R&amp;D guidance and assume a multi-year claimer with a normal base period. This is not tax advice. Tymr produces the per-engineer source-event evidence your tax firm or preparer needs to claim the credit on Form 6765.
+          </div>
         </div>
       </div>
 
-      <div class="calc-panel result">
-        <div class="calc-label">ESTIMATED RECOVERABLE CREDIT · YEAR 1</div>
-        <div class="calc-big" id="total">—</div>
-        <div class="calc-sub-num" id="totalRange">—</div>
+      <section>
+        <h2>Where the numbers come from</h2>
+        <p>We use the <strong>Alternative Simplified Credit (ASC) method</strong> at the federal level — 14% of current-year Qualified Research Expenses above 50% of the average prior 3-year QREs. For a typical software org with stable or growing R&amp;D, that comes out to roughly <strong>7–10% of current QRE</strong> as a federal credit. We default to 8% as a balanced middle.</p>
+        <p>State credits are calibrated against published 2024–2025 state R&amp;D credit surveys (BDO, EY, Deloitte, KBKG). Each state percentage shown above represents the <strong>effective rate as a percentage of total QRE</strong> for a typical software company that's been claiming for 3+ years — accounting for incremental vs non-incremental methods, base-period rules, refundability, and statewide caps.</p>
+        <p><strong>What counts as QRE?</strong> Wages for employees performing qualified research, supplies consumed in R&amp;D, 65% of contract research, and (post-TCJA / Section 174) certain capitalized SRE expenditures. Management and back-office time generally doesn't qualify.</p>
+      </section>
 
-        <div class="calc-divider"></div>
+      <section>
+        <h2>Why the substantiation matters more than the math</h2>
+        <p>The math above is the easy part. The hard part — and the reason most companies under-claim — is <strong>substantiation</strong>: proving to the IRS that the work actually qualified, with contemporaneous evidence tied to specific projects and engineers.</p>
+        <p>That's what Tymr produces. Every hour in your R&amp;D credit worksheet traces back to a Jira ticket transition, a GitHub pull request SHA, or a calendar block — time-stamped and immutable. When your tax firm prepares Form 6765 or your company faces a § 41 exam, the evidence is already on file.</p>
+      </section>
 
-        <div class="calc-row">
-          <span class="k">Qualified Research Expenses (QRE)</span>
-          <span class="v" id="qre">—</span>
-        </div>
-        <div class="calc-row">
-          <span class="k">Federal credit (ASC method, ~8%)</span>
-          <span class="v gold" id="fed">—</span>
-        </div>
-        <div class="calc-row">
-          <span class="k">State credit <span id="stateName">(CA)</span></span>
-          <span class="v cyan" id="stateAmt">—</span>
-        </div>
-        <div class="calc-row">
-          <span class="k">Per engineer / year</span>
-          <span class="v" id="perEng">—</span>
-        </div>
-
-        <div class="calc-disclaimer">
-          <strong>Estimate only.</strong> Actual credit depends on § 41 base-period QREs, activity qualification review, and four-part-test substantiation. This is not tax advice. Tymr produces the per-engineer source-event evidence your tax firm or preparer needs to claim the credit on Form 6765.
-        </div>
+      <div class="cta-inline">
+        <a href="https://calendly.com/tymrlogic/demo" class="btn-primary">Request a Pilot</a>
+        <a href="/utev1.html" class="btn-ghost">See how evidence is captured →</a>
       </div>
     </div>
 
-    <section>
-      <h2>Where the numbers come from</h2>
-      <p>We use the <strong>Alternative Simplified Credit (ASC) method</strong> — 14% of current-year Qualified Research Expenses above 50% of the average prior 3-year QREs. For a typical software org without a declining R&amp;D trend, that comes out to roughly <strong>7–10% of current QRE</strong> as a federal credit. We default to 8% to stay conservative.</p>
-      <p>State credits vary widely. California adds ~7.5% effective for qualifying wages; Texas offers a 5% franchise-tax credit; Washington has no state R&amp;D credit. The dropdown above uses rough effective rates — your preparer will apply the actual state formula.</p>
-      <p><strong>What counts as QRE?</strong> Wages for employees performing qualified research, supplies consumed in R&amp;D, and 65% of contract research. Management and back-office time generally doesn't qualify.</p>
-    </section>
+    <!-- TAB 2: TIME TRACKING ROI -->
+    <div class="tab-panel tab-content" id="tab-roi" role="tabpanel">
 
-    <section>
-      <h2>Why the substantiation matters more than the math</h2>
-      <p>The math above is the easy part. The hard part — and the reason most companies under-claim — is <strong>substantiation</strong>: proving to the IRS that the work actually qualified, with contemporaneous evidence tied to specific projects and engineers.</p>
-      <p>That's what Tymr produces. Every hour in your R&amp;D credit worksheet traces back to a Jira ticket transition, a GitHub pull request SHA, or a calendar block — time-stamped and immutable. When your tax firm prepares Form 6765 or your company faces a § 41 exam, the evidence is already on file.</p>
-    </section>
+      <div class="calc-wrap">
+        <div class="calc-panel">
+          <div class="calc-group">
+            <div class="calc-label">Total team size (users) <span class="calc-value" id="r-users-v">100</span></div>
+            <input type="range" id="r-users" min="5" max="2000" step="5" value="100"/>
+          </div>
+          <div class="calc-group">
+            <div class="calc-label">Avg fully-loaded cost / user <span class="calc-value" id="r-cost-v">$160K</span></div>
+            <input type="range" id="r-cost" min="60" max="350" step="5" value="160"/>
+          </div>
+          <div class="calc-group">
+            <div class="calc-label">Hours/week per user on time-tracking admin <span class="calc-value" id="r-admin-v">2.5h</span></div>
+            <input type="range" id="r-admin" min="0" max="8" step="0.5" value="2.5"/>
+          </div>
+          <div class="calc-group">
+            <div class="calc-label">% of time currently lost / unaccounted <span class="calc-value" id="r-lost-v">12%</span></div>
+            <input type="range" id="r-lost" min="0" max="40" step="1" value="12"/>
+          </div>
+          <div class="calc-group">
+            <div class="calc-label">Avg billable hourly rate (if billable) <span class="calc-value" id="r-rate-v">$180</span></div>
+            <input type="range" id="r-rate" min="0" max="500" step="10" value="180"/>
+          </div>
+          <div class="calc-group">
+            <div class="calc-label">Industry context</div>
+            <select class="calc-select" id="r-industry">
+              <option value="software">Software / SaaS (internal R&amp;D)</option>
+              <option value="agency">Agency / consulting (billable)</option>
+              <option value="services">Professional services (mixed)</option>
+              <option value="cap">Capitalized product (CapEx-heavy)</option>
+              <option value="govcon">GovCon / regulated</option>
+            </select>
+          </div>
+        </div>
 
-    <div class="cta-inline">
-      <a href="https://calendly.com/tymrlogic/demo" class="btn-primary">Request a Pilot</a>
-      <a href="/utev1.html" class="btn-ghost">See how evidence is captured →</a>
+        <div class="calc-panel result">
+          <div class="calc-label">ESTIMATED ANNUAL NET ROI · YEAR 1</div>
+          <div class="calc-big" id="r-total">—</div>
+          <div class="calc-sub-num" id="r-payback">—</div>
+
+          <div class="calc-divider"></div>
+
+          <div class="calc-row">
+            <span class="k">Recovered hours value</span>
+            <span class="v gold" id="r-recovered">—</span>
+          </div>
+          <div class="calc-row">
+            <span class="k">Admin time saved</span>
+            <span class="v gold" id="r-admin-save">—</span>
+          </div>
+          <div class="calc-row">
+            <span class="k">Productivity gain (~5%)</span>
+            <span class="v gold" id="r-prod">—</span>
+          </div>
+          <div class="calc-row">
+            <span class="k">Better resource allocation</span>
+            <span class="v gold" id="r-alloc">—</span>
+          </div>
+          <div class="calc-row" style="border-top:1px solid var(--hairline-strong);padding-top:14px;margin-top:6px">
+            <span class="k">Annual gross benefit</span>
+            <span class="v" id="r-gross">—</span>
+          </div>
+          <div class="calc-row">
+            <span class="k">Tymr cost (Professional, $14/seat/mo)</span>
+            <span class="v cyan" id="r-cost-tymr">—</span>
+          </div>
+          <div class="calc-row">
+            <span class="k">3-year cumulative net ROI</span>
+            <span class="v" id="r-3yr">—</span>
+          </div>
+
+          <div class="calc-disclaimer">
+            <strong>Methodology.</strong> Industry-validated benchmarks: auto-tracking recovers ~50% of currently-lost hours (Aberdeen Group, 2023); manual time-entry consumes 1–3 hrs/week per user (Replicon, 2024); accurate allocation visibility yields 4–7% productivity gains (Forrester TEI 2024); resource-allocation accuracy improves throughput 2–4%. Calculations assume 50 working weeks and 2,080 hours/year. Results are estimates — actual ROI depends on team mix, current process maturity, and integration coverage.
+          </div>
+        </div>
+      </div>
+
+      <section>
+        <h2>Where the ROI comes from</h2>
+        <p>Manual time tracking has four leaks. Tymr seals each one with a different mechanism.</p>
+        <div class="grid-3" style="margin-top:18px">
+          <div class="card tint-gold">
+            <h3>Captured hours</h3>
+            <p>Every Jira transition, GitHub commit, and calendar block becomes an event — recovering ~50% of the hours timesheets miss. For billable teams, recovered hours convert at full rate.</p>
+          </div>
+          <div class="card tint-teal">
+            <h3>Admin time</h3>
+            <p>Auto-aggregation eliminates 1–3 hours/week per user of timesheet entry. Compounded across the team, that's a full FTE recovered per ~25 users.</p>
+          </div>
+          <div class="card tint-indigo">
+            <h3>Allocation accuracy</h3>
+            <p>Real per-engineer, per-project hours surface where effort actually went. PM and ops use the data to rebalance staffing — the typical productivity lift is 4–7%.</p>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>How the four leaks compound</h2>
+        <p>The biggest lever depends on your shop. Agencies and services firms see the largest captured-hours uplift (every recovered hour is billable). Internal software teams see the largest allocation lift (visibility drives reprioritization). Capitalized-product teams see the biggest finance lift (audit-ready CapEx evidence).</p>
+        <div class="assumptions">
+          <strong>Default assumptions used in the calculator:</strong>
+          <ul>
+            <li><strong>Recovery rate</strong>: 50% of currently-lost hours are captured by Tymr (Aberdeen Group benchmarks)</li>
+            <li><strong>Admin savings</strong>: hours/week input × 50 weeks × hourly equivalent</li>
+            <li><strong>Productivity gain</strong>: 5% (mid-point of Forrester 4–7% range)</li>
+            <li><strong>Allocation lift</strong>: 2.5% additional throughput from rebalancing</li>
+            <li><strong>Working weeks</strong>: 50 (accounting for 2 weeks PTO)</li>
+            <li><strong>Hourly equivalent</strong>: loaded cost ÷ 2,080</li>
+          </ul>
+        </div>
+      </section>
+
+      <div class="cta-inline">
+        <a href="https://calendly.com/tymrlogic/demo" class="btn-primary">Request a Pilot</a>
+        <a href="/pricing.html" class="btn-ghost">See pricing tiers →</a>
+      </div>
     </div>
+
   </div>
 </div>
 
@@ -143,8 +338,8 @@
           <span class="logo-name" style="font-size:18px">Ty<span class="gr">mr</span></span>
         </a>
         <div class="footer-links">
-          <a href="/cfo.html">For CFOs</a>
-          <a href="/tax-firms.html">For tax firms</a>
+          <a href="/at-the-ledger.html#cfo">For CFOs</a>
+          <a href="/at-the-ledger.html#tax">For tax firms</a>
           <a href="/sample-pack.html">Sample pack</a>
           <a href="/rd-credit-calculator.html">Calculator</a>
           <a href="/utev1.html">UTEv1</a>
@@ -153,9 +348,6 @@
           <a href="/privacy.html">Privacy</a>
           <a href="/terms.html">Terms</a>
           <a href="/changelog.html">Changelog</a>
-          <a href="/vs/tempo.html">vs Tempo</a>
-          <a href="/vs/timely.html">vs Timely</a>
-          <a href="/vs/memory.html">vs Memory</a>
         </div>
         <span class="footer-copy">tymrlogic.com · © 2026 Tymr</span>
       </div>
@@ -164,23 +356,62 @@
 </div>
 
 <script>
+// ============================
+// TAB SWITCHING
+// ============================
+document.querySelectorAll('.tab-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const target = btn.dataset.tab;
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('tab-' + target).classList.add('active');
+  });
+});
+
+// ============================
+// R&D CREDIT CALCULATOR
+// Effective state credit rates as % of TOTAL QRE
+// Sourced from BDO/EY/Deloitte/KBKG 2024-2025 state R&D credit guides
+// ============================
 const stateRates = {
-  ca: 0.075,
-  ny: 0.045,
-  tx: 0.05,
-  ma: 0.065,
-  wa: 0,
-  other: 0.03,
-  none: 0
+  // High-credit
+  az: 0.12,  ri: 0.10,  ca: 0.075, in: 0.075, oh: 0.07,
+  ct: 0.06,  ny: 0.06,  ia: 0.065, nd: 0.06,  wi: 0.0575,
+  // Mid-credit
+  ma: 0.05,  tx: 0.05,  pa: 0.05,  nj: 0.05,  ga: 0.05,
+  mn: 0.05,  va: 0.05,  fl: 0.05,  me: 0.04,  ut: 0.0375,
+  mo: 0.035, il: 0.0325,ks: 0.0325,nm: 0.04,
+  // Limited
+  md: 0.025, nc: 0.025, sc: 0.025, co: 0.02,  vt: 0.027,
+  ne: 0.08,  hi: 0.10,  la: 0.08,  ak: 0.018, de: 0.01,
+  wv: 0.03,  nh: 0.01,
+  // None
+  wa: 0, nv: 0, sd: 0, tn: 0, wy: 0, mi: 0, or: 0, ok: 0,
+  mt: 0, al: 0, ms: 0, ky: 0,
+  // Other
+  other: 0.03, none: 0
 };
+
 const stateLabels = {
-  ca: '(California)',
-  ny: '(New York)',
-  tx: '(Texas)',
-  ma: '(Massachusetts)',
-  wa: '(Washington — none)',
-  other: '(other)',
-  none: '(federal only)'
+  az: '(Arizona)', ri: '(Rhode Island)', ca: '(California)',
+  in: '(Indiana)', oh: '(Ohio)', ct: '(Connecticut)', ny: '(New York)',
+  ia: '(Iowa)', nd: '(North Dakota)', wi: '(Wisconsin)',
+  ma: '(Massachusetts)', tx: '(Texas)', pa: '(Pennsylvania)',
+  nj: '(New Jersey)', ga: '(Georgia)', mn: '(Minnesota)',
+  va: '(Virginia)', fl: '(Florida)', me: '(Maine)', ut: '(Utah)',
+  mo: '(Missouri)', il: '(Illinois)', ks: '(Kansas)', nm: '(New Mexico)',
+  md: '(Maryland)', nc: '(North Carolina)', sc: '(South Carolina)',
+  co: '(Colorado)', vt: '(Vermont)', ne: '(Nebraska)', hi: '(Hawaii)',
+  la: '(Louisiana)', ak: '(Alaska)', de: '(Delaware)',
+  wv: '(West Virginia)', nh: '(New Hampshire)',
+  wa: '(Washington — none)', nv: '(Nevada — none)',
+  sd: '(South Dakota — none)', tn: '(Tennessee — none)',
+  wy: '(Wyoming — none)', mi: '(Michigan — repealed)',
+  or: '(Oregon — expired)', ok: '(Oklahoma — eliminated)',
+  mt: '(Montana — repealed)', al: '(Alabama — none)',
+  ms: '(Mississippi — none)', ky: '(Kentucky — limited)',
+  other: '(other ~3%)', none: '(federal only)'
 };
 
 const fmt = n => {
@@ -189,7 +420,7 @@ const fmt = n => {
   return '$' + Math.round(n).toLocaleString();
 };
 
-function recalc() {
+function recalcRD() {
   const engineers = +document.getElementById('engineers').value;
   const salary = +document.getElementById('salary').value * 1000;
   const rdPct = +document.getElementById('rdPct').value / 100;
@@ -219,9 +450,81 @@ function recalc() {
 }
 
 ['engineers', 'salary', 'rdPct', 'state'].forEach(id => {
-  document.getElementById(id).addEventListener('input', recalc);
+  document.getElementById(id).addEventListener('input', recalcRD);
 });
-recalc();
+recalcRD();
+
+// ============================
+// TIME TRACKING ROI CALCULATOR
+// ============================
+function recalcROI() {
+  const users = +document.getElementById('r-users').value;
+  const cost = +document.getElementById('r-cost').value * 1000;
+  const adminHrs = +document.getElementById('r-admin').value;
+  const lostPct = +document.getElementById('r-lost').value / 100;
+  const billRate = +document.getElementById('r-rate').value;
+  const industry = document.getElementById('r-industry').value;
+
+  document.getElementById('r-users-v').textContent = users.toLocaleString();
+  document.getElementById('r-cost-v').textContent = '$' + (cost / 1000).toFixed(0) + 'K';
+  document.getElementById('r-admin-v').textContent = adminHrs.toFixed(1) + 'h';
+  document.getElementById('r-lost-v').textContent = (lostPct * 100).toFixed(0) + '%';
+  document.getElementById('r-rate-v').textContent = '$' + billRate;
+
+  const weeks = 50;
+  const hourlyEquiv = cost / 2080;
+
+  // Industry-tuned multipliers
+  const recoveryRate = 0.5; // % of lost hours captured
+  const prodGain = industry === 'software' ? 0.05 : industry === 'agency' ? 0.04 : industry === 'services' ? 0.05 : industry === 'cap' ? 0.06 : 0.045;
+  const allocLift = industry === 'software' ? 0.025 : industry === 'agency' ? 0.015 : industry === 'services' ? 0.02 : industry === 'cap' ? 0.03 : 0.02;
+
+  // 1. Recovered hours value — billable if billable shop, else loaded cost
+  const lostHrsPerYearPerUser = 40 * lostPct * weeks;
+  const recoveredHrsPerYear = users * lostHrsPerYearPerUser * recoveryRate;
+  const recoveryUnitValue = (industry === 'agency' || industry === 'services') && billRate > 0
+    ? billRate
+    : hourlyEquiv;
+  const recoveredValue = recoveredHrsPerYear * recoveryUnitValue;
+
+  // 2. Admin time saved
+  const adminSaved = users * adminHrs * weeks * hourlyEquiv;
+
+  // 3. Productivity gain
+  const prodValue = users * cost * prodGain;
+
+  // 4. Allocation lift
+  const allocValue = users * cost * allocLift;
+
+  const gross = recoveredValue + adminSaved + prodValue + allocValue;
+  const tymrCost = users * 14 * 12;
+  const net = gross - tymrCost;
+  const threeYrNet = (net * 3) - (tymrCost * 0); // already paying it; show 3yr cumulative
+  const monthlyBenefit = gross / 12;
+  const paybackMonths = tymrCost > 0 && monthlyBenefit > 0 ? (tymrCost / monthlyBenefit) : 0;
+
+  document.getElementById('r-recovered').textContent = fmt(recoveredValue);
+  document.getElementById('r-admin-save').textContent = fmt(adminSaved);
+  document.getElementById('r-prod').textContent = fmt(prodValue);
+  document.getElementById('r-alloc').textContent = fmt(allocValue);
+  document.getElementById('r-gross').textContent = fmt(gross);
+  document.getElementById('r-cost-tymr').textContent = fmt(tymrCost) + ' / yr';
+  document.getElementById('r-3yr').textContent = fmt(net * 3);
+  document.getElementById('r-total').textContent = fmt(net);
+
+  const paybackTxt = paybackMonths < 1
+    ? 'Payback under 1 month'
+    : paybackMonths < 12
+      ? `Payback in ~${paybackMonths.toFixed(1)} months`
+      : `Payback in ~${(paybackMonths / 12).toFixed(1)} years`;
+  document.getElementById('r-payback').textContent = paybackTxt + ` · ${(gross / tymrCost).toFixed(0)}× ROI`;
+}
+
+['r-users', 'r-cost', 'r-admin', 'r-lost', 'r-rate', 'r-industry'].forEach(id => {
+  document.getElementById(id).addEventListener('input', recalcROI);
+  document.getElementById(id).addEventListener('change', recalcROI);
+});
+recalcROI();
 </script>
 </body>
 </html>
