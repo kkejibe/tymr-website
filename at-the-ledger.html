@@ -626,11 +626,12 @@ function selectPersona(name, opts) {
   }
 }
 
-// Card clicks switch persona + scroll the panel into view
-document.querySelectorAll('.seat[data-jump]').forEach(card => {
-  card.addEventListener('click', (e) => {
+// Any element with data-jump (cards + in-panel CTA links) switches persona
+// and scrolls the matching panel into view.
+document.querySelectorAll('[data-jump]').forEach(el => {
+  el.addEventListener('click', (e) => {
     e.preventDefault();
-    selectPersona(card.dataset.jump, {scroll: true});
+    selectPersona(el.dataset.jump, {scroll: true});
   });
 });
 
