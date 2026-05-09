@@ -111,6 +111,15 @@ nav{
 }
 .nav-cta:hover{background:#000;border-color:#000}
 
+/* MOBILE NAV — wrap to 2 rows so links don't overflow */
+@media(max-width:720px){
+  .container{padding:0 20px}
+  .nav-i{flex-wrap:wrap;height:auto;padding:12px 0;gap:8px 14px}
+  .nav-links{order:3;flex-basis:100%;gap:14px 18px;flex-wrap:wrap;font-size:13px;margin-top:2px}
+  .nav-cta{padding:7px 14px;font-size:12px}
+  .logo-name{font-size:16px}
+}
+
 /* HEADER (subpages) */
 .page-head{padding:96px 0 28px}
 .eyebrow{

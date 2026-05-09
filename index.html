@@ -4,7 +4,7 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Tymr — Time tracking for engineering teams. Without the timesheets.</title>
-<meta name="description" content="Tymr auto-aggregates Jira, GitHub, and calendar activity into clean per-engineer, per-project hours. Finance uses the same data for R&D credits, software CapEx, and audit trails — no timesheets, no surveys."/>
+<meta name="description" content="Tymr turns Jira, GitHub, and calendar activity into audit-ready hours for R&D credits, CapEx, and capacity planning. No engineer surveys, no desktop agent."/>
 
 <meta property="og:title" content="Tymr — Time tracking for engineering teams. Without the timesheets."/>
 <meta property="og:description" content="Jira + GitHub + calendars → clean per-engineer, per-project hours. Finance uses the same data for R&D credits, CapEx, and audit trails."/>
@@ -29,303 +29,157 @@
 /* Page-specific overrides. Base system lives in _shared.css. */
 
 /* HERO */
-.hero{padding:112px 0 64px;max-width:960px}
-.hero-eyebrow{
+.hero{padding:96px 0 56px;max-width:920px}
+@media(max-width:720px){.hero{padding:48px 0 32px}}
+
+.hero-tag{
   display:inline-flex;align-items:center;gap:8px;
   font-family:var(--font-m);font-size:11px;color:var(--slate);
-  text-transform:uppercase;letter-spacing:.12em;margin-bottom:28px;
+  text-transform:uppercase;letter-spacing:.12em;margin-bottom:24px;
+  padding:5px 12px;border:1px solid var(--hairline);border-radius:100px;background:var(--bg);
 }
-.hero-eyebrow::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--accent)}
+.hero-tag::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--accent)}
+
 h1{
   font-family:var(--font-h);font-weight:600;
-  font-size:clamp(42px,5.8vw,72px);line-height:1.02;
-  letter-spacing:-0.035em;color:var(--ink);max-width:920px;
+  font-size:clamp(36px,5vw,56px);line-height:1.05;
+  letter-spacing:-0.03em;color:var(--ink);max-width:780px;
   text-wrap:balance;
 }
 h1 em{font-style:normal;color:var(--ink-2)}
+
 .hero-sub{
-  margin-top:26px;max-width:640px;font-size:18px;
+  margin-top:22px;max-width:600px;font-size:18px;
   color:var(--slate);line-height:1.55;font-weight:400;
 }
 
-/* OUTCOME PILLS — what finance does with the data */
-.outcomes{
-  margin-top:26px;display:flex;flex-direction:column;gap:10px;max-width:680px;
-}
-.outcomes-label{
-  font-family:var(--font-m);font-size:11px;letter-spacing:.14em;
-  color:var(--slate);text-transform:uppercase;
-}
-.outcomes-row{display:flex;flex-wrap:wrap;gap:8px}
-.opill{
-  display:inline-flex;align-items:center;gap:8px;
-  padding:8px 14px;border:1px solid var(--hairline);border-radius:100px;
-  background:var(--bg);font-size:13px;color:var(--ink);
-}
-.opill .odot{width:6px;height:6px;border-radius:50%;background:var(--accent);flex-shrink:0}
-.opill.tint-gold{background:var(--accent-soft);border-color:var(--accent-line)}
-.opill.tint-gold .odot{background:var(--accent)}
-.opill.tint-teal{background:var(--teal-soft);border-color:var(--teal-line)}
-.opill.tint-teal .odot{background:var(--teal)}
-.opill.tint-indigo{background:var(--indigo-soft);border-color:var(--indigo-line)}
-.opill.tint-indigo .odot{background:var(--indigo)}
+.hero-actions{margin-top:32px;display:flex;gap:10px;flex-wrap:wrap}
 
-.risk-reversal{
-  margin-top:20px;padding:14px 18px;display:inline-flex;align-items:center;gap:10px;
-  background:var(--accent-soft);border:1px solid var(--accent-line);border-radius:10px;
-  font-size:14px;color:var(--ink);max-width:640px;line-height:1.5;
+.hero-fineprint{
+  margin-top:24px;display:flex;flex-wrap:wrap;gap:14px 18px;
+  font-family:var(--font-m);font-size:12px;color:var(--slate);letter-spacing:.02em;
 }
-.risk-reversal strong{font-weight:550}
-.risk-dot{width:6px;height:6px;border-radius:50%;background:var(--accent);flex-shrink:0}
+.hero-fineprint span{display:inline-flex;align-items:center;gap:7px}
+.hero-fineprint span::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--accent);flex-shrink:0}
 
-/* DUAL CTA CARDS */
-.dual-cta{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:40px;max-width:720px}
-@media(max-width:680px){.dual-cta{grid-template-columns:1fr}}
-.dcard{
-  display:flex;flex-direction:column;gap:10px;
-  padding:22px 24px;border:1px solid var(--hairline);border-radius:14px;
-  background:var(--bg);text-decoration:none;transition:border-color .2s,background .2s;
-}
-.dcard:hover{border-color:var(--ink);background:var(--bg-warm)}
-.dcard .dcard-who{font-family:var(--font-m);font-size:10px;letter-spacing:.14em;
-  text-transform:uppercase;color:var(--slate)}
-.dcard .dcard-title{font-family:var(--font-h);font-weight:600;font-size:17px;
-  color:var(--ink);letter-spacing:-0.01em;line-height:1.25}
-.dcard .dcard-hint{font-size:13px;color:var(--slate);line-height:1.5}
-.dcard .dcard-go{margin-top:auto;font-size:13px;color:var(--ink);font-weight:500;
-  display:inline-flex;align-items:center;gap:4px;transition:gap .15s}
-.dcard:hover .dcard-go{gap:8px}
-
-/* ICP BAR */
-.icp-bar{
-  margin-top:72px;padding:22px 26px;border:1px solid var(--hairline);
-  border-radius:12px;background:var(--bg-warm);display:flex;gap:22px;align-items:center;
-}
-.icp-bar .icp-tag{
-  font-family:var(--font-m);font-size:10px;letter-spacing:.14em;
-  text-transform:uppercase;color:var(--accent);flex-shrink:0;
-}
-.icp-bar p{font-size:14px;color:var(--ink-2);line-height:1.55;margin:0}
-.icp-bar p strong{color:var(--ink);font-weight:550}
-@media(max-width:680px){.icp-bar{flex-direction:column;align-items:flex-start;gap:8px}}
-
-/* SECTION frame */
-section{padding:100px 0;position:relative}
-section.tight{padding:72px 0}
+/* SECTIONS */
+section{padding:72px 0}
+@media(max-width:720px){section{padding:48px 0}}
 .sec-band{background:var(--bg-warm);border-top:1px solid var(--hairline);border-bottom:1px solid var(--hairline)}
 .sec-label{
   display:block;font-family:var(--font-m);font-size:11px;
   color:var(--slate);letter-spacing:.14em;text-transform:uppercase;
-  margin-bottom:20px;
+  margin-bottom:14px;
 }
 .sec-head{
   font-family:var(--font-h);font-weight:600;
-  font-size:clamp(28px,3.6vw,44px);letter-spacing:-0.03em;
-  line-height:1.08;color:var(--ink);max-width:780px;text-wrap:balance;
+  font-size:clamp(26px,3.2vw,38px);letter-spacing:-0.025em;
+  line-height:1.1;color:var(--ink);max-width:720px;text-wrap:balance;
 }
 .sec-head em{font-style:normal;color:var(--ink-2)}
-.sec-sub{margin-top:18px;max-width:620px;color:var(--slate);font-size:17px;line-height:1.6}
+.sec-sub{margin-top:14px;max-width:620px;color:var(--slate);font-size:16px;line-height:1.6}
+
+/* OUTCOME GRID */
+.out-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:36px}
+@media(max-width:860px){.out-grid{grid-template-columns:1fr}}
+.out-card{
+  background:var(--bg);border:1px solid var(--hairline);border-radius:14px;
+  padding:26px;display:flex;flex-direction:column;gap:10px;
+  transition:border-color .2s,transform .2s;
+}
+.out-card:hover{border-color:var(--hairline-strong);transform:translateY(-2px)}
+.out-tag{
+  align-self:flex-start;font-family:var(--font-m);font-size:10px;
+  letter-spacing:.14em;text-transform:uppercase;font-weight:500;
+  padding:4px 10px;border-radius:100px;
+  background:var(--accent-soft);color:var(--accent);border:1px solid var(--accent-line);
+}
+.out-tag.teal{background:var(--teal-soft);color:var(--teal);border-color:var(--teal-line)}
+.out-tag.indigo{background:var(--indigo-soft);color:var(--indigo);border-color:var(--indigo-line)}
+.out-card h3{
+  font-family:var(--font-h);font-weight:600;font-size:18px;
+  color:var(--ink);letter-spacing:-0.015em;line-height:1.25;margin-top:4px;
+}
+.out-card p{font-size:14px;color:var(--slate);line-height:1.6;margin:0}
+
+/* HOW IT WORKS */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:36px}
+@media(max-width:860px){.steps{grid-template-columns:1fr}}
+.step{
+  background:var(--bg);border:1px solid var(--hairline);border-radius:14px;
+  padding:26px;display:flex;flex-direction:column;gap:10px;
+}
+.step-num{
+  font-family:var(--font-m);font-size:10px;letter-spacing:.14em;
+  color:var(--accent);text-transform:uppercase;font-weight:500;
+}
+.step h3{
+  font-family:var(--font-h);font-weight:600;font-size:17px;
+  color:var(--ink);letter-spacing:-0.015em;line-height:1.25;margin-top:2px;
+}
+.step p{font-size:14px;color:var(--slate);line-height:1.6;margin:0}
 
 /* FLOOR PREVIEW */
-.floor-wrap{margin:40px 0 0;position:relative;z-index:1}
+.floor-wrap{margin:32px 0 0}
 .floor-card{
   background:#0B0B0F;border:1px solid #1A1A1F;border-radius:18px;
-  padding:28px;overflow:hidden;
+  padding:24px;overflow:hidden;
 }
+@media(max-width:720px){.floor-card{padding:16px;border-radius:14px}}
 .floor-caption{
   display:flex;justify-content:space-between;align-items:center;gap:16px;
-  margin-top:18px;padding-top:18px;border-top:1px solid rgba(255,255,255,0.06);
+  margin-top:16px;padding-top:16px;border-top:1px solid rgba(255,255,255,0.06);
   font-family:var(--font-m);font-size:11px;color:#6B6F78;letter-spacing:.04em;
+  flex-wrap:wrap;
 }
 .floor-caption .live{display:inline-flex;align-items:center;gap:8px;color:#8E9199}
 .floor-caption .live::before{content:'';width:6px;height:6px;border-radius:50%;background:#00C9B0;box-shadow:0 0 0 3px rgba(0,201,176,0.15)}
 
-/* MOAT — humans + agents on one ledger */
-.moat-prose{margin-top:26px;max-width:860px;display:flex;flex-direction:column;gap:14px}
-.moat-prose p{font-size:17px;color:var(--ink-2);line-height:1.6}
-.moat-prose p strong{color:var(--ink);font-weight:550}
-.moat-prose p code{font-family:var(--font-m);font-size:14px;background:var(--bg-soft);padding:2px 8px;border-radius:6px;color:var(--ink)}
-
-/* REST OF THE YEAR — sub-block under the moat */
-.rest-of-year{margin-top:56px;padding-top:48px;border-top:1px solid var(--hairline)}
-.roy-head{
-  font-family:var(--font-h);font-weight:600;
-  font-size:clamp(22px,2.8vw,30px);letter-spacing:-0.025em;line-height:1.15;
-  color:var(--ink);max-width:680px;text-wrap:balance;margin-top:8px;
-}
-.roy-head em{font-style:normal;color:var(--ink-2)}
-.roy-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:32px}
-@media(max-width:980px){.roy-grid{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:520px){.roy-grid{grid-template-columns:1fr}}
-.roy{background:var(--bg);border:1px solid var(--hairline);border-radius:12px;padding:22px;display:flex;flex-direction:column;gap:8px}
-.roy h4{font-family:var(--font-h);font-weight:600;font-size:15px;color:var(--ink);letter-spacing:-0.01em}
-.roy p{font-size:13px;color:var(--slate);line-height:1.55;margin:0}
-.roy-cta{margin-top:24px;display:flex;gap:10px;flex-wrap:wrap}
-
-/* HOW IT WORKS — 3 steps */
-.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:48px}
-@media(max-width:860px){.steps{grid-template-columns:1fr}}
-.step{
-  background:var(--bg);border:1px solid var(--hairline);border-radius:14px;
-  padding:28px;display:flex;flex-direction:column;gap:12px;position:relative;
-}
-.step .step-num{
-  font-family:var(--font-m);font-size:10px;letter-spacing:.14em;
-  color:var(--accent);text-transform:uppercase;
-}
-.step h3{
-  font-family:var(--font-h);font-weight:600;font-size:20px;
-  color:var(--ink);letter-spacing:-0.02em;line-height:1.15;
-}
-.step p{font-size:14px;color:var(--slate);line-height:1.6;margin:0}
-.step .step-detail{
-  margin-top:auto;padding-top:14px;border-top:1px solid var(--hairline);
-  font-family:var(--font-m);font-size:11px;color:var(--slate-dim);letter-spacing:.04em;line-height:1.5;
-}
-
-/* FEATURE GRID (flat) */
-.feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;margin-top:56px;background:var(--hairline);border:1px solid var(--hairline);border-radius:14px;overflow:hidden}
-@media(max-width:860px){.feat-grid{grid-template-columns:1fr}}
-.fcard{background:var(--bg);padding:32px 28px;transition:background .2s}
-.fcard:hover{background:var(--bg-warm)}
-.fcard h3{font-family:var(--font-h);font-weight:600;font-size:16px;color:var(--ink);margin-bottom:10px;letter-spacing:-0.01em}
-.fcard p{font-size:14px;color:var(--slate);line-height:1.6}
-.fnum{font-family:var(--font-m);font-size:11px;color:var(--slate-dim);letter-spacing:.08em;margin-bottom:20px;display:block}
-.ftag{display:inline-block;margin-top:16px;font-family:var(--font-m);font-size:11px;color:var(--slate-dim);letter-spacing:.04em}
-
-/* DELIVERABLES */
-.deliv-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:48px}
-@media(max-width:980px){.deliv-grid{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:520px){.deliv-grid{grid-template-columns:1fr}}
-.deliv{
-  background:var(--bg);border:1px solid var(--hairline);border-radius:12px;
-  padding:22px;display:flex;flex-direction:column;gap:10px;
-}
-.deliv-ico{
-  width:32px;height:32px;border-radius:8px;background:var(--bg-warm);
-  border:1px solid var(--hairline);display:flex;align-items:center;justify-content:center;
-  font-family:var(--font-m);font-size:10px;color:var(--accent);font-weight:600;letter-spacing:.02em;
-}
-.deliv h3{font-family:var(--font-h);font-weight:600;font-size:15px;color:var(--ink);letter-spacing:-0.01em}
-.deliv p{font-size:13px;color:var(--slate);line-height:1.55;margin:0}
-.deliv .deliv-fmt{font-family:var(--font-m);font-size:11px;color:var(--slate-dim);letter-spacing:.04em;margin-top:auto;padding-top:8px}
-
-/* TAX FIRM FIT BLOCK */
-.fit-wrap{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;margin-top:36px}
-@media(max-width:860px){.fit-wrap{grid-template-columns:1fr;gap:32px}}
-.fit-list{list-style:none;padding:0;display:flex;flex-direction:column;gap:16px}
-.fit-list li{display:flex;gap:14px;align-items:flex-start}
-.fit-list .fk{
-  font-family:var(--font-m);font-size:10px;letter-spacing:.14em;color:var(--accent);
-  text-transform:uppercase;flex-shrink:0;width:96px;padding-top:3px;
-}
-.fit-list .fv{font-size:15px;color:var(--ink-2);line-height:1.5}
-.fit-list .fv strong{color:var(--ink);font-weight:550}
-.fit-panel{
-  background:var(--bg-warm);border:1px solid var(--hairline);border-radius:14px;padding:28px;
-}
-.fit-panel .fp-head{
-  font-family:var(--font-m);font-size:11px;letter-spacing:.12em;text-transform:uppercase;
-  color:var(--slate);margin-bottom:18px;
-}
-.fit-panel .fp-steps{display:flex;flex-direction:column;gap:14px}
-.fp-step{display:flex;gap:14px;align-items:flex-start}
-.fp-num{
-  width:26px;height:26px;border-radius:50%;background:var(--ink);color:#fff;
-  font-family:var(--font-m);font-size:11px;display:flex;align-items:center;justify-content:center;
-  flex-shrink:0;margin-top:1px;
-}
-.fp-txt{font-size:14px;color:var(--ink-2);line-height:1.5}
-.fp-txt strong{color:var(--ink);font-weight:550}
-.fit-panel .fp-ask{
-  margin-top:22px;padding-top:18px;border-top:1px solid var(--hairline);
-  font-size:13px;color:var(--slate);line-height:1.55;
-}
-
-/* WORKER CARDS */
-.worker-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:48px}
-@media(max-width:680px){.worker-grid{grid-template-columns:1fr}}
-.wcard{background:var(--bg);border:1px solid var(--hairline);border-radius:14px;padding:28px;transition:border-color .2s}
-.wcard:hover{border-color:var(--hairline-strong)}
-.wcard-shape{width:32px;height:32px;margin-bottom:24px;display:flex;align-items:center;justify-content:center}
-.wcard.human .wcard-shape{background:var(--ink);border-radius:50%}
-.wcard.agent .wcard-shape{background:var(--ink);transform:rotate(45deg);border-radius:4px}
-.wcard h3{font-family:var(--font-h);font-weight:600;font-size:17px;color:var(--ink);margin-bottom:8px;letter-spacing:-0.01em}
-.wcard>p{font-size:14px;color:var(--slate);line-height:1.6}
-.wcard ul{list-style:none;margin-top:18px;padding:0}
-.wcard ul li{font-size:13px;color:var(--slate);padding:8px 0;border-top:1px solid var(--hairline);display:flex;align-items:center;gap:10px;line-height:1.45}
-.wcard ul li::before{content:'';width:4px;height:4px;border-radius:50%;background:var(--ink);flex-shrink:0}
-
-/* INTEGRATIONS */
-.int-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:36px}
-.int-pill{
-  display:inline-flex;align-items:center;gap:10px;
-  background:var(--bg);border:1px solid var(--hairline);border-radius:100px;
-  padding:8px 16px;font-size:13px;color:var(--ink);transition:border-color .2s;
-}
-.int-pill:hover{border-color:var(--hairline-strong)}
-.int-pill.soon{color:var(--slate-dim)}
-.idot{width:6px;height:6px;border-radius:50%;flex-shrink:0}
-.int-suffix{font-family:var(--font-m);font-size:10px;color:var(--slate);letter-spacing:.04em}
-.int-pill.soon .int-suffix{color:var(--slate-dim)}
-
-/* NOT A FIT */
-.not-fit{
-  margin-top:40px;padding:20px 24px;border:1px dashed var(--hairline-strong);
-  border-radius:12px;background:var(--bg);
-  display:flex;gap:14px;align-items:flex-start;
-}
-.not-fit .nf-tag{
-  font-family:var(--font-m);font-size:10px;letter-spacing:.14em;text-transform:uppercase;
-  color:var(--slate);padding-top:2px;flex-shrink:0;
-}
-.not-fit p{font-size:13px;color:var(--slate);line-height:1.55;margin:0}
-
 /* CTA BLOCK */
+.cta-wrap{padding:40px 0 72px}
+@media(max-width:720px){.cta-wrap{padding:24px 0 56px}}
 .cta-block{
-  margin:56px 0 80px;padding:64px 56px;
+  padding:56px 48px;
   background:var(--ink);border-radius:18px;
   position:relative;overflow:hidden;
 }
+@media(max-width:680px){.cta-block{padding:40px 28px}}
 .cta-block h2{
   font-family:var(--font-h);font-weight:600;
-  font-size:clamp(28px,3.6vw,42px);letter-spacing:-0.03em;line-height:1.1;
-  color:#fff;max-width:640px;text-wrap:balance;
+  font-size:clamp(26px,3.2vw,36px);letter-spacing:-0.025em;line-height:1.1;
+  color:#fff;max-width:600px;text-wrap:balance;
 }
 .cta-block h2 em{font-style:normal;color:#C8C9CC}
-.cta-block p{
-  color:#9AA0A6;margin-top:16px;font-size:16px;line-height:1.55;
-  max-width:600px;
+.cta-block .cta-sub{
+  color:#9AA0A6;margin-top:14px;font-size:15px;line-height:1.55;max-width:560px;
 }
-.cta-pair{margin-top:32px;display:grid;grid-template-columns:1fr 1fr;gap:12px;max-width:680px}
+.cta-pair{margin-top:28px;display:grid;grid-template-columns:1fr 1fr;gap:12px;max-width:680px}
 @media(max-width:680px){.cta-pair{grid-template-columns:1fr}}
 .cta-slot{
   padding:22px 24px;background:rgba(255,255,255,0.04);
   border:1px solid rgba(255,255,255,0.12);border-radius:12px;
-  display:flex;flex-direction:column;gap:10px;text-decoration:none;
+  display:flex;flex-direction:column;gap:8px;text-decoration:none;
   transition:background .2s,border-color .2s;
 }
 .cta-slot:hover{background:rgba(255,255,255,0.08);border-color:rgba(255,255,255,0.28)}
-.cta-slot .cs-who{font-family:var(--font-m);font-size:10px;letter-spacing:.14em;
+.cs-who{font-family:var(--font-m);font-size:10px;letter-spacing:.14em;
   text-transform:uppercase;color:#9AA0A6}
-.cta-slot .cs-title{font-family:var(--font-h);font-weight:600;font-size:15px;color:#fff;letter-spacing:-0.01em}
-.cta-slot .cs-go{margin-top:auto;font-size:13px;color:#fff;
+.cs-title{font-family:var(--font-h);font-weight:600;font-size:14px;color:#fff;letter-spacing:-0.005em;line-height:1.4}
+.cs-go{margin-top:auto;font-size:13px;color:#fff;
   display:inline-flex;align-items:center;gap:4px;transition:gap .15s}
 .cta-slot:hover .cs-go{gap:8px}
-@media(max-width:680px){.cta-block{padding:48px 28px}}
 
 /* FOOTER */
-footer.site-footer{padding:48px 0 56px;border-top:1px solid var(--hairline);margin-top:0}
+footer.site-footer{padding:40px 0 48px;border-top:1px solid var(--hairline)}
 .footer-i{display:grid;grid-template-columns:1fr 2fr;gap:48px;align-items:start}
 @media(max-width:760px){.footer-i{grid-template-columns:1fr;gap:32px}}
 .footer-i .logo{margin-bottom:12px}
-.footer-tag{font-size:13px;color:var(--slate);max-width:280px;line-height:1.55}
 .footer-cols{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
 @media(max-width:560px){.footer-cols{grid-template-columns:1fr 1fr}}
-.footer-col h4{font-family:var(--font-m);font-size:11px;color:var(--slate);text-transform:uppercase;letter-spacing:.1em;margin-bottom:14px;font-weight:500}
+.footer-col h4{font-family:var(--font-m);font-size:11px;color:var(--slate);text-transform:uppercase;letter-spacing:.1em;margin-bottom:12px;font-weight:500}
 .footer-col a{display:block;padding:5px 0;color:var(--ink-2);text-decoration:none;font-size:14px;transition:color .15s}
 .footer-col a:hover{color:var(--ink)}
-.footer-bottom{margin-top:40px;padding-top:24px;border-top:1px solid var(--hairline);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+.footer-bottom{margin-top:32px;padding-top:20px;border-top:1px solid var(--hairline);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
 .footer-copy{font-size:12px;color:var(--slate-dim);font-family:var(--font-m)}
 </style>
 </head>
@@ -344,7 +198,7 @@ footer.site-footer{padding:48px 0 56px;border-top:1px solid var(--hairline);marg
         <li><a href="/rd-credit-calculator.html">Calculator</a></li>
         <li><a href="/pricing.html">Pricing</a></li>
       </ul>
-      <a class="nav-cta" href="https://calendly.com/tymrlogic/demo">Request Pilot</a>
+      <a class="nav-cta" href="https://calendly.com/tymrlogic/demo">Request a demo</a>
     </div>
   </div>
 </nav>
@@ -352,153 +206,88 @@ footer.site-footer{padding:48px 0 56px;border-top:1px solid var(--hairline);marg
 <!-- HERO -->
 <div class="container">
   <div class="hero">
-    <div class="hero-eyebrow">Project Management · Resource Planning · Auto Task Logging</div>
-    <h1>Track both on one virtual floor <em>and one ledger.</em></h1>
-    <p class="hero-sub">Tymr auto-aggregates Jira tickets, GitHub commits, calendar blocks, Slack, ServiceNow, and Workday into clean per-engineer, per-project hours — in real time, with zero surveys. Humans and AI agents on one floor; finance, ops, and engineering on one ledger.</p>
+    <span class="hero-tag">For engineering finance &amp; ops</span>
+    <h1>Time tracking for engineering teams. <em>Without the timesheets.</em></h1>
+    <p class="hero-sub">Tymr turns Jira, GitHub, and calendar activity into audit-ready hours for R&amp;D credits, CapEx, and capacity planning — automatically.</p>
 
-    <div class="outcomes">
-      <span class="outcomes-label">What teams use the data for</span>
-      <div class="outcomes-row">
-        <span class="opill tint-gold"><span class="odot"></span>R&amp;D tax credit</span>
-        <span class="opill tint-gold"><span class="odot"></span>Software CapEx (ASC 350-40)</span>
-        <span class="opill tint-teal"><span class="odot"></span>Resource planning</span>
-        <span class="opill tint-teal"><span class="odot"></span>Capacity forecasting</span>
-        <span class="opill tint-indigo"><span class="odot"></span>Project health (EVM)</span>
-        <span class="opill tint-indigo"><span class="odot"></span>Agent ROI</span>
-      </div>
+    <div class="hero-actions">
+      <a class="btn-primary" href="https://calendly.com/tymrlogic/demo">Request a demo</a>
+      <a class="btn-ghost" href="/sample-pack.html">See the sample pack</a>
     </div>
 
-    <div class="dual-cta">
-      <a class="dcard" href="/at-the-ledger.html#cfo">
-        <span class="dcard-who">For CFOs &amp; Controllers</span>
-        <span class="dcard-title">Claim a bigger R&amp;D credit and pass a CapEx audit — in 60 days.</span>
-        <span class="dcard-hint">R&amp;D credit uplift estimate + CapEx vs OpEx audit pack. Pay only if your tax firm signs off.</span>
-        <span class="dcard-go">See the CFO pilot →</span>
-      </a>
-      <a class="dcard" href="/at-the-ledger.html#tax">
-        <span class="dcard-who">For R&amp;D tax &amp; accounting firms</span>
-        <span class="dcard-title">Let your analysts skip the time-survey grind on software clients.</span>
-        <span class="dcard-hint">Free pilot on a handful of your software clients. Per-engineer time, § 41/§ 174 tags, workpaper-ready CSV. You keep your study fees.</span>
-        <span class="dcard-go">See the firm offer →</span>
-      </a>
+    <div class="hero-fineprint">
+      <span>No engineer surveys</span>
+      <span>No desktop agent</span>
+      <span>OAuth in under an hour</span>
     </div>
   </div>
 </div>
 
-<!-- HOW IT WORKS — 3 simple steps -->
-<div class="container" id="how">
+<!-- WHAT YOU GET -->
+<div class="sec-band">
+  <div class="container">
+    <section>
+      <span class="sec-label">What you get</span>
+      <h2 class="sec-head">One event stream. <em>Three things finance and engineering actually use.</em></h2>
+
+      <div class="out-grid">
+        <div class="out-card">
+          <span class="out-tag">R&amp;D tax credit</span>
+          <h3>A bigger credit, audit-ready.</h3>
+          <p>Per-engineer hours classified for the credit, every hour cited to a Jira ticket or GitHub commit. Drops into your tax firm's existing workpapers — no rework on their side.</p>
+        </div>
+        <div class="out-card">
+          <span class="out-tag teal">Software CapEx</span>
+          <h3>Pass the CapEx audit without a survey.</h3>
+          <p>Capitalized vs. expensed, defensibly, built from real engineering activity — with a 2-page methodology your auditor can read in five minutes.</p>
+        </div>
+        <div class="out-card">
+          <span class="out-tag indigo">Capacity &amp; project health</span>
+          <h3>See where the work actually went.</h3>
+          <p>Real-time capacity by team and initiative, project-level red/amber/green, and an 8-week trail of planned vs. actual — all from the same ledger.</p>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+
+<!-- HOW IT WORKS -->
+<div class="container">
   <section>
     <span class="sec-label">How it works</span>
-    <h2 class="sec-head">Three steps. <em>No timesheets at any of them.</em></h2>
-    <p class="sec-sub">You don't interrupt your engineers. You don't re-platform your team. Tymr reads the tools your team already uses — and does the rest continuously.</p>
+    <h2 class="sec-head">Three steps. <em>Your engineers don't see any of them.</em></h2>
 
     <div class="steps">
       <div class="step">
-        <span class="step-num">01 · Collect</span>
-        <h3>Connect Jira, GitHub, and your calendar.</h3>
-        <p>OAuth setup in under an hour. Tymr reads event streams — ticket transitions, commits, meeting blocks — in real time. No desktop agent, no browser plugin, no engineer survey.</p>
-        <span class="step-detail">Event-level ingest · not summaries</span>
+        <span class="step-num">01 · Connect</span>
+        <h3>Hook up Jira, GitHub, and your calendar.</h3>
+        <p>OAuth in under an hour. No desktop agent, no browser plugin, no engineer survey.</p>
       </div>
       <div class="step">
         <span class="step-num">02 · Classify</span>
         <h3>Every hour gets tagged automatically.</h3>
-        <p>Each Jira transition, commit, and calendar block is attributed to the engineer and project, then classified: R&amp;D-qualified, software CapEx, or OpEx. Low-confidence calls go to a human for a 30-minute weekly review.</p>
-        <span class="step-detail">Auto-tagged · reviewable · cited to source</span>
+        <p>Tickets, commits, and meeting blocks are attributed and classified. Low-confidence calls go to a human for a 30-minute weekly review.</p>
       </div>
       <div class="step">
         <span class="step-num">03 · Deliver</span>
-        <h3>Four files, ready for your tax firm.</h3>
-        <p>At quarter-end, Tymr produces a credit estimate, a CapEx / OpEx pack, a workpaper-ready CSV, and a 2-page methodology PDF. Your tax firm drops them into the same workpapers they use today.</p>
-        <span class="step-detail">PDF + CSV · preparer-ready</span>
+        <h3>Quarter-end pack, ready for your tax firm.</h3>
+        <p>A credit estimate, a CapEx pack, a workpaper-ready CSV, and a methodology PDF. Drops straight into your firm's existing workpapers.</p>
       </div>
     </div>
   </section>
 </div>
 
-<!-- WHAT THE DATA BECOMES — the broader product picture -->
-<div class="container" id="deliverables">
-  <section>
-    <span class="accent-bar"></span>
-    <span class="sec-label">What the data becomes</span>
-    <h2 class="sec-head">One event stream. <em>A finance pack, an operating layer, and a planning brain.</em></h2>
-    <p class="sec-sub">Every Jira transition, GitHub commit, calendar block, Slack huddle, ServiceNow incident, and agent run is captured once and re-used everywhere. You get an audit-ready evidence pack and a real-time operating layer for capacity, projects, and scenarios — not a static export.</p>
-
-    <div class="deliv-grid">
-      <div class="deliv">
-        <div class="deliv-ico">01</div>
-        <h3>Audit-ready evidence pack</h3>
-        <p>R&amp;D credit uplift PDF, CapEx vs OpEx audit pack, workpaper-ready CSV, and a 2-page methodology — every hour cited to a source event. Drops into your tax firm's existing workpapers.</p>
-        <span class="deliv-fmt">PDF + CSV · preparer-ready</span>
-      </div>
-      <div class="deliv">
-        <div class="deliv-ico">02</div>
-        <h3>Resource planning &amp; capacity</h3>
-        <p>Per-team capacity forecasts, FTE allocations, PTO &amp; leave overlays, scenario planner for what-if. See where engineering effort actually went, by initiative — not by self-report.</p>
-        <span class="deliv-fmt">Live dashboards</span>
-      </div>
-      <div class="deliv">
-        <div class="deliv-ico">03</div>
-        <h3>Project health (EVM)</h3>
-        <p>Earned-value-style SPI, CPI, schedule and cost variance per project. Red/amber/green status with the source events that drove the call. Roadmap, milestones, risks.</p>
-        <span class="deliv-fmt">Per-project</span>
-      </div>
-      <div class="deliv">
-        <div class="deliv-ico">04</div>
-        <h3>Operating insights</h3>
-        <p>Meeting cost ticker, incident cost burn, agent ROI, planned vs actual, unplanned-work ratio, 8-week capacity history, cross-org benchmarks. Same ledger, daily.</p>
-        <span class="deliv-fmt">Real-time</span>
-      </div>
-    </div>
-
-    <div style="margin-top:28px;display:flex;gap:12px;flex-wrap:wrap">
-      <a class="btn-ghost" href="/sample-pack.html">Download the 10-slide sample pack →</a>
-    </div>
-  </section>
-</div>
-
-<!-- INTEGRATIONS -->
-<div class="container">
-  <section>
-    <span class="accent-bar teal"></span>
-    <span class="sec-label">Integrations</span>
-    <h2 class="sec-head">Event-level ingestion <em>across the systems where work actually happens.</em></h2>
-    <p class="sec-sub">Every hour traces to a ticket, a commit, a meeting invite, a huddle, an incident, or an HRIS record. Nothing else to install.</p>
-
-    <div class="int-row">
-      <span class="int-pill"><span class="idot" style="background:#2684FF"></span>Jira <span class="int-suffix">deep</span></span>
-      <span class="int-pill"><span class="idot" style="background:#24292E"></span>GitHub <span class="int-suffix">deep</span></span>
-      <span class="int-pill"><span class="idot" style="background:#4285F4"></span>Google Calendar <span class="int-suffix">deep</span></span>
-      <span class="int-pill"><span class="idot" style="background:#0072C6"></span>Microsoft 365 <span class="int-suffix">deep</span></span>
-      <span class="int-pill"><span class="idot" style="background:#4A154B"></span>Slack <span class="int-suffix">deep</span></span>
-      <span class="int-pill"><span class="idot" style="background:#62D84E"></span>ServiceNow <span class="int-suffix">deep</span></span>
-      <span class="int-pill"><span class="idot" style="background:#F38B00"></span>Workday <span class="int-suffix">deep · writeback</span></span>
-      <span class="int-pill"><span class="idot" style="background:#FF6B55"></span>PagerDuty <span class="int-suffix">deep</span></span>
-      <span class="int-pill"><span class="idot" style="background:#A67512"></span>@tymr/agent-events <span class="int-suffix">SDK</span></span>
-    </div>
-    <div class="int-row" style="margin-top:10px">
-      <span class="int-pill soon"><span class="idot" style="background:#CFCFCA"></span>NetSuite <span class="int-suffix">Q3 2026</span></span>
-      <span class="int-pill soon"><span class="idot" style="background:#CFCFCA"></span>Sage Intacct <span class="int-suffix">Q3 2026</span></span>
-    </div>
-  </section>
-</div>
-
-<!-- ONE FLOOR — humans + agents on one ledger -->
+<!-- ONE FLOOR -->
 <div class="sec-band">
-  <div class="container" id="floor">
+  <div class="container">
     <section>
-      <span class="sec-label">The moat</span>
-      <h2 class="sec-head">One floor. Humans and agents. <em>One ledger.</em></h2>
-
-      <div class="moat-prose">
-        <p>AI agents are now on your engineering team. Most R&amp;D platforms don't see them at all. The ones that do don't tag the runs against § 174.</p>
-        <p>Tymr puts agents on the <strong>same floor as your engineers</strong> — same time grid, same § 174 / 350-40 / OpEx classification, same audit trail.</p>
-        <p>Tymr ingests work from where it already happens — <strong>Jira</strong>, <strong>GitHub</strong>, <strong>Google</strong> &amp; <strong>Microsoft 365</strong> calendars, <strong>Slack</strong> huddles, <strong>ServiceNow</strong> incidents, <strong>Workday</strong> PTO &amp; training, and <strong>PagerDuty</strong>. Agents emit through <code>@tymr/agent-events</code> — wraps Claude, LangChain, CrewAI, OpenAI Assistants, Vercel AI. <strong>UTEv1 schema</strong> across both. Same workpaper export.</p>
-        <p>When the IRS asks who produced the qualified research time, you show the engineer-hours, the agent-hours, the lineage, and the primary events behind both.</p>
-      </div>
+      <span class="sec-label">Built for hybrid teams</span>
+      <h2 class="sec-head">Engineers and AI agents. <em>One ledger.</em></h2>
+      <p class="sec-sub">AI agents are now part of your engineering team. Tymr puts them on the same time grid as your engineers — same classification, same audit trail. When the IRS asks who produced the qualified research time, you have receipts for both.</p>
 
       <div class="floor-wrap">
         <div class="floor-card">
-          <svg viewBox="0 0 980 540" width="100%" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Tymr live floor: engineers and AI agents emitting events on one § 174 / 350-40 / OpEx-tagged ledger">
+          <svg viewBox="0 0 980 540" width="100%" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Tymr live floor: engineers and AI agents emitting events on one classified ledger">
             <defs>
               <linearGradient id="bgGrad" x1="0" y1="0" x2="0" y2="1">
                 <stop offset="0" stop-color="#16181F"/>
@@ -679,7 +468,7 @@ footer.site-footer{padding:48px 0 56px;border-top:1px solid var(--hairline);marg
               <rect width="932" height="60" rx="14" fill="url(#ledgerGlow)"/>
               <rect width="932" height="60" rx="14" fill="rgba(245,200,66,0.04)" stroke="rgba(245,200,66,0.30)"/>
               <text x="22" y="22" fill="rgba(245,200,66,0.75)" font-family="JetBrains Mono,monospace" font-size="9" letter-spacing="0.14em">→ time_events ledger</text>
-              <text x="22" y="44" fill="#F0ECE4" font-family="Inter,sans-serif" font-size="14" font-weight="500">UTEv1 schema · workpaper-ready · § 174 / 350-40 / OpEx classified</text>
+              <text x="22" y="44" fill="#F0ECE4" font-family="Inter,sans-serif" font-size="14" font-weight="500">UTEv1 schema · workpaper-ready · classified</text>
               <g transform="translate(820,18)">
                 <rect width="92" height="22" rx="11" fill="rgba(0,217,192,0.10)" stroke="rgba(0,217,192,0.40)"/>
                 <circle cx="14" cy="11" r="3" fill="#00D9C0">
@@ -710,48 +499,33 @@ footer.site-footer{padding:48px 0 56px;border-top:1px solid var(--hairline);marg
           </svg>
           <div class="floor-caption">
             <span>Anonymized — 12 engineers + 4 agents on one Q2 2026 ledger</span>
-            <span class="live">Streaming · UTEv1 schema · workpaper-ready</span>
+            <span class="live">Streaming · workpaper-ready</span>
           </div>
         </div>
       </div>
-
     </section>
   </div>
 </div>
 
-<!-- ROADMAP NOTE -->
-<div class="container">
-  <section class="tight" style="padding:48px 0">
-    <div style="display:flex;justify-content:space-between;align-items:center;gap:18px;flex-wrap:wrap;padding:20px 24px;background:var(--bg-warm);border:1px solid var(--hairline);border-radius:12px">
-      <div style="font-size:14px;color:var(--slate);line-height:1.55;max-width:680px">
-        <strong style="color:var(--ink);font-weight:550">On the roadmap:</strong>
-        GovCon (DCAA · SF1408) · NetSuite &amp; Sage Intacct · Workday certification · benchmark dataset (post 25+ customers).
+<!-- FINAL CTA -->
+<div class="cta-wrap">
+  <div class="container">
+    <div class="cta-block">
+      <h2>Two paths in. <em>Zero engineer surveys.</em></h2>
+      <p class="cta-sub">Audit-ready time data, however your team is set up — finance-led, or alongside your R&amp;D tax firm.</p>
+      <div class="cta-pair">
+        <a class="cta-slot" href="/at-the-ledger.html#cfo">
+          <span class="cs-who">For CFOs &amp; controllers</span>
+          <span class="cs-title">A bigger R&amp;D credit and a defensible CapEx pack — in 60 days.</span>
+          <span class="cs-go">For finance →</span>
+        </a>
+        <a class="cta-slot" href="/at-the-ledger.html#tax">
+          <span class="cs-who">For R&amp;D tax firms</span>
+          <span class="cs-title">Skip the time-survey grind on your software clients.</span>
+          <span class="cs-go">For tax firms →</span>
+        </a>
       </div>
-      <a href="/utev1.html" style="font-family:var(--font-m);font-size:12px;letter-spacing:.04em;color:var(--ink);text-decoration:none;padding:8px 14px;border:1px solid var(--hairline);border-radius:8px">See the UTEv1 spec →</a>
     </div>
-  </section>
-</div>
-
-<!-- FINAL CTA — dual-path mirror -->
-<div class="container">
-  <div class="cta-block">
-    <h2>Two pilots. <em>One no-engineer-survey bar.</em></h2>
-    <p>Two paths in — CFO-led pilots and R&amp;D tax firm pilots. Both are free or close to it. Both ship the same four deliverables.</p>
-    <div class="cta-pair">
-      <a class="cta-slot" href="/at-the-ledger.html#cfo">
-        <span class="cs-who">For CFOs &amp; Controllers</span>
-        <span class="cs-title">60-day pilot. Risk-reversed. $0 if your tax firm doesn't sign off.</span>
-        <span class="cs-go">Start the CFO pilot →</span>
-      </a>
-      <a class="cta-slot" href="/at-the-ledger.html#tax">
-        <span class="cs-who">For R&amp;D tax firms</span>
-        <span class="cs-title">Pilot on 3–5 software clients. You keep your study fees. We stay underneath.</span>
-        <span class="cs-go">See the firm offer →</span>
-      </a>
-    </div>
-    <p style="margin-top:24px;color:#9AA0A6;font-size:14px;line-height:1.55">
-      Engineering leader? See what your CFO is unlocking — and what you get every week. <a href="/at-the-ledger.html#eng" style="color:#fff;text-decoration:underline;text-decoration-color:rgba(255,255,255,0.3);text-underline-offset:3px">→ /engineering</a>
-    </p>
   </div>
 </div>
 
