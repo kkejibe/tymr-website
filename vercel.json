@@ -27,6 +27,10 @@
   ],
   "redirects": [
     {"source": "/signup", "destination": "https://app.tymrlogic.com/signup", "permanent": false},
-    {"source": "/login", "destination": "https://app.tymrlogic.com/login", "permanent": false}
+    {"source": "/login", "destination": "https://app.tymrlogic.com/login", "permanent": false},
+    {"source": "/sample-pack", "destination": "/numbers#pack", "permanent": true},
+    {"source": "/sample-pack.html", "destination": "/numbers#pack", "permanent": true},
+    {"source": "/rd-credit-calculator", "destination": "/numbers#estimate", "permanent": true},
+    {"source": "/rd-credit-calculator.html", "destination": "/numbers#estimate", "permanent": true}
   ]
 }
