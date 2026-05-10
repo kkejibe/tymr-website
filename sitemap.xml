@@ -6,19 +6,19 @@
     <priority>1.0</priority>
   </url>
   <url>
+    <loc>https://tymrlogic.com/agents</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+  </url>
+  <url>
     <loc>https://tymrlogic.com/at-the-ledger</loc>
     <changefreq>weekly</changefreq>
     <priority>0.95</priority>
   </url>
   <url>
-    <loc>https://tymrlogic.com/sample-pack</loc>
+    <loc>https://tymrlogic.com/numbers</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://tymrlogic.com/rd-credit-calculator</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tymrlogic.com/utev1</loc>

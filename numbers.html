@@ -1,0 +1,1060 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>See the numbers — Tymr</title>
+<meta name="description" content="Estimate your R&D tax credit, model the ROI of switching to Tymr, and preview the actual sample pack we ship. Three views of the same data, all in one place."/>
+
+<meta property="og:title" content="See the numbers — Tymr"/>
+<meta property="og:description" content="Estimate · ROI · Sample. Three ways to see what Tymr is worth — in your own numbers."/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://tymrlogic.com/numbers"/>
+<meta property="og:image" content="https://tymrlogic.com/og.png"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="See the numbers — Tymr"/>
+<meta name="twitter:description" content="Estimate, ROI, sample pack — all in one place."/>
+
+<link rel="icon" type="image/png" href="/favicon.png"/>
+<link rel="apple-touch-icon" href="/apple-touch-icon.png"/>
+<link rel="manifest" href="/site.webmanifest"/>
+<meta name="theme-color" content="#0B0B0F"/>
+<script defer data-domain="tymrlogic.com" src="https://plausible.io/js/script.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="/_shared.css"/>
+<style>
+/* === COLOR-CODED TABS === */
+.numbers-tabs{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:10px;
+  margin-top:32px;padding:6px;
+  background:var(--bg-warm);border:1px solid var(--hairline);
+  border-radius:16px;
+}
+@media(max-width:760px){.numbers-tabs{grid-template-columns:1fr;padding:6px}}
+.numbers-tab{
+  display:flex;flex-direction:column;gap:4px;
+  padding:18px 22px;border-radius:12px;
+  background:transparent;border:1px solid transparent;
+  font-family:var(--font-b);cursor:pointer;text-align:left;
+  transition:background .2s,border-color .2s,transform .15s;
+  position:relative;
+}
+.numbers-tab .nt-tag{
+  font-family:var(--font-m);font-size:10px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--slate-dim);font-weight:500;
+}
+.numbers-tab .nt-name{
+  font-family:var(--font-h);font-weight:600;font-size:18px;
+  color:var(--ink-2);letter-spacing:-0.015em;
+}
+.numbers-tab .nt-sub{font-size:13px;color:var(--slate);line-height:1.4}
+.numbers-tab:hover{background:var(--bg);border-color:var(--hairline-strong)}
+
+/* Active states — color-coded by tab */
+.numbers-tab.active[data-tab="estimate"]{
+  background:var(--accent-soft);border-color:var(--accent-line);
+  box-shadow:0 1px 0 rgba(166,117,18,0.08);
+}
+.numbers-tab.active[data-tab="estimate"] .nt-tag,
+.numbers-tab.active[data-tab="estimate"] .nt-name{color:var(--accent)}
+
+.numbers-tab.active[data-tab="roi"]{
+  background:var(--teal-soft);border-color:var(--teal-line);
+  box-shadow:0 1px 0 rgba(14,124,110,0.08);
+}
+.numbers-tab.active[data-tab="roi"] .nt-tag,
+.numbers-tab.active[data-tab="roi"] .nt-name{color:var(--teal)}
+
+.numbers-tab.active[data-tab="pack"]{
+  background:var(--indigo-soft);border-color:var(--indigo-line);
+  box-shadow:0 1px 0 rgba(61,74,138,0.08);
+}
+.numbers-tab.active[data-tab="pack"] .nt-tag,
+.numbers-tab.active[data-tab="pack"] .nt-name{color:var(--indigo)}
+
+/* Tab panels */
+.np{display:none;margin-top:32px}
+.np.active{display:block}
+
+/* Color-coded panel framing */
+.np{position:relative;padding:32px 28px;border-radius:16px;background:var(--bg);border:1px solid var(--hairline)}
+@media(max-width:720px){.np{padding:20px 16px}}
+.np::before{content:'';position:absolute;left:0;right:0;top:0;height:4px;border-radius:16px 16px 0 0}
+#np-estimate{border-color:var(--accent-line);background:linear-gradient(180deg,var(--accent-soft) 0%,var(--bg) 8%)}
+#np-estimate::before{background:var(--accent)}
+#np-roi{border-color:var(--teal-line);background:linear-gradient(180deg,var(--teal-soft) 0%,var(--bg) 8%)}
+#np-roi::before{background:var(--teal)}
+#np-pack{border-color:var(--indigo-line);background:linear-gradient(180deg,var(--indigo-soft) 0%,var(--bg) 8%)}
+#np-pack::before{background:var(--indigo)}
+
+.np > h2{
+  font-family:var(--font-h);font-weight:600;font-size:clamp(24px,3vw,32px);
+  letter-spacing:-0.025em;line-height:1.15;color:var(--ink);
+}
+.np > h2 em{font-style:normal;color:var(--ink-2)}
+.np > p.np-sub{margin-top:10px;color:var(--slate);font-size:15px;line-height:1.6;max-width:640px}
+
+/* === CALC PANEL OVERRIDES === */
+.calc-wrap{margin-top:28px}
+.assumptions{margin-top:18px;padding:16px 20px;background:var(--bg-warm);border:1px solid var(--hairline);border-radius:10px;font-size:13px;color:var(--slate);line-height:1.6}
+.assumptions strong{color:var(--ink);font-weight:550}
+.assumptions ul{margin:8px 0 0 18px;padding:0}
+.assumptions li{margin-bottom:4px}
+
+/* === SAMPLE PACK SLIDES === */
+.deck{margin-top:32px}
+.deck-meta{
+  display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap;
+  padding:14px 18px;background:var(--bg);border:1px solid var(--indigo-line);border-radius:10px;
+  margin-bottom:20px;
+}
+.deck-meta .dm-tag{font-family:var(--font-m);font-size:10px;letter-spacing:.14em;color:var(--indigo);text-transform:uppercase}
+.deck-meta .dm-actions{display:flex;gap:8px;flex-wrap:wrap}
+.deck-meta .dm-actions a, .deck-meta .dm-actions button{
+  font-family:var(--font-m);font-size:11px;letter-spacing:.06em;color:var(--ink);
+  padding:6px 12px;background:var(--bg);border:1px solid var(--hairline);border-radius:6px;
+  text-decoration:none;cursor:pointer;transition:border-color .2s;
+}
+.deck-meta .dm-actions a:hover, .deck-meta .dm-actions button:hover{border-color:var(--ink)}
+
+/* === COLLAPSABLE SLIDE === */
+details.slide{
+  background:var(--bg);border:1px solid var(--hairline);border-radius:14px;
+  margin-bottom:10px;overflow:hidden;
+  transition:border-color .2s,box-shadow .2s;
+}
+details.slide:hover{border-color:var(--hairline-strong)}
+details.slide[open]{box-shadow:0 1px 0 rgba(11,11,15,0.04)}
+details.slide.dark{background:var(--ink);color:#E8E7E2;border-color:#1A1A1F}
+details.slide.dark:hover{border-color:#2A2A30}
+
+/* Summary row = always visible, the clickable header */
+summary.slide-head{
+  list-style:none;cursor:pointer;
+  display:grid;grid-template-columns:auto 1fr auto auto;gap:14px;align-items:center;
+  padding:18px 22px;
+  transition:background .15s;
+}
+@media(max-width:720px){
+  summary.slide-head{grid-template-columns:1fr auto;gap:8px;padding:14px 16px}
+}
+summary.slide-head::-webkit-details-marker{display:none}
+summary.slide-head::marker{content:'';display:none}
+summary.slide-head:hover{background:var(--bg-warm)}
+details.slide.dark summary.slide-head:hover{background:rgba(255,255,255,0.03)}
+details.slide[open] summary.slide-head{border-bottom:1px solid var(--hairline)}
+details.slide.dark[open] summary.slide-head{border-bottom-color:rgba(255,255,255,0.08)}
+
+.slide-no{
+  font-family:var(--font-m);font-size:10px;letter-spacing:.14em;
+  color:var(--slate);text-transform:uppercase;font-weight:500;
+}
+details.slide.dark .slide-no{color:#8B8FA8}
+.slide-title{
+  font-family:var(--font-h);font-weight:600;font-size:15px;
+  color:var(--ink);letter-spacing:-0.01em;line-height:1.3;
+}
+details.slide.dark .slide-title{color:#fff}
+.slide-hint{
+  font-family:var(--font-m);font-size:10px;letter-spacing:.06em;
+  color:var(--slate-dim);white-space:nowrap;
+}
+details.slide.dark .slide-hint{color:#6B6F78}
+@media(max-width:720px){
+  .slide-no, .slide-hint{display:none}
+}
+
+/* Prominent toggle pill — visible at right edge */
+.slide-toggle{
+  display:inline-flex;align-items:center;gap:6px;
+  padding:6px 10px 6px 12px;border-radius:100px;
+  background:var(--accent-soft);border:1px solid var(--accent-line);
+  color:var(--accent);font-family:var(--font-m);font-size:10px;
+  letter-spacing:.10em;text-transform:uppercase;font-weight:600;
+  white-space:nowrap;
+  transition:background .15s,border-color .15s,transform .15s;
+}
+details.slide.dark .slide-toggle{
+  background:rgba(245,200,66,0.10);border-color:rgba(245,200,66,0.30);color:#F5C56A;
+}
+.slide-toggle svg{
+  width:12px;height:12px;
+  transition:transform .25s ease;
+}
+details.slide[open] .slide-toggle svg{transform:rotate(180deg)}
+summary.slide-head:hover .slide-toggle{background:var(--accent);color:#fff}
+details.slide.dark summary.slide-head:hover .slide-toggle{background:#F5C56A;color:#0B0B0F;border-color:#F5C56A}
+.slide-toggle .lbl-show{display:inline}
+.slide-toggle .lbl-hide{display:none}
+details.slide[open] .slide-toggle .lbl-show{display:none}
+details.slide[open] .slide-toggle .lbl-hide{display:inline}
+
+/* Body — content shown when open */
+.slide-body{
+  padding:24px 28px 30px;
+  display:flex;flex-direction:column;gap:18px;
+}
+@media(max-width:720px){.slide-body{padding:18px 16px 22px}}
+
+.slide-body h2{font-family:var(--font-h);font-weight:600;font-size:clamp(22px,2.8vw,30px);letter-spacing:-0.03em;line-height:1.1;color:var(--ink);margin:0}
+details.slide.dark .slide-body h2{color:#fff}
+.slide-body h2 em{font-style:normal;color:var(--ink-2)}
+details.slide.dark .slide-body h2 em{color:#C8C9CC}
+.slide-body p{font-size:15px;color:var(--slate);line-height:1.6;max-width:720px;margin:0}
+details.slide.dark .slide-body p{color:#9AA0A6}
+.slide-body strong{color:var(--ink);font-weight:550}
+details.slide.dark .slide-body strong{color:#F5C56A;font-weight:500}
+.slide-body ul{list-style:none;padding:0;display:flex;flex-direction:column;gap:10px;margin:0}
+.slide-body ul li{display:flex;gap:12px;align-items:flex-start;font-size:14px;color:var(--slate);line-height:1.55}
+details.slide.dark .slide-body ul li{color:#9AA0A6}
+.slide-body ul li::before{content:'—';color:var(--slate-dim);font-family:var(--font-m);font-size:12px;flex-shrink:0;padding-top:2px}
+
+.slide-kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:8px}
+@media(max-width:760px){.slide-kpis{grid-template-columns:1fr 1fr}}
+.kpi{display:flex;flex-direction:column;gap:6px;padding:16px 18px;background:var(--bg-warm);border:1px solid var(--hairline);border-radius:10px}
+.slide.dark .kpi{background:rgba(255,255,255,0.03);border-color:rgba(255,255,255,0.08)}
+.kpi .kpi-k{font-family:var(--font-m);font-size:10px;letter-spacing:.12em;color:var(--slate);text-transform:uppercase}
+.slide.dark .kpi .kpi-k{color:#6B6F78}
+.kpi .kpi-v{font-family:var(--font-h);font-weight:600;font-size:22px;color:var(--ink);letter-spacing:-0.02em}
+.slide.dark .kpi .kpi-v{color:#F5C56A}
+.kpi.cap .kpi-v{color:var(--cyan-dark)}
+.slide.dark .kpi.cap .kpi-v{color:#00D9C0}
+
+.data-table{width:100%;border-collapse:collapse;margin-top:8px;font-size:13px}
+.data-table thead th{text-align:left;padding:10px 12px;background:var(--bg-warm);border-bottom:1px solid var(--hairline);font-family:var(--font-m);font-size:10px;letter-spacing:.1em;color:var(--slate);text-transform:uppercase;font-weight:500}
+.data-table tbody td{padding:10px 12px;border-bottom:1px solid var(--hairline);color:var(--slate);font-family:var(--font-m);font-size:12px}
+.data-table tbody tr:last-child td{border-bottom:none}
+.data-table .amt{text-align:right;color:var(--ink);font-weight:500}
+.data-table .tag-174{color:var(--accent);font-weight:500}
+.data-table .tag-350{color:var(--cyan-dark);font-weight:500}
+.data-table .tag-opx{color:var(--red);font-weight:500}
+
+.stacked-bar{display:flex;height:28px;border-radius:6px;overflow:hidden;margin-top:10px;border:1px solid var(--hairline)}
+.sb-174{background:var(--accent)}
+.sb-350{background:var(--cyan-mid)}
+.sb-opx{background:var(--slate-dim)}
+.sb-legend{display:flex;gap:18px;margin-top:12px;flex-wrap:wrap;font-size:12px;color:var(--slate);font-family:var(--font-m);letter-spacing:.04em}
+.sb-legend span{display:inline-flex;align-items:center;gap:6px}
+.sb-legend .dot{width:10px;height:10px;border-radius:3px}
+
+.methodology-callout{padding:16px 18px;background:var(--bg-warm);border:1px solid var(--hairline);border-radius:10px;font-size:13px;color:var(--slate);line-height:1.55}
+.methodology-callout strong{color:var(--ink);font-weight:550}
+
+/* Expand/collapse all */
+.deck-controls{display:flex;justify-content:flex-end;margin-bottom:10px}
+.deck-toggle-all{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:8px 14px;border-radius:100px;
+  background:var(--bg);color:var(--ink);
+  border:1px solid var(--hairline-strong);
+  font-family:var(--font-m);font-size:11px;letter-spacing:.06em;font-weight:500;cursor:pointer;
+  transition:background .15s,border-color .15s;
+}
+.deck-toggle-all:hover{background:var(--bg-warm);border-color:var(--ink)}
+.deck-toggle-all svg{width:11px;height:11px;transition:transform .25s}
+.deck-toggle-all[data-state="open"] svg{transform:rotate(180deg)}
+.deck-toggle-all .dta-show{display:inline}
+.deck-toggle-all .dta-hide{display:none}
+.deck-toggle-all[data-state="open"] .dta-show{display:none}
+.deck-toggle-all[data-state="open"] .dta-hide{display:inline}
+
+/* Print-friendly slides — force every slide open for PDF */
+@media print{
+  nav, .footer-wrap, .numbers-tabs, .page-head .lede, .deck-meta, .slide-toggle{display:none !important}
+  body{background:#fff}
+  .np{padding:0;border:none;background:transparent}
+  .np::before{display:none}
+  details.slide{break-inside:avoid;page-break-inside:avoid;border:1px solid #ddd}
+  details.slide > .slide-body{display:flex !important}
+  details.slide:not([open]) > .slide-body{display:flex !important}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="container">
+    <div class="nav-i">
+      <a href="/" class="logo">
+        <div class="logo-mark">T</div>
+        <span class="logo-name">Ty<span class="gr">mr</span></span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="/agents.html">Agents</a></li>
+        <li><a href="/at-the-ledger.html">Floor to ledger</a></li>
+        <li><a href="/numbers.html" class="active">See the numbers</a></li>
+        <li><a href="/pricing.html">Pricing</a></li>
+      </ul>
+      <a class="nav-cta" href="mailto:hello@tymrlogic.com?subject=Tymr%20demo%20request">Request a demo</a>
+    </div>
+  </div>
+</nav>
+
+<div class="container">
+  <div class="page-head">
+    <span class="accent-bar"></span>
+    <div class="eyebrow">SEE THE NUMBERS</div>
+    <h1>Estimate, ROI, <em>and a real sample pack.</em></h1>
+    <p class="lede">Three ways to see what Tymr is worth — in your own numbers. Pick a tab.</p>
+  </div>
+
+  <div class="content">
+
+    <!-- COLOR-CODED TABS -->
+    <div class="numbers-tabs" role="tablist">
+      <button class="numbers-tab active" role="tab" data-tab="estimate" aria-label="R&amp;D tax credit estimate">
+        <span class="nt-tag">Estimate</span>
+        <span class="nt-name">Your tax credit</span>
+        <span class="nt-sub">A live estimate of the R&amp;D credit you could claim.</span>
+      </button>
+      <button class="numbers-tab" role="tab" data-tab="roi" aria-label="Time tracking ROI calculator">
+        <span class="nt-tag">ROI</span>
+        <span class="nt-name">The switch math</span>
+        <span class="nt-sub">What you'd save by switching to Tymr.</span>
+      </button>
+      <button class="numbers-tab" role="tab" data-tab="pack" aria-label="Sample pack preview">
+        <span class="nt-tag">Sample</span>
+        <span class="nt-name">The actual pack</span>
+        <span class="nt-sub">Ten anonymized slides — what your accountant gets.</span>
+      </button>
+    </div>
+
+    <!-- PANEL 1: ESTIMATE (R&D Credit Calculator) -->
+    <div class="np active" id="np-estimate" role="tabpanel">
+      <h2>Estimate <em>the credit you could claim.</em></h2>
+      <p class="np-sub">Drag the sliders. The estimate updates live. Tuned against published state R&amp;D credit guidance — calibration notes below.</p>
+
+      <div class="calc-wrap">
+        <div class="calc-panel">
+          <div class="calc-group">
+            <div class="calc-label">Engineers in R&amp;D roles <span class="calc-value" id="engineers-v">80</span></div>
+            <input type="range" id="engineers" min="5" max="2000" step="5" value="80"/>
+          </div>
+          <div class="calc-group">
+            <div class="calc-label">Avg fully-loaded cost / engineer <span class="calc-value" id="salary-v">$210K</span></div>
+            <input type="range" id="salary" min="100" max="400" step="5" value="210"/>
+          </div>
+          <div class="calc-group">
+            <div class="calc-label">% time on qualifying R&amp;D <span class="calc-value" id="rdPct-v">70%</span></div>
+            <input type="range" id="rdPct" min="20" max="100" step="5" value="70"/>
+          </div>
+          <div class="calc-group">
+            <div class="calc-label">Primary state / region for R&amp;D work</div>
+            <select class="calc-select" id="state">
+              <optgroup label="High-credit states">
+                <option value="az">Arizona (incremental — eff. ~12%)</option>
+                <option value="ri">Rhode Island (eff. ~10%)</option>
+                <option value="ca" selected>California (eff. ~7.5%)</option>
+                <option value="in">Indiana (eff. ~7.5%)</option>
+                <option value="oh">Ohio (~7%)</option>
+                <option value="ct">Connecticut (~6%)</option>
+                <option value="ny">New York (Excelsior — eff. ~6%)</option>
+                <option value="ia">Iowa (~6.5%, refundable)</option>
+                <option value="nd">North Dakota (eff. ~6%)</option>
+                <option value="wi">Wisconsin (~5.75%)</option>
+              </optgroup>
+              <optgroup label="Mid-credit states">
+                <option value="ma">Massachusetts (eff. ~5%)</option>
+                <option value="tx">Texas (~5% franchise credit)</option>
+                <option value="pa">Pennsylvania (eff. ~5%)</option>
+                <option value="nj">New Jersey (eff. ~5%)</option>
+                <option value="ga">Georgia (eff. ~5%)</option>
+                <option value="mn">Minnesota (eff. ~5%)</option>
+                <option value="va">Virginia (eff. ~5%)</option>
+                <option value="fl">Florida (eff. ~5%)</option>
+                <option value="me">Maine (eff. ~4%)</option>
+                <option value="ut">Utah (eff. ~3.75%)</option>
+                <option value="mo">Missouri (eff. ~3.5%)</option>
+                <option value="il">Illinois (eff. ~3.25%)</option>
+                <option value="ks">Kansas (eff. ~3.25%)</option>
+                <option value="nm">New Mexico (eff. ~4%)</option>
+              </optgroup>
+              <optgroup label="Limited / capped credits">
+                <option value="md">Maryland (eff. ~2.5%)</option>
+                <option value="nc">North Carolina (eff. ~2.5%)</option>
+                <option value="sc">South Carolina (eff. ~2.5%)</option>
+                <option value="co">Colorado (eff. ~2%)</option>
+                <option value="vt">Vermont (eff. ~2.7%)</option>
+                <option value="ne">Nebraska (eff. ~8%)</option>
+                <option value="hi">Hawaii (eff. ~10%, refundable)</option>
+                <option value="la">Louisiana (eff. ~8%)</option>
+                <option value="ak">Alaska (eff. ~1.8%)</option>
+                <option value="de">Delaware (eff. ~1%)</option>
+                <option value="wv">West Virginia (eff. ~3%)</option>
+                <option value="nh">New Hampshire (eff. ~1%)</option>
+              </optgroup>
+              <optgroup label="Canada — SR&amp;ED">
+                <option value="ca-fed">Canadian SR&amp;ED (federal ~15% on qualifying spend)</option>
+              </optgroup>
+              <optgroup label="No state R&amp;D credit available">
+                <option value="wa">Washington — none</option>
+                <option value="nv">Nevada — none</option>
+                <option value="sd">South Dakota — none</option>
+                <option value="tn">Tennessee — none</option>
+                <option value="wy">Wyoming — none</option>
+                <option value="mi">Michigan — repealed</option>
+                <option value="or">Oregon — expired</option>
+                <option value="ok">Oklahoma — eliminated</option>
+                <option value="mt">Montana — repealed</option>
+                <option value="al">Alabama — none</option>
+                <option value="ms">Mississippi — none</option>
+                <option value="ky">Kentucky — limited</option>
+              </optgroup>
+              <optgroup label="Other">
+                <option value="other">Other / international (~3% effective)</option>
+                <option value="none">Federal only — no regional credit</option>
+              </optgroup>
+            </select>
+          </div>
+        </div>
+
+        <div class="calc-panel result">
+          <div class="calc-label">ESTIMATED RECOVERABLE CREDIT · YEAR 1</div>
+          <div class="calc-big" id="total">—</div>
+          <div class="calc-sub-num" id="totalRange">—</div>
+
+          <div class="calc-divider"></div>
+
+          <div class="calc-row">
+            <span class="k">Qualifying R&amp;D spend</span>
+            <span class="v" id="qre">—</span>
+          </div>
+          <div class="calc-row">
+            <span class="k">Federal credit (~8% typical)</span>
+            <span class="v gold" id="fed">—</span>
+          </div>
+          <div class="calc-row">
+            <span class="k">Regional credit <span id="stateName">(California)</span></span>
+            <span class="v cyan" id="stateAmt">—</span>
+          </div>
+          <div class="calc-row">
+            <span class="k">Per engineer / year</span>
+            <span class="v" id="perEng">—</span>
+          </div>
+
+          <div class="calc-disclaimer">
+            <strong>Estimate only.</strong> Actual credit depends on your qualifying-research review and how each activity gets substantiated. Regional rates reflect typical effective rates published in 2024–2025 industry surveys and assume a multi-year claimer with a normal base period. This isn't tax advice — Tymr produces the per-engineer source-event evidence your accountant or tax firm needs to defend the credit.
+          </div>
+        </div>
+      </div>
+
+      <section style="margin-top:32px">
+        <h2>Where the numbers come from</h2>
+        <p>At the federal level we model the <strong>Alternative Simplified Credit (ASC) method</strong>: 14% of current-year qualifying spend above 50% of the prior-three-year average. For a typical software org with stable or growing R&amp;D, that comes out to roughly <strong>7–10% of qualifying spend</strong> as a federal credit. We default to 8% as a balanced middle.</p>
+        <p>Regional credits are calibrated against published 2024–2025 R&amp;D credit surveys (BDO, EY, Deloitte, KBKG). Each percentage above represents the <strong>effective rate as a percentage of total qualifying spend</strong> for a typical software company that has been claiming for 3+ years — accounting for incremental vs non-incremental methods, base-period rules, refundability, and statewide caps. Canada's SR&amp;ED is shown as the federal 15% basic rate.</p>
+        <p><strong>What counts as qualifying spend?</strong> Wages for employees performing qualified research, supplies consumed in R&amp;D, 65% of contract research, and certain capitalized software-development costs. Management and back-office time generally doesn't qualify.</p>
+      </section>
+
+      <section style="margin-top:32px">
+        <h2>Why the substantiation matters more than the math</h2>
+        <p>The math above is the easy part. The hard part — and the reason most companies under-claim — is <strong>substantiation</strong>: proving the work actually qualified, with contemporaneous evidence tied to specific projects and engineers.</p>
+        <p>That's what Tymr produces. Every hour in your R&amp;D credit worksheet traces back to a Jira ticket transition, a GitHub pull request, or a calendar block — time-stamped and immutable. When your tax firm prepares the credit or your company faces an audit, the evidence is already on file.</p>
+      </section>
+
+      <div class="cta-inline" style="margin-top:32px">
+        <a href="mailto:hello@tymrlogic.com?subject=Tymr%20demo%20request" class="btn-primary">Request a demo</a>
+        <a href="/utev1.html" class="btn-ghost">See how evidence is captured →</a>
+      </div>
+    </div>
+
+    <!-- PANEL 2: ROI (Time Tracking ROI Calculator) -->
+    <div class="np" id="np-roi" role="tabpanel">
+      <h2>The switch math. <em>What Tymr saves you in year one.</em></h2>
+      <p class="np-sub">Captured hours, admin time recovered, allocation accuracy, productivity lift. Drag the sliders for your team.</p>
+
+      <div class="calc-wrap">
+        <div class="calc-panel">
+          <div class="calc-group">
+            <div class="calc-label">Total team size <span class="calc-value" id="r-users-v">100</span></div>
+            <input type="range" id="r-users" min="5" max="2000" step="5" value="100"/>
+          </div>
+          <div class="calc-group">
+            <div class="calc-label">Avg fully-loaded cost / person <span class="calc-value" id="r-cost-v">$160K</span></div>
+            <input type="range" id="r-cost" min="60" max="350" step="5" value="160"/>
+          </div>
+          <div class="calc-group">
+            <div class="calc-label">Hours/week per person on timesheet admin <span class="calc-value" id="r-admin-v">2.5h</span></div>
+            <input type="range" id="r-admin" min="0" max="8" step="0.5" value="2.5"/>
+          </div>
+          <div class="calc-group">
+            <div class="calc-label">% of time currently lost / unaccounted <span class="calc-value" id="r-lost-v">12%</span></div>
+            <input type="range" id="r-lost" min="0" max="40" step="1" value="12"/>
+          </div>
+          <div class="calc-group">
+            <div class="calc-label">Avg billable hourly rate (if billable) <span class="calc-value" id="r-rate-v">$180</span></div>
+            <input type="range" id="r-rate" min="0" max="500" step="10" value="180"/>
+          </div>
+          <div class="calc-group">
+            <div class="calc-label">Your shop</div>
+            <select class="calc-select" id="r-industry">
+              <option value="software">Software / SaaS (internal R&amp;D)</option>
+              <option value="agency">Agency / consulting (billable)</option>
+              <option value="services">Professional services (mixed)</option>
+              <option value="cap">Capitalized product (balance-sheet heavy)</option>
+              <option value="govcon">GovCon / regulated</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="calc-panel result">
+          <div class="calc-label">ESTIMATED ANNUAL NET ROI · YEAR 1</div>
+          <div class="calc-big" id="r-total">—</div>
+          <div class="calc-sub-num" id="r-payback">—</div>
+
+          <div class="calc-divider"></div>
+
+          <div class="calc-row">
+            <span class="k">Recovered hours value</span>
+            <span class="v gold" id="r-recovered">—</span>
+          </div>
+          <div class="calc-row">
+            <span class="k">Admin time saved</span>
+            <span class="v gold" id="r-admin-save">—</span>
+          </div>
+          <div class="calc-row">
+            <span class="k">Productivity gain (~5%)</span>
+            <span class="v gold" id="r-prod">—</span>
+          </div>
+          <div class="calc-row">
+            <span class="k">Better resource allocation</span>
+            <span class="v gold" id="r-alloc">—</span>
+          </div>
+          <div class="calc-row" style="border-top:1px solid var(--hairline-strong);padding-top:14px;margin-top:6px">
+            <span class="k">Annual gross benefit</span>
+            <span class="v" id="r-gross">—</span>
+          </div>
+          <div class="calc-row">
+            <span class="k">Tymr cost (Professional, $14/seat/mo)</span>
+            <span class="v cyan" id="r-cost-tymr">—</span>
+          </div>
+          <div class="calc-row">
+            <span class="k">3-year cumulative net</span>
+            <span class="v" id="r-3yr">—</span>
+          </div>
+
+          <div class="calc-disclaimer">
+            <strong>Methodology.</strong> Industry-validated benchmarks: auto-tracking recovers ~50% of currently-lost hours; manual entry consumes 1–3 hrs/week per user; accurate allocation visibility yields 4–7% productivity gains; resource-allocation accuracy improves throughput 2–4%. Calculations assume 50 working weeks and 2,080 hours/year. Results are estimates — your actual ROI depends on team mix, current process maturity, and integration coverage.
+          </div>
+        </div>
+      </div>
+
+      <section style="margin-top:32px">
+        <h2>Where the ROI comes from</h2>
+        <p>Manual time tracking has four leaks. Tymr seals each one with a different mechanism.</p>
+        <div class="grid-3" style="margin-top:18px">
+          <div class="card tint-gold">
+            <h3>Captured hours</h3>
+            <p>Every Jira transition, GitHub commit, and calendar block becomes an event — recovering roughly half the hours timesheets miss. For billable teams, recovered hours convert at full rate.</p>
+          </div>
+          <div class="card tint-teal">
+            <h3>Admin time</h3>
+            <p>Auto-aggregation eliminates 1–3 hours/week per person of timesheet entry. Compounded across the team, that's a full FTE recovered per ~25 users.</p>
+          </div>
+          <div class="card tint-indigo">
+            <h3>Allocation accuracy</h3>
+            <p>Real per-person, per-project hours show where effort actually went. PM and ops use the data to rebalance staffing — typical productivity lift is 4–7%.</p>
+          </div>
+        </div>
+      </section>
+
+      <div class="cta-inline" style="margin-top:32px">
+        <a href="mailto:hello@tymrlogic.com?subject=Tymr%20demo%20request" class="btn-primary">Request a demo</a>
+        <a href="/pricing.html" class="btn-ghost">See pricing →</a>
+      </div>
+    </div>
+
+    <!-- PANEL 3: SAMPLE PACK -->
+    <div class="np" id="np-pack" role="tabpanel">
+      <h2>The sample pack. <em>Anonymized, but real.</em></h2>
+      <p class="np-sub">Ten slides, anonymized, from a representative software company. Same structure your tax firm receives at the end of an engagement — engineer names scrubbed, project codes fabricated, dollars rounded. Everything else is real methodology.</p>
+
+      <div class="deck-meta">
+        <span class="dm-tag">Anonymized · 120-person software company · Q1 2026</span>
+        <div class="dm-actions">
+          <button onclick="window.print()">Print / save as PDF</button>
+          <a href="mailto:hello@tymrlogic.com?subject=Tymr%20sample%20pack%20PDF">Email me a PDF copy</a>
+        </div>
+      </div>
+
+      <div class="deck-controls">
+        <button type="button" class="deck-toggle-all" data-state="closed" aria-label="Expand or collapse all slides">
+          <svg viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M3 4.5 L6 7.5 L9 4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span class="dta-show">Expand all</span><span class="dta-hide">Collapse all</span>
+        </button>
+      </div>
+
+      <div class="deck">
+
+        <!-- SLIDE 1 -->
+        <details class="slide dark">
+          <summary class="slide-head">
+            <span class="slide-no">Slide 01</span>
+            <span class="slide-title">Cover — Q1 2026 audit pack</span>
+            <span class="slide-hint">Anonymized sample</span>
+            <span class="slide-toggle" aria-hidden="true">
+              <span class="lbl-show">Open</span><span class="lbl-hide">Close</span>
+              <svg viewBox="0 0 12 12" fill="none"><path d="M3 4.5 L6 7.5 L9 4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+          </summary>
+          <div class="slide-body">
+            <h2>R&amp;D + Balance-Sheet Audit Pack <em>— Q1 2026</em></h2>
+            <p>Prepared for: <strong>[Client Software Co.]</strong> · 120 engineers</p>
+            <p>Prepared with: <strong>[R&amp;D Tax Firm]</strong> — your firm's methodology, Tymr's time evidence.</p>
+            <div class="slide-kpis">
+              <div class="kpi"><span class="kpi-k">Period</span><span class="kpi-v">Q1 2026</span></div>
+              <div class="kpi"><span class="kpi-k">Engineers</span><span class="kpi-v">120</span></div>
+              <div class="kpi"><span class="kpi-k">Sources</span><span class="kpi-v">Jira · GH · GCal</span></div>
+              <div class="kpi"><span class="kpi-k">Surveys</span><span class="kpi-v">Zero</span></div>
+            </div>
+          </div>
+        </details>
+
+        <!-- SLIDE 2 -->
+        <details class="slide">
+          <summary class="slide-head">
+            <span class="slide-no">Slide 02</span>
+            <span class="slide-title">$1.84M tax-credit lift — executive summary</span>
+            <span class="slide-hint">CFO-ready</span>
+            <span class="slide-toggle" aria-hidden="true">
+              <span class="lbl-show">Open</span><span class="lbl-hide">Close</span>
+              <svg viewBox="0 0 12 12" fill="none"><path d="M3 4.5 L6 7.5 L9 4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+          </summary>
+          <div class="slide-body">
+            <h2>$1.84M tax-credit lift. <em>$4.9M for the balance sheet.</em></h2>
+            <ul>
+              <li><strong>Qualifying wages:</strong> $14.2M (of $18.4M total engineering compensation, 77% qualifying ratio)</li>
+              <li><strong>Federal R&amp;D credit (8% effective):</strong> <strong>$1.14M</strong> — up from $820K claimed in 2025 on comparable headcount.</li>
+              <li><strong>Regional credit (7.5% effective):</strong> <strong>$702K</strong></li>
+              <li><strong>Lift vs. prior year:</strong> <strong>+$1.02M combined</strong>, driven by contemporaneous substantiation of work previously haircut.</li>
+              <li><strong>Capitalized software development:</strong> $4.9M across 11 major projects; routine maintenance $2.1M cleanly separated.</li>
+            </ul>
+            <div class="methodology-callout"><strong>Confidence:</strong> 94% of engineer-hours in Q1 had at least one source event (Jira, GitHub, or calendar). Remaining 6% reviewed manually and excluded from the claim.</div>
+          </div>
+        </details>
+
+        <!-- SLIDE 3 -->
+        <details class="slide">
+          <summary class="slide-head">
+            <span class="slide-no">Slide 03</span>
+            <span class="slide-title">Per-engineer hours, cited to source events</span>
+            <span class="slide-hint">Top 20 · anonymized</span>
+            <span class="slide-toggle" aria-hidden="true">
+              <span class="lbl-show">Open</span><span class="lbl-hide">Close</span>
+              <svg viewBox="0 0 12 12" fill="none"><path d="M3 4.5 L6 7.5 L9 4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+          </summary>
+          <div class="slide-body">
+            <h2>Real time, captured as it happened. <em>Cited to source events.</em></h2>
+            <table class="data-table">
+              <thead><tr><th>Engineer</th><th>Role</th><th>R&amp;D hrs</th><th>Cap. hrs</th><th>Maint. hrs</th><th>Evidence</th><th class="amt">Qualifying $</th></tr></thead>
+              <tbody>
+                <tr><td>E-0142</td><td>Platform Lead</td><td>342.1</td><td>54.0</td><td>18.6</td><td>Jira+GH+GCal</td><td class="amt">$142,108</td></tr>
+                <tr><td>E-0217</td><td>Sr. Backend</td><td>318.8</td><td>62.4</td><td>22.1</td><td>Jira+GH</td><td class="amt">$128,442</td></tr>
+                <tr><td>E-0089</td><td>Staff Eng</td><td>304.6</td><td>88.2</td><td>12.7</td><td>Jira+GH+GCal</td><td class="amt">$148,876</td></tr>
+                <tr><td>E-0301</td><td>Sr. Frontend</td><td>298.4</td><td>34.9</td><td>28.8</td><td>Jira+GH</td><td class="amt">$112,204</td></tr>
+                <tr><td>E-0158</td><td>ML Eng</td><td>340.7</td><td>12.1</td><td>9.4</td><td>Jira+GH+GCal</td><td class="amt">$154,322</td></tr>
+                <tr><td>E-0044</td><td>Infra / DevOps</td><td>68.4</td><td>38.2</td><td>248.1</td><td>Jira+PagerDuty</td><td class="amt">$31,120</td></tr>
+                <tr><td>…</td><td>+ 14 more</td><td>—</td><td>—</td><td>—</td><td>—</td><td class="amt">—</td></tr>
+              </tbody>
+            </table>
+            <p style="font-size:13px;margin-top:6px">Every row in the full pack cites specific Jira tickets and GitHub PRs — redacted in this sample.</p>
+          </div>
+        </details>
+
+        <!-- SLIDE 4 -->
+        <details class="slide">
+          <summary class="slide-head">
+            <span class="slide-no">Slide 04</span>
+            <span class="slide-title">Classification mix — 77% qualifies</span>
+            <span class="slide-hint">Q1 2026 hours</span>
+            <span class="slide-toggle" aria-hidden="true">
+              <span class="lbl-show">Open</span><span class="lbl-hide">Close</span>
+              <svg viewBox="0 0 12 12" fill="none"><path d="M3 4.5 L6 7.5 L9 4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+          </summary>
+          <div class="slide-body">
+            <h2>77% of engineering time qualifies. <em>23% capitalizes or runs as expense.</em></h2>
+            <div class="stacked-bar">
+              <div class="sb-174" style="width:77%"></div>
+              <div class="sb-350" style="width:14%"></div>
+              <div class="sb-opx" style="width:9%"></div>
+            </div>
+            <div class="sb-legend">
+              <span><span class="dot" style="background:var(--accent)"></span>R&amp;D qualifying · 77%</span>
+              <span><span class="dot" style="background:var(--cyan-mid)"></span>Capitalized · 14%</span>
+              <span><span class="dot" style="background:var(--slate-dim)"></span>Maintenance / expense · 9%</span>
+            </div>
+            <p style="margin-top:14px"><strong>Why this matters:</strong> tax preparers typically haircut aggressive R&amp;D claims 20–40% when substantiation is thin. Tymr's classification is contemporaneous and cited, so the haircut disappears.</p>
+          </div>
+        </details>
+
+        <!-- SLIDE 5 -->
+        <details class="slide">
+          <summary class="slide-head">
+            <span class="slide-no">Slide 05</span>
+            <span class="slide-title">Project-level breakdown</span>
+            <span class="slide-hint">11 active projects</span>
+            <span class="slide-toggle" aria-hidden="true">
+              <span class="lbl-show">Open</span><span class="lbl-hide">Close</span>
+              <svg viewBox="0 0 12 12" fill="none"><path d="M3 4.5 L6 7.5 L9 4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+          </summary>
+          <div class="slide-body">
+            <h2>Project mix — <em>what qualified, what capitalized, what didn't.</em></h2>
+            <table class="data-table">
+              <thead><tr><th>Project</th><th>Hours</th><th>R&amp;D</th><th>Cap.</th><th>Maint.</th><th class="amt">Qualifying $</th></tr></thead>
+              <tbody>
+                <tr><td>PROJ-142 Auth-v2 rebuild</td><td>2,108</td><td class="tag-174">98%</td><td>2%</td><td>0%</td><td class="amt">$704K</td></tr>
+                <tr><td>PROJ-091 Billing migration</td><td>1,822</td><td class="tag-174">41%</td><td class="tag-350">54%</td><td>5%</td><td class="amt">$248K</td></tr>
+                <tr><td>PROJ-203 ML ranking engine</td><td>1,604</td><td class="tag-174">94%</td><td class="tag-350">4%</td><td>2%</td><td class="amt">$520K</td></tr>
+                <tr><td>PROJ-188 Data warehouse rework</td><td>1,218</td><td class="tag-174">62%</td><td class="tag-350">31%</td><td>7%</td><td class="amt">$258K</td></tr>
+                <tr><td>INFRA-014 Kubernetes upgrade</td><td>988</td><td class="tag-174">18%</td><td class="tag-350">12%</td><td class="tag-opx">70%</td><td class="amt">$61K</td></tr>
+                <tr><td>PROJ-221 Observability platform</td><td>742</td><td class="tag-174">88%</td><td class="tag-350">8%</td><td>4%</td><td class="amt">$218K</td></tr>
+                <tr><td>… + 5 more projects</td><td>4,101</td><td>—</td><td>—</td><td>—</td><td class="amt">$1.24M</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </details>
+
+        <!-- SLIDE 6 -->
+        <details class="slide">
+          <summary class="slide-head">
+            <span class="slide-no">Slide 06</span>
+            <span class="slide-title">Capitalize vs expense — monthly</span>
+            <span class="slide-hint">Journal-ready</span>
+            <span class="slide-toggle" aria-hidden="true">
+              <span class="lbl-show">Open</span><span class="lbl-hide">Close</span>
+              <svg viewBox="0 0 12 12" fill="none"><path d="M3 4.5 L6 7.5 L9 4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+          </summary>
+          <div class="slide-body">
+            <h2>Capitalizable software development — <em>ready for amortization schedules.</em></h2>
+            <table class="data-table">
+              <thead><tr><th>Month</th><th>Cap. hours</th><th>Expense hours</th><th>Capitalized $</th><th class="amt">Journal entry</th></tr></thead>
+              <tbody>
+                <tr><td>2026-01</td><td>1,428</td><td>312</td><td>$1.62M</td><td class="amt">DR Capitalized SW / CR Wages</td></tr>
+                <tr><td>2026-02</td><td>1,516</td><td>288</td><td>$1.71M</td><td class="amt">DR Capitalized SW / CR Wages</td></tr>
+                <tr><td>2026-03</td><td>1,412</td><td>334</td><td>$1.60M</td><td class="amt">DR Capitalized SW / CR Wages</td></tr>
+                <tr><td><strong>Q1 total</strong></td><td><strong>4,356</strong></td><td><strong>934</strong></td><td><strong>$4.93M</strong></td><td class="amt"><strong>$4,934,208</strong></td></tr>
+              </tbody>
+            </table>
+            <p style="margin-top:6px"><strong>Split logic:</strong> Pre-feasibility research and post-launch bug fixes → expense. Application development between feasibility and go-live → capitalize.</p>
+          </div>
+        </details>
+
+        <!-- SLIDE 7 -->
+        <details class="slide dark">
+          <summary class="slide-head">
+            <span class="slide-no">Slide 07</span>
+            <span class="slide-title">Workpaper CSV preview</span>
+            <span class="slide-hint">Column schema</span>
+            <span class="slide-toggle" aria-hidden="true">
+              <span class="lbl-show">Open</span><span class="lbl-hide">Close</span>
+              <svg viewBox="0 0 12 12" fill="none"><path d="M3 4.5 L6 7.5 L9 4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+          </summary>
+          <div class="slide-body">
+            <h2>The CSV your accountant pastes straight into the workpaper.</h2>
+            <div style="background:rgba(255,255,255,0.04);border-radius:10px;padding:20px;font-family:var(--font-m);font-size:12px;color:#E8E7E2;overflow-x:auto;line-height:1.8">
+              <div style="color:#F5C56A;margin-bottom:8px">engineer_id, engineer_name, project, period, hours, classification, evidence_type, evidence_ref, confidence</div>
+              <div style="color:#9AA0A6">E0142, K. Ellison,  PROJ-142 Auth-v2,       2026-01, 118.4, R&amp;D qualifying,     jira+github,       JIRA:PROJ-142;GH:pr/482, 0.96</div>
+              <div style="color:#9AA0A6">E0142, K. Ellison,  PROJ-091 Billing,       2026-01, 22.1,  Capitalized,         jira+github,       JIRA:PROJ-091;GH:pr/471, 0.92</div>
+              <div style="color:#9AA0A6">E0217, S. Amir,     INFRA-014 K8s upgrade,  2026-01, 94.1,  Maintenance,         jira+pagerduty,    JIRA:INFRA-014;PD:inc/2210, 0.88</div>
+              <div style="color:#9AA0A6">E0089, J. Liu,      PROJ-203 ML ranking,    2026-01, 142.6, R&amp;D qualifying,     jira+github+gcal,  JIRA:PROJ-203;GH:pr/501;CAL:design-review-0302, 0.97</div>
+              <div style="color:#9AA0A6">E0301, N. Park,     PROJ-188 DW rework,     2026-01, 98.3,  Capitalized,         jira+github,       JIRA:PROJ-188;GH:pr/492, 0.93</div>
+            </div>
+            <p>Column names match the template every R&amp;D boutique we've worked with already uses. <strong>No renames, no re-mapping.</strong></p>
+          </div>
+        </details>
+
+        <!-- SLIDE 8 -->
+        <details class="slide">
+          <summary class="slide-head">
+            <span class="slide-no">Slide 08</span>
+            <span class="slide-title">Source-event lineage</span>
+            <span class="slide-hint">One engineer, one day</span>
+            <span class="slide-toggle" aria-hidden="true">
+              <span class="lbl-show">Open</span><span class="lbl-hide">Close</span>
+              <svg viewBox="0 0 12 12" fill="none"><path d="M3 4.5 L6 7.5 L9 4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+          </summary>
+          <div class="slide-body">
+            <h2>Every hour cites a source event. <em>Not a memory test.</em></h2>
+            <p>Sample lineage for engineer E-0142 on 2026-01-14. Each Jira transition, GitHub commit, and calendar block generates a time event — classified against the four-part test.</p>
+            <table class="data-table">
+              <thead><tr><th>Time</th><th>Event</th><th>Source</th><th>Project</th><th>Classification</th></tr></thead>
+              <tbody>
+                <tr><td>09:12</td><td>Jira: In Progress → In Review</td><td>jira://PROJ-142-441</td><td>Auth-v2</td><td class="tag-174">R&amp;D</td></tr>
+                <tr><td>09:48</td><td>GitHub: commit a93f1d2</td><td>gh://repo/commit/a93f1d2</td><td>Auth-v2</td><td class="tag-174">R&amp;D</td></tr>
+                <tr><td>10:30</td><td>Calendar: Design review (60m)</td><td>gcal://evt/14x82p</td><td>Auth-v2</td><td class="tag-174">R&amp;D</td></tr>
+                <tr><td>13:14</td><td>GitHub: PR #482 opened</td><td>gh://repo/pull/482</td><td>Auth-v2</td><td class="tag-174">R&amp;D</td></tr>
+                <tr><td>15:02</td><td>Jira: comment on INFRA-019</td><td>jira://INFRA-019-c/887</td><td>Infra</td><td class="tag-opx">Maint.</td></tr>
+                <tr><td>16:40</td><td>GitHub: commit 4f22abc</td><td>gh://repo/commit/4f22abc</td><td>Billing</td><td class="tag-350">Capitalize</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </details>
+
+        <!-- SLIDE 9 -->
+        <details class="slide">
+          <summary class="slide-head">
+            <span class="slide-no">Slide 09</span>
+            <span class="slide-title">Methodology — how the sorting works</span>
+            <span class="slide-hint">Plain English</span>
+            <span class="slide-toggle" aria-hidden="true">
+              <span class="lbl-show">Open</span><span class="lbl-hide">Close</span>
+              <svg viewBox="0 0 12 12" fill="none"><path d="M3 4.5 L6 7.5 L9 4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+          </summary>
+          <div class="slide-body">
+            <h2>How we got from source events to qualifying hours.</h2>
+            <ul>
+              <li><strong>Data sources.</strong> Event-level ingest from Jira (status transitions, comments, worklogs), GitHub (commits, PRs, reviews), Google &amp; Microsoft Calendar (meeting blocks with engineering attendees).</li>
+              <li><strong>Attribution.</strong> Each event attributes time to (a) the engineer who generated it and (b) the project inferred from Jira/GitHub metadata. Overlapping events deduplicated per the "primary activity" rule.</li>
+              <li><strong>Qualifying classification.</strong> Four-part test applied per activity bucket: permitted purpose, technological in nature, elimination of uncertainty, process of experimentation. Rules library is auditable; tags are reviewable and overridable.</li>
+              <li><strong>Capitalize vs expense.</strong> Application-development stage separated from preliminary project stage and post-implementation stage using commit/PR lifecycle signals.</li>
+              <li><strong>Human review.</strong> Controller reviews low-confidence (&lt;0.85) classifications weekly, about thirty minutes. No engineer survey.</li>
+            </ul>
+            <div class="methodology-callout"><strong>Full methodology PDF</strong> ships with every report. Two pages. Designed for a tax partner to defend in an audit.</div>
+          </div>
+        </details>
+
+        <!-- SLIDE 10 -->
+        <details class="slide dark">
+          <summary class="slide-head">
+            <span class="slide-no">Slide 10</span>
+            <span class="slide-title">Next step — your pack, your numbers</span>
+            <span class="slide-hint">From kickoff to handoff</span>
+            <span class="slide-toggle" aria-hidden="true">
+              <span class="lbl-show">Open</span><span class="lbl-hide">Close</span>
+              <svg viewBox="0 0 12 12" fill="none"><path d="M3 4.5 L6 7.5 L9 4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+          </summary>
+          <div class="slide-body">
+            <h2>Your pack. Your numbers. <em>The same set of files.</em></h2>
+            <ul>
+              <li>OAuth into Jira, GitHub, and your calendar.</li>
+              <li>Continuous classification runs through the period. Your controller reviews ~30 min/week.</li>
+              <li>Pack delivered and walked through with your tax firm on the call.</li>
+            </ul>
+            <div class="cta-inline" style="margin-top:24px">
+              <a class="btn-primary" href="mailto:hello@tymrlogic.com?subject=Tymr%20demo%20request" style="background:#fff;color:var(--ink);border-color:#fff">Request a demo →</a>
+              <a class="btn-ghost" href="/at-the-ledger.html" style="color:#fff;border-color:rgba(255,255,255,0.22)">Floor to ledger</a>
+            </div>
+          </div>
+        </details>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="footer-wrap">
+  <footer class="page-footer">
+    <div class="container">
+      <div class="footer-i">
+        <a href="/" class="logo">
+          <div class="logo-mark" style="width:32px;height:32px;border-radius:8px;font-size:18px">T</div>
+          <span class="logo-name" style="font-size:18px">Ty<span class="gr">mr</span></span>
+        </a>
+        <div class="footer-links">
+          <a href="/agents.html">Agents</a>
+          <a href="/at-the-ledger.html">Floor to ledger</a>
+          <a href="/numbers.html">See the numbers</a>
+          <a href="/pricing.html">Pricing</a>
+          <a href="/utev1.html">UTEv1</a>
+          <a href="/security.html">Security</a>
+          <a href="/privacy.html">Privacy</a>
+          <a href="/terms.html">Terms</a>
+          <a href="/changelog.html">Changelog</a>
+        </div>
+        <span class="footer-copy">tymrlogic.com · © 2026 Tymr</span>
+      </div>
+    </div>
+  </footer>
+</div>
+
+<script>
+// ============================
+// TAB SWITCHING (with URL hash sync)
+// ============================
+const VALID_TABS = ['estimate', 'roi', 'pack'];
+function selectTab(name, opts) {
+  if (!VALID_TABS.includes(name)) return;
+  document.querySelectorAll('.numbers-tab').forEach(b => b.classList.toggle('active', b.dataset.tab === name));
+  document.querySelectorAll('.np').forEach(p => p.classList.toggle('active', p.id === 'np-' + name));
+  if (history.replaceState) history.replaceState(null, '', '#' + name);
+  if (opts && opts.scroll) {
+    const panel = document.getElementById('np-' + name);
+    if (panel) panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+}
+document.querySelectorAll('.numbers-tab').forEach(btn => {
+  btn.addEventListener('click', () => selectTab(btn.dataset.tab, { scroll: true }));
+});
+const initialHash = (window.location.hash || '').replace('#', '');
+if (VALID_TABS.includes(initialHash)) selectTab(initialHash, { scroll: false });
+window.addEventListener('hashchange', () => {
+  const h = window.location.hash.replace('#', '');
+  if (VALID_TABS.includes(h)) selectTab(h, { scroll: false });
+});
+
+// ============================
+// R&D CREDIT CALCULATOR
+// Effective regional credit rates as % of total qualifying spend
+// ============================
+const stateRates = {
+  az: 0.12,  ri: 0.10,  ca: 0.075, in: 0.075, oh: 0.07,
+  ct: 0.06,  ny: 0.06,  ia: 0.065, nd: 0.06,  wi: 0.0575,
+  ma: 0.05,  tx: 0.05,  pa: 0.05,  nj: 0.05,  ga: 0.05,
+  mn: 0.05,  va: 0.05,  fl: 0.05,  me: 0.04,  ut: 0.0375,
+  mo: 0.035, il: 0.0325,ks: 0.0325,nm: 0.04,
+  md: 0.025, nc: 0.025, sc: 0.025, co: 0.02,  vt: 0.027,
+  ne: 0.08,  hi: 0.10,  la: 0.08,  ak: 0.018, de: 0.01,
+  wv: 0.03,  nh: 0.01,
+  'ca-fed': 0.15,
+  wa: 0, nv: 0, sd: 0, tn: 0, wy: 0, mi: 0, or: 0, ok: 0,
+  mt: 0, al: 0, ms: 0, ky: 0,
+  other: 0.03, none: 0
+};
+const stateLabels = {
+  az: '(Arizona)', ri: '(Rhode Island)', ca: '(California)',
+  in: '(Indiana)', oh: '(Ohio)', ct: '(Connecticut)', ny: '(New York)',
+  ia: '(Iowa)', nd: '(North Dakota)', wi: '(Wisconsin)',
+  ma: '(Massachusetts)', tx: '(Texas)', pa: '(Pennsylvania)',
+  nj: '(New Jersey)', ga: '(Georgia)', mn: '(Minnesota)',
+  va: '(Virginia)', fl: '(Florida)', me: '(Maine)', ut: '(Utah)',
+  mo: '(Missouri)', il: '(Illinois)', ks: '(Kansas)', nm: '(New Mexico)',
+  md: '(Maryland)', nc: '(North Carolina)', sc: '(South Carolina)',
+  co: '(Colorado)', vt: '(Vermont)', ne: '(Nebraska)', hi: '(Hawaii)',
+  la: '(Louisiana)', ak: '(Alaska)', de: '(Delaware)',
+  wv: '(West Virginia)', nh: '(New Hampshire)',
+  'ca-fed': '(Canada SR&ED)',
+  wa: '(Washington — none)', nv: '(Nevada — none)',
+  sd: '(South Dakota — none)', tn: '(Tennessee — none)',
+  wy: '(Wyoming — none)', mi: '(Michigan — repealed)',
+  or: '(Oregon — expired)', ok: '(Oklahoma — eliminated)',
+  mt: '(Montana — repealed)', al: '(Alabama — none)',
+  ms: '(Mississippi — none)', ky: '(Kentucky — limited)',
+  other: '(other / international)', none: '(federal only)'
+};
+const fmt = n => {
+  if (n >= 1_000_000) return '$' + (n / 1_000_000).toFixed(2) + 'M';
+  if (n >= 1_000) return '$' + Math.round(n / 1_000).toLocaleString() + 'K';
+  return '$' + Math.round(n).toLocaleString();
+};
+function recalcRD() {
+  const engineers = +document.getElementById('engineers').value;
+  const salary = +document.getElementById('salary').value * 1000;
+  const rdPct = +document.getElementById('rdPct').value / 100;
+  const state = document.getElementById('state').value;
+  document.getElementById('engineers-v').textContent = engineers;
+  document.getElementById('salary-v').textContent = '$' + (salary / 1000).toFixed(0) + 'K';
+  document.getElementById('rdPct-v').textContent = (rdPct * 100).toFixed(0) + '%';
+  document.getElementById('stateName').textContent = stateLabels[state];
+  const qre = engineers * salary * rdPct;
+  const fedLow = qre * 0.065, fedMid = qre * 0.08, fedHigh = qre * 0.10;
+  const stateAmt = qre * stateRates[state];
+  const totalMid = fedMid + stateAmt;
+  const totalLow = fedLow + stateAmt;
+  const totalHigh = fedHigh + stateAmt;
+  const perEng = totalMid / engineers;
+  document.getElementById('qre').textContent = fmt(qre);
+  document.getElementById('fed').textContent = fmt(fedMid);
+  document.getElementById('stateAmt').textContent = fmt(stateAmt);
+  document.getElementById('perEng').textContent = fmt(perEng);
+  document.getElementById('total').textContent = fmt(totalMid);
+  document.getElementById('totalRange').textContent = `Range: ${fmt(totalLow)} – ${fmt(totalHigh)} depending on base period`;
+}
+['engineers', 'salary', 'rdPct', 'state'].forEach(id => {
+  document.getElementById(id).addEventListener('input', recalcRD);
+});
+recalcRD();
+
+// ============================
+// TIME TRACKING ROI CALCULATOR
+// ============================
+function recalcROI() {
+  const users = +document.getElementById('r-users').value;
+  const cost = +document.getElementById('r-cost').value * 1000;
+  const adminHrs = +document.getElementById('r-admin').value;
+  const lostPct = +document.getElementById('r-lost').value / 100;
+  const billRate = +document.getElementById('r-rate').value;
+  const industry = document.getElementById('r-industry').value;
+  document.getElementById('r-users-v').textContent = users.toLocaleString();
+  document.getElementById('r-cost-v').textContent = '$' + (cost / 1000).toFixed(0) + 'K';
+  document.getElementById('r-admin-v').textContent = adminHrs.toFixed(1) + 'h';
+  document.getElementById('r-lost-v').textContent = (lostPct * 100).toFixed(0) + '%';
+  document.getElementById('r-rate-v').textContent = '$' + billRate;
+  const weeks = 50;
+  const hourlyEquiv = cost / 2080;
+  const recoveryRate = 0.5;
+  const prodGain = industry === 'software' ? 0.05 : industry === 'agency' ? 0.04 : industry === 'services' ? 0.05 : industry === 'cap' ? 0.06 : 0.045;
+  const allocLift = industry === 'software' ? 0.025 : industry === 'agency' ? 0.015 : industry === 'services' ? 0.02 : industry === 'cap' ? 0.03 : 0.02;
+  const lostHrsPerYearPerUser = 40 * lostPct * weeks;
+  const recoveredHrsPerYear = users * lostHrsPerYearPerUser * recoveryRate;
+  const recoveryUnitValue = (industry === 'agency' || industry === 'services') && billRate > 0 ? billRate : hourlyEquiv;
+  const recoveredValue = recoveredHrsPerYear * recoveryUnitValue;
+  const adminSaved = users * adminHrs * weeks * hourlyEquiv;
+  const prodValue = users * cost * prodGain;
+  const allocValue = users * cost * allocLift;
+  const gross = recoveredValue + adminSaved + prodValue + allocValue;
+  const tymrCost = users * 14 * 12;
+  const net = gross - tymrCost;
+  const monthlyBenefit = gross / 12;
+  const paybackMonths = tymrCost > 0 && monthlyBenefit > 0 ? (tymrCost / monthlyBenefit) : 0;
+  document.getElementById('r-recovered').textContent = fmt(recoveredValue);
+  document.getElementById('r-admin-save').textContent = fmt(adminSaved);
+  document.getElementById('r-prod').textContent = fmt(prodValue);
+  document.getElementById('r-alloc').textContent = fmt(allocValue);
+  document.getElementById('r-gross').textContent = fmt(gross);
+  document.getElementById('r-cost-tymr').textContent = fmt(tymrCost) + ' / yr';
+  document.getElementById('r-3yr').textContent = fmt(net * 3);
+  document.getElementById('r-total').textContent = fmt(net);
+  const paybackTxt = paybackMonths < 1 ? 'Payback under 1 month' : paybackMonths < 12 ? `Payback in ~${paybackMonths.toFixed(1)} months` : `Payback in ~${(paybackMonths / 12).toFixed(1)} years`;
+  document.getElementById('r-payback').textContent = paybackTxt + ` · ${(gross / tymrCost).toFixed(0)}× ROI`;
+}
+['r-users', 'r-cost', 'r-admin', 'r-lost', 'r-rate', 'r-industry'].forEach(id => {
+  document.getElementById(id).addEventListener('input', recalcROI);
+  document.getElementById(id).addEventListener('change', recalcROI);
+});
+recalcROI();
+
+// ============================
+// SAMPLE PACK — Expand all / Collapse all + print all
+// ============================
+(function(){
+  const btn = document.querySelector('.deck-toggle-all');
+  const slides = () => document.querySelectorAll('details.slide');
+  if (btn) {
+    btn.addEventListener('click', () => {
+      const open = btn.dataset.state !== 'open';
+      slides().forEach(d => { d.open = open; });
+      btn.dataset.state = open ? 'open' : 'closed';
+    });
+  }
+  // Track state when any individual slide changes — keep button label in sync
+  document.addEventListener('toggle', (e) => {
+    if (!btn || !e.target.matches('details.slide')) return;
+    const all = Array.from(slides());
+    const allOpen = all.every(d => d.open);
+    btn.dataset.state = allOpen ? 'open' : 'closed';
+  }, true);
+
+  // Force every slide open while printing so the PDF includes all content
+  let priorStates = [];
+  window.addEventListener('beforeprint', () => {
+    priorStates = Array.from(slides()).map(d => d.open);
+    slides().forEach(d => { d.open = true; });
+  });
+  window.addEventListener('afterprint', () => {
+    const all = Array.from(slides());
+    priorStates.forEach((wasOpen, i) => { if (all[i]) all[i].open = wasOpen; });
+  });
+})();
+</script>
+</body>
+</html>

@@ -22,6 +22,14 @@
   --accent-soft:#F5EFE0;
   --accent-line:rgba(166,117,18,0.22);
 
+  /* Brand identity — bright yellow + lime green, from the logo */
+  --brand-yellow:#F5C842;
+  --brand-yellow-soft:#FDF6DE;
+  --brand-yellow-line:rgba(245,200,66,0.32);
+  --brand-green:#8FB02E;
+  --brand-green-soft:#EDF4D9;
+  --brand-green-line:rgba(143,176,46,0.30);
+
   /* Subtle category accents — used as soft tints, never as primary type color */
   --teal:#0E7C6E;
   --teal-soft:#E6F4F1;
@@ -88,15 +96,33 @@ nav{
 .nav-i{display:flex;align-items:center;justify-content:space-between;height:64px}
 .logo{display:flex;align-items:center;gap:10px;text-decoration:none}
 .logo-mark{
-  width:28px;height:28px;background:var(--ink);
+  width:28px;height:28px;background:var(--brand-yellow);
   border-radius:7px;display:flex;align-items:center;justify-content:center;
-  color:#fff;font-family:var(--font-b);font-weight:600;font-size:14px;line-height:1;letter-spacing:-0.02em;
+  color:var(--ink);font-family:var(--font-b);font-weight:700;font-size:15px;line-height:1;letter-spacing:-0.03em;
+  box-shadow:0 1px 0 rgba(11,11,15,0.06),inset 0 0 0 1px rgba(11,11,15,0.04);
 }
+.logo:hover .logo-mark{box-shadow:0 2px 8px -2px rgba(245,200,66,0.55),inset 0 0 0 1px rgba(11,11,15,0.06)}
 .logo-name{font-family:var(--font-b);font-weight:600;font-size:17px;color:var(--ink);letter-spacing:-0.02em}
-.logo-name .gr{color:var(--accent)}
+.logo-name .gr{color:var(--brand-green)}
 .nav-links{display:flex;gap:28px;list-style:none}
-.nav-links a{color:var(--slate);text-decoration:none;font-size:14px;font-weight:450;transition:color .15s}
-.nav-links a:hover,.nav-links a.active{color:var(--ink)}
+.nav-links a{
+  color:var(--slate);text-decoration:none;font-size:14px;font-weight:450;
+  position:relative;display:inline-block;padding:6px 0;
+  transition:color .15s;
+}
+.nav-links a::after{
+  content:'';position:absolute;
+  left:0;right:0;bottom:0;
+  height:2px;border-radius:2px;
+  background:var(--brand-green);
+  transform:scaleX(0);transform-origin:center;
+  opacity:0;
+  transition:transform .25s ease,opacity .15s ease;
+}
+.nav-links a:hover{color:var(--ink)}
+.nav-links a:hover::after{transform:scaleX(0.55);opacity:0.45}
+.nav-links a.active{color:var(--ink);font-weight:550}
+.nav-links a.active::after{transform:scaleX(1);opacity:1}
 .nav-right{display:flex;align-items:center;gap:10px}
 .nav-tag{
   font-family:var(--font-m);font-size:11px;color:var(--slate);
@@ -300,7 +326,7 @@ footer.page-footer{padding:36px 0 48px}
 ::-webkit-scrollbar-thumb{background:var(--hairline-strong);border-radius:4px}
 ::-webkit-scrollbar-thumb:hover{background:var(--slate-dim)}
 
-::selection{background:var(--accent-soft);color:var(--ink)}
+::selection{background:var(--brand-yellow-soft);color:var(--ink)}
 
 /* TABS — used on calculator page */
 .tabs{display:flex;gap:0;border-bottom:1px solid var(--hairline);margin-top:32px}
@@ -315,18 +341,136 @@ footer.page-footer{padding:36px 0 48px}
 .tab-panel{display:none}
 .tab-panel.active{display:block}
 
-/* Subtle accent bar — used to add a hint of color above key sections */
+/* Subtle accent bar — used to add a hint of color above key sections.
+   Carries the two brand colors (yellow → green) plus a touch of the deep amber. */
 .accent-bar{
-  display:inline-block;width:32px;height:3px;border-radius:2px;
-  background:linear-gradient(90deg,var(--accent),var(--teal));
+  display:inline-block;width:40px;height:3px;border-radius:2px;
+  background:linear-gradient(90deg,var(--brand-yellow) 0%,var(--brand-green) 100%);
   margin-bottom:18px;
 }
 .accent-bar.teal{background:var(--teal)}
 .accent-bar.indigo{background:var(--indigo)}
 .accent-bar.gold{background:var(--accent)}
+.accent-bar.brand{background:linear-gradient(90deg,var(--brand-yellow) 0%,var(--brand-green) 100%)}
 
 /* Soft-tinted card variants */
 .card.tint-gold{background:var(--accent-soft);border-color:var(--accent-line)}
 .card.tint-teal{background:var(--teal-soft);border-color:var(--teal-line)}
 .card.tint-indigo{background:var(--indigo-soft);border-color:var(--indigo-line)}
 .card.tint-rose{background:var(--rose-soft);border-color:var(--rose-line)}
+
+/* === SHOT FRAME — for app screenshots ===
+   Used on home, floor-to-ledger, agents pages.
+   Renders an app screenshot inside a soft "monitor" with a faux titlebar. */
+.shot{
+  position:relative;border-radius:16px;overflow:hidden;
+  background:linear-gradient(180deg,#16181F 0%,#0C0D10 100%);
+  border:1px solid rgba(255,255,255,0.08);
+  box-shadow:0 30px 80px -30px rgba(11,11,15,0.35),
+             0 6px 20px -8px rgba(11,11,15,0.18);
+}
+.shot.light{
+  background:linear-gradient(180deg,#FAF9F5 0%,#F4F3EE 100%);
+  border:1px solid var(--hairline);
+}
+.shot-bar{
+  display:flex;align-items:center;gap:6px;
+  padding:10px 14px;background:rgba(255,255,255,0.025);
+  border-bottom:1px solid rgba(255,255,255,0.06);
+}
+.shot.light .shot-bar{background:rgba(11,11,15,0.025);border-bottom:1px solid var(--hairline)}
+.shot-bar i{width:10px;height:10px;border-radius:50%;background:#3A3D4E;display:inline-block}
+.shot.light .shot-bar i{background:var(--hairline-strong)}
+.shot-bar i:nth-child(1){background:#FF5F57}
+.shot-bar i:nth-child(2){background:#FEBC2E}
+.shot-bar i:nth-child(3){background:#28C840}
+.shot-bar .shot-url{
+  margin-left:14px;font-family:var(--font-m);font-size:11px;
+  color:rgba(255,255,255,0.45);letter-spacing:.04em;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+}
+.shot.light .shot-bar .shot-url{color:var(--slate)}
+.shot-img{display:block;width:100%;height:auto;background:#0B0B0F}
+.shot.light .shot-img{background:#FAF9F5}
+.shot-cap{
+  display:flex;justify-content:space-between;align-items:center;gap:16px;
+  padding:14px 18px;background:rgba(255,255,255,0.02);
+  border-top:1px solid rgba(255,255,255,0.06);
+  font-family:var(--font-m);font-size:11px;color:#6B6F78;letter-spacing:.04em;
+  flex-wrap:wrap;
+}
+.shot.light .shot-cap{background:transparent;border-top:1px solid var(--hairline);color:var(--slate)}
+.shot-cap .live{display:inline-flex;align-items:center;gap:8px;color:#8E9199}
+.shot.light .shot-cap .live{color:var(--ink-2)}
+.shot-cap .live::before{content:'';width:6px;height:6px;border-radius:50%;background:#00C9B0;box-shadow:0 0 0 3px rgba(0,201,176,0.15)}
+.shot.light .shot-cap .live::before{background:var(--teal);box-shadow:0 0 0 3px var(--teal-soft)}
+
+/* Two-up grid for paired shots */
+.shot-pair{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:32px}
+@media(max-width:880px){.shot-pair{grid-template-columns:1fr}}
+
+/* === FEATURE STRIP — text + screenshot side-by-side === */
+.feature-strip{
+  display:grid;grid-template-columns:0.85fr 1.15fr;gap:48px;
+  align-items:center;margin-top:36px;
+}
+@media(max-width:920px){.feature-strip{grid-template-columns:1fr;gap:28px}}
+.feature-strip.flip{grid-template-columns:1.15fr 0.85fr}
+.feature-strip.flip .fs-text{order:2}
+.feature-strip.flip .fs-shot{order:1}
+@media(max-width:920px){
+  .feature-strip.flip{grid-template-columns:1fr}
+  .feature-strip.flip .fs-text{order:1}
+  .feature-strip.flip .fs-shot{order:2}
+}
+.fs-tag{
+  font-family:var(--font-m);font-size:10px;letter-spacing:.14em;
+  color:var(--accent);text-transform:uppercase;font-weight:500;
+}
+.fs-tag.teal{color:var(--teal)}
+.fs-tag.indigo{color:var(--indigo)}
+.fs-tag.rose{color:var(--rose)}
+.fs-text h3{
+  font-family:var(--font-h);font-weight:600;
+  font-size:clamp(22px,2.6vw,30px);letter-spacing:-0.025em;line-height:1.15;
+  color:var(--ink);margin:10px 0 14px;text-wrap:balance;
+}
+.fs-text h3 em{font-style:normal;color:var(--ink-2)}
+.fs-text p{color:var(--slate);font-size:15px;line-height:1.65;margin-bottom:10px}
+.fs-text p strong{color:var(--ink);font-weight:550}
+.fs-text ul{list-style:none;padding:0;margin:14px 0 0}
+.fs-text ul li{
+  position:relative;padding-left:18px;color:var(--slate);
+  font-size:14px;line-height:1.6;margin-bottom:8px;
+}
+.fs-text ul li::before{
+  content:'';position:absolute;left:0;top:9px;
+  width:6px;height:6px;border-radius:50%;background:var(--accent);
+}
+.fs-text ul li strong{color:var(--ink);font-weight:550}
+.fs-text .fs-also{
+  margin-top:18px;font-family:var(--font-m);font-size:11px;
+  color:var(--slate-dim);letter-spacing:.04em;
+}
+
+/* === PLAIN-LANGUAGE GLOSS — friendly explainer next to a technical term === */
+.gloss{
+  display:inline-block;font-family:var(--font-m);font-size:11px;
+  color:var(--slate);letter-spacing:.02em;
+  padding:2px 8px;border:1px solid var(--hairline);border-radius:100px;
+  background:var(--bg-warm);margin-left:6px;vertical-align:middle;
+}
+
+/* === FRIENDLY CALLOUT — used when introducing a tax/finance term === */
+.friendly{
+  margin-top:18px;padding:14px 18px;
+  background:var(--bg-warm);border:1px solid var(--hairline);
+  border-left:3px solid var(--accent);border-radius:8px;
+  font-size:13px;color:var(--slate);line-height:1.6;
+}
+.friendly strong{color:var(--ink);font-weight:550}
+.friendly .friendly-tag{
+  display:inline-block;font-family:var(--font-m);font-size:10px;
+  color:var(--accent);letter-spacing:.12em;text-transform:uppercase;
+  margin-right:8px;font-weight:500;
+}

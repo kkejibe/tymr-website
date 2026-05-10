@@ -4,15 +4,15 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Pricing — Tymr</title>
-<meta name="description" content="Tymr pricing. Free for teams of 10 or fewer. Starter $8/seat. Professional $14/seat with agent tracking, project health, R&D credit export. Workforce Intelligence add-on. Enterprise custom."/>
+<meta name="description" content="Tymr pricing. Free for teams of ten or fewer. Starter $8/seat. Professional $14/seat with tax-credit export, project health, and agent tracking. Enterprise custom."/>
 <meta property="og:title" content="Pricing — Tymr"/>
-<meta property="og:description" content="Free, Starter, Professional, Enterprise — plus the Workforce Intelligence add-on."/>
+<meta property="og:description" content="Start free. Pay when it pays you back."/>
 <meta property="og:type" content="website"/>
 <meta property="og:url" content="https://tymrlogic.com/pricing"/>
 <meta property="og:image" content="https://tymrlogic.com/og.png"/>
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:title" content="Pricing — Tymr"/>
-<meta name="twitter:description" content="Free, Starter, Professional, Enterprise."/>
+<meta name="twitter:description" content="Start free. Pay when it pays you back."/>
 <link rel="icon" type="image/png" href="/favicon.png"/>
 <link rel="apple-touch-icon" href="/apple-touch-icon.png"/>
 <link rel="manifest" href="/site.webmanifest"/>
@@ -23,49 +23,90 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
 <link rel="stylesheet" href="/_shared.css"/>
 <style>
-.risk-reversal{
-  margin-top:20px;padding:14px 18px;display:inline-flex;align-items:center;gap:10px;
-  background:var(--accent-soft);border:1px solid var(--accent-line);border-radius:10px;
-  font-size:14px;color:var(--ink);max-width:640px;line-height:1.5;
+/* TIER GRID — align-items:start so each card is independent (fixes expand pushing siblings) */
+.tier-grid{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:36px;
+  align-items:start;
 }
-.risk-reversal strong{font-weight:550}
-.risk-dot{width:6px;height:6px;border-radius:50%;background:var(--accent);flex-shrink:0}
-
-.price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:32px}
-@media(max-width:980px){.price-grid{grid-template-columns:1fr 1fr}}
-@media(max-width:680px){.price-grid{grid-template-columns:1fr}}
-
-/* TIER GRID */
-.tier-section{margin-top:56px;padding-top:48px;border-top:1px solid var(--hairline)}
-.tier-section h2{margin-bottom:8px}
-.tier-section p.tier-sub{color:var(--slate);font-size:15px;line-height:1.55;max-width:640px;margin-bottom:12px}
-.tier-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:36px;align-items:stretch}
 @media(max-width:980px){.tier-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:560px){.tier-grid{grid-template-columns:1fr}}
+
 .tier{
+  position:relative;
   background:var(--bg);border:1px solid var(--hairline);border-radius:14px;
-  padding:24px 22px;display:flex;flex-direction:column;gap:12px;
-  transition:border-color .2s,box-shadow .2s;
+  padding:26px 22px;display:flex;flex-direction:column;gap:14px;
+  transition:border-color .2s,box-shadow .2s,transform .15s;
 }
-.tier .tier-features{margin-top:auto}
-.tier:hover{border-color:var(--hairline-strong)}
-.tier.featured{border-color:var(--accent-line);background:linear-gradient(180deg,var(--accent-soft) 0%,var(--bg) 60%);box-shadow:0 1px 0 rgba(166,117,18,0.06)}
-.tier .tier-name{font-family:var(--font-h);font-weight:600;font-size:16px;color:var(--ink);letter-spacing:-0.01em}
-.tier .tier-price{font-family:var(--font-h);font-weight:600;font-size:30px;color:var(--ink);letter-spacing:-0.03em;line-height:1.05}
+.tier::before{
+  content:'';position:absolute;left:0;right:0;top:0;height:3px;
+  border-radius:14px 14px 0 0;
+  background:var(--hairline-strong);
+}
+.tier:hover{border-color:var(--hairline-strong);transform:translateY(-1px)}
+
+/* Color-coded by tier */
+.tier.t-free::before{background:var(--teal)}
+.tier.t-free .tier-tag{color:var(--teal)}
+.tier.t-free .tier-features ul li::before{background:var(--teal)}
+
+.tier.t-starter::before{background:var(--indigo)}
+.tier.t-starter .tier-tag{color:var(--indigo)}
+.tier.t-starter .tier-features ul li::before{background:var(--indigo)}
+
+.tier.t-pro{background:linear-gradient(180deg,var(--accent-soft) 0%,var(--bg) 28%);border-color:var(--accent-line);box-shadow:0 1px 0 rgba(166,117,18,0.06)}
+.tier.t-pro::before{background:var(--accent);height:4px}
+.tier.t-pro .tier-tag{color:var(--accent)}
+.tier.t-pro .tier-features ul li::before{background:var(--accent)}
+.tier.t-pro .tier-features summary{border-top-color:var(--accent-line)}
+
+.tier.t-ent::before{background:var(--ink)}
+.tier.t-ent .tier-tag{color:var(--ink)}
+.tier.t-ent .tier-features ul li::before{background:var(--ink)}
+
+.tier .tier-price{font-family:var(--font-h);font-weight:600;font-size:32px;color:var(--ink);letter-spacing:-0.03em;line-height:1.05}
 .tier .tier-price small{font-family:var(--font-b);font-size:12px;color:var(--slate);font-weight:400;margin-left:6px;display:block;margin-top:2px}
 .tier .tier-tag{
   display:inline-flex;align-items:center;font-family:var(--font-m);font-size:11px;
-  letter-spacing:.14em;text-transform:uppercase;color:var(--accent);
+  letter-spacing:.14em;text-transform:uppercase;font-weight:500;
 }
-.tier .tier-summary{font-family:var(--font-h);font-weight:550;font-size:14px;color:var(--ink);letter-spacing:-0.01em;line-height:1.35}
-.tier p.tier-desc{font-size:13px;color:var(--slate);line-height:1.55;margin:0}
+/* (legacy inline pill — replaced by .tier-badge corner badge) */
+.tier .tier-summary{font-family:var(--font-h);font-weight:600;font-size:15px;color:var(--ink);letter-spacing:-0.01em;line-height:1.3}
+.tier p.tier-desc{font-size:13.5px;color:var(--slate);line-height:1.55;margin:0}
 .tier .tier-note{
   padding-top:14px;border-top:1px solid var(--hairline);
-  font-family:var(--font-m);font-size:11px;color:var(--slate-dim);letter-spacing:.04em;line-height:1.5;
+  font-family:var(--font-b);font-size:13px;color:var(--ink-2);
+  letter-spacing:-0.005em;line-height:1.5;
 }
-.tier.featured .tier-note{border-top-color:var(--accent-line)}
+.tier.t-pro .tier-note{border-top-color:var(--accent-line)}
 
-/* Collapsible feature list */
+/* "Most popular" badge on the Professional tier — corner badge, doesn't overlap title */
+.tier-badge{
+  position:absolute;top:-12px;right:18px;
+  display:inline-flex;align-items:center;gap:6px;
+  padding:5px 11px;border-radius:100px;
+  background:var(--brand-yellow);color:var(--ink);
+  font-family:var(--font-m);font-size:10px;
+  letter-spacing:.12em;text-transform:uppercase;font-weight:700;
+  box-shadow:0 4px 12px -2px rgba(245,200,66,0.55),0 0 0 1px rgba(11,11,15,0.04);
+  z-index:2;
+  white-space:nowrap;
+}
+.tier-badge::before{
+  content:'';width:5px;height:5px;border-radius:50%;background:var(--ink);
+}
+.tier .tier-cta{
+  display:inline-flex;align-items:center;justify-content:center;
+  margin-top:4px;padding:10px 14px;border-radius:8px;
+  font-family:var(--font-b);font-size:13px;font-weight:500;
+  text-decoration:none;
+  background:var(--bg-warm);color:var(--ink);border:1px solid var(--hairline);
+  transition:background .15s,border-color .15s;
+}
+.tier .tier-cta:hover{background:var(--bg);border-color:var(--ink)}
+.tier.t-pro .tier-cta{background:var(--ink);color:#fff;border-color:var(--ink)}
+.tier.t-pro .tier-cta:hover{background:#000}
+
+/* Collapsible feature list — expanded card stays in its own column */
 .tier-features summary{
   list-style:none;cursor:pointer;display:flex;align-items:center;gap:8px;
   padding:12px 0;font-family:var(--font-m);font-size:11px;
@@ -73,7 +114,6 @@
   border-top:1px solid var(--hairline);
   transition:color .15s;
 }
-.tier.featured .tier-features summary{border-top-color:var(--accent-line)}
 .tier-features summary:hover{color:var(--ink)}
 .tier-features summary::-webkit-details-marker{display:none}
 .tier-features summary::after{
@@ -93,17 +133,11 @@
 .tier-features ul li strong{color:var(--ink);font-weight:550}
 .tier-features ul li.section-head{
   font-family:var(--font-m);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;
-  color:var(--slate);padding-top:4px;
+  color:var(--slate);padding-top:6px;font-weight:500;
 }
 .tier-features ul li.section-head::before{display:none}
 
-.tier-footer{
-  margin-top:24px;padding:18px 22px;border:1px dashed var(--hairline-strong);border-radius:12px;
-  font-size:13px;color:var(--slate);line-height:1.55;background:var(--bg-warm);
-}
-.tier-footer strong{color:var(--ink);font-weight:550}
-
-.faq-block{margin-top:48px}
+.faq-block{margin-top:48px;padding-top:40px;border-top:1px solid var(--hairline)}
 .faq-block h2{margin-bottom:8px}
 .faq-q{font-family:var(--font-h);font-weight:600;color:var(--ink);font-size:15px;margin-top:20px;margin-bottom:4px;letter-spacing:-0.01em}
 .faq-a{color:var(--slate);font-size:14px;line-height:1.6}
@@ -118,12 +152,12 @@
         <span class="logo-name">Ty<span class="gr">mr</span></span>
       </a>
       <ul class="nav-links">
-        <li><a href="/at-the-ledger.html">At the ledger</a></li>
-        <li><a href="/sample-pack.html">Sample pack</a></li>
-        <li><a href="/rd-credit-calculator.html">Calculator</a></li>
+        <li><a href="/agents.html">Agents</a></li>
+        <li><a href="/at-the-ledger.html">Floor to ledger</a></li>
+        <li><a href="/numbers.html">See the numbers</a></li>
         <li><a href="/pricing.html" class="active">Pricing</a></li>
       </ul>
-      <a href="https://calendly.com/tymrlogic/demo" class="nav-cta">Request a demo</a>
+      <a href="mailto:hello@tymrlogic.com?subject=Tymr%20demo%20request" class="nav-cta">Request a demo</a>
     </div>
   </div>
 </nav>
@@ -132,50 +166,53 @@
   <div class="page-head">
     <span class="accent-bar"></span>
     <div class="eyebrow">PRICING</div>
-    <h1>Four tiers. <em>One ledger.</em></h1>
-    <p class="lede">Free for teams of ten or fewer. Starter for growing teams. Professional for finance, ops, and PMs. Enterprise for SSO and DCAA. The Workforce Intelligence add-on layers on top.</p>
+    <h1>Start free. <em>Pay when it pays you back.</em></h1>
+    <p class="lede">Free for small teams. Starter for growing teams. Professional for finance, ops, and PMs. Enterprise for SSO and the regulated stuff. One product, four prices.</p>
   </div>
 
   <div class="content">
 
-    <section class="tier-section" style="margin-top:0;padding-top:0;border-top:none">
-      <h2>Tiers</h2>
-      <p class="tier-sub">Four tiers, plus the Workforce Intelligence add-on layered on top. Every tier ships the virtual floor and one-ledger time view.</p>
+    <section style="margin-top:0">
 
       <div class="tier-grid">
-        <div class="tier">
-          <span class="tier-tag" style="color:var(--teal)">Free</span>
+        <!-- FREE -->
+        <div class="tier t-free">
+          <span class="tier-tag">Free</span>
           <div class="tier-price">$0<small>forever</small></div>
-          <div class="tier-summary">For teams of 10 or fewer.</div>
-          <p class="tier-desc">The virtual floor and a personal time ledger — at no cost. Private by default.</p>
+          <div class="tier-summary">For teams of ten or fewer.</div>
+          <p class="tier-desc">The live floor, a personal time ledger, and the live cost view — at no cost. Private by default.</p>
+          <a class="tier-cta" href="mailto:hello@tymrlogic.com?subject=Tymr%20Free%20signup">Get started</a>
           <details class="tier-features">
             <summary>What's included</summary>
             <ul>
-              <li>Virtual floor (basic) — live grid of rooms with avatar positions</li>
+              <li><strong>Live floor view</strong> — humans and AI agents on one grid</li>
+              <li><strong>Per-meeting cost ticker</strong> — see what every standing meeting actually costs</li>
               <li>My Time dashboard — personal day/week timer + tracked-time review</li>
               <li>Personal audit trail — tamper-evident log of who edited what when</li>
               <li>Manual event entry — bypass integrations when needed</li>
-              <li>Basic project management — capped projects, owners, dates, status</li>
-              <li>Manage Floors &amp; Rooms — capped rooms per pool</li>
-              <li>Light integrations — free Google Calendar, free Outlook</li>
+              <li>Basic project management — projects, owners, dates, status</li>
+              <li>Manage Floors &amp; Rooms</li>
+              <li>Free Google Calendar &amp; Outlook integrations</li>
               <li>Org work hours, holidays, timezone, currency, locale</li>
               <li>Role-based access (Admin / Manager / Member)</li>
-              <li>Light/Dark theme, full localization (i18n)</li>
+              <li>Light/Dark theme, full localization</li>
             </ul>
           </details>
-          <span class="tier-note">Up to 10 users. No reports, no audit pack — but the floor and the personal ledger.</span>
+          <span class="tier-note">Up to 10 users. No reports or audit pack — but the floor and the personal ledger.</span>
         </div>
 
-        <div class="tier">
+        <!-- STARTER -->
+        <div class="tier t-starter">
           <span class="tier-tag">Starter</span>
-          <div class="tier-price">$8<small>seat / month</small></div>
-          <div class="tier-summary">For growing teams beyond 10 users.</div>
-          <p class="tier-desc">Everything in Free, plus paid integrations and the timesheet workflow.</p>
+          <div class="tier-price">$8<small>per seat / month</small></div>
+          <div class="tier-summary">For growing teams beyond ten users.</div>
+          <p class="tier-desc">Everything in Free, plus the deep integrations and timesheet workflow.</p>
+          <a class="tier-cta" href="mailto:hello@tymrlogic.com?subject=Tymr%20Starter%20signup">Get started</a>
           <details class="tier-features">
             <summary>What's included</summary>
             <ul>
               <li class="section-head">Everything in Free</li>
-              <li><strong>Paid integrations</strong> — Jira, Google &amp; Microsoft 365 (deep), Teams, Meet</li>
+              <li><strong>Deep integrations</strong> — Jira, Google &amp; Microsoft 365, Teams, Meet</li>
               <li>My Timesheet — submit weekly timesheet for approval</li>
               <li>Submission &amp; approval queue (manager review)</li>
               <li>Recurring templates — pre-fill standups, 1:1s, recurring activities</li>
@@ -184,26 +221,28 @@
               <li>Multi-org-aware data layer</li>
               <li>API keys for SDK &amp; integrations</li>
               <li>Privacy Shield page — inventory of integration data flows</li>
-              <li class="section-head">Optional add-on</li>
-              <li>Workforce Intelligence (+$10/seat) — live floor, meeting cost ticker, benchmarks, agent avatars</li>
             </ul>
           </details>
-          <span class="tier-note">Default scope. Workforce Intelligence add-on optional.</span>
+          <span class="tier-note">The default for growing teams.</span>
         </div>
 
-        <div class="tier featured">
+        <!-- PROFESSIONAL -->
+        <div class="tier t-pro">
+          <span class="tier-badge" aria-label="Most popular">Most popular</span>
           <span class="tier-tag">Professional</span>
-          <div class="tier-price">$14<small>seat / month</small></div>
+          <div class="tier-price">$14<small>per seat / month</small></div>
           <div class="tier-summary">The tier finance, ops, and PMs buy.</div>
           <p class="tier-desc">The audit pack, the planning brain, and agent tracking — all included.</p>
+          <a class="tier-cta" href="mailto:hello@tymrlogic.com?subject=Tymr%20Professional%20demo">Request a demo</a>
           <details class="tier-features">
             <summary>What's included</summary>
             <ul>
               <li class="section-head">Everything in Starter</li>
               <li class="section-head">Finance &amp; audit</li>
               <li><strong>Cost &amp; Utilization</strong> reports — admin view with dollar columns</li>
-              <li><strong>CapEx vs OpEx</strong> classification + reports + SOX-flavored PDF export</li>
-              <li><strong>R&amp;D Credit summary export</strong> — per-project qualifying-labor PDF</li>
+              <li><strong>Balance-sheet pack</strong> — capitalize vs. expense classification + audit-ready PDF</li>
+              <li><strong>R&amp;D tax-credit export</strong> — per-project qualifying-labor PDF</li>
+              <li>Incident cost burn — engineer-hours and dollars per incident</li>
               <li>Budget variance &amp; cost composition (portfolio)</li>
               <li>Event-room cost reports — slicers by room, attendee, project</li>
               <li class="section-head">Resource planning &amp; project health</li>
@@ -236,14 +275,16 @@
               <li>Org visibility config &amp; feature flags</li>
             </ul>
           </details>
-          <span class="tier-note">Virtual floor + audit pack + planning brain. Workforce Intelligence add-on optional.</span>
+          <span class="tier-note">The audit pack, the planning brain, and agent tracking — included.</span>
         </div>
 
-        <div class="tier">
+        <!-- ENTERPRISE -->
+        <div class="tier t-ent">
           <span class="tier-tag">Enterprise</span>
           <div class="tier-price">Custom</div>
-          <div class="tier-summary">SSO, DCAA, Workday writeback, agent SDK.</div>
-          <p class="tier-desc">For regulated orgs, custom agent stacks, or DCAA-bound contracts.</p>
+          <div class="tier-summary">SSO, audit trail, agent SDK, writeback.</div>
+          <p class="tier-desc">For regulated organizations, custom agent stacks, or audit-bound contracts.</p>
+          <a class="tier-cta" href="mailto:hello@tymrlogic.com?subject=Tymr%20Enterprise%20inquiry">Talk to us</a>
           <details class="tier-features">
             <summary>What's included</summary>
             <ul>
@@ -253,8 +294,8 @@
               <li><strong>SAML</strong> support</li>
               <li><strong>SCIM v2</strong> auto-provisioning + token UI</li>
               <li class="section-head">Compliance</li>
-              <li><strong>DCAA audit trail</strong> — tamper-evident time-event log + immutability</li>
-              <li>Benchmark consent governance</li>
+              <li><strong>Audit-grade time-event log</strong> — tamper-evident + immutability</li>
+              <li>Cross-org benchmark consent governance</li>
               <li class="section-head">Agents (full SDK)</li>
               <li><strong>@tymr/agent-events SDK</strong> + agent-api edge function</li>
               <li>Agent capacity config — concurrency / throughput limits</li>
@@ -272,14 +313,22 @@
         </div>
       </div>
 
-      <div class="tier-footer">
-        <strong>Workforce Intelligence (+$10/seat add-on)</strong> — live floor view of humans and AI agents, per-meeting cost ticker, incident cost burn, cross-org benchmarks. Layers on top of any paid tier. Default-off, opt-in per org.
+      <div class="faq-block">
+        <h2>Common questions</h2>
+        <div class="faq-q">Do you have a free trial on paid tiers?</div>
+        <p class="faq-a">Email us — we'll set up a sandbox so you can see the audit pack in action against representative data before you decide.</p>
+        <div class="faq-q">How do you bill?</div>
+        <p class="faq-a">Monthly or annual, your choice. Annual saves about 15%.</p>
+        <div class="faq-q">What counts as a seat?</div>
+        <p class="faq-a">Any human who logs into Tymr. AI agents are tracked separately and don't count as seats.</p>
+        <div class="faq-q">Do I have to use every feature in a tier to pay for it?</div>
+        <p class="faq-a">No. Use what's useful. The tier just unlocks what's available.</p>
       </div>
     </section>
 
-    <div class="cta-inline">
-      <a href="https://calendly.com/tymrlogic/demo" class="btn-primary">Request a demo</a>
-      <a href="/rd-credit-calculator.html" class="btn-ghost">Run the calculator →</a>
+    <div class="cta-inline" style="margin-top:40px">
+      <a href="mailto:hello@tymrlogic.com?subject=Tymr%20demo%20request" class="btn-primary">Request a demo</a>
+      <a href="/numbers.html" class="btn-ghost">See the numbers →</a>
     </div>
   </div>
 </div>
@@ -293,11 +342,11 @@
           <span class="logo-name" style="font-size:18px">Ty<span class="gr">mr</span></span>
         </a>
         <div class="footer-links">
-          <a href="/at-the-ledger.html">At the ledger</a>
-          <a href="/sample-pack.html">Sample pack</a>
-          <a href="/rd-credit-calculator.html">Calculator</a>
-          <a href="/utev1.html">UTEv1</a>
+          <a href="/agents.html">Agents</a>
+          <a href="/at-the-ledger.html">Floor to ledger</a>
+          <a href="/numbers.html">See the numbers</a>
           <a href="/pricing.html">Pricing</a>
+          <a href="/utev1.html">UTEv1</a>
           <a href="/security.html">Security</a>
           <a href="/privacy.html">Privacy</a>
           <a href="/terms.html">Terms</a>

@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Agents on the floor — Tymr</title>
+<meta name="description" content="Your AI agents are part of the team. Tymr puts Claude, Copilot, LangChain, and your custom agents on the same time grid as your engineers — so you can see what they did, what it cost, and what counted as research."/>
+
+<meta property="og:title" content="Agents on the floor — Tymr"/>
+<meta property="og:description" content="Your AI agents are part of the team. Tymr tracks them on the same grid as your engineers — work, cost, and tax-credit evidence in one place."/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://tymrlogic.com/agents"/>
+<meta property="og:image" content="https://tymrlogic.com/og.png"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="Agents on the floor — Tymr"/>
+<meta name="twitter:description" content="Your AI agents are part of the team. Tymr puts them on the same time grid as your engineers."/>
+
+<link rel="icon" type="image/png" href="/favicon.png"/>
+<link rel="apple-touch-icon" href="/apple-touch-icon.png"/>
+<link rel="manifest" href="/site.webmanifest"/>
+<meta name="theme-color" content="#0B0B0F"/>
+<script defer data-domain="tymrlogic.com" src="https://plausible.io/js/script.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="/_shared.css"/>
+
+<!-- Spline web component (plain-HTML version of @splinetool/react-spline) -->
+<script type="module" src="https://unpkg.com/@splinetool/viewer@1.10.27/build/spline-viewer.js"></script>
+
+<style>
+/* === HERO with 3D robot === */
+.agent-hero{
+  position:relative;
+  height:min(86vh, 760px);
+  min-height:560px;
+  background:radial-gradient(ellipse at 50% 30%, #1A1820 0%, #0B0B0F 60%, #050507 100%);
+  overflow:hidden;
+  border-bottom:1px solid rgba(255,255,255,0.04);
+}
+@media(max-width:720px){
+  .agent-hero{height:auto;min-height:auto;padding-bottom:32px}
+}
+
+/* Subtle dot grid behind the robot */
+.agent-hero::before{
+  content:'';position:absolute;inset:0;
+  background-image:radial-gradient(rgba(245,200,66,0.05) 1px, transparent 1px);
+  background-size:24px 24px;
+  mask-image:radial-gradient(ellipse at 50% 40%, #000 30%, transparent 75%);
+  -webkit-mask-image:radial-gradient(ellipse at 50% 40%, #000 30%, transparent 75%);
+  pointer-events:none;
+}
+
+.agent-hero spline-viewer{
+  position:absolute;inset:0;
+  width:100%;height:100%;
+  z-index:1;
+  /* Spline shows a "Built with Spline" watermark — mask its bottom-right corner */
+}
+.agent-hero spline-viewer::part(logo){display:none}
+@media(max-width:720px){
+  .agent-hero spline-viewer{
+    position:relative;width:100%;height:64vw;min-height:340px;max-height:480px;
+  }
+}
+/* Cover the Spline watermark with our own corner */
+.agent-hero .spline-mask{
+  position:absolute;right:0;bottom:0;width:300px;height:96px;
+  background:
+    radial-gradient(circle at 92% 70%, #050507 0%, #050507 30%, transparent 70%),
+    linear-gradient(135deg, transparent 0%, #050507 60%);
+  z-index:5;pointer-events:none;
+}
+
+.agent-hero .ah-overlay{
+  position:absolute;inset:0;z-index:3;pointer-events:none;
+  display:flex;flex-direction:column;justify-content:space-between;
+  padding:80px 0 56px;
+}
+.agent-hero .ah-overlay--simple{
+  justify-content:space-between;
+  padding:72px 0 60px;
+  text-align:center;
+}
+.agent-hero .ah-overlay--simple .ah-top,
+.agent-hero .ah-overlay--simple .ah-bot{
+  display:flex;justify-content:center;align-items:center;flex-direction:column;
+}
+.agent-hero .ah-overlay--simple .ah-eyebrow{margin-bottom:0}
+.agent-hero .ah-overlay--simple .ah-cta-row{margin-top:0;justify-content:center}
+@media(max-width:720px){
+  .agent-hero .ah-overlay{position:relative;padding:32px 0 0;gap:24px}
+  .agent-hero .ah-overlay--simple{padding:24px 0 32px;gap:20px}
+}
+
+/* === DISTANT AGENTS — silhouettes on the floor behind Whobee === */
+.distant-agent{
+  position:absolute;z-index:2;pointer-events:none;
+  filter:blur(0.6px);
+}
+.distant-agent svg{display:block;width:100%;height:auto;opacity:1}
+.distant-agent::after{
+  content:'';position:absolute;left:50%;bottom:-6%;
+  width:80%;height:8%;
+  background:radial-gradient(ellipse at center,rgba(120,80,180,0.16) 0%,transparent 70%);
+  transform:translateX(-50%);
+}
+.da-1{top:22%;left:7%;width:44px;opacity:0.18}
+.da-2{top:18%;right:11%;width:50px;opacity:0.22;filter:blur(0.8px)}
+.da-3{top:46%;left:5%;width:62px;opacity:0.32}
+.da-4{top:44%;right:6%;width:58px;opacity:0.30}
+.da-5{top:70%;left:16%;width:42px;opacity:0.22;filter:blur(0.4px)}
+@media(max-width:980px){
+  .da-1, .da-5{display:none}
+}
+@media(max-width:720px){
+  .distant-agent{display:none}
+}
+
+/* Soft idle drift, very slow — adds life without movement noise */
+@keyframes agent-idle{
+  0%, 100%{transform:translateY(0)}
+  50%{transform:translateY(-2px)}
+}
+.da-1{animation:agent-idle 6.5s ease-in-out infinite}
+.da-2{animation:agent-idle 7.2s ease-in-out infinite 0.8s}
+.da-3{animation:agent-idle 5.8s ease-in-out infinite 1.4s}
+.da-4{animation:agent-idle 6.9s ease-in-out infinite 0.4s}
+.da-5{animation:agent-idle 7.4s ease-in-out infinite 1.1s}
+
+.ah-top, .ah-bot{pointer-events:auto}
+
+.ah-eyebrow{
+  display:inline-flex;align-items:center;gap:8px;
+  font-family:var(--font-m);font-size:11px;
+  color:#F5C842;text-transform:uppercase;letter-spacing:.14em;
+  padding:5px 12px;border:1px solid rgba(245,200,66,0.3);
+  border-radius:100px;background:rgba(245,200,66,0.08);
+  backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+  margin-bottom:20px;
+}
+.ah-eyebrow::before{
+  content:'';width:6px;height:6px;border-radius:50%;background:#F5C842;
+  box-shadow:0 0 10px rgba(245,200,66,0.6);
+  animation:agentpulse 1.8s ease-in-out infinite;
+}
+@keyframes agentpulse{0%,100%{opacity:1}50%{opacity:.4}}
+
+.ah-h1{
+  font-family:var(--font-h);font-weight:600;
+  font-size:clamp(34px,4.6vw,56px);line-height:1.04;
+  letter-spacing:-0.035em;color:#fff;
+  max-width:540px;text-wrap:balance;
+  text-shadow:0 2px 30px rgba(0,0,0,0.6),0 0 60px rgba(0,0,0,0.4);
+}
+@media(min-width:1100px){.ah-h1{max-width:560px}}
+.ah-h1 em{font-style:normal;color:#C8C9CC}
+.ah-h1 .gold{color:#F5C842;font-style:normal}
+
+.ah-sub{
+  margin-top:18px;max-width:520px;font-size:17px;line-height:1.55;
+  color:#B8BAC4;font-weight:400;
+  text-shadow:0 1px 18px rgba(0,0,0,0.6);
+}
+
+.ah-stats{
+  display:flex;gap:14px;flex-wrap:wrap;align-items:flex-end;
+  margin-top:auto;
+}
+@media(min-width:880px){.ah-stats{gap:32px}}
+.ah-stat{
+  font-family:var(--font-m);
+  padding:14px 18px;
+  background:rgba(11,11,15,0.55);
+  border:1px solid rgba(255,255,255,0.08);
+  border-radius:12px;
+  backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  flex:1 1 200px;min-width:0;max-width:280px;
+}
+@media(max-width:720px){.ah-stat{flex:1 1 100%;max-width:none}}
+.ah-stat-k{
+  font-size:10px;letter-spacing:.14em;text-transform:uppercase;
+  color:rgba(245,200,66,0.85);font-weight:500;
+}
+.ah-stat-v{
+  display:block;margin-top:6px;font-family:var(--font-h);
+  font-size:18px;font-weight:600;color:#fff;letter-spacing:-0.02em;
+}
+@media(min-width:880px){.ah-stat-v{font-size:22px}}
+.ah-stat-c{
+  display:block;margin-top:2px;font-size:11px;color:#8E9199;letter-spacing:.04em;
+  white-space:normal;
+}
+
+.ah-cta{
+  display:inline-flex;align-items:center;justify-content:center;
+  text-decoration:none;background:#F5C842;color:#0B0B0F;
+  border:1px solid #F5C842;border-radius:10px;
+  padding:13px 22px;font-size:14px;font-weight:600;font-family:var(--font-b);
+  transition:transform .15s,box-shadow .15s;
+  box-shadow:0 8px 30px -8px rgba(245,200,66,0.5);
+}
+.ah-cta:hover{transform:translateY(-1px);box-shadow:0 12px 36px -8px rgba(245,200,66,0.7)}
+.ah-cta-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px}
+.ah-cta-ghost{
+  display:inline-flex;align-items:center;justify-content:center;
+  text-decoration:none;background:rgba(255,255,255,0.06);color:#fff;
+  border:1px solid rgba(255,255,255,0.18);border-radius:10px;
+  padding:13px 22px;font-size:14px;font-weight:500;
+  backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+  transition:background .2s,border-color .2s;
+}
+.ah-cta-ghost:hover{background:rgba(255,255,255,0.12);border-color:rgba(255,255,255,0.32)}
+
+/* === SECTION HEADERS (reuse home patterns, scoped to this page) === */
+section{padding:80px 0}
+@media(max-width:720px){section{padding:56px 0}}
+.sec-band{background:var(--bg-warm);border-top:1px solid var(--hairline);border-bottom:1px solid var(--hairline)}
+.sec-label{
+  display:block;font-family:var(--font-m);font-size:11px;
+  color:var(--slate);letter-spacing:.14em;text-transform:uppercase;
+  margin-bottom:14px;
+}
+.sec-head{
+  font-family:var(--font-h);font-weight:600;
+  font-size:clamp(28px,3.4vw,40px);letter-spacing:-0.025em;
+  line-height:1.1;color:var(--ink);max-width:760px;text-wrap:balance;
+}
+.sec-head em{font-style:normal;color:var(--ink-2)}
+.sec-sub{margin-top:14px;max-width:640px;color:var(--slate);font-size:16px;line-height:1.6}
+
+/* === AGENT-SOURCE CHIPS — visual integrations row === */
+.agent-chips{
+  margin-top:36px;display:flex;flex-wrap:wrap;gap:10px;
+}
+.agent-chip{
+  display:inline-flex;align-items:center;gap:10px;
+  padding:10px 16px;background:var(--bg);
+  border:1px solid var(--hairline);border-radius:100px;
+  font-family:var(--font-b);font-size:13px;color:var(--ink);
+  font-weight:500;letter-spacing:-0.005em;
+  transition:border-color .2s,transform .15s;
+}
+.agent-chip:hover{border-color:var(--hairline-strong);transform:translateY(-1px)}
+.agent-chip-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.agent-chip-dot.gold{background:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
+.agent-chip-dot.teal{background:var(--teal);box-shadow:0 0 0 3px var(--teal-soft)}
+.agent-chip-dot.indigo{background:var(--indigo);box-shadow:0 0 0 3px var(--indigo-soft)}
+.agent-chip-dot.rose{background:var(--rose);box-shadow:0 0 0 3px var(--rose-soft)}
+.agent-chip-dot.ink{background:var(--ink);box-shadow:0 0 0 3px var(--bg-soft)}
+.agent-chip-meta{font-family:var(--font-m);font-size:11px;color:var(--slate);font-weight:400}
+
+.agent-chips-foot{
+  margin-top:20px;font-size:13px;color:var(--slate);line-height:1.6;max-width:560px;
+}
+.agent-chips-foot code{
+  font-family:var(--font-m);font-size:12px;background:var(--bg-soft);
+  padding:2px 7px;border-radius:5px;color:var(--ink);
+}
+
+/* === OUTCOMES === */
+.out-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:36px}
+@media(max-width:880px){.out-grid{grid-template-columns:1fr}}
+.out-card{
+  background:var(--bg);border:1px solid var(--hairline);border-radius:14px;
+  padding:28px;display:flex;flex-direction:column;gap:10px;
+  transition:border-color .2s,transform .2s;
+}
+.out-card:hover{border-color:var(--hairline-strong);transform:translateY(-2px)}
+.out-tag{
+  align-self:flex-start;font-family:var(--font-m);font-size:10px;
+  letter-spacing:.14em;text-transform:uppercase;font-weight:500;
+  padding:4px 10px;border-radius:100px;
+  background:var(--accent-soft);color:var(--accent);border:1px solid var(--accent-line);
+}
+.out-tag.teal{background:var(--teal-soft);color:var(--teal);border-color:var(--teal-line)}
+.out-tag.indigo{background:var(--indigo-soft);color:var(--indigo);border-color:var(--indigo-line)}
+.out-card h3{
+  font-family:var(--font-h);font-weight:600;font-size:18px;
+  color:var(--ink);letter-spacing:-0.015em;line-height:1.25;margin-top:4px;
+}
+.out-card p{font-size:14px;color:var(--slate);line-height:1.6;margin:0}
+
+/* === CTA === */
+.cta-wrap{padding:40px 0 96px}
+.cta-block{
+  padding:56px 48px;background:var(--ink);border-radius:18px;
+  position:relative;overflow:hidden;
+}
+@media(max-width:680px){.cta-block{padding:40px 28px}}
+.cta-block::before{
+  content:'';position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(ellipse at 80% 20%, rgba(245,200,66,0.10), transparent 60%);
+}
+.cta-block h2{
+  position:relative;font-family:var(--font-h);font-weight:600;
+  font-size:clamp(26px,3.2vw,36px);letter-spacing:-0.025em;line-height:1.1;
+  color:#fff;max-width:600px;text-wrap:balance;
+}
+.cta-block h2 em{font-style:normal;color:#C8C9CC}
+.cta-block .cta-sub{
+  position:relative;color:#9AA0A6;margin-top:14px;font-size:15px;
+  line-height:1.55;max-width:560px;
+}
+.cta-row{position:relative;margin-top:28px;display:flex;gap:10px;flex-wrap:wrap}
+.cta-row .btn-primary{background:#F5C842;color:#0B0B0F;border-color:#F5C842}
+.cta-row .btn-primary:hover{background:#FFD555;color:#0B0B0F;border-color:#FFD555}
+.cta-row .btn-ghost{color:#fff;border-color:rgba(255,255,255,0.22);background:transparent}
+.cta-row .btn-ghost:hover{background:rgba(255,255,255,0.06);border-color:rgba(255,255,255,0.4);color:#fff}
+
+/* FOOTER */
+footer.site-footer{padding:40px 0 48px;border-top:1px solid var(--hairline)}
+.footer-i{display:grid;grid-template-columns:1fr 2fr;gap:48px;align-items:start}
+@media(max-width:760px){.footer-i{grid-template-columns:1fr;gap:32px}}
+.footer-cols{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+@media(max-width:560px){.footer-cols{grid-template-columns:1fr 1fr}}
+.footer-col h4{font-family:var(--font-m);font-size:11px;color:var(--slate);text-transform:uppercase;letter-spacing:.1em;margin-bottom:12px;font-weight:500}
+.footer-col a{display:block;padding:5px 0;color:var(--ink-2);text-decoration:none;font-size:14px;transition:color .15s}
+.footer-col a:hover{color:var(--ink)}
+.footer-bottom{margin-top:32px;padding-top:20px;border-top:1px solid var(--hairline);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+.footer-copy{font-size:12px;color:var(--slate-dim);font-family:var(--font-m)}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="container">
+    <div class="nav-i">
+      <a href="/" class="logo">
+        <div class="logo-mark">T</div>
+        <span class="logo-name">Ty<span class="gr">mr</span></span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="/agents.html" class="active">Agents</a></li>
+        <li><a href="/at-the-ledger.html">Floor to ledger</a></li>
+        <li><a href="/numbers.html">See the numbers</a></li>
+        <li><a href="/pricing.html">Pricing</a></li>
+      </ul>
+      <a class="nav-cta" href="mailto:hello@tymrlogic.com?subject=Tymr%20demo%20request">Request a demo</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ===== HERO: WHOBEE 3D + LAYERED COPY ===== -->
+<section class="agent-hero" aria-label="Tymr agents floor — interactive 3D hero">
+  <spline-viewer
+    url="https://prod.spline.design/PyzDhpQ9E5f1E3MT/scene.splinecode"
+    loading-anim-type="spinner-small-light"
+    aria-hidden="true">
+  </spline-viewer>
+  <div class="spline-mask" aria-hidden="true"></div>
+
+  <!-- Distant agents — sparse silhouettes on the floor behind Whobee -->
+  <div class="distant-agent da-1" aria-hidden="true">
+    <svg viewBox="0 0 40 50" fill="none">
+      <rect x="6" y="2" width="28" height="22" rx="5" fill="#2A1F3D" stroke="#3E2D55" stroke-width="0.5"/>
+      <circle cx="14" cy="13" r="2" fill="#E8E0F0"/>
+      <circle cx="26" cy="13" r="2" fill="#E8E0F0"/>
+      <rect x="17" y="24" width="6" height="6" fill="#2A1F3D"/>
+      <rect x="8" y="30" width="24" height="18" rx="2" fill="#1F1729"/>
+    </svg>
+  </div>
+  <div class="distant-agent da-2" aria-hidden="true">
+    <svg viewBox="0 0 40 50" fill="none">
+      <rect x="6" y="2" width="28" height="22" rx="5" fill="#2A1F3D" stroke="#3E2D55" stroke-width="0.5"/>
+      <circle cx="14" cy="13" r="2" fill="#E8E0F0"/>
+      <circle cx="26" cy="13" r="2" fill="#E8E0F0"/>
+      <rect x="17" y="24" width="6" height="6" fill="#2A1F3D"/>
+      <rect x="8" y="30" width="24" height="18" rx="2" fill="#1F1729"/>
+    </svg>
+  </div>
+  <div class="distant-agent da-3" aria-hidden="true">
+    <svg viewBox="0 0 40 50" fill="none">
+      <rect x="6" y="2" width="28" height="22" rx="5" fill="#2E2342" stroke="#43325E" stroke-width="0.5"/>
+      <circle cx="14" cy="13" r="2.2" fill="#E8E0F0"/>
+      <circle cx="26" cy="13" r="2.2" fill="#E8E0F0"/>
+      <rect x="17" y="24" width="6" height="6" fill="#2E2342"/>
+      <rect x="8" y="30" width="24" height="18" rx="2" fill="#221932"/>
+    </svg>
+  </div>
+  <div class="distant-agent da-4" aria-hidden="true">
+    <svg viewBox="0 0 40 50" fill="none">
+      <rect x="6" y="2" width="28" height="22" rx="5" fill="#2E2342" stroke="#43325E" stroke-width="0.5"/>
+      <circle cx="14" cy="13" r="2.2" fill="#E8E0F0"/>
+      <circle cx="26" cy="13" r="2.2" fill="#E8E0F0"/>
+      <rect x="17" y="24" width="6" height="6" fill="#2E2342"/>
+      <rect x="8" y="30" width="24" height="18" rx="2" fill="#221932"/>
+    </svg>
+  </div>
+  <div class="distant-agent da-5" aria-hidden="true">
+    <svg viewBox="0 0 40 50" fill="none">
+      <rect x="6" y="2" width="28" height="22" rx="5" fill="#2A1F3D" stroke="#3E2D55" stroke-width="0.5"/>
+      <circle cx="14" cy="13" r="2" fill="#E8E0F0"/>
+      <circle cx="26" cy="13" r="2" fill="#E8E0F0"/>
+      <rect x="17" y="24" width="6" height="6" fill="#2A1F3D"/>
+      <rect x="8" y="30" width="24" height="18" rx="2" fill="#1F1729"/>
+    </svg>
+  </div>
+
+  <div class="ah-overlay ah-overlay--simple">
+    <div class="container ah-top">
+      <span class="ah-eyebrow">Your AI Agents are part of your Team</span>
+    </div>
+    <div class="container ah-bot">
+      <div class="ah-cta-row">
+        <a class="ah-cta" href="mailto:hello@tymrlogic.com?subject=Tymr%20demo%20request">Book a demo</a>
+        <a class="ah-cta-ghost" href="#agent-dashboard">Tour the agent dashboard ↓</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== STORY: THE SHIFT ===== -->
+<div class="container">
+  <section>
+    <span class="sec-label">The shift</span>
+    <h2 class="sec-head">Your AI agents are <em>part of the team.</em></h2>
+    <p class="sec-sub">Tymr brings Claude, Copilot, LangChain, and your custom agents onto the same time grid as your engineers — so you finally see what they did, what it cost, and what counted toward your tax credit.</p>
+  </section>
+</div>
+
+<!-- ===== FEATURE: AGENT DASHBOARD ===== -->
+<div class="sec-band" id="agent-dashboard">
+  <div class="container">
+    <section>
+      <span class="sec-label">The agent dashboard</span>
+      <h2 class="sec-head">Manage your agent fleet <em>like you manage your team.</em></h2>
+      <p class="sec-sub">A single view of every agent connected to your stack — running or idle, what they've worked on this week, and how much of that work qualifies as research. No more wondering whether the Claude bill is paying off.</p>
+
+      <div class="shot" style="margin-top:36px">
+        <div class="shot-bar">
+          <i></i><i></i><i></i>
+          <span class="shot-url">app.tymrlogic.com / agents · live</span>
+        </div>
+        <img class="shot-img" src="/assets/screens/agent-dashboard.png" alt="Tymr Agent Dashboard — agent fleet overview, status, recent tasks" loading="lazy"/>
+        <div class="shot-cap">
+          <span>Agent Fleet · 10 connected · live status</span>
+          <span class="live">Streaming · same grid as engineers</span>
+        </div>
+      </div>
+
+      <div class="out-grid">
+        <div class="out-card">
+          <span class="out-tag">Fleet at a glance</span>
+          <h3>Who's running, who's idle, who's broken.</h3>
+          <p>Total agents, online now, active this hour, and the ones that fell over. The kind of overview an SRE has for services — for the agents that are now part of how your software gets built.</p>
+        </div>
+        <div class="out-card">
+          <span class="out-tag teal">Recent tasks</span>
+          <h3>What each agent actually did today.</h3>
+          <p>Per-agent task feed: which Jira ticket it touched, which PR it opened, how long it ran. Cited back to the source event — the same way a human's hours are cited.</p>
+        </div>
+        <div class="out-card">
+          <span class="out-tag indigo">Bring your own</span>
+          <h3>Plug in custom agents in 12 minutes.</h3>
+          <p>One npm install, one event call. Your internal agents — built on Claude, OpenAI, or your own stack — show up on the floor next to Copilot and the rest. <em>No SDK rewrite required.</em></p>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+
+<!-- ===== WHAT PLUGS IN ===== -->
+<div class="container">
+  <section>
+    <span class="sec-label">What plugs in</span>
+    <h2 class="sec-head">Every agent your team is already running. <em>And the ones you'll bring on tomorrow.</em></h2>
+    <p class="sec-sub">If it touches a ticket, a commit, or a meeting, Tymr can see it. We connect through OAuth where the platform supports it, and through a tiny event library for everything else.</p>
+
+    <div class="agent-chips">
+      <span class="agent-chip"><span class="agent-chip-dot gold"></span>Claude<span class="agent-chip-meta">via API</span></span>
+      <span class="agent-chip"><span class="agent-chip-dot ink"></span>GitHub Copilot<span class="agent-chip-meta">via GitHub</span></span>
+      <span class="agent-chip"><span class="agent-chip-dot teal"></span>Cursor<span class="agent-chip-meta">via repo events</span></span>
+      <span class="agent-chip"><span class="agent-chip-dot indigo"></span>OpenAI Assistants<span class="agent-chip-meta">via API</span></span>
+      <span class="agent-chip"><span class="agent-chip-dot gold"></span>LangChain<span class="agent-chip-meta">via SDK hook</span></span>
+      <span class="agent-chip"><span class="agent-chip-dot teal"></span>CrewAI<span class="agent-chip-meta">via SDK hook</span></span>
+      <span class="agent-chip"><span class="agent-chip-dot rose"></span>Vercel AI SDK<span class="agent-chip-meta">via middleware</span></span>
+      <span class="agent-chip"><span class="agent-chip-dot indigo"></span>Devin / Sweep<span class="agent-chip-meta">via PR signal</span></span>
+      <span class="agent-chip"><span class="agent-chip-dot ink"></span>Your in-house agents<span class="agent-chip-meta">via @tymr/agent-events</span></span>
+    </div>
+
+    <p class="agent-chips-foot">For everything off this list, drop the <code>@tymr/agent-events</code> npm package in and emit one event per agent run. Twelve lines of code. We do the rest.</p>
+  </section>
+</div>
+
+<!-- ===== AGENTS ON THE FLOOR — second screenshot, flipped layout ===== -->
+<div class="container">
+  <section>
+    <span class="sec-label">Agents on the floor</span>
+    <h2 class="sec-head">Same floor. <em>Engineers and agents, side by side.</em></h2>
+    <p class="sec-sub">Open the live floor view and your engineers and your agents are right there together. Same status colours. Same task cards. Same audit trail. The story your finance team tells your auditor reads the same — because the data behind it is the same.</p>
+
+    <div class="feature-strip flip">
+      <div class="fs-text">
+        <span class="fs-tag teal">Live floor view</span>
+        <h3>Real-time visibility, <em>without making anyone log anything.</em></h3>
+        <p>Tap any agent task and you'll see the same detail you'd see for an engineer task — current status, time on task, the people and tools involved, and the cost rolling up in real time.</p>
+        <ul>
+          <li><strong>Same task cards.</strong> Agents and engineers share the same task model.</li>
+          <li><strong>Same cost roll-up.</strong> Compute spend and hourly cost combine cleanly.</li>
+          <li><strong>Same audit trail.</strong> Every row cites a source — Jira, GitHub, calendar, or a typed event.</li>
+        </ul>
+        <p class="fs-also">Privacy-first by default — engineers see their own time only, agent data follows the same scoping rules.</p>
+      </div>
+      <div class="fs-shot">
+        <div class="shot">
+          <div class="shot-bar">
+            <i></i><i></i><i></i>
+            <span class="shot-url">app.tymrlogic.com / floor / task</span>
+          </div>
+          <img class="shot-img" src="/assets/screens/floor-task-detail.png" alt="Tymr Floor view with task detail — agent and engineer tasks side by side, with cost roll-up" loading="lazy"/>
+          <div class="shot-cap">
+            <span>Floor · task detail · live cost</span>
+            <span class="live">12 engineers + 4 agents</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ===== CTA ===== -->
+<div class="cta-wrap">
+  <div class="container">
+    <div class="cta-block">
+      <h2>Ready to put your agents on the floor?</h2>
+      <p class="cta-sub">We'll connect a sample agent live, walk through the dashboard, and show you what the same data looks like in your tax-credit pack. Bring your CFO if you want.</p>
+      <div class="cta-row">
+        <a class="btn-primary" href="mailto:hello@tymrlogic.com?subject=Tymr%20demo%20request">Book a demo</a>
+        <a class="btn-ghost" href="/at-the-ledger.html">See the full Floor-to-ledger story →</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-i">
+      <div>
+        <a href="/" class="logo">
+          <div class="logo-mark">T</div>
+          <span class="logo-name">Ty<span class="gr">mr</span></span>
+        </a>
+      </div>
+      <div class="footer-cols">
+        <div class="footer-col">
+          <h4>Product</h4>
+          <a href="/agents.html">Agents</a>
+          <a href="/at-the-ledger.html">Floor to ledger</a>
+          <a href="/numbers.html#pack">Sample pack</a>
+          <a href="/pricing.html">Pricing</a>
+        </div>
+        <div class="footer-col">
+          <h4>Builders</h4>
+          <a href="/numbers.html#estimate">Calculator</a>
+          <a href="/utev1.html">UTEv1 spec</a>
+          <a href="/changelog.html">Changelog</a>
+        </div>
+        <div class="footer-col">
+          <h4>Company</h4>
+          <a href="/security.html">Security</a>
+          <a href="/privacy.html">Privacy</a>
+          <a href="/terms.html">Terms</a>
+          <a href="mailto:hello@tymrlogic.com">Contact</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copy">tymrlogic.com · © 2026 Tymr</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
