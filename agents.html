@@ -52,18 +52,21 @@
   pointer-events:none;
 }
 
-.agent-hero spline-viewer{
-  position:absolute;inset:0;
-  width:100%;height:100%;
-  z-index:1;
-  /* Spline shows a "Built with Spline" watermark — mask its bottom-right corner */
+/* Stage wraps the viewer + watermark mask so the mask always anchors to the viewer's box,
+   not the outer hero (which grows to fit the overlay on mobile). */
+.agent-hero .spline-stage{
+  position:absolute;inset:0;z-index:1;
 }
-.agent-hero spline-viewer::part(logo){display:none}
 @media(max-width:720px){
-  .agent-hero spline-viewer{
+  .agent-hero .spline-stage{
     position:relative;width:100%;height:64vw;min-height:340px;max-height:480px;
   }
 }
+.agent-hero spline-viewer{
+  position:absolute;inset:0;
+  width:100%;height:100%;
+}
+.agent-hero spline-viewer::part(logo){display:none}
 /* Cover the Spline watermark with our own corner */
 .agent-hero .spline-mask{
   position:absolute;right:0;bottom:0;width:300px;height:96px;
@@ -344,12 +347,14 @@ footer.site-footer{padding:40px 0 48px;border-top:1px solid var(--hairline)}
 
 <!-- ===== HERO: WHOBEE 3D + LAYERED COPY ===== -->
 <section class="agent-hero" aria-label="Tymr agents floor — interactive 3D hero">
-  <spline-viewer
-    url="https://prod.spline.design/PyzDhpQ9E5f1E3MT/scene.splinecode"
-    loading-anim-type="spinner-small-light"
-    aria-hidden="true">
-  </spline-viewer>
-  <div class="spline-mask" aria-hidden="true"></div>
+  <div class="spline-stage">
+    <spline-viewer
+      url="https://prod.spline.design/PyzDhpQ9E5f1E3MT/scene.splinecode"
+      loading-anim-type="spinner-small-light"
+      aria-hidden="true">
+    </spline-viewer>
+    <div class="spline-mask" aria-hidden="true"></div>
+  </div>
 
   <!-- Distant agents — sparse silhouettes on the floor behind Whobee -->
   <div class="distant-agent da-1" aria-hidden="true">
