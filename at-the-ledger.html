@@ -3,16 +3,16 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Floor to ledger — Tymr for engineering, finance, and tax firms</title>
-<meta name="description" content="From the live engineering floor to the ledger your accountant signs off on. Engineering leaders see capacity, agent payoff, and meeting cost. CFOs claim a bigger tax credit and pass the balance-sheet audit. R&D tax firms skip the time-survey grind on their software clients."/>
-<meta property="og:title" content="Floor to ledger — Tymr for engineering, finance, and tax firms"/>
-<meta property="og:description" content="From the live engineering floor to the ledger your accountant signs. Same data, three audiences."/>
+<title>Floor to ledger &mdash; Tymr</title>
+<meta name="description" content="From the live floor to the single ledger. Three views of the same data — for the worker, for the manager and PMO, for the executive. Same source. Same lineage. Different lens."/>
+<meta property="og:title" content="Floor to ledger &mdash; Tymr"/>
+<meta property="og:description" content="From the live floor to the single ledger. Worker, manager/PMO, executive — same data, three views."/>
 <meta property="og:type" content="website"/>
 <meta property="og:url" content="https://tymrlogic.com/at-the-ledger"/>
 <meta property="og:image" content="https://tymrlogic.com/og.png"/>
 <meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:title" content="Floor to ledger — Tymr for engineering, finance, and tax firms"/>
-<meta name="twitter:description" content="From the live engineering floor to the ledger. Three audiences, one source of truth."/>
+<meta name="twitter:title" content="Floor to ledger &mdash; Tymr"/>
+<meta name="twitter:description" content="From the live floor to the single ledger. Three views, one source of truth."/>
 <link rel="icon" type="image/png" href="/favicon.png"/>
 <link rel="apple-touch-icon" href="/apple-touch-icon.png"/>
 <link rel="manifest" href="/site.webmanifest"/>
@@ -26,7 +26,7 @@
 .page-head{padding:96px 0 24px;max-width:920px}
 @media(max-width:720px){.page-head{padding:56px 0 16px}}
 .page-head h1{font-size:clamp(36px,4.6vw,52px);letter-spacing:-0.03em;line-height:1.05;max-width:820px}
-.page-head .lede{margin-top:18px;max-width:600px}
+.page-head .lede{margin-top:18px;max-width:660px}
 .tab-content{margin-top:8px}
 .tab-panel{display:none}
 .tab-panel.active{display:block}
@@ -38,29 +38,8 @@
 .deliv-ico{width:32px;height:32px;border-radius:8px;background:var(--bg-warm);border:1px solid var(--hairline);display:flex;align-items:center;justify-content:center;font-family:var(--font-m);font-size:10px;color:var(--accent);font-weight:600}
 .deliv h3{font-family:var(--font-h);font-weight:600;font-size:16px;color:var(--ink);letter-spacing:-0.01em}
 .deliv p{font-size:14px;color:var(--slate);line-height:1.55;margin:0}
-.deliv .deliv-fmt{font-family:var(--font-m);font-size:11px;color:var(--slate-dim);letter-spacing:.04em;margin-top:auto;padding-top:8px}
 
-/* TIMELINE STRIP */
-.timeline-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;margin-top:24px;background:var(--hairline);border:1px solid var(--hairline);border-radius:14px;overflow:hidden}
-@media(max-width:860px){.timeline-strip{grid-template-columns:1fr}}
-.ts-col{background:var(--bg);padding:26px 24px;display:flex;flex-direction:column;gap:10px}
-.ts-week{font-family:var(--font-m);font-size:10px;letter-spacing:.14em;color:var(--accent);text-transform:uppercase}
-.ts-col h3{font-family:var(--font-h);font-weight:600;font-size:15px;color:var(--ink);letter-spacing:-0.01em}
-.ts-col p{font-size:13px;color:var(--slate);line-height:1.55;margin:0}
-
-/* PAYBACK BLOCK */
-.payback{margin-top:32px;padding:26px 28px;background:var(--ink);border-radius:14px;color:#E8E7E2}
-.payback .pb-tag{font-family:var(--font-m);font-size:10px;letter-spacing:.14em;color:#F5C56A;text-transform:uppercase;margin-bottom:14px}
-.payback h2{font-family:var(--font-h);font-weight:600;font-size:22px;letter-spacing:-0.02em;color:#fff;margin-bottom:16px}
-.payback p{color:#9AA0A6;font-size:14px;line-height:1.6;margin-bottom:10px}
-.payback strong{color:#F5C56A;font-weight:500}
-
-/* WHAT IT IS NOT */
-.what-not{margin-top:28px;padding:20px 24px;border:1px dashed var(--hairline-strong);border-radius:12px;background:var(--bg);display:flex;gap:16px;align-items:flex-start}
-.what-not .nf-tag{font-family:var(--font-m);font-size:10px;letter-spacing:.14em;color:var(--slate);text-transform:uppercase;padding-top:2px;flex-shrink:0}
-.what-not p{font-size:13px;color:var(--slate);line-height:1.55;margin:0}
-
-/* OUTCOME GRID (engineering) */
+/* OUTCOME GRID */
 .outcome-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:24px}
 @media(max-width:760px){.outcome-grid{grid-template-columns:1fr}}
 .outcome{background:var(--bg);border:1px solid var(--hairline);border-radius:14px;padding:28px;display:flex;flex-direction:column;gap:12px}
@@ -83,31 +62,14 @@
 .priv h3{font-family:var(--font-h);font-weight:600;font-size:15px;color:var(--ink);letter-spacing:-0.01em}
 .priv p{font-size:13px;color:var(--slate);line-height:1.55;margin:0}
 
-/* NOT-LIST (engineering) */
+/* NOT-LIST */
 .not-list{margin-top:24px;display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
 @media(max-width:760px){.not-list{grid-template-columns:1fr}}
 .not-card{background:var(--bg);border:1px dashed var(--hairline-strong);border-radius:12px;padding:22px}
 .not-card h3{font-family:var(--font-h);font-weight:600;font-size:15px;color:var(--slate);margin-bottom:8px;letter-spacing:-0.01em}
 .not-card p{font-size:13px;color:var(--slate);line-height:1.55;margin:0}
 
-/* FORM PANEL (shared across all tabs) */
-.form-panel{background:var(--bg-warm);border:1px solid var(--hairline);border-radius:16px;padding:32px;margin-top:32px}
-.form-panel h2{margin-bottom:6px}
-.form-panel p.fp-sub{font-size:14px;color:var(--slate);margin-bottom:22px;line-height:1.55}
-.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-@media(max-width:640px){.form-grid{grid-template-columns:1fr}}
-.field{display:flex;flex-direction:column;gap:6px}
-.field.full{grid-column:1/-1}
-.field label{font-family:var(--font-m);font-size:10px;letter-spacing:.12em;color:var(--slate);text-transform:uppercase}
-.field input,.field select,.field textarea{background:var(--bg);border:1px solid var(--hairline);border-radius:8px;padding:11px 12px;font-family:var(--font-b);font-size:14px;color:var(--ink);width:100%;outline:none;transition:border-color .2s}
-.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--ink)}
-.field textarea{resize:vertical;min-height:72px;font-family:var(--font-b)}
-.form-confirm{margin-top:14px;padding:14px 18px;background:var(--bg);border:1px solid var(--hairline);border-radius:10px;font-size:13px;color:var(--slate);line-height:1.55}
-.form-confirm strong{color:var(--ink);font-weight:550}
-.form-alt{margin-top:14px;font-size:13px;color:var(--slate);line-height:1.55}
-.form-alt a{color:var(--ink)}
-
-/* PERSONA CARDS — three audience entry points (above panels) */
+/* PERSONA CARDS — three audience entry points */
 .seats-intro{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:36px}
 @media(max-width:760px){.seats-intro{grid-template-columns:1fr}}
 .seat{
@@ -121,12 +83,12 @@
 .seat-icon{
   width:38px;height:38px;border-radius:10px;
   display:flex;align-items:center;justify-content:center;
-  background:var(--accent-soft);color:var(--accent);
-  border:1px solid var(--accent-line);
+  background:var(--brand-green-soft);color:var(--brand-green);
+  border:1px solid var(--brand-green-line);
 }
-.seat.indigo .seat-icon{background:var(--indigo-soft);color:var(--indigo);border-color:var(--indigo-line)}
 .seat.teal .seat-icon{background:var(--teal-soft);color:var(--teal);border-color:var(--teal-line)}
-.seat-tag{font-family:var(--font-m);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);font-weight:500}
+.seat.indigo .seat-icon{background:var(--indigo-soft);color:var(--indigo);border-color:var(--indigo-line)}
+.seat-tag{font-family:var(--font-m);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--brand-green);font-weight:500}
 .seat.teal .seat-tag{color:var(--teal)}
 .seat.indigo .seat-tag{color:var(--indigo)}
 .seat h3{font-family:var(--font-h);font-weight:600;font-size:17px;color:var(--ink);letter-spacing:-0.015em;line-height:1.25}
@@ -137,7 +99,7 @@
 }
 .seat:hover .seat-go,.seat.active .seat-go{gap:8px;color:var(--ink)}
 
-/* PERSONA PANEL — color-coded panel framing so toggle is obvious */
+/* PERSONA PANEL */
 .tab-panel{
   position:relative;
   padding:32px 28px 8px;
@@ -152,12 +114,12 @@
   border-radius:16px 16px 0 0;
   background:var(--hairline-strong);
 }
-#tab-eng{border-color:var(--indigo-line);background:linear-gradient(180deg,var(--indigo-soft) 0%,var(--bg) 12%)}
-#tab-eng::before{background:var(--indigo)}
-#tab-cfo{border-color:var(--accent-line);background:linear-gradient(180deg,var(--accent-soft) 0%,var(--bg) 12%)}
-#tab-cfo::before{background:var(--accent)}
-#tab-tax{border-color:var(--teal-line);background:linear-gradient(180deg,var(--teal-soft) 0%,var(--bg) 12%)}
-#tab-tax::before{background:var(--teal)}
+#tab-worker{border-color:var(--brand-green-line);background:linear-gradient(180deg,var(--brand-green-soft) 0%,var(--bg) 12%)}
+#tab-worker::before{background:var(--brand-green)}
+#tab-manager{border-color:var(--teal-line);background:linear-gradient(180deg,var(--teal-soft) 0%,var(--bg) 12%)}
+#tab-manager::before{background:var(--teal)}
+#tab-exec{border-color:var(--indigo-line);background:linear-gradient(180deg,var(--indigo-soft) 0%,var(--bg) 12%)}
+#tab-exec::before{background:var(--indigo)}
 
 .panel-anchor{
   display:inline-flex;align-items:center;gap:8px;
@@ -170,26 +132,30 @@
 .panel-anchor::before{
   content:'';width:6px;height:6px;border-radius:50%;background:var(--slate-dim);
 }
-#tab-eng .panel-anchor{color:var(--indigo);border-color:var(--indigo-line);background:var(--indigo-soft)}
-#tab-eng .panel-anchor::before{background:var(--indigo)}
-#tab-cfo .panel-anchor{color:var(--accent);border-color:var(--accent-line);background:var(--accent-soft)}
-#tab-cfo .panel-anchor::before{background:var(--accent)}
-#tab-tax .panel-anchor{color:var(--teal);border-color:var(--teal-line);background:var(--teal-soft)}
-#tab-tax .panel-anchor::before{background:var(--teal)}
-
-/* STANCE (tax firms) */
-.stance{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:24px}
-@media(max-width:760px){.stance{grid-template-columns:1fr}}
-.stance-card{background:var(--bg);border:1px solid var(--hairline);border-radius:12px;padding:22px}
-.stance-card.neg{background:var(--bg-warm)}
-.stance-tag{font-family:var(--font-m);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--slate);margin-bottom:10px}
-.stance-card.neg .stance-tag{color:var(--slate-dim)}
-.stance-card h3{font-family:var(--font-h);font-weight:600;font-size:16px;color:var(--ink);margin-bottom:8px;letter-spacing:-0.01em}
-.stance-card.neg h3{color:var(--slate)}
-.stance-card p{font-size:14px;color:var(--slate);line-height:1.55;margin:0}
+#tab-worker .panel-anchor{color:var(--brand-green);border-color:var(--brand-green-line);background:var(--brand-green-soft)}
+#tab-worker .panel-anchor::before{background:var(--brand-green)}
+#tab-manager .panel-anchor{color:var(--teal);border-color:var(--teal-line);background:var(--teal-soft)}
+#tab-manager .panel-anchor::before{background:var(--teal)}
+#tab-exec .panel-anchor{color:var(--indigo);border-color:var(--indigo-line);background:var(--indigo-soft)}
+#tab-exec .panel-anchor::before{background:var(--indigo)}
 
 /* HERO STRIP — small visual at top of page */
 .hero-strip{margin-top:36px}
+
+/* FRIENDLY callout for compliance byproduct */
+.friendly-byproduct{
+  margin-top:18px;padding:14px 18px;
+  background:var(--bg-warm);border:1px solid var(--hairline);
+  border-left:3px solid var(--accent);border-radius:8px;
+  font-size:13px;color:var(--slate);line-height:1.6;
+}
+.friendly-byproduct strong{color:var(--ink);font-weight:550}
+.friendly-byproduct .friendly-tag{
+  display:inline-block;font-family:var(--font-m);font-size:10px;
+  color:var(--accent);letter-spacing:.12em;text-transform:uppercase;
+  margin-right:8px;font-weight:500;
+}
+.friendly-byproduct a{color:var(--ink);text-decoration:underline;text-decoration-color:var(--accent-line);text-underline-offset:3px}
 </style>
 </head>
 <body>
@@ -215,406 +181,126 @@
 <div class="container">
   <div class="page-head">
     <span class="accent-bar"></span>
-    <div class="eyebrow">ONE TYMR · THREE WAYS TO USE IT</div>
-    <h1>One product. <em>Three views.</em></h1>
-    <p class="lede">Tymr is one tool. Pick the seat that matches your role and we'll show you the view that matters to you.</p>
+    <div class="eyebrow">ONE LEDGER &middot; THREE VIEWS</div>
+    <h1>From the live floor <em>to the single ledger.</em></h1>
+    <p class="lede">Same data, three lenses. The worker sees a glance-and-confirm; the manager and PMO see capacity and project cost; the executive sees the portfolio. Pick the seat that matches your role.</p>
 
     <div class="seats-intro">
-      <button class="seat indigo" data-jump="eng" aria-label="View the engineering-leader view">
+      <button class="seat" data-jump="worker" aria-label="View the worker view">
         <div class="seat-icon" aria-hidden="true">
           <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-            <path d="M7 6 L3 10 L7 14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M13 6 L17 10 L13 14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="10" cy="7" r="3" stroke="currentColor" stroke-width="1.6"/>
+            <path d="M4 17 C4 13.5 6.5 12 10 12 C13.5 12 16 13.5 16 17" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
           </svg>
         </div>
-        <span class="seat-tag">Engineering leaders</span>
-        <h3>Real capacity, agent payoff, and the cost of every meeting.</h3>
-        <p>Built from events your team already produces — Jira, GitHub, calendars, agent runs. No timesheets, no surveys.</p>
-        <span class="seat-go">View →</span>
+        <span class="seat-tag">For the worker</span>
+        <h3>Auto-drafted day. Private "My Time." One glance to confirm.</h3>
+        <p>Whether you're an engineer, PM, IT lead, consultant, designer, or program manager &mdash; you don't fill out a timesheet. Tymr observes, drafts, and asks for a look.</p>
+        <span class="seat-go">View &rarr;</span>
       </button>
-      <button class="seat" data-jump="cfo" aria-label="View the CFO and controller view">
+      <button class="seat teal" data-jump="manager" aria-label="View the manager and PMO view">
         <div class="seat-icon" aria-hidden="true">
           <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
             <rect x="3.5" y="3.5" width="13" height="13" rx="1.6" stroke="currentColor" stroke-width="1.6"/>
             <path d="M6.5 8 H13.5 M6.5 11 H13.5 M6.5 14 H10.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
           </svg>
         </div>
-        <span class="seat-tag">CFOs &amp; controllers</span>
-        <h3>A bigger tax credit and a balance-sheet pack your auditor accepts.</h3>
-        <p>Drops straight into the file your accountant or tax firm already uses. Nothing for your engineers to fill out.</p>
-        <span class="seat-go">View →</span>
+        <span class="seat-tag">For the manager &amp; PMO</span>
+        <h3>Capacity, utilization, and true project cost &mdash; live.</h3>
+        <p>Allocation heatmaps, project health, labor + non-labor cost in one column, OpEx/CapEx project-by-project, scenario planner. Real because the data underneath is real.</p>
+        <span class="seat-go">View &rarr;</span>
       </button>
-      <button class="seat teal" data-jump="tax" aria-label="View the R and D tax firm view">
+      <button class="seat indigo" data-jump="exec" aria-label="View the executive view">
         <div class="seat-icon" aria-hidden="true">
           <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-            <path d="M5 3 H12 L16 7 V17 H5 Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
-            <path d="M12 3 V7 H16" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
-            <path d="M7.5 11.5 L9 13 L12.5 9.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M4 16 V8 H7 V16 M9 16 V4 H12 V16 M14 16 V11 H17 V16" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M3 17 H17" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
           </svg>
         </div>
-        <span class="seat-tag">R&amp;D tax firms</span>
-        <h3>Skip the time-survey grind on your software clients.</h3>
-        <p>The time-evidence layer under your existing study. Your firm keeps the engagement and the fee.</p>
-        <span class="seat-go">View →</span>
+        <span class="seat-tag">For the executive</span>
+        <h3>Portfolio decisions, on numbers that are real.</h3>
+        <p>Strategic cost-benefit, scenario rebalancing, human + agent workforce economics, and board-ready rollups. Compliance artifacts fall out as a byproduct.</p>
+        <span class="seat-go">View &rarr;</span>
       </button>
     </div>
   </div>
 
   <div class="content">
 
-    <!-- PANEL: CFOs -->
-    <div class="tab-panel tab-content" id="tab-cfo" role="tabpanel">
-      <span class="panel-anchor">CFOs &amp; controllers</span>
-      <h2>Claim a bigger tax credit. <em>Pass the balance-sheet audit.</em></h2>
-      <p>Tymr connects to your engineering tools, watches the work, and ships your accountant a clean set of files. Your tax firm keeps the study. You keep the credit.</p>
-
-      <div class="friendly">
-        <span class="friendly-tag">In plain English</span>
-        Two things tend to leak money in software companies: the <strong>R&amp;D tax credit</strong> usually gets claimed too small because nobody can prove who worked on what, and the <strong>balance-sheet split</strong> — which engineering hours go on the balance sheet versus the income statement — usually fails an audit unless you have receipts. Tymr produces both sets of receipts automatically.
-      </div>
+    <!-- PANEL: WORKER -->
+    <div class="tab-panel active tab-content" id="tab-worker" role="tabpanel">
+      <span class="panel-anchor">For the worker</span>
+      <h2>Zero entries. Private by default. <em>The administrative tax disappears.</em></h2>
+      <p>Tymr drafts your day from the systems you already use. You don't clock in. You don't fill anything in at week's end. The default visibility is self-only &mdash; your record is yours.</p>
 
       <section>
-        <h2>Cost &amp; utilization, the way your finance team wants it</h2>
-        <p>Friday afternoon. You want to know what engineering cost this period, where it went, and how much qualified for the tax credit. Tymr already did the math.</p>
-
-        <div class="shot light" style="margin-top:24px">
-          <div class="shot-bar">
-            <i></i><i></i><i></i>
-            <span class="shot-url">app.tymrlogic.com / cost-utilization</span>
-          </div>
-          <img class="shot-img" src="/assets/screens/cost-utilization-overview.png" alt="Tymr Cost &amp; Utilization — total cost, hours, headcount, coverage, by-team breakdown" loading="lazy"/>
-          <div class="shot-cap">
-            <span>Cost &amp; Utilization · 13 teams · live</span>
-            <span class="live">Updated continuously</span>
-          </div>
-        </div>
-      </section>
-
-      <section>
-        <h2>The four files you receive</h2>
-        <p>No dashboard to roll out. No platform for your team to learn. Every engagement ships the same four deliverables — sized to drop into the file your accountant or tax firm already uses.</p>
-        <div class="deliv-grid">
-          <div class="deliv">
-            <div class="deliv-ico">01</div>
-            <h3>Tax-credit estimate</h3>
-            <p>Per-engineer, per-project hours that qualify for the tax credit, with a Federal + state credit estimate measured against last year's claim. Where the lift is, where the risk is.</p>
-            <span class="deliv-fmt">PDF · 6–8 pages · CFO-ready</span>
-          </div>
-          <div class="deliv">
-            <div class="deliv-ico">02</div>
-            <h3>Balance-sheet pack <span class="gloss">CapEx vs OpEx</span></h3>
-            <p>Engineering hours that belong on the balance sheet, cleanly split from day-to-day expense work. Journal-entry ready, with the ITGC walkthrough your auditor wants.</p>
-            <span class="deliv-fmt">PDF · journal-entry ready</span>
-          </div>
-          <div class="deliv">
-            <div class="deliv-ico">03</div>
-            <h3>Workpaper-ready CSV</h3>
-            <p>Engineer, project, hours, period, classification, evidence link — in the column shape your accountant already uses. Paste, don't rename.</p>
-            <span class="deliv-fmt">CSV · tax-firm schema</span>
-          </div>
-          <div class="deliv">
-            <div class="deliv-ico">04</div>
-            <h3>Methodology PDF</h3>
-            <p>Two pages, plain English. Where the data came from, how each hour gets sorted, how a human handles ambiguity — the document a tax partner defends in an audit.</p>
-            <span class="deliv-fmt">PDF · 2 pages</span>
-          </div>
-        </div>
-        <div style="margin-top:20px">
-          <a class="btn-ghost" href="/numbers.html#pack">Preview the 10-slide sample pack →</a>
-        </div>
-      </section>
-
-      <section>
-        <h2>Project costs, with vendors and hours in one place</h2>
-        <p>Most engineering projects aren't just internal hours. They're internal hours <em>plus</em> a contractor, <em>plus</em> a hosting bill, <em>plus</em> a one-off consultant. Tymr rolls vendor costs against the same project codes — so the number you put on the balance sheet is complete the first time.</p>
+        <h2>What the daily review looks like</h2>
+        <p>One screen. Your day, drafted from the meetings you attended, the tickets you moved, the commits and pull requests you opened, the incidents you worked, the channels you were active in. Confirm, adjust, or ignore &mdash; the ledger underneath gets built either way.</p>
 
         <div class="shot" style="margin-top:24px">
           <div class="shot-bar">
             <i></i><i></i><i></i>
-            <span class="shot-url">app.tymrlogic.com / project-costs / payments-api</span>
+            <span class="shot-url">app.tymrlogic.com / my-time</span>
           </div>
-          <img class="shot-img" src="/assets/screens/project-costs.png" alt="Tymr Project Costs — non-labour costs by project: contractor, infrastructure, consulting, with running totals" loading="lazy"/>
+          <img class="shot-img" src="/assets/screens/floor-task-detail.png" alt="My Time review &mdash; auto-drafted day, private by default" loading="lazy"/>
           <div class="shot-cap">
-            <span>Project Costs · Payments API · contractor + infra + consulting</span>
-            <span class="live">Live</span>
+            <span>My Time &middot; auto-drafted &middot; private</span>
+            <span class="live">Under a minute to confirm</span>
           </div>
         </div>
       </section>
 
       <section>
-        <h2>How it runs</h2>
-        <p>One engineering group. One narrow scope. Files at the end. No engineer surveys, no quarterly spreadsheets, no re-platforming.</p>
-        <div class="timeline-strip">
-          <div class="ts-col">
-            <span class="ts-week">Connect</span>
-            <h3>Hook up your tools</h3>
-            <p>OAuth into Jira, GitHub, and your calendar. Scope one engineering group. Pull last year's claim if you have one, so we have a benchmark.</p>
-          </div>
-          <div class="ts-col">
-            <span class="ts-week">Watch</span>
-            <h3>Sort continuously</h3>
-            <p>Every Jira move, commit, and calendar block gets auto-sorted into "qualifies for tax credit" / "balance sheet" / "expense" buckets. Your controller reviews the edge cases in about thirty minutes a week.</p>
-          </div>
-          <div class="ts-col">
-            <span class="ts-week">Ship</span>
-            <h3>Hand off the pack</h3>
-            <p>Files delivered. We walk your tax firm through them on the call. Preparer signs off on the methodology.</p>
-          </div>
-          <div class="ts-col">
-            <span class="ts-week">Scale</span>
-            <h3>Roll wider</h3>
-            <p>Standardize across the whole engineering org, or scope to additional groups quarter by quarter.</p>
-          </div>
-        </div>
-      </section>
-
-      <section>
-        <h2>Your tax firm keeps the study</h2>
-        <p>Tymr is not a tax firm. We don't prepare your return, we don't share a fee with your accountant, and we don't replace your R&amp;D study. We produce the per-engineer time evidence your firm has to collect anyway — just cleaner, captured as the work happens, and tied back to source events.</p>
-        <p>Whether your study is run by a boutique, a national firm's software practice, or your in-house tax lead — <strong>they keep the engagement</strong>. Most of them end up happier: their analysts stop chasing engineers for time surveys, and the study is defensible without the April scramble.</p>
-      </section>
-
-      <section id="apply-cfo" class="form-panel">
-        <h2>Talk to our team</h2>
-        <p class="fp-sub">Four fields. We reply within one business day with a 30-minute walkthrough slot and a sample pack.</p>
-        <form name="cfo-inquiry" method="POST" data-netlify="true" action="/thanks-cfo.html">
-          <input type="hidden" name="form-name" value="cfo-inquiry"/>
-          <div class="form-grid">
-            <div class="field">
-              <label for="cfo-email">Work email</label>
-              <input id="cfo-email" name="email" type="email" required placeholder="you@company.com"/>
-            </div>
-            <div class="field">
-              <label for="cfo-company">Company</label>
-              <input id="cfo-company" name="company" type="text" required placeholder="Acme Cloud"/>
-            </div>
-            <div class="field">
-              <label for="cfo-role">Your role</label>
-              <select id="cfo-role" name="role" required>
-                <option value="">Select…</option>
-                <option>CFO</option>
-                <option>Controller</option>
-                <option>VP Finance</option>
-                <option>Head of Tax</option>
-                <option>Other finance lead</option>
-              </select>
-            </div>
-            <div class="field">
-              <label for="cfo-size">Engineering headcount</label>
-              <select id="cfo-size" name="engineers" required>
-                <option value="">Select…</option>
-                <option>Small team</option>
-                <option>Mid-size</option>
-                <option>Large org</option>
-                <option>Enterprise</option>
-              </select>
-            </div>
-          </div>
-          <div style="margin-top:22px;display:flex;gap:10px;flex-wrap:wrap">
-            <button type="submit" class="btn-primary" style="border:none;cursor:pointer">Request a demo</button>
-            
-          </div>
-          <div class="form-confirm">
-            <strong>What happens next.</strong> You'll see a confirmation page summarizing next steps. We email within one business day.
-          </div>
-        </form>
-        <p class="form-alt">Prefer email? <a href="mailto:hello@tymrlogic.com?subject=CFO%20demo%20inquiry">hello@tymrlogic.com</a>.</p>
-      </section>
-    </div>
-
-    <!-- PANEL: TAX FIRMS -->
-    <div class="tab-panel tab-content" id="tab-tax" role="tabpanel">
-      <span class="panel-anchor">R&amp;D tax firms</span>
-      <h2>Let your analysts <em>skip the time-survey grind</em> on your software clients.</h2>
-      <p>Tymr is the time-evidence layer your firm plugs in underneath an existing R&amp;D credit study. Per-engineer, per-project hours with the right tax tags, captured as the work happens — not reconstructed in April. Every hour cited back to a Jira ticket or GitHub commit.</p>
-
-      <div class="friendly">
-        <span class="friendly-tag">Plain English</span>
-        Your software clients hate filling out time surveys. Their engineers half-fake them. You haircut the claim because you can't defend it. Tymr removes that whole loop — the time data is already correct, already cited, already in the format your workpapers want.
-      </div>
-
-      <section>
-        <h2>What Tymr is — and is not</h2>
-        <p>We wrote this explicitly so there's no ambiguity on the first call. Tymr sits underneath your firm's workflow. We do not compete with it.</p>
-        <div class="stance">
-          <div class="stance-card">
-            <div class="stance-tag">What Tymr is</div>
-            <h3>The time-evidence layer your study already requires</h3>
-            <p>Per-engineer, per-project hours with the right tax-credit and balance-sheet tags, captured as the work happens. Every hour cites a Jira move, a GitHub commit hash, or a calendar block. Exports as CSV into your firm's existing workpaper template.</p>
-          </div>
-          <div class="stance-card neg">
-            <div class="stance-tag">What Tymr is not</div>
-            <h3>Not a tax firm. Not a return preparer. Not a study.</h3>
-            <p>We don't file returns. We don't touch the credit study. We don't share or cap your firm's fees. We don't build a direct tax relationship with the client — you stay the advisor of record.</p>
-          </div>
-        </div>
-      </section>
-
-      <section>
-        <h2>What your analysts open every Friday</h2>
-        <p>One client, one screen. Per-team utilization, qualifying hours, and the exceptions you'd want to look at. Aggregated, anonymizable, and exportable to whatever workpaper format your firm uses.</p>
-
-        <div class="shot" style="margin-top:24px">
-          <div class="shot-bar">
-            <i></i><i></i><i></i>
-            <span class="shot-url">app.tymrlogic.com / cost-utilization · client view</span>
-          </div>
-          <img class="shot-img" src="/assets/screens/cost-utilization-dark.png" alt="Tymr Cost &amp; Utilization — hours by activity, time coverage, qualifying split, dark mode" loading="lazy"/>
-          <div class="shot-cap">
-            <span>Client view · time coverage 86% · classified</span>
-            <span class="live">Updated continuously</span>
-          </div>
-        </div>
-      </section>
-
-      <section id="apply-tax" class="form-panel">
-        <h2>Partner with us</h2>
-        <p class="fp-sub">If you're at an R&amp;D boutique or a national firm's software practice, tell us a bit about your book. We reply within one business day.</p>
-        <form name="firm-inquiry" method="POST" data-netlify="true" action="/thanks-firm.html">
-          <input type="hidden" name="form-name" value="firm-inquiry"/>
-          <div class="form-grid">
-            <div class="field">
-              <label for="f-email">Work email</label>
-              <input id="f-email" name="email" type="email" required placeholder="you@firm.com"/>
-            </div>
-            <div class="field">
-              <label for="f-firm">Firm</label>
-              <input id="f-firm" name="firm" type="text" required placeholder="Your firm"/>
-            </div>
-            <div class="field">
-              <label for="f-role">Your role</label>
-              <select id="f-role" name="role" required>
-                <option value="">Select…</option>
-                <option>R&amp;D partner</option>
-                <option>R&amp;D director / senior manager</option>
-                <option>R&amp;D practice lead</option>
-                <option>Senior analyst</option>
-                <option>Other</option>
-              </select>
-            </div>
-            <div class="field">
-              <label for="f-book">Software clients in your book</label>
-              <select id="f-book" name="book" required>
-                <option value="">Select…</option>
-                <option>Under 5</option>
-                <option>5–20</option>
-                <option>20–50</option>
-                <option>50+</option>
-              </select>
-            </div>
-          </div>
-          <div style="margin-top:22px;display:flex;gap:10px;flex-wrap:wrap">
-            <button type="submit" class="btn-primary" style="border:none;cursor:pointer">Request a demo</button>
-            
-          </div>
-          <div class="form-confirm">
-            <strong>What happens next.</strong> Confirmation page summarizing how the partnership works (Tymr underneath your study, your firm keeps study fees). We reply within one business day.
-          </div>
-        </form>
-        <p class="form-alt">Prefer email? <a href="mailto:hello@tymrlogic.com?subject=R%26D%20firm%20partnership">hello@tymrlogic.com</a>.</p>
-      </section>
-    </div>
-
-    <!-- PANEL: ENGINEERING -->
-    <div class="tab-panel active tab-content" id="tab-eng" role="tabpanel">
-      <span class="panel-anchor">Engineering leaders</span>
-      <h2>Real capacity, agent payoff, meeting cost — <em>without making your team fill out timesheets.</em></h2>
-      <p>Tymr produces the receipts your finance team needs — automatically — from events your team already produces. Engineering leadership gets the same data, daily.</p>
-
-      <section>
-        <h2>The live floor view</h2>
-        <p>One screen, everyone on it. Who's heads-down, who's in a standup, who's on call, who's on break, what the agents are running. Cost rolls up in real time. Privacy-first by default — engineers see their own time only; the floor view is opt-in by org.</p>
-
-        <div class="shot" style="margin-top:24px">
-          <div class="shot-bar">
-            <i></i><i></i><i></i>
-            <span class="shot-url">app.tymrlogic.com / floor</span>
-          </div>
-          <img class="shot-img" src="/assets/screens/floor-dark.png" alt="Tymr Floor — live engineering operations: meetings, focus, on-call, breaks, agent runs" loading="lazy"/>
-          <div class="shot-cap">
-            <span>Floor · 12 engineers + 4 agents · cost roll-up live</span>
-            <span class="live">Streaming</span>
-          </div>
-        </div>
-      </section>
-
-      <section>
-        <h2>What engineering leadership gets, daily</h2>
-        <p>Four numbers VPs and CTOs ask for and never have. Drawn from the same Jira tickets, GitHub commits, and calendar blocks your team already produces — plus AI agent runs through the <code>@tymr/agent-events</code> npm package.</p>
+        <h2>What's actually different</h2>
+        <p>Most "modern" time tools still ask you to type. Tymr doesn't. The four things you'd want it not to do, it doesn't.</p>
         <div class="outcome-grid">
           <div class="outcome">
-            <span class="o-tag">Capacity &amp; allocation</span>
-            <h3>Where engineering effort actually went, by initiative.</h3>
-            <p>Per-engineer, per-project hours updated in real time. Shows you which initiatives are actually getting effort, not which ones managers say they are. Built from Jira + GitHub + calendar — no surveys.</p>
-            <span class="o-source">Jira · GitHub · Google &amp; Microsoft Calendar</span>
+            <span class="o-tag">Zero entries</span>
+            <h3>No timesheets. No clock-in / clock-out theater.</h3>
+            <p>You don't enter anything to make the ledger work. The day is drafted automatically from the work that already happened in your tools.</p>
+            <span class="o-source">Auto-drafted &middot; per worker &middot; daily</span>
           </div>
           <div class="outcome">
-            <span class="o-tag">Agent payoff</span>
-            <h3>Whether your AI agents are paying for themselves.</h3>
-            <p>Every agent run costs compute. Tymr pairs each run with the engineer who reviewed the output. For the first time, in your own data: was the agent + engineer pair cheaper than two engineers? <a href="/agents.html">See the agent floor →</a></p>
-            <span class="o-source">@tymr/agent-events · Claude · LangChain · CrewAI · OpenAI Assistants · Vercel AI</span>
+            <span class="o-tag">Private by default</span>
+            <h3>My Time is yours. Floor visibility is opt-in.</h3>
+            <p>The default visibility for every new seat is self-only. Manager-scope and floor-wide are opt-in by org. EU Works Council&ndash;compatible.</p>
+            <span class="o-source">Self-only &middot; opt-in widening</span>
           </div>
           <div class="outcome">
-            <span class="o-tag">Meeting cost</span>
-            <h3>Which standing meetings are worth keeping.</h3>
-            <p>Every recurring meeting carries a dollar weight. Surfaces the standing meetings worth keeping and the ones bleeding capacity. Aggregate or per-meeting, depending on your privacy mode.</p>
-            <span class="o-source">Google Calendar · Microsoft Calendar · loaded cost</span>
+            <span class="o-tag">Break time off-limits</span>
+            <h3>If it's not work, Tymr doesn't track it.</h3>
+            <p>Breaks, focus blocks marked private, and personal time on the calendar are explicitly off-limits to capture. By design.</p>
+            <span class="o-source">Privacy Shield &middot; integration-by-integration</span>
           </div>
           <div class="outcome">
-            <span class="o-tag">Incident cost</span>
-            <h3>The number your on-call manager actually needs.</h3>
-            <p>Engineer-hours and dollars per incident, by service and by team. Turns post-incident reviews into budget conversations.</p>
-            <span class="o-source">Jira · PagerDuty · GitHub · loaded cost</span>
+            <span class="o-tag">Glance, don't grind</span>
+            <h3>The daily review is under a minute.</h3>
+            <p>A summary, a confirm button, the option to nudge an allocation. That's it. No survey, no spreadsheet, no Friday-afternoon ritual.</p>
+            <span class="o-source">Daily auto-draft &middot; review optional</span>
           </div>
         </div>
       </section>
 
       <section>
-        <h2>Meeting &amp; event cost — the room-by-room receipt</h2>
-        <p>Every recurring meeting on your calendar has a dollar weight. Tymr rolls them up by room, by event type, and by attendee — so when the question becomes "do we still need this Tuesday standing meeting?", the answer is right there.</p>
-
-        <div class="shot light" style="margin-top:24px">
-          <div class="shot-bar">
-            <i></i><i></i><i></i>
-            <span class="shot-url">app.tymrlogic.com / meetings</span>
-          </div>
-          <img class="shot-img" src="/assets/screens/meeting-event-costs.png" alt="Tymr Meeting &amp; Event Costs — per-meeting cost by room, attendees, time period" loading="lazy"/>
-          <div class="shot-cap">
-            <span>Meeting &amp; Event Costs · 24 events · $8,838 in this window</span>
-            <span class="live">Live</span>
-          </div>
-        </div>
-      </section>
-
-      <section>
-        <h2>How it fits with finance</h2>
+        <h2>Privacy Shield, in one paragraph</h2>
         <div class="fit-panel">
-          <h3>One source. Two readers.</h3>
-          <p>The same activity that drives your daily floor view drives your CFO's quarterly tax-credit and balance-sheet pack. <strong>Finance gets the four files.</strong> You get the daily picture. The audit pack ships once a quarter; the operating data lands every minute.</p>
+          <h3>What integrations can and can't see.</h3>
+          <p>Every connected source has a Privacy Shield page in plain English: <strong>what scope is granted, what's read, what's never read.</strong> Calendar event titles can be hashed before storage. Slack message contents are never captured &mdash; only presence and channel-level activity. Code contents are never pulled &mdash; only commit and PR metadata. The page is open to every worker in the org.</p>
         </div>
-        <div style="margin-top:18px;display:flex;gap:10px;flex-wrap:wrap">
-          <a class="btn-ghost" href="#" data-jump="cfo">See the CFO view →</a>
-          <a class="btn-ghost" href="/numbers.html#pack">Preview the audit pack →</a>
-        </div>
-      </section>
-
-      <section>
-        <h2>Privacy by default</h2>
-        <p>Default visibility is private. Engineers see their own time, not each other's. The full-floor view is opt-in by org, not on by default. EU Works Council–compatible.</p>
         <div class="privacy-grid">
           <div class="priv">
             <span class="priv-tag">Default</span>
-            <h3>Private — self-only.</h3>
-            <p>The IC owns their record. Their record is theirs. Default for every new seat.</p>
+            <h3>Private &mdash; self-only.</h3>
+            <p>You own your record. Your record is yours. Default for every new seat.</p>
           </div>
           <div class="priv">
             <span class="priv-tag">Optional</span>
-            <h3>Team — manager-scope.</h3>
+            <h3>Team &mdash; manager-scope.</h3>
             <p>Direct team visibility. Manager sees their reports' allocation, not the rest of the org.</p>
           </div>
           <div class="priv">
             <span class="priv-tag">Opt-in</span>
-            <h3>Org-wide — full floor.</h3>
+            <h3>Floor &mdash; org-wide.</h3>
             <p>Optional. Org-flag opt-in. Part of the Workforce Intelligence add-on, not the base tier.</p>
           </div>
         </div>
@@ -625,67 +311,168 @@
         <div class="not-list">
           <div class="not-card">
             <h3>Not a productivity tracker.</h3>
-            <p>We don't score keystrokes or activity. No leaderboards.</p>
+            <p>No keystroke scoring, no idle-time alarms, no leaderboards.</p>
           </div>
           <div class="not-card">
             <h3>Not a surveillance tool.</h3>
-            <p>ICs see their own record. Their record is theirs. Default-private, opt-in for everything wider.</p>
+            <p>Workers see their own record. Their record is theirs. Default-private, opt-in for everything wider.</p>
           </div>
           <div class="not-card">
             <h3>Not a replacement for OKRs.</h3>
-            <p>We tell you where time went; you decide whether it should have.</p>
+            <p>Tymr tells you where time went; you decide whether it should have.</p>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- PANEL: MANAGER & PMO -->
+    <div class="tab-panel tab-content" id="tab-manager" role="tabpanel">
+      <span class="panel-anchor">For the manager &amp; PMO</span>
+      <h2>Capacity, utilization, and true project cost &mdash; <em>because the data underneath is real.</em></h2>
+      <p>The picture you used to ask a spreadsheet for. Allocation heatmaps, project health, labor + non-labor cost in one column, OpEx/CapEx classification project-by-project, and a scenario planner you can run before you commit.</p>
+
+      <section>
+        <h2>Cost &amp; utilization, the way you actually want it</h2>
+        <p>Friday afternoon. You want to know what the team cost this period, where it went, where the gaps and overlaps are. Tymr already did the math.</p>
+
+        <div class="shot light" style="margin-top:24px">
+          <div class="shot-bar">
+            <i></i><i></i><i></i>
+            <span class="shot-url">app.tymrlogic.com / cost-utilization</span>
+          </div>
+          <img class="shot-img" src="/assets/screens/cost-utilization-overview.png" alt="Tymr Cost &amp; Utilization &mdash; capacity and project cost rolled up" loading="lazy"/>
+          <div class="shot-cap">
+            <span>Cost &amp; Utilization &middot; live across teams</span>
+            <span class="live">Updated continuously</span>
           </div>
         </div>
       </section>
 
-      <section id="apply-eng" class="form-panel">
-        <h2>Walk it through with your CFO</h2>
-        <p class="fp-sub">Sit between your CFO and your tax firm. We walk the operating layer with your team and the audit pack with your finance lead in the same session — 30 minutes. We reply within one business day.</p>
-        <form name="engineering-inquiry" method="POST" data-netlify="true" action="/thanks-engineering.html">
-          <input type="hidden" name="form-name" value="engineering-inquiry"/>
-          <div class="form-grid">
-            <div class="field">
-              <label for="eng-email">Work email</label>
-              <input id="eng-email" name="email" type="email" required placeholder="you@company.com"/>
-            </div>
-            <div class="field">
-              <label for="eng-company">Company</label>
-              <input id="eng-company" name="company" type="text" required placeholder="Acme Cloud"/>
-            </div>
-            <div class="field">
-              <label for="eng-role">Your role</label>
-              <select id="eng-role" name="role" required>
-                <option value="">Select…</option>
-                <option>VP Engineering</option>
-                <option>CTO</option>
-                <option>Director of Engineering</option>
-                <option>Other engineering lead</option>
-              </select>
-            </div>
-            <div class="field">
-              <label for="eng-size">Engineer headcount</label>
-              <select id="eng-size" name="engineers" required>
-                <option value="">Select…</option>
-                <option>Small team</option>
-                <option>Mid-size</option>
-                <option>Large org</option>
-                <option>Enterprise</option>
-              </select>
-            </div>
-            <div class="field full">
-              <label for="eng-firm">Current R&amp;D credit firm (optional)</label>
-              <input id="eng-firm" name="rd_firm" type="text" placeholder="Boutique, national firm, in-house, etc."/>
-            </div>
+      <section>
+        <h2>What the manager &amp; PMO open every day</h2>
+        <p>Four numbers managers and PMO leads ask for and never have. Built from events your team already produces &mdash; calendars, tickets, dev tools, ITSM, chat &mdash; plus AI agent runs through the same event substrate.</p>
+        <div class="outcome-grid">
+          <div class="outcome">
+            <span class="o-tag">Capacity &amp; allocation</span>
+            <h3>Where effort actually went, by initiative.</h3>
+            <p>Per-worker, per-project hours updated in real time. Shows you which initiatives are getting effort, not which ones managers say they are. Built from your tools &mdash; no surveys.</p>
+            <span class="o-source">Calendar &middot; Jira &middot; GitHub &middot; ServiceNow</span>
           </div>
-          <div style="margin-top:22px;display:flex;gap:10px;flex-wrap:wrap">
-            <button type="submit" class="btn-primary" style="border:none;cursor:pointer">Walk it through with your CFO</button>
-            
+          <div class="outcome">
+            <span class="o-tag">Project health</span>
+            <h3>Live project economics, labor + non-labor.</h3>
+            <p>Project hours plus contractors, infrastructure, and consulting in one column. SPI/CPI per project. Red/amber/green with the underlying reason attached, not just a colour.</p>
+            <span class="o-source">All sources &middot; vendor costs &middot; rate cards</span>
           </div>
-          <div class="form-confirm">
-            <strong>What happens next.</strong> You'll see a confirmation page describing the joint walkthrough with your CFO and tax firm. We email within one business day.
+          <div class="outcome">
+            <span class="o-tag">OpEx / CapEx, live</span>
+            <h3>Accounting classification, project-by-project, in real time.</h3>
+            <p>Day-to-day expense work cleanly separated from work that belongs on the balance sheet &mdash; live, not at quarter close. Auditor-defensible because every hour cites a source event.</p>
+            <span class="o-source">Per project &middot; live &middot; journal-entry ready</span>
           </div>
-        </form>
-        <p class="form-alt">Prefer email? <a href="mailto:hello@tymrlogic.com?subject=Engineering%20walkthrough">hello@tymrlogic.com</a>.</p>
+          <div class="outcome">
+            <span class="o-tag">Event &amp; incident cost</span>
+            <h3>The dollar weight on every recurring meeting and P1.</h3>
+            <p>Standing meetings, incidents, and agent runs costed in real time. Surfaces the recurring time that's worth keeping and the time that's bleeding capacity.</p>
+            <span class="o-source">Calendar &middot; PagerDuty &middot; ServiceNow &middot; agents</span>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>True project cost &mdash; vendors and hours in one place</h2>
+        <p>Most projects aren't just internal hours. They're internal hours <em>plus</em> a contractor, <em>plus</em> a hosting bill, <em>plus</em> a one-off consultant. Tymr rolls vendor costs against the same project codes &mdash; so the number you read on Friday is complete the first time.</p>
+
+        <div class="shot" style="margin-top:24px">
+          <div class="shot-bar">
+            <i></i><i></i><i></i>
+            <span class="shot-url">app.tymrlogic.com / project-costs / payments-api</span>
+          </div>
+          <img class="shot-img" src="/assets/screens/project-costs.png" alt="Tymr Project Costs &mdash; non-labour costs by project: contractor, infrastructure, consulting, with running totals" loading="lazy"/>
+          <div class="shot-cap">
+            <span>Project Costs &middot; labor + non-labor in one column</span>
+            <span class="live">Live</span>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Scenario planner</h2>
+        <div class="fit-panel">
+          <h3>Run the what-if before you sign off.</h3>
+          <p>Move workers and agents across initiatives, change rates, change contractor mix. <strong>Capacity and cost shift live</strong>, so the rebalancing call doesn't happen on a back-of-envelope. Save scenarios, compare them, send the comparison to the executive view without rebuilding.</p>
+        </div>
+      </section>
+
+      <div class="friendly-byproduct">
+        <span class="friendly-tag">A note on compliance</span>
+        Because every hour is tied to a source event with a lineage, the same data drives R&amp;D credit, software capitalization, and federal-contract artifacts &mdash; without a quarterly survey. The pack ships once a quarter; the operating data lands every minute. <a href="/compliance.html">See compliance &rarr;</a>
+      </div>
+    </div>
+
+    <!-- PANEL: EXECUTIVE -->
+    <div class="tab-panel tab-content" id="tab-exec" role="tabpanel">
+      <span class="panel-anchor">For the executive</span>
+      <h2>Portfolio decisions on numbers that are real. <em>Human and agent workforce, costed together.</em></h2>
+      <p>Strategic cost-benefit for go/no-go. Scenario rebalancing for the next quarter. Agent workforce economics next to human cost &mdash; not in a separate deck. The compliance pack is a downstream view of the same data, not a separate workflow.</p>
+
+      <section>
+        <h2>One portfolio. One workforce. One lens.</h2>
+        <p>Where the organization spends its capacity, what it gets back, and how to shift the mix. Investment vs. run rolled up to the level your board reads. Same data your manager opens on Friday &mdash; rolled up to a different elevation.</p>
+
+        <div class="shot light" style="margin-top:24px">
+          <div class="shot-bar">
+            <i></i><i></i><i></i>
+            <span class="shot-url">app.tymrlogic.com / portfolio</span>
+          </div>
+          <img class="shot-img" src="/assets/screens/cost-utilization-dark.png" alt="Tymr Portfolio &mdash; investment, run, agent vs human, board-ready economics" loading="lazy"/>
+          <div class="shot-cap">
+            <span>Portfolio &middot; investment / run / agent vs human</span>
+            <span class="live">Live</span>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>What the executive view answers</h2>
+        <div class="outcome-grid">
+          <div class="outcome">
+            <span class="o-tag">Strategic cost-benefit</span>
+            <h3>Go / no-go on initiatives, framed by real capacity.</h3>
+            <p>Each initiative carries live capacity demand, true cost (labor + non-labor + agent compute), and expected return. The conversation moves from "do we have the people" to "what does the trade-off cost".</p>
+            <span class="o-source">Live &middot; per initiative</span>
+          </div>
+          <div class="outcome">
+            <span class="o-tag">Portfolio scenarios</span>
+            <h3>Rebalancing the mix before you commit.</h3>
+            <p>Shift investment vs. run, human vs. agent, internal vs. contractor. See capacity, cost, and timeline move live. Save and compare scenarios for the board pack.</p>
+            <span class="o-source">Saveable scenarios &middot; comparison view</span>
+          </div>
+          <div class="outcome">
+            <span class="o-tag">Agent economics</span>
+            <h3>Whether the AI workforce is paying for itself.</h3>
+            <p>Compute cost per agent, human review cost per agent, and the work each agent produced &mdash; in the same lens as human capacity and human cost. Not a separate slide.</p>
+            <span class="o-source">UTEv1 substrate &middot; per agent</span>
+          </div>
+          <div class="outcome">
+            <span class="o-tag">Board rollups</span>
+            <h3>Numbers your board pack quotes without re-checking.</h3>
+            <p>The board-level rollup is the manager view, summed. Same source. Same lineage. The auditor can walk from the rollup all the way down to a Jira ticket without leaving the system.</p>
+            <span class="o-source">Same source as ops &middot; lineage preserved</span>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Compliance, as a byproduct</h2>
+        <div class="fit-panel">
+          <h3>One ledger. Many auditors can read it.</h3>
+          <p>Because the data underneath is real and lineage is preserved, the same system also produces audit-ready artifacts for the <strong>R&amp;D credit, software capitalization, and federal-contract labor allowability</strong> &mdash; without a quarterly survey exercise. The compliance pack is a downstream view of the same ledger, not a separate workflow.</p>
+        </div>
+        <div style="margin-top:18px;display:flex;gap:10px;flex-wrap:wrap">
+          <a class="btn-ghost" href="/compliance.html">See the compliance view &rarr;</a>
+          <a class="btn-ghost" href="/numbers.html#pack">Preview the sample pack &rarr;</a>
+        </div>
       </section>
     </div>
 
@@ -706,6 +493,7 @@
           <a href="/numbers.html">See the numbers</a>
           <a href="/utev1.html">UTEv1</a>
           <a href="/pricing.html">Pricing</a>
+          <a href="/compliance.html">Compliance</a>
           <a href="/security.html">Security</a>
           <a href="/privacy.html">Privacy</a>
           <a href="/terms.html">Terms</a>
@@ -717,7 +505,7 @@
 </div>
 
 <script>
-const VALID = ['eng','cfo','tax'];
+const VALID = ['worker','manager','exec'];
 
 function selectPersona(name, opts) {
   if (!VALID.includes(name)) return;
@@ -741,16 +529,20 @@ document.querySelectorAll('[data-jump]').forEach(el => {
   });
 });
 
-const initialHash = (window.location.hash || '').replace('#','');
+// Map legacy hashes (#eng, #cfo, #tax) onto the new persona structure
+const HASH_REMAP = {eng: 'manager', cfo: 'exec', tax: 'exec'};
+const rawHash = (window.location.hash || '').replace('#','');
+const initialHash = HASH_REMAP[rawHash] || rawHash;
 if (VALID.includes(initialHash)) {
   selectPersona(initialHash, {scroll: false});
 } else {
-  selectPersona('eng', {scroll: false});
+  selectPersona('worker', {scroll: false});
 }
 
 window.addEventListener('hashchange', () => {
   const h = window.location.hash.replace('#','');
-  if (VALID.includes(h)) selectPersona(h, {scroll: false});
+  const mapped = HASH_REMAP[h] || h;
+  if (VALID.includes(mapped)) selectPersona(mapped, {scroll: false});
 });
 </script>
 </body>

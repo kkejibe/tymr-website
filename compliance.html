@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Compliance &mdash; Tymr</title>
+<meta name="description" content="Because Tymr is the capacity system of record, audit-ready artifacts for R&D credit (§41/§174), software capitalization (ASC 350-40), and DCAA fall out of the same ledger — without a quarterly survey."/>
+
+<meta property="og:title" content="Compliance &mdash; Tymr"/>
+<meta property="og:description" content="R&D credit, software capitalization, and DCAA artifacts — as a byproduct of accurate capacity data."/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://tymrlogic.com/compliance"/>
+<meta property="og:image" content="https://tymrlogic.com/og.png"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="Compliance &mdash; Tymr"/>
+<meta name="twitter:description" content="Audit artifacts as a byproduct of accurate capacity data."/>
+
+<link rel="icon" type="image/png" href="/favicon.png"/>
+<link rel="apple-touch-icon" href="/apple-touch-icon.png"/>
+<link rel="manifest" href="/site.webmanifest"/>
+<meta name="theme-color" content="#0B0B0F"/>
+<script defer data-domain="tymrlogic.com" src="https://plausible.io/js/script.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="/_shared.css"/>
+<style>
+.page-head{padding:96px 0 24px;max-width:920px}
+@media(max-width:720px){.page-head{padding:56px 0 16px}}
+.page-head h1{font-size:clamp(36px,4.6vw,52px);letter-spacing:-0.03em;line-height:1.05;max-width:820px}
+.page-head .lede{margin-top:18px;max-width:660px}
+
+/* DELIVERABLES (kept from old at-the-ledger) */
+.deliv-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:24px}
+@media(max-width:720px){.deliv-grid{grid-template-columns:1fr}}
+.deliv{background:var(--bg);border:1px solid var(--hairline);border-radius:12px;padding:24px;display:flex;flex-direction:column;gap:10px}
+.deliv-ico{width:32px;height:32px;border-radius:8px;background:var(--bg-warm);border:1px solid var(--hairline);display:flex;align-items:center;justify-content:center;font-family:var(--font-m);font-size:10px;color:var(--accent);font-weight:600}
+.deliv h3{font-family:var(--font-h);font-weight:600;font-size:16px;color:var(--ink);letter-spacing:-0.01em}
+.deliv p{font-size:14px;color:var(--slate);line-height:1.55;margin:0}
+.deliv .deliv-fmt{font-family:var(--font-m);font-size:11px;color:var(--slate-dim);letter-spacing:.04em;margin-top:auto;padding-top:8px}
+
+/* TIMELINE STRIP */
+.timeline-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;margin-top:24px;background:var(--hairline);border:1px solid var(--hairline);border-radius:14px;overflow:hidden}
+@media(max-width:860px){.timeline-strip{grid-template-columns:1fr}}
+.ts-col{background:var(--bg);padding:26px 24px;display:flex;flex-direction:column;gap:10px}
+.ts-week{font-family:var(--font-m);font-size:10px;letter-spacing:.14em;color:var(--accent);text-transform:uppercase}
+.ts-col h3{font-family:var(--font-h);font-weight:600;font-size:15px;color:var(--ink);letter-spacing:-0.01em}
+.ts-col p{font-size:13px;color:var(--slate);line-height:1.55;margin:0}
+
+/* STANCE (partners) */
+.stance{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:24px}
+@media(max-width:760px){.stance{grid-template-columns:1fr}}
+.stance-card{background:var(--bg);border:1px solid var(--hairline);border-radius:12px;padding:22px}
+.stance-card.neg{background:var(--bg-warm)}
+.stance-tag{font-family:var(--font-m);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--slate);margin-bottom:10px}
+.stance-card.neg .stance-tag{color:var(--slate-dim)}
+.stance-card h3{font-family:var(--font-h);font-weight:600;font-size:16px;color:var(--ink);margin-bottom:8px;letter-spacing:-0.01em}
+.stance-card.neg h3{color:var(--slate)}
+.stance-card p{font-size:14px;color:var(--slate);line-height:1.55;margin:0}
+
+/* FRAMEWORK GRID */
+.frameworks{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:24px}
+@media(max-width:860px){.frameworks{grid-template-columns:1fr}}
+.fw{
+  background:var(--bg);border:1px solid var(--hairline);border-radius:14px;
+  padding:24px;display:flex;flex-direction:column;gap:10px;
+}
+.fw-tag{
+  align-self:flex-start;font-family:var(--font-m);font-size:10px;
+  letter-spacing:.14em;text-transform:uppercase;font-weight:500;
+  padding:4px 10px;border-radius:100px;
+  background:var(--accent-soft);color:var(--accent);border:1px solid var(--accent-line);
+}
+.fw:nth-child(2) .fw-tag{background:var(--teal-soft);color:var(--teal);border-color:var(--teal-line)}
+.fw:nth-child(3) .fw-tag{background:var(--indigo-soft);color:var(--indigo);border-color:var(--indigo-line)}
+.fw h3{font-family:var(--font-h);font-weight:600;font-size:17px;color:var(--ink);letter-spacing:-0.015em;line-height:1.25;margin-top:2px}
+.fw p{font-size:14px;color:var(--slate);line-height:1.6;margin:0}
+.fw .fw-foot{margin-top:auto;padding-top:12px;border-top:1px solid var(--hairline);font-family:var(--font-m);font-size:11px;color:var(--slate-dim);letter-spacing:.04em}
+
+/* CALLOUT BLOCK */
+.byproduct-callout{
+  margin-top:36px;padding:28px 32px;
+  background:var(--ink);border-radius:14px;color:#E8E7E2;
+  position:relative;overflow:hidden;
+}
+.byproduct-callout::before{
+  content:'';position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(ellipse at 90% 10%, rgba(245,200,66,0.08), transparent 60%);
+}
+.byproduct-callout .bc-tag{
+  position:relative;font-family:var(--font-m);font-size:10px;letter-spacing:.14em;
+  color:#F5C842;text-transform:uppercase;margin-bottom:12px;display:inline-block;
+}
+.byproduct-callout h2{
+  position:relative;font-family:var(--font-h);font-weight:600;
+  font-size:clamp(22px,2.6vw,28px);letter-spacing:-0.02em;line-height:1.2;
+  color:#fff;margin-bottom:14px;text-wrap:balance;max-width:680px;
+}
+.byproduct-callout p{position:relative;color:#9AA0A6;font-size:15px;line-height:1.65;margin:0;max-width:680px}
+.byproduct-callout p strong{color:#F5C842;font-weight:500}
+
+/* CHANNEL BLOCK */
+.channel-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:24px}
+@media(max-width:860px){.channel-grid{grid-template-columns:1fr}}
+.ch{
+  background:var(--bg-warm);border:1px solid var(--hairline);border-radius:12px;
+  padding:22px;display:flex;flex-direction:column;gap:8px;
+}
+.ch h3{font-family:var(--font-h);font-weight:600;font-size:15px;color:var(--ink);letter-spacing:-0.01em;line-height:1.3}
+.ch p{font-size:13.5px;color:var(--slate);line-height:1.55;margin:0}
+.ch .ch-foot{margin-top:auto;padding-top:10px;font-family:var(--font-m);font-size:11px;color:var(--slate-dim);letter-spacing:.04em}
+
+/* INLINE CTA */
+.cta-inline-final{margin-top:48px;padding-top:36px;border-top:1px solid var(--hairline);display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.cta-inline-final p{margin:0;color:var(--slate);font-size:14px;flex:1;min-width:240px}
+.cta-inline-final p strong{color:var(--ink);font-weight:550}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="container">
+    <div class="nav-i">
+      <a href="/" class="logo">
+        <div class="logo-mark">T</div>
+        <span class="logo-name">Ty<span class="gr">mr</span></span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="/agents.html">Agents</a></li>
+        <li><a href="/at-the-ledger.html">Floor to ledger</a></li>
+        <li><a href="/numbers.html">See the numbers</a></li>
+        <li><a href="/pricing.html">Pricing</a></li>
+      </ul>
+      <a class="nav-cta" href="mailto:hello@tymrlogic.com?subject=Tymr%20demo%20request">Request a demo</a>
+    </div>
+  </div>
+</nav>
+
+<div class="container">
+  <div class="page-head">
+    <span class="accent-bar"></span>
+    <div class="eyebrow">COMPLIANCE &middot; AS A BYPRODUCT</div>
+    <h1>The audit pack <em>falls out of the ledger.</em></h1>
+    <p class="lede">Tymr is the capacity system of record. Because the data underneath is real and lineage is preserved, the same system produces audit-ready artifacts for the R&amp;D credit, software capitalization, and federal-contract labor allowability &mdash; without a quarterly survey exercise.</p>
+  </div>
+
+  <div class="content">
+
+    <!-- THE PROMISE -->
+    <section style="margin-top:8px">
+      <div class="byproduct-callout">
+        <span class="bc-tag">The promise</span>
+        <h2>One ledger. <em>Many auditors can read it.</em></h2>
+        <p>Every hour in a Tymr report &mdash; for every worker, every project, every classification &mdash; traces back to a source event: a Jira transition, a GitHub commit, a calendar block, a ServiceNow incident, an agent run. <strong>The compliance pack is a downstream view</strong> of the same ledger that powers capacity and project cost. Not a separate workflow. Not a separate database. Not a separate quarterly scramble.</p>
+      </div>
+    </section>
+
+    <!-- FRAMEWORK GRID -->
+    <section>
+      <h2>The frameworks covered</h2>
+      <p>Three regulatory regimes, one ledger underneath. Each artifact ships with a methodology PDF and a workpaper-ready CSV.</p>
+
+      <div class="frameworks">
+        <div class="fw">
+          <span class="fw-tag">R&amp;D credit</span>
+          <h3>IRC §41 + §174 / SR&amp;ED</h3>
+          <p>Per-worker, per-project qualifying hours with the four-part test applied per activity bucket, contemporaneously, and cited back to source events. Federal + state estimates with base-period rules accounted for. Canadian SR&amp;ED supported.</p>
+          <span class="fw-foot">Workers don't fill surveys. Controllers spot-check edge cases.</span>
+        </div>
+        <div class="fw">
+          <span class="fw-tag">Software capitalization</span>
+          <h3>ASC 350-40 / IAS 38</h3>
+          <p>Application-development stage cleanly separated from preliminary project stage and post-implementation. Journal-entry ready, with the ITGC walkthrough your auditor expects, plus the amortization schedule (5-year for internal use, 15-year for non-US R&amp;E).</p>
+          <span class="fw-foot">Capitalize vs. expense, project-by-project, live.</span>
+        </div>
+        <div class="fw">
+          <span class="fw-tag">Federal contracts</span>
+          <h3>DCAA labor allowability</h3>
+          <p>Per-employee daily time records, supervisor approvals, manual adjustments logged, indirect-vs-direct labor split. Built around the floor-check rules DCAA actually applies &mdash; not a generic timesheet bolted onto a federal program.</p>
+          <span class="fw-foot">Tamper-evident audit log, hash-chainable.</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- THE FOUR FILES -->
+    <section>
+      <h2>The four files in every pack</h2>
+      <p>Every compliance engagement ships the same four deliverables &mdash; sized to drop into the file your accountant, tax firm, or DCAA representative already uses.</p>
+      <div class="deliv-grid">
+        <div class="deliv">
+          <div class="deliv-ico">01</div>
+          <h3>R&amp;D credit estimate</h3>
+          <p>Per-worker, per-project qualifying hours with a federal + state credit estimate measured against last year's claim. Where the lift is, where the risk is.</p>
+          <span class="deliv-fmt">PDF &middot; 6&ndash;8 pages</span>
+        </div>
+        <div class="deliv">
+          <div class="deliv-ico">02</div>
+          <h3>Capitalization pack</h3>
+          <p>Hours that belong on the balance sheet, cleanly split from day-to-day expense work. Journal-entry ready, with the ITGC walkthrough your auditor wants.</p>
+          <span class="deliv-fmt">PDF &middot; journal-entry ready</span>
+        </div>
+        <div class="deliv">
+          <div class="deliv-ico">03</div>
+          <h3>Workpaper-ready CSV</h3>
+          <p>Worker, project, hours, period, classification, evidence link &mdash; in the column shape your tax firm or accountant already uses. Paste, don't rename.</p>
+          <span class="deliv-fmt">CSV &middot; standard schema</span>
+        </div>
+        <div class="deliv">
+          <div class="deliv-ico">04</div>
+          <h3>Methodology PDF</h3>
+          <p>Two pages, plain English. Where the data came from, how each hour gets classified, how a human handles ambiguity &mdash; the document a tax partner or DCAA auditor defends.</p>
+          <span class="deliv-fmt">PDF &middot; 2 pages</span>
+        </div>
+      </div>
+      <div style="margin-top:20px">
+        <a class="btn-ghost" href="/numbers.html#pack">Preview the 10-slide sample pack &rarr;</a>
+      </div>
+    </section>
+
+    <!-- HOW IT RUNS -->
+    <section>
+      <h2>How an engagement runs</h2>
+      <p>One scope. Files at the end. No worker surveys, no quarterly spreadsheets, no re-platforming.</p>
+      <div class="timeline-strip">
+        <div class="ts-col">
+          <span class="ts-week">Connect</span>
+          <h3>Hook up the tools</h3>
+          <p>OAuth into your calendar, Jira, GitHub, ServiceNow, Workday. Scope the group. Pull last year's claim, if applicable, so we have a benchmark.</p>
+        </div>
+        <div class="ts-col">
+          <span class="ts-week">Classify</span>
+          <h3>Run continuously</h3>
+          <p>Every event auto-classified into the right framework: qualifying / capitalized / expensed / direct / indirect. Your controller reviews edge cases in about thirty minutes a week.</p>
+        </div>
+        <div class="ts-col">
+          <span class="ts-week">Ship</span>
+          <h3>Hand off the pack</h3>
+          <p>Four files delivered. We walk your tax firm, auditor, or DCAA representative through them on a single call. Preparer signs off on the methodology.</p>
+        </div>
+        <div class="ts-col">
+          <span class="ts-week">Scale</span>
+          <h3>Roll wider</h3>
+          <p>Standardize across the org, or scope quarter by quarter. The ledger underneath stays the same &mdash; only the framework view changes.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CHANNEL PARTNERS -->
+    <section>
+      <h2>Working with your existing partners</h2>
+      <p>Tymr is not a tax firm and not a return preparer. We sit underneath your existing study and produce the time evidence your firm has to collect anyway &mdash; just cleaner, captured as the work happens, and tied back to source events.</p>
+
+      <div class="stance">
+        <div class="stance-card">
+          <div class="stance-tag">What Tymr is</div>
+          <h3>The time-evidence layer your study already requires</h3>
+          <p>Per-worker, per-project hours with the right framework tags, captured as the work happens. Every hour cites a Jira transition, a GitHub commit, a calendar block, an agent run, or a ServiceNow incident. Exports as CSV into your firm's existing workpaper template.</p>
+        </div>
+        <div class="stance-card neg">
+          <div class="stance-tag">What Tymr is not</div>
+          <h3>Not a tax firm. Not a return preparer. Not a study.</h3>
+          <p>We don't file returns. We don't touch the credit study. We don't share or cap your firm's fees. We don't build a direct tax relationship with the client &mdash; your firm stays the advisor of record.</p>
+        </div>
+      </div>
+
+      <div class="channel-grid">
+        <div class="ch">
+          <h3>R&amp;D boutiques</h3>
+          <p>Your analysts skip the time-survey grind on software and tech-services clients. Your firm keeps the engagement and the fee. The study is defensible without the April scramble.</p>
+          <span class="ch-foot">Workpaper-compatible CSV out of the box</span>
+        </div>
+        <div class="ch">
+          <h3>National firm software practices</h3>
+          <p>Tymr underneath a Big-4 / national-firm R&amp;D practice or software-vertical team. We produce the contemporaneous evidence; your firm signs the workpapers and the methodology PDF.</p>
+          <span class="ch-foot">No re-platforming required for the client</span>
+        </div>
+        <div class="ch">
+          <h3>In-house tax / DCAA leads</h3>
+          <p>For organizations with internal tax or contract-compliance leads, Tymr is the time substrate &mdash; with the four files delivered to your team instead of an external partner.</p>
+          <span class="ch-foot">Direct delivery, same files</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- WHY IT'S DEFENSIBLE -->
+    <section>
+      <h2>Why the substantiation holds up</h2>
+      <p>The credit math is the easy part. The hard part &mdash; and the reason most organizations under-claim, get haircut, or fail an audit &mdash; is <strong>substantiation</strong>: proving the work actually qualified, with contemporaneous evidence tied to specific projects and workers.</p>
+      <p>Every hour in a Tymr workpaper traces back to a source event &mdash; time-stamped and immutable, with hash-chainable corrections expressed as new events that reference the original. When your tax firm prepares the credit, when your auditor walks the cap-ex schedule, or when DCAA looks at your floor checks, the evidence is already on file.</p>
+    </section>
+
+    <div class="cta-inline-final">
+      <p><strong>Compliance is a downstream view of the ledger.</strong> The same data drives your capacity, project cost, and portfolio screens.</p>
+      <a class="btn-primary" href="mailto:hello@tymrlogic.com?subject=Tymr%20compliance%20walkthrough">Walk the pack with your tax firm</a>
+      <a class="btn-ghost" href="/numbers.html#pack">See the sample pack &rarr;</a>
+    </div>
+  </div>
+</div>
+
+<div class="footer-wrap">
+  <footer class="page-footer">
+    <div class="container">
+      <div class="footer-i">
+        <a href="/" class="logo">
+          <div class="logo-mark" style="width:32px;height:32px;border-radius:8px;font-size:18px">T</div>
+          <span class="logo-name" style="font-size:18px">Ty<span class="gr">mr</span></span>
+        </a>
+        <div class="footer-links">
+          <a href="/agents.html">Agents</a>
+          <a href="/at-the-ledger.html">Floor to ledger</a>
+          <a href="/numbers.html">See the numbers</a>
+          <a href="/utev1.html">UTEv1</a>
+          <a href="/pricing.html">Pricing</a>
+          <a href="/compliance.html">Compliance</a>
+          <a href="/security.html">Security</a>
+          <a href="/privacy.html">Privacy</a>
+          <a href="/terms.html">Terms</a>
+        </div>
+        <span class="footer-copy">tymrlogic.com · © 2026 Tymr</span>
+      </div>
+    </div>
+  </footer>
+</div>
+</body>
+</html>
