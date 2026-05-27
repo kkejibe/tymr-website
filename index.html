@@ -56,6 +56,59 @@ h1 em{font-style:normal;color:var(--ink-2)}
 
 .hero-actions{margin-top:32px;display:flex;gap:10px;flex-wrap:wrap}
 
+/* HERO LEDGER TAPE — animated event stream */
+.hero-ticker{
+  margin-top:44px;
+  border-top:1px solid var(--hairline);
+  border-bottom:1px solid var(--hairline);
+  background:var(--bg-warm);
+  padding:14px 0;
+  overflow:hidden;
+  position:relative;
+  -webkit-mask-image:linear-gradient(90deg,transparent 0,#000 6%,#000 94%,transparent 100%);
+  mask-image:linear-gradient(90deg,transparent 0,#000 6%,#000 94%,transparent 100%);
+}
+.hero-ticker::before{
+  content:'LEDGER · LIVE';
+  position:absolute;top:50%;left:0;transform:translateY(-50%);
+  font-family:var(--font-m);font-size:9px;letter-spacing:.18em;
+  color:var(--slate-dim);background:var(--bg-warm);
+  padding:4px 12px 4px 0;z-index:2;
+  border-right:1px solid var(--hairline);
+}
+.ticker-rail{
+  display:flex;gap:32px;width:max-content;
+  padding-left:120px;
+  animation:tickerScroll 38s linear infinite;
+}
+@keyframes tickerScroll{
+  from{transform:translateX(0)}
+  to{transform:translateX(-50%)}
+}
+.hero-ticker:hover .ticker-rail{animation-play-state:paused}
+@media(prefers-reduced-motion:reduce){.ticker-rail{animation:none}}
+.ticker-chip{
+  display:inline-flex;align-items:center;gap:8px;
+  font-family:var(--font-m);font-size:12px;color:var(--ink-2);
+  white-space:nowrap;letter-spacing:-0.005em;
+}
+.ticker-chip .dot{width:6px;height:6px;border-radius:50%;flex-shrink:0}
+.ticker-chip .dot.cal{background:var(--brand-yellow)}
+.ticker-chip .dot.slk{background:var(--brand-green)}
+.ticker-chip .dot.jir{background:var(--teal)}
+.ticker-chip .dot.gh{background:var(--indigo)}
+.ticker-chip .dot.out{background:var(--rose)}
+.ticker-chip .dot.tea{background:var(--accent)}
+.ticker-chip .dot.svc{background:var(--slate)}
+.ticker-chip .dot.wd{background:var(--ink-2)}
+.ticker-meta{color:var(--slate-dim);margin-left:4px}
+@media(max-width:720px){
+  .hero-ticker{margin-top:32px}
+  .hero-ticker::before{font-size:8px;padding:3px 10px 3px 0}
+  .ticker-rail{padding-left:96px;animation-duration:32s}
+  .ticker-chip{font-size:11px;gap:6px}
+}
+
 .hero-pillars{
   margin-top:32px;display:flex;flex-wrap:wrap;gap:10px;
 }
@@ -385,6 +438,31 @@ section{padding:72px 0}
   border-bottom:1px solid var(--accent-line);padding-bottom:1px;transition:gap .15s;
 }
 .byproduct-block .bp-link:hover{gap:10px}
+.bp-details{margin-top:14px}
+.bp-details summary{
+  list-style:none;cursor:pointer;display:flex;align-items:center;gap:8px;
+  padding:8px 0;font-family:var(--font-m);font-size:11px;
+  letter-spacing:.12em;text-transform:uppercase;color:var(--accent);
+  transition:color .15s;font-weight:500;
+}
+.bp-details summary::-webkit-details-marker{display:none}
+.bp-details summary::after{
+  content:'';width:7px;height:7px;
+  border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;
+  transform:rotate(45deg);margin-left:auto;transition:transform .2s;
+  display:inline-block;margin-top:-2px;
+}
+.bp-details[open] summary::after{transform:rotate(-135deg);margin-top:2px}
+.bp-details ul{list-style:none;padding:8px 0 4px;margin:0;display:flex;flex-direction:column;gap:8px}
+.bp-details ul li{
+  font-size:13.5px;color:var(--ink-2);line-height:1.55;
+  padding-left:14px;position:relative;
+}
+.bp-details ul li::before{
+  content:'';position:absolute;left:0;top:8px;
+  width:4px;height:4px;border-radius:50%;background:var(--accent);
+}
+.bp-details ul li strong{color:var(--ink);font-weight:550}
 
 /* === CTA BLOCK === */
 .cta-wrap{padding:40px 0 72px}
@@ -455,6 +533,31 @@ footer.site-footer{padding:40px 0 48px;border-top:1px solid var(--hairline)}
       <a class="btn-primary" href="mailto:hello@tymrlogic.com?subject=Tymr%20demo%20request">Request a demo</a>
       <a class="btn-ghost" href="#how-it-works">See how it works</a>
     </div>
+  </div>
+</div>
+
+<!-- HERO LEDGER TAPE — automatic capture, visualized -->
+<div class="hero-ticker" aria-hidden="true">
+  <div class="ticker-rail">
+    <span class="ticker-chip"><span class="dot cal"></span>Cal &middot; Standup<span class="ticker-meta">30m</span></span>
+    <span class="ticker-chip"><span class="dot slk"></span>Slack &middot; #ops-room<span class="ticker-meta">12m</span></span>
+    <span class="ticker-chip"><span class="dot jir"></span>Jira &middot; AUTH-204<span class="ticker-meta">2h 15m</span></span>
+    <span class="ticker-chip"><span class="dot gh"></span>GitHub &middot; PR #882<span class="ticker-meta">review</span></span>
+    <span class="ticker-chip"><span class="dot out"></span>Outlook &middot; 1:1<span class="ticker-meta">45m</span></span>
+    <span class="ticker-chip"><span class="dot tea"></span>Teams &middot; Roadmap sync<span class="ticker-meta">25m</span></span>
+    <span class="ticker-chip"><span class="dot svc"></span>ServiceNow &middot; INC-9871<span class="ticker-meta">P2</span></span>
+    <span class="ticker-chip"><span class="dot wd"></span>Workday &middot; Time-off<span class="ticker-meta">approved</span></span>
+    <span class="ticker-chip"><span class="dot cal"></span>Cal &middot; Customer call<span class="ticker-meta">60m</span></span>
+    <!-- duplicate set for seamless loop -->
+    <span class="ticker-chip"><span class="dot cal"></span>Cal &middot; Standup<span class="ticker-meta">30m</span></span>
+    <span class="ticker-chip"><span class="dot slk"></span>Slack &middot; #ops-room<span class="ticker-meta">12m</span></span>
+    <span class="ticker-chip"><span class="dot jir"></span>Jira &middot; AUTH-204<span class="ticker-meta">2h 15m</span></span>
+    <span class="ticker-chip"><span class="dot gh"></span>GitHub &middot; PR #882<span class="ticker-meta">review</span></span>
+    <span class="ticker-chip"><span class="dot out"></span>Outlook &middot; 1:1<span class="ticker-meta">45m</span></span>
+    <span class="ticker-chip"><span class="dot tea"></span>Teams &middot; Roadmap sync<span class="ticker-meta">25m</span></span>
+    <span class="ticker-chip"><span class="dot svc"></span>ServiceNow &middot; INC-9871<span class="ticker-meta">P2</span></span>
+    <span class="ticker-chip"><span class="dot wd"></span>Workday &middot; Time-off<span class="ticker-meta">approved</span></span>
+    <span class="ticker-chip"><span class="dot cal"></span>Cal &middot; Customer call<span class="ticker-meta">60m</span></span>
   </div>
 </div>
 
@@ -737,6 +840,14 @@ footer.site-footer{padding:40px 0 48px;border-top:1px solid var(--hairline)}
       <div class="byproduct-block">
         <span class="bp-tag">Compliance, as a byproduct</span>
         <p>Because the data is real and lineage is preserved, the same ledger produces audit-ready artifacts for <strong>R&amp;D credit, software capitalization, and DCAA</strong> &mdash; no quarterly survey.</p>
+        <details class="bp-details">
+          <summary>Show the spec</summary>
+          <ul>
+            <li><strong>IRC &sect;41 &mdash; R&amp;D credit.</strong> Contemporaneous documentation, per-employee, per-project &mdash; built from the ledger.</li>
+            <li><strong>ASC 350-40 &mdash; software capitalization.</strong> OpEx/CapEx split with project-level evidence, in real time.</li>
+            <li><strong>DCAA / FAR 31.</strong> Daily time tracking with a tamper-evident audit trail and lineage back to source.</li>
+          </ul>
+        </details>
         <a href="/compliance.html" class="bp-link">See the compliance view &rarr;</a>
       </div>
     </section>
