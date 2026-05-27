@@ -305,20 +305,40 @@ section{padding:72px 0}
 }
 .sector p{font-size:13.5px;color:var(--slate);line-height:1.6;margin:0}
 
-/* === INTEGRATIONS — grouped by function === */
-.integrations{margin-top:36px;display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-@media(max-width:860px){.integrations{grid-template-columns:1fr 1fr}}
-@media(max-width:560px){.integrations{grid-template-columns:1fr}}
-.intg-group{
+/* === LOGO WALL — nine sources, colored by function === */
+.logo-wall{
+  margin-top:36px;display:grid;grid-template-columns:repeat(3,1fr);gap:12px;
+}
+@media(max-width:760px){.logo-wall{grid-template-columns:1fr 1fr}}
+@media(max-width:480px){.logo-wall{grid-template-columns:1fr}}
+.logo-chip{
+  display:flex;align-items:center;gap:14px;padding:16px 18px;
   background:var(--bg);border:1px solid var(--hairline);border-radius:12px;
-  padding:20px;display:flex;flex-direction:column;gap:10px;
+  transition:border-color .2s,transform .15s,box-shadow .2s;
 }
-.intg-group h4{
+.logo-chip:hover{
+  border-color:var(--hairline-strong);transform:translateY(-2px);
+  box-shadow:0 4px 12px -8px rgba(11,11,15,0.10);
+}
+.logo-mark{
+  width:38px;height:38px;flex-shrink:0;border-radius:9px;
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--font-h);font-weight:600;font-size:15px;letter-spacing:-0.02em;
+}
+.logo-mark.cal{background:var(--brand-yellow-soft);color:var(--accent);border:1px solid var(--brand-yellow-line)}
+.logo-mark.chat{background:var(--brand-green-soft);color:var(--brand-green);border:1px solid var(--brand-green-line)}
+.logo-mark.dev{background:var(--indigo-soft);color:var(--indigo);border:1px solid var(--indigo-line)}
+.logo-mark.itsm{background:var(--teal-soft);color:var(--teal);border:1px solid var(--teal-line)}
+.logo-mark.hris{background:var(--rose-soft);color:var(--rose);border:1px solid var(--rose-line)}
+.logo-meta{display:flex;flex-direction:column;gap:3px;min-width:0}
+.logo-name{
+  font-family:var(--font-h);font-weight:600;font-size:14px;
+  color:var(--ink);letter-spacing:-0.01em;line-height:1.2;
+}
+.logo-fn{
   font-family:var(--font-m);font-size:10px;letter-spacing:.14em;
-  color:var(--accent);text-transform:uppercase;font-weight:500;
+  text-transform:uppercase;color:var(--slate);font-weight:500;
 }
-.intg-group ul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:6px}
-.intg-group ul li{font-size:13.5px;color:var(--ink-2);letter-spacing:-0.005em}
 
 /* === VIRTUAL FLOOR / HUMANS + AGENTS BLOCK === */
 .floor-block{
@@ -886,45 +906,69 @@ footer.site-footer{padding:40px 0 48px;border-top:1px solid var(--hairline)}
       <h2 class="sec-head">Nine sources. <em>Six function groups. Every sector.</em></h2>
       <p class="sec-sub">Functions, not industries, decide what plugs in.</p>
 
-      <div class="integrations">
-        <div class="intg-group">
-          <h4>Calendar</h4>
-          <ul>
-            <li>Google Calendar</li>
-            <li>Microsoft Outlook</li>
-          </ul>
+      <div class="logo-wall">
+        <div class="logo-chip">
+          <div class="logo-mark cal" aria-hidden="true">C</div>
+          <div class="logo-meta">
+            <span class="logo-name">Google Calendar</span>
+            <span class="logo-fn">Calendar</span>
+          </div>
         </div>
-        <div class="intg-group">
-          <h4>Chat &amp; meetings</h4>
-          <ul>
-            <li>Slack</li>
-            <li>Microsoft Teams</li>
-            <li>Google Meet</li>
-          </ul>
+        <div class="logo-chip">
+          <div class="logo-mark cal" aria-hidden="true">O</div>
+          <div class="logo-meta">
+            <span class="logo-name">Microsoft Outlook</span>
+            <span class="logo-fn">Calendar</span>
+          </div>
         </div>
-        <div class="intg-group">
-          <h4>Ticketing</h4>
-          <ul>
-            <li>Jira</li>
-          </ul>
+        <div class="logo-chip">
+          <div class="logo-mark chat" aria-hidden="true">S</div>
+          <div class="logo-meta">
+            <span class="logo-name">Slack</span>
+            <span class="logo-fn">Chat</span>
+          </div>
         </div>
-        <div class="intg-group">
-          <h4>ITSM</h4>
-          <ul>
-            <li>ServiceNow</li>
-          </ul>
+        <div class="logo-chip">
+          <div class="logo-mark chat" aria-hidden="true">T</div>
+          <div class="logo-meta">
+            <span class="logo-name">Microsoft Teams</span>
+            <span class="logo-fn">Chat &amp; meetings</span>
+          </div>
         </div>
-        <div class="intg-group">
-          <h4>HRIS</h4>
-          <ul>
-            <li>Workday</li>
-          </ul>
+        <div class="logo-chip">
+          <div class="logo-mark chat" aria-hidden="true">M</div>
+          <div class="logo-meta">
+            <span class="logo-name">Google Meet</span>
+            <span class="logo-fn">Meetings</span>
+          </div>
         </div>
-        <div class="intg-group">
-          <h4>Dev tools</h4>
-          <ul>
-            <li>GitHub</li>
-          </ul>
+        <div class="logo-chip">
+          <div class="logo-mark dev" aria-hidden="true">J</div>
+          <div class="logo-meta">
+            <span class="logo-name">Jira</span>
+            <span class="logo-fn">Ticketing</span>
+          </div>
+        </div>
+        <div class="logo-chip">
+          <div class="logo-mark dev" aria-hidden="true">G</div>
+          <div class="logo-meta">
+            <span class="logo-name">GitHub</span>
+            <span class="logo-fn">Dev tools</span>
+          </div>
+        </div>
+        <div class="logo-chip">
+          <div class="logo-mark itsm" aria-hidden="true">N</div>
+          <div class="logo-meta">
+            <span class="logo-name">ServiceNow</span>
+            <span class="logo-fn">ITSM</span>
+          </div>
+        </div>
+        <div class="logo-chip">
+          <div class="logo-mark hris" aria-hidden="true">W</div>
+          <div class="logo-meta">
+            <span class="logo-name">Workday</span>
+            <span class="logo-fn">HRIS</span>
+          </div>
         </div>
       </div>
     </section>
