@@ -3,17 +3,17 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Tymr · The capacity system of record</title>
-<meta name="description" content="Tymr is the capacity system of record — automatic time capture, real utilization, true project cost, and portfolio decisions for the human and AI workforce."/>
+<title>Tymr — Timesheets that fill themselves</title>
+<meta name="description" content="Tymr drafts time automatically from calendar, Jira, GitHub, and Slack — real capacity, true project cost, and audit-ready compliance as a byproduct. For the human and AI workforce."/>
 
-<meta property="og:title" content="Tymr · The capacity system of record"/>
-<meta property="og:description" content="Tymr is the capacity system of record — automatic time capture, real utilization, true project cost, and portfolio decisions for the human and AI workforce."/>
+<meta property="og:title" content="Tymr — Timesheets that fill themselves"/>
+<meta property="og:description" content="Tymr drafts time automatically from calendar, Jira, GitHub, and Slack — real capacity, true project cost, and audit-ready compliance as a byproduct. For the human and AI workforce."/>
 <meta property="og:type" content="website"/>
 <meta property="og:url" content="https://tymrlogic.com/"/>
 <meta property="og:image" content="https://tymrlogic.com/og.png"/>
 <meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:title" content="Tymr · The capacity system of record"/>
-<meta name="twitter:description" content="Automatic time capture, real utilization, true project cost, and portfolio decisions — for the human and AI workforce."/>
+<meta name="twitter:title" content="Tymr — Timesheets that fill themselves"/>
+<meta name="twitter:description" content="Tymr drafts time automatically from calendar, Jira, GitHub, and Slack — real capacity, true project cost, and audit-ready compliance as a byproduct. For the human and AI workforce."/>
 <meta name="twitter:image" content="https://tymrlogic.com/og.png"/>
 
 <link rel="icon" type="image/png" href="/favicon.png"/>
@@ -484,6 +484,25 @@ section{padding:72px 0}
 }
 .bp-details ul li strong{color:var(--ink);font-weight:550}
 
+/* === FOUNDER / ABOUT === */
+.founder{margin-top:28px;max-width:720px}
+.founder-text p{color:var(--slate);font-size:16px;line-height:1.7}
+.founder-text p a{color:var(--ink);border-bottom:1px solid var(--accent-line);text-decoration:none}
+.founder-text p a:hover{border-color:var(--ink)}
+.founder-text p strong{color:var(--ink);font-weight:600}
+.founder-quote{
+  margin-top:24px;padding:24px 28px;
+  background:var(--bg-warm);border:1px solid var(--hairline);
+  border-left:3px solid var(--brand-yellow);border-radius:10px;
+  font-family:var(--font-h);font-size:clamp(19px,2.4vw,24px);
+  line-height:1.4;letter-spacing:-0.015em;color:var(--ink);text-wrap:balance;
+}
+.founder-quote cite{
+  display:block;margin-top:16px;font-style:normal;
+  font-family:var(--font-m);font-size:11px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--slate);
+}
+
 /* === CTA BLOCK === */
 .cta-wrap{padding:40px 0 72px}
 @media(max-width:720px){.cta-wrap{padding:24px 0 56px}}
@@ -546,11 +565,21 @@ footer.site-footer{padding:40px 0 48px;border-top:1px solid var(--hairline)}
 <div class="container">
   <div class="hero">
     <span class="hero-tag">The capacity system of record</span>
-    <h1>Where the work actually goes &mdash; <em>without a timesheet.</em></h1>
-    <p class="hero-sub">Time, capacity, and cost &mdash; captured automatically from the tools where work happens. <strong>No timesheets. No surveys.</strong></p>
+    <h1>Timesheets that <em>fill themselves.</em></h1>
+    <p class="hero-sub">Tymr drafts everyone's time from the tools where work already happens &mdash; calendar, Jira, GitHub, Slack &mdash; so people confirm their week in under a minute, and the company finally sees real hours, capacity, and cost.</p>
+
+    <p class="hero-audience">For the people doing the work, the managers running it, and the leaders funding it.</p>
+
+    <div class="hero-pillars">
+      <span class="hero-pillar">Zero-Entry Capture</span>
+      <span class="hero-pillar">9 Source Integrations</span>
+      <span class="hero-pillar">Capacity &amp; True Project Cost</span>
+      <span class="hero-pillar">Humans + AI Agents</span>
+      <span class="hero-pillar">Open Standard (UTEv1)</span>
+    </div>
 
     <div class="hero-actions">
-      <a class="btn-primary" href="mailto:hello@tymrlogic.com?subject=Tymr%20demo%20request">Request a demo</a>
+      <a class="btn-primary" href="mailto:hello@tymrlogic.com?subject=Tymr%20demo%20request">Watch your Tuesday reconstruct itself &mdash; 30-second demo</a>
       <a class="btn-ghost" href="#how-it-works">See how it works</a>
     </div>
   </div>
@@ -591,25 +620,25 @@ footer.site-footer{padding:40px 0 48px;border-top:1px solid var(--hairline)}
 
       <div class="stats-triplet">
         <div class="stat-card">
-          <span class="stat-k">Workers fill in</span>
+          <span class="stat-k">Entries workers make</span>
           <div class="stat-num">0</div>
           <h3>Zero entries.</h3>
-          <p>Tymr drafts time from the systems where work already happens. Review in under a minute &mdash; or don't.</p>
+          <p>Workers don't fill timesheets. Tymr drafts the time from where work already happens &mdash; confirm in under a minute, or don't.</p>
           <span class="stat-foot">Auto-drafted · Privacy Shield enforced</span>
         </div>
         <div class="stat-card green">
           <span class="stat-k">Systems on the wire</span>
           <div class="stat-num">9</div>
           <h3>Nine systems.</h3>
-          <p>Calendar, chat, ticketing, ITSM, HRIS, dev tools. One normalized event stream, lineage preserved end-to-end.</p>
-          <span class="stat-foot">Calendar · chat · ticketing · ITSM · HRIS · dev</span>
+          <p>Google Calendar, Outlook, Teams, Slack, Jira, GitHub, ServiceNow, Workday, PagerDuty &mdash; one normalized, lineage-preserving stream.</p>
+          <span class="stat-foot">Calendar · chat · ticketing · dev · ITSM · HRIS</span>
         </div>
         <div class="stat-card indigo">
           <span class="stat-k">What you get back</span>
           <div class="stat-num">1</div>
           <h3>One ledger.</h3>
-          <p>Capacity, project cost, OpEx/CapEx, portfolio scenarios. Humans and agents in the same lens.</p>
-          <span class="stat-foot">Compliance artifacts as a byproduct</span>
+          <p>Capacity, project cost (labor + non-labor), OpEx/CapEx, portfolio scenarios, compliance artifacts as byproduct &mdash; humans and agents on one floor.</p>
+          <span class="stat-foot">One source of truth · many views</span>
         </div>
       </div>
     </section>
@@ -659,7 +688,7 @@ footer.site-footer{padding:40px 0 48px;border-top:1px solid var(--hairline)}
     <section>
       <span class="sec-label">How it works</span>
       <h2 class="sec-head">Work happens in your tools. <em>Tymr turns it into a single ledger.</em></h2>
-      <p class="sec-sub">Four stages. Workers see none of it.</p>
+      <p class="sec-sub">Work happens in your tools. Tymr listens, normalizes, and turns it into a single ledger of time, capacity, and cost. Four stages &mdash; workers see none of it.</p>
 
       <div class="pipeline">
         <div class="pipe">
@@ -717,155 +746,106 @@ footer.site-footer{padding:40px 0 48px;border-top:1px solid var(--hairline)}
         <div class="out-card byproduct">
           <span class="out-tag">Byproduct</span>
           <h3>Compliance artifacts</h3>
-          <p>R&amp;D credit, software cap, DCAA &mdash; from the same ledger, no quarterly survey. <a href="/compliance.html" style="color:var(--ink-2);text-decoration:underline">See compliance &rarr;</a></p>
+          <p>Audit-ready documentation, built from the same ledger &mdash; no quarterly survey. <a href="/compliance.html" style="color:var(--ink-2);text-decoration:underline">See compliance &rarr;</a></p>
         </div>
       </div>
     </section>
   </div>
 </div>
 
-<!-- PERSONAS — TABBED WORKER / MANAGER / EXECUTIVE -->
+<!-- SECTION 3 — FOR THE WORKER -->
 <div class="sec-band">
   <div class="container">
     <section>
-      <span class="sec-label">Three views, one ledger</span>
-      <h2 class="sec-head">Same data. <em>Different seat at the table.</em></h2>
-      <p class="sec-sub">Worker, manager, executive &mdash; pick the lens that matches your role.</p>
+      <span class="sec-label">For the worker</span>
+      <h2 class="sec-head">Your day, already written. <em>One glance to confirm.</em></h2>
+      <p class="sec-sub">The only time tracking anyone tolerates is the kind they don't have to do. Tymr deletes the chore &mdash; and that's what finally makes the data true.</p>
 
-      <div class="persona-intro" role="tablist">
-        <button class="persona-tab active" data-persona="worker" role="tab" aria-selected="true">
-          <div class="persona-tab-ico" aria-hidden="true">
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-              <circle cx="10" cy="7" r="3" stroke="currentColor" stroke-width="1.6"/>
-              <path d="M4 17 C4 13.5 6.5 12 10 12 C13.5 12 16 13.5 16 17" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
-            </svg>
-          </div>
-          <span class="persona-tab-tag">For the worker</span>
-          <h3>Auto-drafted day. Private by default.</h3>
-          <p>No timesheet, no clock-in. Glance to confirm.</p>
-        </button>
-        <button class="persona-tab teal" data-persona="manager" role="tab" aria-selected="false">
-          <div class="persona-tab-ico" aria-hidden="true">
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-              <rect x="3.5" y="3.5" width="13" height="13" rx="1.6" stroke="currentColor" stroke-width="1.6"/>
-              <path d="M6.5 8 H13.5 M6.5 11 H13.5 M6.5 14 H10.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
-            </svg>
-          </div>
-          <span class="persona-tab-tag">For the manager &amp; PMO</span>
-          <h3>Live capacity. True project cost.</h3>
-          <p>Heatmaps, project health, OpEx/CapEx in real time.</p>
-        </button>
-        <button class="persona-tab indigo" data-persona="exec" role="tab" aria-selected="false">
-          <div class="persona-tab-ico" aria-hidden="true">
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-              <path d="M4 16 V8 H7 V16 M9 16 V4 H12 V16 M14 16 V11 H17 V16" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-              <path d="M3 17 H17" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
-            </svg>
-          </div>
-          <span class="persona-tab-tag">For the executive</span>
-          <h3>Portfolio decisions, on real numbers.</h3>
-          <p>Agent + human economics on the same page.</p>
-        </button>
-      </div>
-
-      <div class="persona-panel active" id="panel-worker" role="tabpanel">
-        <div class="layer green">
-          <div class="layer-text">
-            <span class="layer-tag green">The worker promise</span>
-            <h3>Auto-drafted. Private by default. <em>One glance to confirm.</em></h3>
-            <p>Tymr drafts your day from meetings, tickets, commits, and channels you touched. You see it in a private view. Confirm, adjust, or ignore.</p>
-            <ul>
-              <li><strong>Zero entries.</strong> No clock-in theater. No Friday reconstruction.</li>
-              <li><strong>Under a minute.</strong> The daily review is a glance.</li>
-              <li><strong>Private by default.</strong> Self-only visibility. Your record is yours.</li>
-              <li><strong>Break time untracked.</strong> If it's not work, Tymr doesn't watch.</li>
-              <li><strong>Privacy Shield.</strong> What integrations see, on one page, in plain English.</li>
-            </ul>
-          </div>
-          <div class="layer-shot">
-            <div class="shot">
-              <div class="shot-bar">
-                <i></i><i></i><i></i>
-                <span class="shot-url">app.tymrlogic.com / my-time</span>
-              </div>
-              <img class="shot-img" src="/assets/screens/floor-task-detail.png" alt="Tymr My Time — auto-drafted day, private by default, review in seconds" loading="lazy"/>
-              <div class="shot-cap">
-                <span>My Time &mdash; auto-drafted from your day</span>
-                <span class="live">Private by default</span>
-              </div>
+      <div class="layer green" style="margin-top:36px">
+        <div class="layer-text">
+          <span class="layer-tag green">The worker promise</span>
+          <h3>Auto-drafted. Private by default. <em>No clock-in theater.</em></h3>
+          <p>Tymr drafts your day from the meetings, tickets, commits, and channels you already touched. You see it in a private view. Confirm, adjust, or ignore.</p>
+          <ul>
+            <li><strong>Zero entries.</strong> No timesheet. No Friday reconstruction from memory.</li>
+            <li><strong>Under a minute.</strong> The daily review is a glance, not a form.</li>
+            <li><strong>Private by default.</strong> My Time is self-only. Your record is yours.</li>
+            <li><strong>Break time untracked by design.</strong> If it isn't work, Tymr doesn't watch it.</li>
+            <li><strong>Privacy Shield.</strong> Exactly what each integration sees, on one page, in plain English.</li>
+          </ul>
+        </div>
+        <div class="layer-shot">
+          <div class="shot">
+            <div class="shot-bar">
+              <i></i><i></i><i></i>
+              <span class="shot-url">app.tymrlogic.com / my-time</span>
+            </div>
+            <img class="shot-img" src="/assets/screens/floor-task-detail.png" alt="Tymr My Time — auto-drafted day, private by default, review in seconds" loading="lazy"/>
+            <div class="shot-cap">
+              <span>My Time &mdash; auto-drafted from your day</span>
+              <span class="live">Private by default</span>
             </div>
           </div>
         </div>
       </div>
+    </section>
+  </div>
+</div>
 
-      <div class="persona-panel" id="panel-manager" role="tabpanel">
-        <div class="layer teal">
-          <div class="layer-text">
-            <span class="layer-tag teal">Manager + PMO view</span>
-            <h3>The picture you used to ask a spreadsheet for. <em>Live.</em></h3>
-            <p>Allocation heatmaps. Project health with labor + non-labor in one column. OpEx/CapEx in real time &mdash; not at quarter-close.</p>
-            <ul>
-              <li><strong>Capacity heatmap.</strong> Every worker and agent &mdash; over, under, allocated.</li>
-              <li><strong>Project cost, complete.</strong> Hours plus contractors, infrastructure, consulting.</li>
-              <li><strong>OpEx / CapEx, live.</strong> Project-level classification as work happens.</li>
-              <li><strong>Scenario planner.</strong> Move people across initiatives, see cost shift before you sign off.</li>
-              <li><strong>Event cost ticker.</strong> Dollar weight on every recurring meeting and incident.</li>
-            </ul>
+<!-- SECTION 4 — FOR THE MANAGER & PMO -->
+<div class="container">
+  <section>
+    <span class="sec-label">For the manager &amp; PMO</span>
+    <h2 class="sec-head">The picture you used to ask a spreadsheet for. <em>Live, and finally real.</em></h2>
+    <p class="sec-sub">When your team never fills a timesheet, you stop chasing entries &mdash; and start reading capacity and cost off numbers that were true the moment work happened.</p>
+
+    <div class="layer teal flip" style="margin-top:36px">
+      <div class="layer-text">
+        <span class="layer-tag teal">Manager &amp; PMO view</span>
+        <h3>Capacity, project cost, and the OpEx/CapEx split &mdash; <em>without quarter-close.</em></h3>
+        <p>Allocation heatmaps across every worker and agent. Project health with labor + non-labor in one column. Portfolio scenarios you can run before you commit.</p>
+        <ul>
+          <li><strong>Capacity heatmaps.</strong> Every worker and agent &mdash; over, under, or well allocated.</li>
+          <li><strong>True project cost.</strong> Hours plus contractors, infrastructure, and consulting in one number.</li>
+          <li><strong>OpEx / CapEx, live.</strong> Project-level classification as work happens, not at close.</li>
+          <li><strong>Portfolio scenarios.</strong> Move people and agents across initiatives, see cost shift before you sign off.</li>
+          <li><strong>Event cost ticker.</strong> A dollar weight on every recurring meeting, incident, and agent run.</li>
+        </ul>
+      </div>
+      <div class="layer-shot">
+        <div class="shot light">
+          <div class="shot-bar">
+            <i></i><i></i><i></i>
+            <span class="shot-url">app.tymrlogic.com / cost-utilization</span>
           </div>
-          <div class="layer-shot">
-            <div class="shot light">
-              <div class="shot-bar">
-                <i></i><i></i><i></i>
-                <span class="shot-url">app.tymrlogic.com / cost-utilization</span>
-              </div>
-              <img class="shot-img" src="/assets/screens/cost-utilization-overview.png" alt="Tymr Cost & Utilization — capacity, utilization, and project cost rolled up" loading="lazy"/>
-              <div class="shot-cap">
-                <span>Cost &amp; Utilization &mdash; live across teams</span>
-                <span class="live">Updated continuously</span>
-              </div>
-            </div>
+          <img class="shot-img" src="/assets/screens/cost-utilization-overview.png" alt="Tymr Cost & Utilization — capacity, utilization, and project cost rolled up" loading="lazy"/>
+          <div class="shot-cap">
+            <span>Cost &amp; Utilization &mdash; live across teams</span>
+            <span class="live">Updated continuously</span>
           </div>
         </div>
       </div>
+    </div>
+  </section>
+</div>
 
-      <div class="persona-panel" id="panel-exec" role="tabpanel">
-        <div class="layer indigo">
-          <div class="layer-text">
-            <span class="layer-tag indigo">Executive view</span>
-            <h3>One portfolio. <em>One workforce. One lens.</em></h3>
-            <p>Where capacity is spent, what comes back, how to shift the mix. Humans and agents costed together. Investment vs. run, board-ready.</p>
-            <ul>
-              <li><strong>Strategic cost-benefit.</strong> Capacity, cost, expected return &mdash; live, not quarterly.</li>
-              <li><strong>Portfolio scenarios.</strong> Rebalance investment vs. run, human vs. agent, before committing.</li>
-              <li><strong>Agent economics.</strong> Compute cost, agent capacity, and human review in one lens.</li>
-              <li><strong>Board-ready.</strong> The numbers your finance lead opens on Friday &mdash; rolled up.</li>
-            </ul>
-          </div>
-          <div class="layer-shot">
-            <div class="shot light">
-              <div class="shot-bar">
-                <i></i><i></i><i></i>
-                <span class="shot-url">app.tymrlogic.com / portfolio</span>
-              </div>
-              <img class="shot-img" src="/assets/screens/project-costs.png" alt="Tymr Portfolio — investment, run, labor and non-labor cost rolled up" loading="lazy"/>
-              <div class="shot-cap">
-                <span>Portfolio &mdash; investment, run, agent vs human</span>
-                <span class="live">Live</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+<!-- SECTION 5 — FOR FINANCE (THE WEDGE) -->
+<div class="sec-band">
+  <div class="container">
+    <section>
+      <span class="sec-label">For finance</span>
+      <h2 class="sec-head">The R&amp;D survey is over.</h2>
+      <p class="sec-sub">Nobody chases engineers for a time-allocation survey anymore. The documentation stops being a quarterly project and becomes a byproduct of work that was already captured &mdash; and true.</p>
 
-      <div class="byproduct-block">
-        <span class="bp-tag">Compliance, as a byproduct</span>
-        <p>Because the data is real and lineage is preserved, the same ledger produces audit-ready artifacts for <strong>R&amp;D credit, software capitalization, and DCAA</strong> &mdash; no quarterly survey.</p>
+      <div class="byproduct-block" style="margin-top:36px">
+        <span class="bp-tag">The finance payoff</span>
+        <p>Audit-ready R&amp;D credit (<strong>&sect;41</strong>) and software-capitalization (<strong>ASC 350-40</strong>) documentation falls out automatically &mdash; a byproduct of true data, not a quarterly survey.</p>
         <details class="bp-details">
           <summary>Show the spec</summary>
           <ul>
-            <li><strong>IRC &sect;41 &mdash; R&amp;D credit.</strong> Contemporaneous documentation, per-employee, per-project &mdash; built from the ledger.</li>
+            <li><strong>IRC &sect;41 &mdash; R&amp;D credit.</strong> Contemporaneous, per-employee, per-project documentation &mdash; built from the ledger, not reconstructed from a survey.</li>
             <li><strong>ASC 350-40 &mdash; software capitalization.</strong> OpEx/CapEx split with project-level evidence, in real time.</li>
-            <li><strong>DCAA / FAR 31.</strong> Daily time tracking with a tamper-evident audit trail and lineage back to source.</li>
+            <li><strong>DCAA / FAR 31.</strong> Daily time capture with a tamper-evident audit trail and lineage back to source.</li>
           </ul>
         </details>
         <a href="/compliance.html" class="bp-link">See the compliance view &rarr;</a>
@@ -975,72 +955,19 @@ footer.site-footer{padding:40px 0 48px;border-top:1px solid var(--hairline)}
   </div>
 </div>
 
-<!-- SECTION 8 — WHO IT'S FOR -->
+<!-- SECTION 8 — ABOUT / FOUNDER -->
 <div class="container">
   <section>
-    <span class="sec-label">Who it's for</span>
-    <h2 class="sec-head">Anywhere people and agents do work &mdash; <em>and someone needs to know how much, on what, and at what cost.</em></h2>
-    <p class="sec-sub">Sector-neutral by design. The capacity question is the same everywhere &mdash; the answers just rhyme differently.</p>
+    <span class="sec-label">Who's building it</span>
+    <h2 class="sec-head">Built by the person capacity data was always <em>for.</em></h2>
 
-    <div class="sectors">
-      <div class="sector">
-        <div class="sector-ico" aria-hidden="true">
-          <svg width="18" height="18" viewBox="0 0 20 20" fill="none">
-            <path d="M7 6 L3 10 L7 14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M13 6 L17 10 L13 14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </div>
-        <h3>Engineering &amp; Product</h3>
-        <p>Per-team capacity. Where features are paying off. OpEx/CapEx without a survey.</p>
-      </div>
-      <div class="sector">
-        <div class="sector-ico" aria-hidden="true">
-          <svg width="18" height="18" viewBox="0 0 20 20" fill="none">
-            <rect x="3.5" y="3.5" width="13" height="13" rx="1.6" stroke="currentColor" stroke-width="1.6"/>
-            <path d="M6.5 8 H13.5 M6.5 11 H13.5 M6.5 14 H10.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
-          </svg>
-        </div>
-        <h3>Professional Services &amp; Consulting</h3>
-        <p>Billable vs. non-billable. Client utilization. Project margins live &mdash; not at month-end.</p>
-      </div>
-      <div class="sector">
-        <div class="sector-ico" aria-hidden="true">
-          <svg width="18" height="18" viewBox="0 0 20 20" fill="none">
-            <circle cx="10" cy="10" r="6.5" stroke="currentColor" stroke-width="1.6"/>
-            <path d="M10 6 V10 L13 12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
-          </svg>
-        </div>
-        <h3>IT &amp; ITSM</h3>
-        <p>Where unplanned work goes &mdash; incidents, changes, problems &mdash; with cost attached.</p>
-      </div>
-      <div class="sector">
-        <div class="sector-ico" aria-hidden="true">
-          <svg width="18" height="18" viewBox="0 0 20 20" fill="none">
-            <path d="M4 16 V8 H7 V16 M9 16 V4 H12 V16 M14 16 V11 H17 V16" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M3 17 H17" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
-          </svg>
-        </div>
-        <h3>PMO &amp; Portfolio</h3>
-        <p>Project health, capacity forecasts, scenarios &mdash; on numbers that aren't from a survey.</p>
-      </div>
-      <div class="sector">
-        <div class="sector-ico" aria-hidden="true">
-          <svg width="18" height="18" viewBox="0 0 20 20" fill="none">
-            <path d="M10 3 L13 8 L18 9 L14 13 L15 18 L10 15.5 L5 18 L6 13 L2 9 L7 8 Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
-          </svg>
-        </div>
-        <h3>Non-profit &amp; Public Sector</h3>
-        <p>Grant- and program-level cost attribution &mdash; for delivery, not for the auditor's spreadsheet.</p>
-      </div>
-      <div class="sector">
-        <div class="sector-ico" aria-hidden="true">
-          <svg width="18" height="18" viewBox="0 0 20 20" fill="none">
-            <path d="M3 4 L17 4 L15 16 L5 16 Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
-            <path d="M7 8 L13 8 M7 11 L11 11" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
-          </svg>
-        </div>
-        <h3>Agencies &amp; Creative</h3>
-        <p>Per-client hours. Project margin with vendors and freelancers. Capacity for the next pitch.</p>
+    <div class="founder">
+      <div class="founder-text">
+        <p>Tymr is built by <strong>Kalu Ejibe</strong>, founder of Kalmorn Tech (<a href="https://kalmorntech.com">kalmorntech.com</a>) &mdash; 10+ years leading IT demand &amp; resource management inside large enterprises, four production products shipped solo, bootstrapped.</p>
+        <blockquote class="founder-quote">
+          &ldquo;I spent a decade as the person capacity data is for &mdash; and watched it die on self-reported timesheets every time. Tymr is the tool I could never buy.&rdquo;
+          <cite>Kalu Ejibe &middot; Founder</cite>
+        </blockquote>
       </div>
     </div>
   </section>
@@ -1050,10 +977,10 @@ footer.site-footer{padding:40px 0 48px;border-top:1px solid var(--hairline)}
 <div class="cta-wrap">
   <div class="container">
     <div class="cta-block">
-      <h2>Want to see your own capacity, <em>without asking your team for a single timesheet?</em></h2>
-      <p class="cta-sub">We'll connect a sample source and walk you through what your capacity actually looks like.</p>
+      <h2>Watch your Tuesday reconstruct itself &mdash; <em>without asking your team for a single timesheet.</em></h2>
+      <p class="cta-sub">Every hour of work &mdash; human or AI agent &mdash; flows through one ledger. Tymr is the capacity system of record. We'll connect a sample source and walk you through what your capacity actually looks like.</p>
       <div class="cta-row">
-        <a class="btn-primary" href="mailto:hello@tymrlogic.com?subject=Tymr%20demo%20request">Request a demo</a>
+        <a class="btn-primary" href="mailto:hello@tymrlogic.com?subject=Tymr%20demo%20request">Watch the 30-second demo</a>
         <a class="btn-ghost" href="/at-the-ledger.html">See the views &rarr;</a>
       </div>
     </div>
@@ -1069,6 +996,7 @@ footer.site-footer{padding:40px 0 48px;border-top:1px solid var(--hairline)}
           <div class="logo-mark">T</div>
           <span class="logo-name">Ty<span class="gr">mr</span></span>
         </a>
+        <p style="margin-top:16px;max-width:22rem;color:var(--slate);font-size:13.5px;line-height:1.6">Every hour of work &mdash; human or AI agent &mdash; flows through one ledger. Tymr is the capacity system of record.</p>
       </div>
       <div class="footer-cols">
         <div class="footer-col">
@@ -1086,6 +1014,7 @@ footer.site-footer{padding:40px 0 48px;border-top:1px solid var(--hairline)}
         </div>
         <div class="footer-col">
           <h4>Company</h4>
+          <a href="#" onclick="document.querySelector('.founder').scrollIntoView({behavior:'smooth'});return false;">About</a>
           <a href="/compliance.html">Compliance</a>
           <a href="/security.html">Security</a>
           <a href="/privacy.html">Privacy</a>
@@ -1099,29 +1028,6 @@ footer.site-footer{padding:40px 0 48px;border-top:1px solid var(--hairline)}
     </div>
   </div>
 </footer>
-
-<script>
-(function(){
-  const VALID = ['worker','manager','exec'];
-  function selectPersona(name){
-    if (!VALID.includes(name)) return;
-    document.querySelectorAll('[data-persona]').forEach(btn => {
-      const on = btn.dataset.persona === name;
-      btn.classList.toggle('active', on);
-      btn.setAttribute('aria-selected', on ? 'true' : 'false');
-    });
-    document.querySelectorAll('.persona-panel').forEach(p => {
-      p.classList.toggle('active', p.id === 'panel-' + name);
-    });
-  }
-  document.querySelectorAll('[data-persona]').forEach(el => {
-    el.addEventListener('click', (e) => {
-      e.preventDefault();
-      selectPersona(el.dataset.persona);
-    });
-  });
-})();
-</script>
 
 </body>
 </html>
