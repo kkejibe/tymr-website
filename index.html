@@ -109,23 +109,11 @@ h1 em{font-style:normal;color:var(--ink-2)}
   .ticker-chip{font-size:11px;gap:6px}
 }
 
-.hero-pillars{
-  margin-top:32px;display:flex;flex-wrap:wrap;gap:10px;
+.hero-proof{
+  margin-top:22px;max-width:640px;
+  font-family:var(--font-m);font-size:11px;color:var(--slate);
+  letter-spacing:.1em;text-transform:uppercase;line-height:1.9;
 }
-.hero-pillar{
-  font-family:var(--font-m);font-size:11px;color:var(--ink-2);
-  letter-spacing:.08em;text-transform:uppercase;
-  padding:5px 11px;border:1px solid var(--hairline);border-radius:100px;
-  background:var(--bg-warm);
-}
-.hero-pillar::before{
-  content:'';display:inline-block;width:5px;height:5px;border-radius:50%;
-  background:var(--brand-green);margin-right:7px;vertical-align:middle;
-}
-.hero-pillar:nth-child(2)::before{background:var(--brand-yellow)}
-.hero-pillar:nth-child(3)::before{background:var(--teal)}
-.hero-pillar:nth-child(4)::before{background:var(--indigo)}
-.hero-pillar:nth-child(5)::before{background:var(--accent)}
 
 .hero-audience{
   margin-top:18px;font-size:14px;color:var(--slate);font-style:italic;max-width:620px;
@@ -249,196 +237,13 @@ section{padding:72px 0}
   color:var(--slate-dim);letter-spacing:.04em;border-top:1px solid var(--hairline);
 }
 
-/* === OUTPUTS LIST — the six outputs of the ledger === */
-.outputs{
-  display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:32px;
+/* === SECTION LINK === */
+.sec-link{
+  display:inline-flex;align-items:center;gap:6px;margin-top:20px;
+  color:var(--ink);font-size:14px;font-weight:500;text-decoration:none;
+  border-bottom:1px solid var(--accent-line);padding-bottom:1px;transition:gap .15s;
 }
-@media(max-width:860px){.outputs{grid-template-columns:1fr 1fr}}
-@media(max-width:560px){.outputs{grid-template-columns:1fr}}
-.out-card{
-  background:var(--bg);border:1px solid var(--hairline);border-radius:14px;
-  padding:24px;display:flex;flex-direction:column;gap:10px;
-  transition:border-color .2s,transform .2s;
-}
-.out-card:hover{border-color:var(--hairline-strong);transform:translateY(-2px)}
-.out-tag{
-  align-self:flex-start;font-family:var(--font-m);font-size:10px;
-  letter-spacing:.14em;text-transform:uppercase;font-weight:500;
-  padding:4px 10px;border-radius:100px;
-  background:var(--accent-soft);color:var(--accent);border:1px solid var(--accent-line);
-}
-.out-card.featured{border-color:var(--ink);background:var(--bg-warm)}
-.out-card.featured .out-tag{background:var(--ink);color:#fff;border-color:var(--ink)}
-.out-card.byproduct{border-style:dashed}
-.out-card.byproduct .out-tag{background:var(--bg-soft);color:var(--slate);border-color:var(--hairline-strong)}
-.out-card h3{
-  font-family:var(--font-h);font-weight:600;font-size:16px;
-  color:var(--ink);letter-spacing:-0.015em;line-height:1.3;margin-top:2px;
-}
-.out-card.byproduct h3{color:var(--ink-2)}
-.out-card p{font-size:13.5px;color:var(--slate);line-height:1.6;margin:0}
-
-/* === SECTOR GRID === */
-.sectors{
-  display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:36px;
-}
-@media(max-width:860px){.sectors{grid-template-columns:1fr 1fr}}
-@media(max-width:560px){.sectors{grid-template-columns:1fr}}
-.sector{
-  background:var(--bg);border:1px solid var(--hairline);border-radius:14px;
-  padding:24px;display:flex;flex-direction:column;gap:8px;
-}
-.sector-ico{
-  width:32px;height:32px;border-radius:8px;
-  display:flex;align-items:center;justify-content:center;
-  background:var(--accent-soft);color:var(--accent);border:1px solid var(--accent-line);
-  margin-bottom:4px;
-}
-.sector:nth-child(2) .sector-ico{background:var(--teal-soft);color:var(--teal);border-color:var(--teal-line)}
-.sector:nth-child(3) .sector-ico{background:var(--indigo-soft);color:var(--indigo);border-color:var(--indigo-line)}
-.sector:nth-child(4) .sector-ico{background:var(--rose-soft);color:var(--rose);border-color:var(--rose-line)}
-.sector:nth-child(5) .sector-ico{background:var(--brand-green-soft);color:var(--brand-green);border-color:var(--brand-green-line)}
-.sector:nth-child(6) .sector-ico{background:var(--bg-soft);color:var(--ink);border-color:var(--hairline-strong)}
-.sector h3{
-  font-family:var(--font-h);font-weight:600;font-size:16px;
-  color:var(--ink);letter-spacing:-0.015em;line-height:1.3;
-}
-.sector p{font-size:13.5px;color:var(--slate);line-height:1.6;margin:0}
-
-/* === LOGO WALL — nine sources, colored by function === */
-.logo-wall{
-  margin-top:36px;display:grid;grid-template-columns:repeat(3,1fr);gap:12px;
-}
-@media(max-width:760px){.logo-wall{grid-template-columns:1fr 1fr}}
-@media(max-width:480px){.logo-wall{grid-template-columns:1fr}}
-.logo-chip{
-  display:flex;align-items:center;gap:14px;padding:16px 18px;
-  background:var(--bg);border:1px solid var(--hairline);border-radius:12px;
-  transition:border-color .2s,transform .15s,box-shadow .2s;
-}
-.logo-chip:hover{
-  border-color:var(--hairline-strong);transform:translateY(-2px);
-  box-shadow:0 4px 12px -8px rgba(11,11,15,0.10);
-}
-.logo-mark{
-  width:38px;height:38px;flex-shrink:0;border-radius:9px;
-  display:flex;align-items:center;justify-content:center;
-  font-family:var(--font-h);font-weight:600;font-size:15px;letter-spacing:-0.02em;
-}
-.logo-mark.cal{background:var(--brand-yellow-soft);color:var(--accent);border:1px solid var(--brand-yellow-line)}
-.logo-mark.chat{background:var(--brand-green-soft);color:var(--brand-green);border:1px solid var(--brand-green-line)}
-.logo-mark.dev{background:var(--indigo-soft);color:var(--indigo);border:1px solid var(--indigo-line)}
-.logo-mark.itsm{background:var(--teal-soft);color:var(--teal);border:1px solid var(--teal-line)}
-.logo-mark.hris{background:var(--rose-soft);color:var(--rose);border:1px solid var(--rose-line)}
-.logo-meta{display:flex;flex-direction:column;gap:3px;min-width:0}
-.logo-name{
-  font-family:var(--font-h);font-weight:600;font-size:14px;
-  color:var(--ink);letter-spacing:-0.01em;line-height:1.2;
-}
-.logo-fn{
-  font-family:var(--font-m);font-size:10px;letter-spacing:.14em;
-  text-transform:uppercase;color:var(--slate);font-weight:500;
-}
-
-/* === VIRTUAL FLOOR / HUMANS + AGENTS BLOCK === */
-.floor-block{
-  margin-top:32px;padding:36px;
-  background:linear-gradient(135deg,#0B0B0F 0%,#16181F 100%);
-  border:1px solid #1A1A1F;border-radius:18px;
-  display:grid;grid-template-columns:1.1fr 1fr;gap:36px;align-items:center;
-  position:relative;overflow:hidden;
-}
-@media(max-width:760px){.floor-block{grid-template-columns:1fr;padding:28px}}
-.floor-block::before{
-  content:'';position:absolute;inset:0;
-  background:radial-gradient(ellipse at 90% 10%, rgba(245,200,66,0.10), transparent 60%);
-  pointer-events:none;
-}
-.fb-tag{
-  font-family:var(--font-m);font-size:10px;letter-spacing:.14em;
-  color:#F5C842;text-transform:uppercase;font-weight:500;
-  padding:4px 10px;border:1px solid rgba(245,200,66,0.3);
-  background:rgba(245,200,66,0.08);border-radius:100px;
-  display:inline-block;margin-bottom:14px;position:relative;
-}
-.fb-text{position:relative}
-.fb-text h3{
-  font-family:var(--font-h);font-weight:600;
-  font-size:clamp(22px,2.6vw,30px);letter-spacing:-0.02em;
-  line-height:1.15;color:#fff;text-wrap:balance;
-}
-.fb-text h3 em{font-style:normal;color:#C8C9CC}
-.fb-text p{margin-top:14px;color:#9AA0A6;font-size:14.5px;line-height:1.65}
-.fb-text p strong{color:#F5C842;font-weight:500}
-.fb-cta{
-  margin-top:20px;display:inline-flex;align-items:center;gap:6px;
-  color:#F5C842;font-size:13px;font-weight:500;text-decoration:none;
-  font-family:var(--font-b);transition:gap .15s;
-}
-.fb-cta:hover{gap:10px}
-.fb-rows{display:flex;flex-direction:column;gap:8px;width:100%;max-width:360px;position:relative}
-.fb-row{
-  display:flex;align-items:center;gap:10px;padding:10px 14px;
-  background:rgba(255,255,255,0.025);border:1px solid rgba(255,255,255,0.06);
-  border-radius:10px;font-size:12px;
-}
-.fb-row.h{background:rgba(245,200,66,0.04);border-color:rgba(245,200,66,0.16)}
-.fb-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
-.fb-dot.k{background:#F5C842}
-.fb-dot.t{background:#00D9C0}
-.fb-row .who{flex:1;color:#A8ADBE;font-family:var(--font-m);font-size:11px}
-.fb-row .pill{
-  font-family:var(--font-m);font-size:9px;letter-spacing:.08em;
-  padding:2px 8px;border-radius:100px;
-  background:rgba(245,200,66,0.10);color:#F5C842;
-  border:1px solid rgba(245,200,66,0.25);
-}
-.fb-row .pill.t{background:rgba(0,217,192,0.10);color:#00D9C0;border-color:rgba(0,217,192,0.25)}
-
-/* === PERSONA TABS — worker / manager / executive === */
-.persona-intro{
-  margin-top:36px;display:grid;grid-template-columns:repeat(3,1fr);gap:14px;
-}
-@media(max-width:760px){.persona-intro{grid-template-columns:1fr}}
-.persona-tab{
-  background:var(--bg);border:1px solid var(--hairline);border-radius:14px;
-  padding:22px;display:flex;flex-direction:column;gap:10px;
-  cursor:pointer;text-align:left;font-family:var(--font-b);width:100%;
-  transition:border-color .2s,transform .15s,box-shadow .2s;
-}
-.persona-tab:hover{
-  border-color:var(--hairline-strong);transform:translateY(-2px);
-  box-shadow:0 4px 16px -8px rgba(11,11,15,0.08);
-}
-.persona-tab.active{
-  border-color:var(--ink);
-  box-shadow:0 4px 16px -8px rgba(11,11,15,0.12);
-}
-.persona-tab-ico{
-  width:34px;height:34px;border-radius:9px;
-  display:flex;align-items:center;justify-content:center;
-  background:var(--brand-green-soft);color:var(--brand-green);
-  border:1px solid var(--brand-green-line);
-}
-.persona-tab.teal .persona-tab-ico{
-  background:var(--teal-soft);color:var(--teal);border-color:var(--teal-line);
-}
-.persona-tab.indigo .persona-tab-ico{
-  background:var(--indigo-soft);color:var(--indigo);border-color:var(--indigo-line);
-}
-.persona-tab-tag{
-  font-family:var(--font-m);font-size:10px;letter-spacing:.14em;
-  text-transform:uppercase;color:var(--brand-green);font-weight:500;
-}
-.persona-tab.teal .persona-tab-tag{color:var(--teal)}
-.persona-tab.indigo .persona-tab-tag{color:var(--indigo)}
-.persona-tab h3{
-  font-family:var(--font-h);font-weight:600;font-size:16px;
-  color:var(--ink);letter-spacing:-0.015em;line-height:1.25;
-}
-.persona-tab p{font-size:13px;color:var(--slate);line-height:1.55;margin:0}
-.persona-panel{display:none;margin-top:36px}
-.persona-panel.active{display:block}
+.sec-link:hover{gap:10px}
 
 /* === COMPLIANCE BYPRODUCT BLOCK === */
 .byproduct-block{
@@ -551,13 +356,7 @@ footer.site-footer{padding:40px 0 48px;border-top:1px solid var(--hairline)}
 
     <p class="hero-audience">For the people doing the work, the managers running it, and the leaders funding it.</p>
 
-    <div class="hero-pillars">
-      <span class="hero-pillar">Zero-Entry Capture</span>
-      <span class="hero-pillar">9 Source Integrations</span>
-      <span class="hero-pillar">Capacity &amp; True Project Cost</span>
-      <span class="hero-pillar">Humans + AI Agents</span>
-      <span class="hero-pillar">Open Standard (UTEv1)</span>
-    </div>
+    <p class="hero-proof">Zero-Entry Capture &middot; 9 Source Integrations &middot; Capacity &amp; True Project Cost &middot; Humans + AI Agents &middot; Open Standard (UTEv1)</p>
 
     <div class="hero-actions">
       <a class="btn-primary" href="mailto:hello@tymrlogic.com?subject=Tymr%20demo%20request">Watch your Tuesday reconstruct itself &mdash; 30-second demo</a>
@@ -632,34 +431,6 @@ footer.site-footer{padding:40px 0 48px;border-top:1px solid var(--hairline)}
     <span class="sec-label">The problem</span>
     <h2 class="sec-head">Timesheets are a tax on the people doing the work &mdash; <em>and the data you get back isn't true anyway.</em></h2>
     <p class="sec-sub">Workers don't fill them in. The ones who do, pad. Leaders make decisions on numbers that were never real.</p>
-
-    <div class="layer indigo" style="margin-top:36px">
-      <div class="layer-text">
-        <span class="layer-tag indigo">What actually goes wrong</span>
-        <h3>One missing signal. <em>Five broken decisions.</em></h3>
-        <p>When time data is fiction, everything riding on it is fiction too.</p>
-        <ul>
-          <li><strong>Workers</strong> spend hours on timesheet hygiene everyone knows is half-real.</li>
-          <li><strong>Managers</strong> fly blind on capacity until a deadline slips.</li>
-          <li><strong>PMOs</strong> miss projects because the team was already over-allocated.</li>
-          <li><strong>Finance</strong> can't split OpEx from CapEx until quarter-close.</li>
-          <li><strong>Executives</strong> approve portfolio shifts on data nobody trusts.</li>
-        </ul>
-      </div>
-      <div class="layer-shot">
-        <div class="shot light">
-          <div class="shot-bar">
-            <i></i><i></i><i></i>
-            <span class="shot-url">app.tymrlogic.com / floor</span>
-          </div>
-          <img class="shot-img" src="/assets/screens/floor-light.png" alt="Tymr floor view — live work in progress, humans and agents on one grid" loading="lazy"/>
-          <div class="shot-cap">
-            <span>Floor &mdash; live capacity, no timesheets in sight</span>
-            <span class="live">Streaming</span>
-          </div>
-        </div>
-      </div>
-    </div>
   </section>
 </div>
 
@@ -698,38 +469,6 @@ footer.site-footer{padding:40px 0 48px;border-top:1px solid var(--hairline)}
         </div>
       </div>
 
-      <div class="outputs">
-        <div class="out-card featured">
-          <span class="out-tag">Featured</span>
-          <h3>Capacity &amp; Utilization</h3>
-          <p>Who's capacity-constrained, where hours go, where the gaps are. Live, per-worker, per-team.</p>
-        </div>
-        <div class="out-card">
-          <span class="out-tag">Project cost</span>
-          <h3>Labor + Non-Labor</h3>
-          <p>Hours plus contractors, infrastructure, consulting. One column. Complete the first time.</p>
-        </div>
-        <div class="out-card">
-          <span class="out-tag">Accounting split</span>
-          <h3>OpEx / CapEx</h3>
-          <p>Expense work split from balance-sheet work &mdash; project by project, in real time.</p>
-        </div>
-        <div class="out-card">
-          <span class="out-tag">Strategic</span>
-          <h3>Portfolio Scenarios</h3>
-          <p>Move people and agents across initiatives. See capacity and cost shift before you commit.</p>
-        </div>
-        <div class="out-card">
-          <span class="out-tag">Operating</span>
-          <h3>Live Event Cost</h3>
-          <p>Every meeting, incident, and agent run carries a dollar weight in real time.</p>
-        </div>
-        <div class="out-card byproduct">
-          <span class="out-tag">Byproduct</span>
-          <h3>Compliance artifacts</h3>
-          <p>Audit-ready documentation, built from the same ledger &mdash; no quarterly survey. <a href="/compliance.html" style="color:var(--ink-2);text-decoration:underline">See compliance &rarr;</a></p>
-        </div>
-      </div>
     </section>
   </div>
 </div>
@@ -750,9 +489,7 @@ footer.site-footer{padding:40px 0 48px;border-top:1px solid var(--hairline)}
           <ul>
             <li><strong>Zero entries.</strong> No timesheet. No Friday reconstruction from memory.</li>
             <li><strong>Under a minute.</strong> The daily review is a glance, not a form.</li>
-            <li><strong>Private by default.</strong> My Time is self-only. Your record is yours.</li>
-            <li><strong>Break time untracked by design.</strong> If it isn't work, Tymr doesn't watch it.</li>
-            <li><strong>Privacy Shield.</strong> Exactly what each integration sees, on one page, in plain English.</li>
+            <li><strong>Private by default.</strong> My Time is self-only, break time is untracked by design, and the Privacy Shield shows exactly what each integration sees &mdash; in plain English.</li>
           </ul>
         </div>
         <div class="layer-shot">
@@ -787,10 +524,8 @@ footer.site-footer{padding:40px 0 48px;border-top:1px solid var(--hairline)}
         <p>Allocation heatmaps across every worker and agent. Project health with labor + non-labor in one column. Portfolio scenarios you can run before you commit.</p>
         <ul>
           <li><strong>Capacity heatmaps.</strong> Every worker and agent &mdash; over, under, or well allocated.</li>
-          <li><strong>True project cost.</strong> Hours plus contractors, infrastructure, and consulting in one number.</li>
-          <li><strong>OpEx / CapEx, live.</strong> Project-level classification as work happens, not at close.</li>
+          <li><strong>True project cost.</strong> Hours plus contractors, infrastructure, and consulting in one number &mdash; with the OpEx/CapEx split live, not at quarter-close.</li>
           <li><strong>Portfolio scenarios.</strong> Move people and agents across initiatives, see cost shift before you sign off.</li>
-          <li><strong>Event cost ticker.</strong> A dollar weight on every recurring meeting, incident, and agent run.</li>
         </ul>
       </div>
       <div class="layer-shot">
@@ -840,100 +575,9 @@ footer.site-footer{padding:40px 0 48px;border-top:1px solid var(--hairline)}
   <section>
     <span class="sec-label">Humans + Agents on one floor</span>
     <h2 class="sec-head">The workforce includes agents now. <em>So does the ledger.</em></h2>
-    <p class="sec-sub">AI agents aren't a sidebar. They consume compute, produce work, and show up in the same capacity and cost reports as humans.</p>
-
-    <div class="floor-block">
-      <div class="fb-text">
-        <span class="fb-tag">One floor, one cost lens</span>
-        <h3>Claude, Copilot, LangChain, and your custom agents &mdash; <em>on the same grid as your team.</em></h3>
-        <p>Tymr's open event substrate &mdash; <strong>UTEv1</strong> &mdash; is the format both workforces emit into. Same shape for a Jira move and an agent run. Same attribution. Same cost. <a href="/agents.html" class="fb-cta">Tour the agent floor &rarr;</a></p>
-      </div>
-      <div class="fb-rows">
-        <div class="fb-row h"><span class="fb-dot k"></span><span class="who">K. Ejibe &middot; Auth-v2 review</span><span class="pill">Human</span></div>
-        <div class="fb-row"><span class="fb-dot t"></span><span class="who">claude-agent-04 &middot; PR triage</span><span class="pill t">Agent</span></div>
-        <div class="fb-row h"><span class="fb-dot k"></span><span class="who">S. Patel &middot; Discovery interview</span><span class="pill">Human</span></div>
-        <div class="fb-row"><span class="fb-dot t"></span><span class="who">copilot-svc-02 &middot; Refactor</span><span class="pill t">Agent</span></div>
-        <div class="fb-row h"><span class="fb-dot k"></span><span class="who">J. Liu &middot; Portfolio sync</span><span class="pill">Human</span></div>
-      </div>
-    </div>
+    <p class="sec-sub">Tymr's open event substrate &mdash; <strong>UTEv1</strong> &mdash; is the format both workforces emit into, with SDKs for the Claude Agent SDK and LangChain. Same shape for a Jira move and an agent run. Same attribution. Same cost.</p>
+    <a href="/agents.html" class="sec-link">Tour the agent floor &rarr;</a>
   </section>
-</div>
-
-<!-- SECTION 7 — INTEGRATIONS -->
-<div class="sec-band">
-  <div class="container">
-    <section>
-      <span class="sec-label">Integrations</span>
-      <h2 class="sec-head">Nine sources. <em>Six function groups. Every sector.</em></h2>
-      <p class="sec-sub">Functions, not industries, decide what plugs in.</p>
-
-      <div class="logo-wall">
-        <div class="logo-chip">
-          <div class="logo-mark cal" aria-hidden="true">C</div>
-          <div class="logo-meta">
-            <span class="logo-name">Google Calendar</span>
-            <span class="logo-fn">Calendar</span>
-          </div>
-        </div>
-        <div class="logo-chip">
-          <div class="logo-mark cal" aria-hidden="true">O</div>
-          <div class="logo-meta">
-            <span class="logo-name">Microsoft Outlook</span>
-            <span class="logo-fn">Calendar</span>
-          </div>
-        </div>
-        <div class="logo-chip">
-          <div class="logo-mark chat" aria-hidden="true">S</div>
-          <div class="logo-meta">
-            <span class="logo-name">Slack</span>
-            <span class="logo-fn">Chat</span>
-          </div>
-        </div>
-        <div class="logo-chip">
-          <div class="logo-mark chat" aria-hidden="true">T</div>
-          <div class="logo-meta">
-            <span class="logo-name">Microsoft Teams</span>
-            <span class="logo-fn">Chat &amp; meetings</span>
-          </div>
-        </div>
-        <div class="logo-chip">
-          <div class="logo-mark chat" aria-hidden="true">M</div>
-          <div class="logo-meta">
-            <span class="logo-name">Google Meet</span>
-            <span class="logo-fn">Meetings</span>
-          </div>
-        </div>
-        <div class="logo-chip">
-          <div class="logo-mark dev" aria-hidden="true">J</div>
-          <div class="logo-meta">
-            <span class="logo-name">Jira</span>
-            <span class="logo-fn">Ticketing</span>
-          </div>
-        </div>
-        <div class="logo-chip">
-          <div class="logo-mark dev" aria-hidden="true">G</div>
-          <div class="logo-meta">
-            <span class="logo-name">GitHub</span>
-            <span class="logo-fn">Dev tools</span>
-          </div>
-        </div>
-        <div class="logo-chip">
-          <div class="logo-mark itsm" aria-hidden="true">N</div>
-          <div class="logo-meta">
-            <span class="logo-name">ServiceNow</span>
-            <span class="logo-fn">ITSM</span>
-          </div>
-        </div>
-        <div class="logo-chip">
-          <div class="logo-mark hris" aria-hidden="true">W</div>
-          <div class="logo-meta">
-            <span class="logo-name">Workday</span>
-            <span class="logo-fn">HRIS</span>
-          </div>
-        </div>
-      </div>
-    </section>
-  </div>
 </div>
 
 <!-- CTA -->
