@@ -3,17 +3,17 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>See the numbers &mdash; Tymr</title>
-<meta name="description" content="Model the ROI of moving to Tymr, estimate the compliance pack as a byproduct, and preview the actual sample pack we ship. Three ways to see what an accurate capacity ledger is worth."/>
+<title>Sample audit pack &amp; ROI &mdash; Tymr</title>
+<meta name="description" content="Preview the actual audit pack Tymr ships — ten anonymized slides, the workpaper CSV, per-hour source citations — and model the ROI of moving to an accurate capacity ledger."/>
 
-<meta property="og:title" content="See the numbers &mdash; Tymr"/>
-<meta property="og:description" content="ROI &middot; Compliance estimate &middot; Sample pack. Three views of what an accurate capacity ledger is worth."/>
+<meta property="og:title" content="Sample audit pack &amp; ROI &mdash; Tymr"/>
+<meta property="og:description" content="The actual audit pack, anonymized &mdash; and the switch math for your own team."/>
 <meta property="og:type" content="website"/>
 <meta property="og:url" content="https://tymrlogic.com/numbers"/>
 <meta property="og:image" content="https://tymrlogic.com/og.png"/>
 <meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:title" content="See the numbers &mdash; Tymr"/>
-<meta name="twitter:description" content="ROI, compliance estimate, sample pack &mdash; in your own numbers."/>
+<meta name="twitter:title" content="Sample audit pack &amp; ROI &mdash; Tymr"/>
+<meta name="twitter:description" content="The actual audit pack, anonymized &mdash; and the switch math for your own team."/>
 
 <link rel="icon" type="image/png" href="/favicon.png"/>
 <link rel="apple-touch-icon" href="/apple-touch-icon.png"/>
@@ -27,7 +27,7 @@
 <style>
 /* === COLOR-CODED TABS === */
 .numbers-tabs{
-  display:grid;grid-template-columns:repeat(3,1fr);gap:10px;
+  display:grid;grid-template-columns:repeat(2,1fr);gap:10px;
   margin-top:32px;padding:6px;
   background:var(--bg-warm);border:1px solid var(--hairline);
   border-radius:16px;
@@ -53,13 +53,6 @@
 .numbers-tab:hover{background:var(--bg);border-color:var(--hairline-strong)}
 
 /* Active states — color-coded by tab */
-.numbers-tab.active[data-tab="estimate"]{
-  background:var(--accent-soft);border-color:var(--accent-line);
-  box-shadow:0 1px 0 rgba(166,117,18,0.08);
-}
-.numbers-tab.active[data-tab="estimate"] .nt-tag,
-.numbers-tab.active[data-tab="estimate"] .nt-name{color:var(--accent)}
-
 .numbers-tab.active[data-tab="roi"]{
   background:var(--teal-soft);border-color:var(--teal-line);
   box-shadow:0 1px 0 rgba(14,124,110,0.08);
@@ -82,8 +75,6 @@
 .np{position:relative;padding:32px 28px;border-radius:16px;background:var(--bg);border:1px solid var(--hairline)}
 @media(max-width:720px){.np{padding:20px 16px}}
 .np::before{content:'';position:absolute;left:0;right:0;top:0;height:4px;border-radius:16px 16px 0 0}
-#np-estimate{border-color:var(--accent-line);background:linear-gradient(180deg,var(--accent-soft) 0%,var(--bg) 8%)}
-#np-estimate::before{background:var(--accent)}
 #np-roi{border-color:var(--teal-line);background:linear-gradient(180deg,var(--teal-soft) 0%,var(--bg) 8%)}
 #np-roi::before{background:var(--teal)}
 #np-pack{border-color:var(--indigo-line);background:linear-gradient(180deg,var(--indigo-soft) 0%,var(--bg) 8%)}
@@ -284,7 +275,7 @@ details.slide.dark .slide-body ul li{color:#9AA0A6}
       <ul class="nav-links">
         <li><a href="/agents.html">Agents</a></li>
         <li><a href="/at-the-ledger.html">Floor to ledger</a></li>
-        <li><a href="/numbers.html" class="active">See the numbers</a></li>
+        <li><a href="/numbers.html" class="active">Sample pack &amp; ROI</a></li>
         <li><a href="/pricing.html">Pricing</a></li>
       </ul>
       <a class="nav-cta" href="mailto:hello@tymrlogic.com?subject=Tymr%20demo%20request">Request a demo</a>
@@ -295,170 +286,29 @@ details.slide.dark .slide-body ul li{color:#9AA0A6}
 <div class="container">
   <div class="page-head">
     <span class="accent-bar"></span>
-    <div class="eyebrow">SEE THE NUMBERS</div>
-    <h1>ROI, compliance estimate, <em>and a real sample pack.</em></h1>
-    <p class="lede">Three ways to see what an accurate ledger is worth &mdash; in your own numbers.</p>
+    <div class="eyebrow">SAMPLE PACK &amp; ROI</div>
+    <h1>The actual audit pack &mdash; <em>and the switch math.</em></h1>
+    <p class="lede">The pack your accountant gets, anonymized &mdash; and what an accurate ledger is worth in your own numbers.</p>
   </div>
 
   <div class="content">
 
-    <!-- COLOR-CODED TABS — ROI leads, compliance becomes the byproduct view -->
+    <!-- COLOR-CODED TABS — the sample pack leads, ROI second -->
     <div class="numbers-tabs" role="tablist">
-      <button class="numbers-tab active" role="tab" data-tab="roi" aria-label="ROI from moving to Tymr">
-        <span class="nt-tag">ROI</span>
-        <span class="nt-name">The switch math</span>
-        <span class="nt-sub">What an accurate ledger is worth, in your numbers.</span>
-      </button>
-      <button class="numbers-tab" role="tab" data-tab="estimate" aria-label="Compliance estimate &mdash; R and D credit as byproduct">
-        <span class="nt-tag">Byproduct</span>
-        <span class="nt-name">Compliance estimate</span>
-        <span class="nt-sub">What the R&amp;D credit looks like as a byproduct.</span>
-      </button>
-      <button class="numbers-tab" role="tab" data-tab="pack" aria-label="Sample pack preview">
+      <button class="numbers-tab active" role="tab" data-tab="pack" aria-label="Sample pack preview">
         <span class="nt-tag">Sample</span>
         <span class="nt-name">The actual pack</span>
         <span class="nt-sub">Ten anonymized slides &mdash; what your accountant gets.</span>
       </button>
-    </div>
-
-    <!-- PANEL 1: ESTIMATE (Compliance / R&D Credit as Byproduct) -->
-    <div class="np" id="np-estimate" role="tabpanel">
-      <h2>The compliance pack, <em>as a byproduct.</em></h2>
-      <p class="np-sub">Once the ledger is real, the R&amp;D credit lifts because the substantiation holds up. Drag the sliders to see what a comparable claim could look like.</p>
-
-      <div class="calc-wrap">
-        <div class="calc-panel">
-          <div class="calc-group">
-            <div class="calc-label">Engineers in R&amp;D roles <span class="calc-value" id="engineers-v">80</span></div>
-            <input type="range" id="engineers" min="5" max="2000" step="5" value="80"/>
-          </div>
-          <div class="calc-group">
-            <div class="calc-label">Avg fully-loaded cost / engineer <span class="calc-value" id="salary-v">$210K</span></div>
-            <input type="range" id="salary" min="100" max="400" step="5" value="210"/>
-          </div>
-          <div class="calc-group">
-            <div class="calc-label">% time on qualifying R&amp;D <span class="calc-value" id="rdPct-v">70%</span></div>
-            <input type="range" id="rdPct" min="20" max="100" step="5" value="70"/>
-          </div>
-          <div class="calc-group">
-            <div class="calc-label">Primary state / region for R&amp;D work</div>
-            <select class="calc-select" id="state">
-              <optgroup label="High-credit states">
-                <option value="az">Arizona (incremental — eff. ~12%)</option>
-                <option value="ri">Rhode Island (eff. ~10%)</option>
-                <option value="ca" selected>California (eff. ~7.5%)</option>
-                <option value="in">Indiana (eff. ~7.5%)</option>
-                <option value="oh">Ohio (~7%)</option>
-                <option value="ct">Connecticut (~6%)</option>
-                <option value="ny">New York (Excelsior — eff. ~6%)</option>
-                <option value="ia">Iowa (~6.5%, refundable)</option>
-                <option value="nd">North Dakota (eff. ~6%)</option>
-                <option value="wi">Wisconsin (~5.75%)</option>
-              </optgroup>
-              <optgroup label="Mid-credit states">
-                <option value="ma">Massachusetts (eff. ~5%)</option>
-                <option value="tx">Texas (~5% franchise credit)</option>
-                <option value="pa">Pennsylvania (eff. ~5%)</option>
-                <option value="nj">New Jersey (eff. ~5%)</option>
-                <option value="ga">Georgia (eff. ~5%)</option>
-                <option value="mn">Minnesota (eff. ~5%)</option>
-                <option value="va">Virginia (eff. ~5%)</option>
-                <option value="fl">Florida (eff. ~5%)</option>
-                <option value="me">Maine (eff. ~4%)</option>
-                <option value="ut">Utah (eff. ~3.75%)</option>
-                <option value="mo">Missouri (eff. ~3.5%)</option>
-                <option value="il">Illinois (eff. ~3.25%)</option>
-                <option value="ks">Kansas (eff. ~3.25%)</option>
-                <option value="nm">New Mexico (eff. ~4%)</option>
-              </optgroup>
-              <optgroup label="Limited / capped credits">
-                <option value="md">Maryland (eff. ~2.5%)</option>
-                <option value="nc">North Carolina (eff. ~2.5%)</option>
-                <option value="sc">South Carolina (eff. ~2.5%)</option>
-                <option value="co">Colorado (eff. ~2%)</option>
-                <option value="vt">Vermont (eff. ~2.7%)</option>
-                <option value="ne">Nebraska (eff. ~8%)</option>
-                <option value="hi">Hawaii (eff. ~10%, refundable)</option>
-                <option value="la">Louisiana (eff. ~8%)</option>
-                <option value="ak">Alaska (eff. ~1.8%)</option>
-                <option value="de">Delaware (eff. ~1%)</option>
-                <option value="wv">West Virginia (eff. ~3%)</option>
-                <option value="nh">New Hampshire (eff. ~1%)</option>
-              </optgroup>
-              <optgroup label="Canada — SR&amp;ED">
-                <option value="ca-fed">Canadian SR&amp;ED (federal ~15% on qualifying spend)</option>
-              </optgroup>
-              <optgroup label="No state R&amp;D credit available">
-                <option value="wa">Washington — none</option>
-                <option value="nv">Nevada — none</option>
-                <option value="sd">South Dakota — none</option>
-                <option value="tn">Tennessee — none</option>
-                <option value="wy">Wyoming — none</option>
-                <option value="mi">Michigan — repealed</option>
-                <option value="or">Oregon — expired</option>
-                <option value="ok">Oklahoma — eliminated</option>
-                <option value="mt">Montana — repealed</option>
-                <option value="al">Alabama — none</option>
-                <option value="ms">Mississippi — none</option>
-                <option value="ky">Kentucky — limited</option>
-              </optgroup>
-              <optgroup label="Other">
-                <option value="other">Other / international (~3% effective)</option>
-                <option value="none">Federal only — no regional credit</option>
-              </optgroup>
-            </select>
-          </div>
-        </div>
-
-        <div class="calc-panel result">
-          <div class="calc-label">ESTIMATED RECOVERABLE CREDIT · YEAR 1</div>
-          <div class="calc-big" id="total">—</div>
-          <div class="calc-sub-num" id="totalRange">—</div>
-
-          <div class="calc-divider"></div>
-
-          <div class="calc-row">
-            <span class="k">Qualifying R&amp;D spend</span>
-            <span class="v" id="qre">—</span>
-          </div>
-          <div class="calc-row">
-            <span class="k">Federal credit (~8% typical)</span>
-            <span class="v gold" id="fed">—</span>
-          </div>
-          <div class="calc-row">
-            <span class="k">Regional credit <span id="stateName">(California)</span></span>
-            <span class="v cyan" id="stateAmt">—</span>
-          </div>
-          <div class="calc-row">
-            <span class="k">Per engineer / year</span>
-            <span class="v" id="perEng">—</span>
-          </div>
-
-          <div class="calc-disclaimer">
-            <strong>Estimate only.</strong> Actual credit depends on your qualifying-research review and how each activity gets substantiated. Regional rates reflect typical effective rates published in 2024&ndash;2025 industry surveys and assume a multi-year claimer with a normal base period. This isn't tax advice &mdash; Tymr produces the per-worker source-event evidence your accountant or tax firm needs to defend the credit.
-          </div>
-        </div>
-      </div>
-
-      <section style="margin-top:32px">
-        <h2>Where the numbers come from</h2>
-        <p>Federal: we model the <strong>Alternative Simplified Credit (ASC)</strong> &mdash; 14% of qualifying spend above 50% of the prior-three-year average, which lands around <strong>7&ndash;10%</strong> for a typical software org. We default to 8%. Regional rates come from published 2024&ndash;2025 R&amp;D credit surveys (BDO, EY, Deloitte, KBKG) and represent typical effective rates for a software company claiming for 3+ years. Canada SR&amp;ED is shown as the federal 15% basic rate.</p>
-        <p><strong>Qualifying spend</strong> = wages for employees performing qualified research, supplies consumed in R&amp;D, 65% of contract research, and certain capitalized software-development costs. Management and back-office time generally doesn't qualify.</p>
-      </section>
-
-      <section style="margin-top:32px">
-        <h2>Why substantiation matters more than the math</h2>
-        <p>The math is the easy part. The hard part &mdash; why most organizations under-claim &mdash; is <strong>substantiation</strong>: contemporaneous evidence tied to specific projects and workers. That's what falls out of the Tymr ledger: every hour traces back to a Jira ticket, a PR, a calendar block, an incident, or an agent run. <a href="/compliance.html">See the compliance view &rarr;</a></p>
-      </section>
-
-      <div class="cta-inline" style="margin-top:32px">
-        <a href="mailto:hello@tymrlogic.com?subject=Tymr%20demo%20request" class="btn-primary">Request a demo</a>
-        <a href="/utev1.html" class="btn-ghost">See how evidence is captured &rarr;</a>
-      </div>
+      <button class="numbers-tab" role="tab" data-tab="roi" aria-label="ROI from moving to Tymr">
+        <span class="nt-tag">ROI</span>
+        <span class="nt-name">The switch math</span>
+        <span class="nt-sub">What an accurate ledger is worth, in your numbers.</span>
+      </button>
     </div>
 
     <!-- PANEL 2: ROI (Capacity ledger ROI calculator — now the default) -->
-    <div class="np active" id="np-roi" role="tabpanel">
+    <div class="np" id="np-roi" role="tabpanel">
       <h2>The switch math. <em>What an accurate ledger saves you in year one.</em></h2>
       <p class="np-sub">Recovered hours, admin time saved, allocation accuracy, productivity lift. Drag the sliders for your team.</p>
 
@@ -564,7 +414,7 @@ details.slide.dark .slide-body ul li{color:#9AA0A6}
     </div>
 
     <!-- PANEL 3: SAMPLE PACK -->
-    <div class="np" id="np-pack" role="tabpanel">
+    <div class="np active" id="np-pack" role="tabpanel">
       <h2>The sample pack. <em>Anonymized, but real.</em></h2>
       <p class="np-sub">Ten slides from a representative software company &mdash; the same structure your tax firm receives. Names scrubbed, dollars rounded; the methodology is real.</p>
 
@@ -861,7 +711,7 @@ details.slide.dark .slide-body ul li{color:#9AA0A6}
         <div class="footer-links">
           <a href="/agents.html">Agents</a>
           <a href="/at-the-ledger.html">Floor to ledger</a>
-          <a href="/numbers.html">See the numbers</a>
+          <a href="/numbers.html">Sample pack &amp; ROI</a>
           <a href="/pricing.html">Pricing</a>
           <a href="/utev1.html">UTEv1</a>
           <a href="/compliance.html">Compliance</a>
@@ -880,7 +730,11 @@ details.slide.dark .slide-body ul li{color:#9AA0A6}
 // ============================
 // TAB SWITCHING (with URL hash sync)
 // ============================
-const VALID_TABS = ['roi', 'estimate', 'pack'];
+// The R&D-credit estimator moved to /compliance.html#estimate — forward old links.
+if ((window.location.hash || '') === '#estimate') {
+  window.location.replace('/compliance.html#estimate');
+}
+const VALID_TABS = ['pack', 'roi'];
 function selectTab(name, opts) {
   if (!VALID_TABS.includes(name)) return;
   document.querySelectorAll('.numbers-tab').forEach(b => b.classList.toggle('active', b.dataset.tab === name));
@@ -901,77 +755,11 @@ window.addEventListener('hashchange', () => {
   if (VALID_TABS.includes(h)) selectTab(h, { scroll: false });
 });
 
-// ============================
-// R&D CREDIT CALCULATOR
-// Effective regional credit rates as % of total qualifying spend
-// ============================
-const stateRates = {
-  az: 0.12,  ri: 0.10,  ca: 0.075, in: 0.075, oh: 0.07,
-  ct: 0.06,  ny: 0.06,  ia: 0.065, nd: 0.06,  wi: 0.0575,
-  ma: 0.05,  tx: 0.05,  pa: 0.05,  nj: 0.05,  ga: 0.05,
-  mn: 0.05,  va: 0.05,  fl: 0.05,  me: 0.04,  ut: 0.0375,
-  mo: 0.035, il: 0.0325,ks: 0.0325,nm: 0.04,
-  md: 0.025, nc: 0.025, sc: 0.025, co: 0.02,  vt: 0.027,
-  ne: 0.08,  hi: 0.10,  la: 0.08,  ak: 0.018, de: 0.01,
-  wv: 0.03,  nh: 0.01,
-  'ca-fed': 0.15,
-  wa: 0, nv: 0, sd: 0, tn: 0, wy: 0, mi: 0, or: 0, ok: 0,
-  mt: 0, al: 0, ms: 0, ky: 0,
-  other: 0.03, none: 0
-};
-const stateLabels = {
-  az: '(Arizona)', ri: '(Rhode Island)', ca: '(California)',
-  in: '(Indiana)', oh: '(Ohio)', ct: '(Connecticut)', ny: '(New York)',
-  ia: '(Iowa)', nd: '(North Dakota)', wi: '(Wisconsin)',
-  ma: '(Massachusetts)', tx: '(Texas)', pa: '(Pennsylvania)',
-  nj: '(New Jersey)', ga: '(Georgia)', mn: '(Minnesota)',
-  va: '(Virginia)', fl: '(Florida)', me: '(Maine)', ut: '(Utah)',
-  mo: '(Missouri)', il: '(Illinois)', ks: '(Kansas)', nm: '(New Mexico)',
-  md: '(Maryland)', nc: '(North Carolina)', sc: '(South Carolina)',
-  co: '(Colorado)', vt: '(Vermont)', ne: '(Nebraska)', hi: '(Hawaii)',
-  la: '(Louisiana)', ak: '(Alaska)', de: '(Delaware)',
-  wv: '(West Virginia)', nh: '(New Hampshire)',
-  'ca-fed': '(Canada SR&ED)',
-  wa: '(Washington — none)', nv: '(Nevada — none)',
-  sd: '(South Dakota — none)', tn: '(Tennessee — none)',
-  wy: '(Wyoming — none)', mi: '(Michigan — repealed)',
-  or: '(Oregon — expired)', ok: '(Oklahoma — eliminated)',
-  mt: '(Montana — repealed)', al: '(Alabama — none)',
-  ms: '(Mississippi — none)', ky: '(Kentucky — limited)',
-  other: '(other / international)', none: '(federal only)'
-};
 const fmt = n => {
   if (n >= 1_000_000) return '$' + (n / 1_000_000).toFixed(2) + 'M';
   if (n >= 1_000) return '$' + Math.round(n / 1_000).toLocaleString() + 'K';
   return '$' + Math.round(n).toLocaleString();
 };
-function recalcRD() {
-  const engineers = +document.getElementById('engineers').value;
-  const salary = +document.getElementById('salary').value * 1000;
-  const rdPct = +document.getElementById('rdPct').value / 100;
-  const state = document.getElementById('state').value;
-  document.getElementById('engineers-v').textContent = engineers;
-  document.getElementById('salary-v').textContent = '$' + (salary / 1000).toFixed(0) + 'K';
-  document.getElementById('rdPct-v').textContent = (rdPct * 100).toFixed(0) + '%';
-  document.getElementById('stateName').textContent = stateLabels[state];
-  const qre = engineers * salary * rdPct;
-  const fedLow = qre * 0.065, fedMid = qre * 0.08, fedHigh = qre * 0.10;
-  const stateAmt = qre * stateRates[state];
-  const totalMid = fedMid + stateAmt;
-  const totalLow = fedLow + stateAmt;
-  const totalHigh = fedHigh + stateAmt;
-  const perEng = totalMid / engineers;
-  document.getElementById('qre').textContent = fmt(qre);
-  document.getElementById('fed').textContent = fmt(fedMid);
-  document.getElementById('stateAmt').textContent = fmt(stateAmt);
-  document.getElementById('perEng').textContent = fmt(perEng);
-  document.getElementById('total').textContent = fmt(totalMid);
-  document.getElementById('totalRange').textContent = `Range: ${fmt(totalLow)} – ${fmt(totalHigh)} depending on base period`;
-}
-['engineers', 'salary', 'rdPct', 'state'].forEach(id => {
-  document.getElementById(id).addEventListener('input', recalcRD);
-});
-recalcRD();
 
 // ============================
 // TIME TRACKING ROI CALCULATOR
