@@ -128,7 +128,7 @@
       <ul class="nav-links">
         <li><a href="/agents.html">Agents</a></li>
         <li><a href="/at-the-ledger.html">Floor to ledger</a></li>
-        <li><a href="/numbers.html">See the numbers</a></li>
+        <li><a href="/numbers.html">Sample pack &amp; ROI</a></li>
         <li><a href="/pricing.html">Pricing</a></li>
       </ul>
       <a class="nav-cta" href="mailto:hello@tymrlogic.com?subject=Tymr%20demo%20request">Request a demo</a>
@@ -289,6 +289,133 @@
       <p>Every hour in a Tymr workpaper traces back to a source event &mdash; time-stamped and immutable, with hash-chainable corrections expressed as new events that reference the original. When your tax firm prepares the credit, when your auditor walks the cap-ex schedule, or when DCAA looks at your floor checks, the evidence is already on file.</p>
     </section>
 
+    <!-- R&D CREDIT ESTIMATOR (moved from /numbers) -->
+    <section id="estimate">
+      <h2>Estimate the credit &mdash; in your numbers</h2>
+      <p>Once the ledger is real, the credit lifts because the substantiation holds up. Drag the sliders to see what a comparable claim could look like.</p>
+
+      <div class="calc-wrap">
+        <div class="calc-panel">
+          <div class="calc-group">
+            <div class="calc-label">Engineers in R&amp;D roles <span class="calc-value" id="engineers-v">80</span></div>
+            <input type="range" id="engineers" min="5" max="2000" step="5" value="80"/>
+          </div>
+          <div class="calc-group">
+            <div class="calc-label">Avg fully-loaded cost / engineer <span class="calc-value" id="salary-v">$210K</span></div>
+            <input type="range" id="salary" min="100" max="400" step="5" value="210"/>
+          </div>
+          <div class="calc-group">
+            <div class="calc-label">% time on qualifying R&amp;D <span class="calc-value" id="rdPct-v">70%</span></div>
+            <input type="range" id="rdPct" min="20" max="100" step="5" value="70"/>
+          </div>
+          <div class="calc-group">
+            <div class="calc-label">Primary state / region for R&amp;D work</div>
+            <select class="calc-select" id="state">
+              <optgroup label="High-credit states">
+                <option value="az">Arizona (incremental — eff. ~12%)</option>
+                <option value="ri">Rhode Island (eff. ~10%)</option>
+                <option value="ca" selected>California (eff. ~7.5%)</option>
+                <option value="in">Indiana (eff. ~7.5%)</option>
+                <option value="oh">Ohio (~7%)</option>
+                <option value="ct">Connecticut (~6%)</option>
+                <option value="ny">New York (Excelsior — eff. ~6%)</option>
+                <option value="ia">Iowa (~6.5%, refundable)</option>
+                <option value="nd">North Dakota (eff. ~6%)</option>
+                <option value="wi">Wisconsin (~5.75%)</option>
+              </optgroup>
+              <optgroup label="Mid-credit states">
+                <option value="ma">Massachusetts (eff. ~5%)</option>
+                <option value="tx">Texas (~5% franchise credit)</option>
+                <option value="pa">Pennsylvania (eff. ~5%)</option>
+                <option value="nj">New Jersey (eff. ~5%)</option>
+                <option value="ga">Georgia (eff. ~5%)</option>
+                <option value="mn">Minnesota (eff. ~5%)</option>
+                <option value="va">Virginia (eff. ~5%)</option>
+                <option value="fl">Florida (eff. ~5%)</option>
+                <option value="me">Maine (eff. ~4%)</option>
+                <option value="ut">Utah (eff. ~3.75%)</option>
+                <option value="mo">Missouri (eff. ~3.5%)</option>
+                <option value="il">Illinois (eff. ~3.25%)</option>
+                <option value="ks">Kansas (eff. ~3.25%)</option>
+                <option value="nm">New Mexico (eff. ~4%)</option>
+              </optgroup>
+              <optgroup label="Limited / capped credits">
+                <option value="md">Maryland (eff. ~2.5%)</option>
+                <option value="nc">North Carolina (eff. ~2.5%)</option>
+                <option value="sc">South Carolina (eff. ~2.5%)</option>
+                <option value="co">Colorado (eff. ~2%)</option>
+                <option value="vt">Vermont (eff. ~2.7%)</option>
+                <option value="ne">Nebraska (eff. ~8%)</option>
+                <option value="hi">Hawaii (eff. ~10%, refundable)</option>
+                <option value="la">Louisiana (eff. ~8%)</option>
+                <option value="ak">Alaska (eff. ~1.8%)</option>
+                <option value="de">Delaware (eff. ~1%)</option>
+                <option value="wv">West Virginia (eff. ~3%)</option>
+                <option value="nh">New Hampshire (eff. ~1%)</option>
+              </optgroup>
+              <optgroup label="Canada — SR&amp;ED">
+                <option value="ca-fed">Canadian SR&amp;ED (federal ~15% on qualifying spend)</option>
+              </optgroup>
+              <optgroup label="No state R&amp;D credit available">
+                <option value="wa">Washington — none</option>
+                <option value="nv">Nevada — none</option>
+                <option value="sd">South Dakota — none</option>
+                <option value="tn">Tennessee — none</option>
+                <option value="wy">Wyoming — none</option>
+                <option value="mi">Michigan — repealed</option>
+                <option value="or">Oregon — expired</option>
+                <option value="ok">Oklahoma — eliminated</option>
+                <option value="mt">Montana — repealed</option>
+                <option value="al">Alabama — none</option>
+                <option value="ms">Mississippi — none</option>
+                <option value="ky">Kentucky — limited</option>
+              </optgroup>
+              <optgroup label="Other">
+                <option value="other">Other / international (~3% effective)</option>
+                <option value="none">Federal only — no regional credit</option>
+              </optgroup>
+            </select>
+          </div>
+        </div>
+
+        <div class="calc-panel result">
+          <div class="calc-label">ESTIMATED RECOVERABLE CREDIT · YEAR 1</div>
+          <div class="calc-big" id="total">—</div>
+          <div class="calc-sub-num" id="totalRange">—</div>
+
+          <div class="calc-divider"></div>
+
+          <div class="calc-row">
+            <span class="k">Qualifying R&amp;D spend</span>
+            <span class="v" id="qre">—</span>
+          </div>
+          <div class="calc-row">
+            <span class="k">Federal credit (~8% typical)</span>
+            <span class="v gold" id="fed">—</span>
+          </div>
+          <div class="calc-row">
+            <span class="k">Regional credit <span id="stateName">(California)</span></span>
+            <span class="v cyan" id="stateAmt">—</span>
+          </div>
+          <div class="calc-row">
+            <span class="k">Per engineer / year</span>
+            <span class="v" id="perEng">—</span>
+          </div>
+
+          <div class="calc-disclaimer">
+            <strong>Estimate only.</strong> Actual credit depends on your qualifying-research review and how each activity gets substantiated. Regional rates reflect typical effective rates published in 2024&ndash;2025 industry surveys and assume a multi-year claimer with a normal base period. This isn't tax advice &mdash; Tymr produces the per-worker source-event evidence your accountant or tax firm needs to defend the credit.
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top:32px">
+        <h3>Where the numbers come from</h3>
+        <p>Federal: we model the <strong>Alternative Simplified Credit (ASC)</strong> &mdash; 14% of qualifying spend above 50% of the prior-three-year average, which lands around <strong>7&ndash;10%</strong> for a typical software org. We default to 8%. Regional rates come from published 2024&ndash;2025 R&amp;D credit surveys (BDO, EY, Deloitte, KBKG) and represent typical effective rates for a software company claiming for 3+ years. Canada SR&amp;ED is shown as the federal 15% basic rate.</p>
+        <p><strong>Qualifying spend</strong> = wages for employees performing qualified research, supplies consumed in R&amp;D, 65% of contract research, and certain capitalized software-development costs. Management and back-office time generally doesn't qualify.</p>
+      </div>
+
+    </section>
+
     <div class="cta-inline-final">
       <a class="btn-primary" href="mailto:hello@tymrlogic.com?subject=Tymr%20compliance%20walkthrough">Walk the pack with your tax firm</a>
       <a class="btn-ghost" href="/numbers.html#pack">See the sample pack &rarr;</a>
@@ -307,7 +434,7 @@
         <div class="footer-links">
           <a href="/agents.html">Agents</a>
           <a href="/at-the-ledger.html">Floor to ledger</a>
-          <a href="/numbers.html">See the numbers</a>
+          <a href="/numbers.html">Sample pack &amp; ROI</a>
           <a href="/utev1.html">UTEv1</a>
           <a href="/pricing.html">Pricing</a>
           <a href="/compliance.html">Compliance</a>
@@ -320,5 +447,76 @@
     </div>
   </footer>
 </div>
+
+<script>
+// R&D CREDIT ESTIMATOR — effective regional credit rates as % of total qualifying spend
+const stateRates = {
+  az: 0.12,  ri: 0.10,  ca: 0.075, in: 0.075, oh: 0.07,
+  ct: 0.06,  ny: 0.06,  ia: 0.065, nd: 0.06,  wi: 0.0575,
+  ma: 0.05,  tx: 0.05,  pa: 0.05,  nj: 0.05,  ga: 0.05,
+  mn: 0.05,  va: 0.05,  fl: 0.05,  me: 0.04,  ut: 0.0375,
+  mo: 0.035, il: 0.0325,ks: 0.0325,nm: 0.04,
+  md: 0.025, nc: 0.025, sc: 0.025, co: 0.02,  vt: 0.027,
+  ne: 0.08,  hi: 0.10,  la: 0.08,  ak: 0.018, de: 0.01,
+  wv: 0.03,  nh: 0.01,
+  'ca-fed': 0.15,
+  wa: 0, nv: 0, sd: 0, tn: 0, wy: 0, mi: 0, or: 0, ok: 0,
+  mt: 0, al: 0, ms: 0, ky: 0,
+  other: 0.03, none: 0
+};
+const stateLabels = {
+  az: '(Arizona)', ri: '(Rhode Island)', ca: '(California)',
+  in: '(Indiana)', oh: '(Ohio)', ct: '(Connecticut)', ny: '(New York)',
+  ia: '(Iowa)', nd: '(North Dakota)', wi: '(Wisconsin)',
+  ma: '(Massachusetts)', tx: '(Texas)', pa: '(Pennsylvania)',
+  nj: '(New Jersey)', ga: '(Georgia)', mn: '(Minnesota)',
+  va: '(Virginia)', fl: '(Florida)', me: '(Maine)', ut: '(Utah)',
+  mo: '(Missouri)', il: '(Illinois)', ks: '(Kansas)', nm: '(New Mexico)',
+  md: '(Maryland)', nc: '(North Carolina)', sc: '(South Carolina)',
+  co: '(Colorado)', vt: '(Vermont)', ne: '(Nebraska)', hi: '(Hawaii)',
+  la: '(Louisiana)', ak: '(Alaska)', de: '(Delaware)',
+  wv: '(West Virginia)', nh: '(New Hampshire)',
+  'ca-fed': '(Canada SR&ED)',
+  wa: '(Washington — none)', nv: '(Nevada — none)',
+  sd: '(South Dakota — none)', tn: '(Tennessee — none)',
+  wy: '(Wyoming — none)', mi: '(Michigan — repealed)',
+  or: '(Oregon — expired)', ok: '(Oklahoma — eliminated)',
+  mt: '(Montana — repealed)', al: '(Alabama — none)',
+  ms: '(Mississippi — none)', ky: '(Kentucky — limited)',
+  other: '(other / international)', none: '(federal only)'
+};
+const fmt = n => {
+  if (n >= 1_000_000) return '$' + (n / 1_000_000).toFixed(2) + 'M';
+  if (n >= 1_000) return '$' + Math.round(n / 1_000).toLocaleString() + 'K';
+  return '$' + Math.round(n).toLocaleString();
+};
+function recalcRD() {
+  const engineers = +document.getElementById('engineers').value;
+  const salary = +document.getElementById('salary').value * 1000;
+  const rdPct = +document.getElementById('rdPct').value / 100;
+  const state = document.getElementById('state').value;
+  document.getElementById('engineers-v').textContent = engineers;
+  document.getElementById('salary-v').textContent = '$' + (salary / 1000).toFixed(0) + 'K';
+  document.getElementById('rdPct-v').textContent = (rdPct * 100).toFixed(0) + '%';
+  document.getElementById('stateName').textContent = stateLabels[state];
+  const qre = engineers * salary * rdPct;
+  const fedLow = qre * 0.065, fedMid = qre * 0.08, fedHigh = qre * 0.10;
+  const stateAmt = qre * stateRates[state];
+  const totalMid = fedMid + stateAmt;
+  const totalLow = fedLow + stateAmt;
+  const totalHigh = fedHigh + stateAmt;
+  const perEng = totalMid / engineers;
+  document.getElementById('qre').textContent = fmt(qre);
+  document.getElementById('fed').textContent = fmt(fedMid);
+  document.getElementById('stateAmt').textContent = fmt(stateAmt);
+  document.getElementById('perEng').textContent = fmt(perEng);
+  document.getElementById('total').textContent = fmt(totalMid);
+  document.getElementById('totalRange').textContent = `Range: ${fmt(totalLow)} – ${fmt(totalHigh)} depending on base period`;
+}
+['engineers', 'salary', 'rdPct', 'state'].forEach(id => {
+  document.getElementById(id).addEventListener('input', recalcRD);
+});
+recalcRD();
+</script>
 </body>
 </html>
